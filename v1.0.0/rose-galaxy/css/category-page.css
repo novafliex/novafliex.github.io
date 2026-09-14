@@ -1,0 +1,235 @@
+body.nova-category-route{
+  --nova-category-space-1:6px;
+  --nova-category-space-2:10px;
+  --nova-category-space-3:16px;
+  --nova-category-space-4:22px;
+  color:var(--nova-category-text-primary);
+  background:var(--nova-category-page-bg)
+}
+body.nova-category-route #body-wrap{
+  overflow:clip;
+  background:
+    radial-gradient(circle at 82% 8%,rgba(189,90,133,.075),transparent 30%),
+    radial-gradient(circle at 16% 26%,rgba(104,124,143,.05),transparent 34%),
+    linear-gradient(180deg,var(--nova-category-page-bg) 0%,var(--nova-category-page-bg-soft) 52%,#070c17 100%)
+}
+body.nova-category-route #page-header.nova-category-hero{
+  position:relative;
+  height:clamp(390px,41vh,420px);
+  overflow:hidden;
+  background-position:center 48%!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important
+}
+body.nova-category-route #page-header.nova-category-hero::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(7,12,25,.46),rgba(7,12,25,.1) 60%,rgba(7,12,25,.24)),
+    linear-gradient(180deg,rgba(5,10,22,.14),rgba(8,14,28,.05) 64%,rgba(8,14,27,.54))
+}
+body.nova-category-route #page-header.nova-category-hero::after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:auto 0 0;
+  height:34%;
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent,var(--nova-category-page-bg))
+}
+body.nova-category-route #page-header.nova-category-hero #nav{z-index:4;background:transparent;box-shadow:none}
+.nova-category-hero-content{
+  position:absolute!important;
+  z-index:2;
+  top:52%!important;
+  right:20px;
+  left:20px;
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+  transform:translateY(calc(-50% + 8px))!important;
+  color:#f7eff4;
+  text-align:center
+}
+.nova-category-eyebrow{margin:0 0 15px;color:#e18ca8;font-size:11px;letter-spacing:.28em}
+.nova-category-hero-content #site-title{margin:0;color:#f6e9ef;font:500 clamp(64px,6.7vw,92px)/1.05 "Noto Serif SC","Songti SC",serif;letter-spacing:.16em;text-shadow:0 10px 32px rgba(0,0,0,.26)}
+.nova-category-subtitle{margin:18px 0 0;color:rgba(246,238,243,.78);font-size:15px;line-height:1.9;letter-spacing:.08em}
+.nova-category-scroll-hint{display:inline-flex;align-items:center;gap:12px;margin-top:24px;color:rgba(244,228,237,.6);font-size:10px;letter-spacing:.2em}
+.nova-category-scroll-hint::before,.nova-category-scroll-hint::after{content:"";width:42px;height:1px;background:linear-gradient(90deg,transparent,rgba(220,124,155,.7))}
+.nova-category-scroll-hint::after{transform:rotate(180deg)}
+body.nova-category-route main.nova-category-content{
+  position:relative;
+  z-index:3;
+  display:block;
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:0 0 clamp(64px,7vw,92px)
+}
+body.nova-category-route main.nova-category-content::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  pointer-events:none;
+  background:url("/img/guidang.webp") center top/cover no-repeat;
+  opacity:.028;
+  filter:blur(34px) saturate(.6);
+  mask-image:linear-gradient(180deg,#000,transparent 44%);
+  -webkit-mask-image:linear-gradient(180deg,#000,transparent 44%)
+}
+.nova-category-summary{
+  position:relative;
+  z-index:5;
+  display:grid;
+  width:min(1320px,calc(100% - 64px));
+  margin:-52px auto 0;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  border:1px solid var(--nova-category-border);
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(15,23,43,.9),rgba(9,16,31,.82));
+  box-shadow:0 24px 65px rgba(0,0,0,.24);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px)
+}
+.nova-category-summary>div{position:relative;display:flex;min-width:0;min-height:88px;padding:18px 24px;align-items:flex-start;justify-content:center;flex-direction:column;gap:3px}
+.nova-category-summary>div+div::before{content:"";position:absolute;top:20px;bottom:20px;left:0;width:1px;background:var(--nova-category-border)}
+.nova-category-summary strong{overflow:hidden;color:var(--nova-category-text-primary);font:500 24px/1.1 Georgia,"Times New Roman",serif;text-overflow:ellipsis;white-space:nowrap}
+.nova-category-summary span{color:var(--nova-category-accent);font-size:11px;line-height:1.4;letter-spacing:.14em}
+.nova-category-summary small{color:var(--nova-category-text-muted);font-size:12px;line-height:1.5}
+.nova-category-layout{
+  display:grid;
+  width:min(1320px,calc(100% - 64px));
+  margin:40px auto 0;
+  grid-template-columns:minmax(0,1.72fr) minmax(300px,.82fr);
+  align-items:start;
+  gap:clamp(26px,3vw,38px)
+}
+.nova-category-main,.nova-category-side-card{
+  min-width:0;
+  border:1px solid var(--nova-category-border);
+  background:linear-gradient(145deg,rgba(13,20,38,.84),rgba(9,15,29,.76));
+  box-shadow:0 22px 60px rgba(0,0,0,.2);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px)
+}
+.nova-category-main{padding:28px;border:1px solid rgba(224,194,210,.09);border-radius:24px;background:linear-gradient(145deg,rgba(10,16,31,.82),rgba(8,13,26,.74));box-shadow:0 24px 70px rgba(0,0,0,.22)}
+.nova-category-main-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--nova-category-border)}
+.nova-category-main-heading span,.nova-category-side-card header span{color:var(--nova-category-accent);font-size:11px;letter-spacing:.17em}
+.nova-category-main-heading h2,.nova-category-side-card h2{margin:4px 0 0;color:var(--nova-category-text-primary);font:500 21px/1.35 "Noto Serif SC","Songti SC",serif}
+.nova-category-main-heading p{margin:6px 0 0;color:var(--nova-category-text-muted);font-size:14px}
+.nova-category-main-heading>b{color:var(--nova-category-text-muted);font-size:10px;letter-spacing:.13em;white-space:nowrap}
+.nova-category-card-list{display:grid;align-items:start;grid-auto-rows:auto;gap:24px}
+.nova-category-card{
+  display:grid;
+  width:100%;
+  height:auto;
+  min-height:230px;
+  align-self:start;
+  overflow:hidden;
+  grid-template-columns:minmax(210px,30%) minmax(0,1fr);
+  border:1px solid rgba(224,194,210,.12);
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(16,23,43,.78),rgba(12,19,36,.7));
+  box-shadow:0 10px 28px rgba(0,0,0,.14);
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease
+}
+.nova-category-card:hover{transform:translateY(-2px);border-color:rgba(205,105,143,.25);box-shadow:0 16px 36px rgba(0,0,0,.2)}
+.nova-category-card-cover{position:relative;display:block;width:100%;min-width:210px;min-height:230px;overflow:hidden;background:#0c1323}
+.nova-category-card-cover::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,12,27,.02),rgba(8,12,27,.32))}
+.nova-category-card-cover img{position:absolute;inset:0;width:100%;height:100%;min-height:0;object-fit:cover;filter:brightness(.74) saturate(.82) contrast(1.04);transition:transform .35s ease,filter .35s ease}
+.nova-category-card:hover .nova-category-card-cover img{transform:scale(1.025);filter:brightness(.78) saturate(.86) contrast(1.04)}
+.nova-category-card-cover>span{position:absolute;z-index:1;right:16px;bottom:14px;padding:5px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;color:rgba(255,255,255,.76);background:rgba(5,10,20,.52);font-size:9px;letter-spacing:.12em;backdrop-filter:blur(8px)}
+.nova-category-card-body{display:flex;min-width:0;height:auto;padding:22px 24px 20px;flex:1;flex-direction:column}
+.nova-category-card-heading{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:start;gap:14px}
+.nova-category-card-index{color:var(--nova-category-accent);font:500 13px/1.8 Georgia,serif}
+.nova-category-card-heading h2{margin:0;font:500 23px/1.35 "Noto Serif SC","Songti SC",serif}
+.nova-category-card-heading h2 a{color:var(--nova-category-text-primary)}
+.nova-category-card-heading p{margin:5px 0 0;color:var(--nova-category-text-secondary);font-size:14px;line-height:1.65}
+.nova-category-card-arrow{display:grid;width:34px;height:34px;place-items:center;border:1px solid var(--nova-category-border);border-radius:50%;color:var(--nova-category-text-secondary);background:rgba(255,255,255,.035);transition:transform .22s ease,color .22s ease,border-color .22s ease}
+.nova-category-card:hover .nova-category-card-arrow{transform:translateX(4px);border-color:rgba(205,105,143,.25);color:var(--nova-category-accent)}
+.nova-category-card-children{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 2px}
+.nova-category-child-link{display:inline-flex;align-items:center;gap:8px;padding:5px 9px;border:1px solid var(--nova-category-border);border-radius:999px;color:var(--nova-category-text-secondary);background:rgba(192,107,140,.06);font-size:12px}
+.nova-category-child-link span{color:var(--nova-category-accent)}
+.nova-category-card-posts{display:grid;margin-top:12px;border-top:1px solid var(--nova-category-border)}
+.nova-category-post-link{display:grid;min-width:0;padding:9px 2px;grid-template-columns:minmax(0,1fr) auto;gap:16px;border-bottom:1px solid var(--nova-category-border);color:var(--nova-category-text-secondary);font-size:13px}
+.nova-category-post-link>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nova-category-post-link time{color:var(--nova-category-text-muted);font-size:12px;white-space:nowrap}
+.nova-category-post-link:hover{color:var(--nova-category-text-primary)}
+.nova-category-empty{margin:14px 0;color:var(--nova-category-text-muted);font-size:11px}
+.nova-category-card-action{display:inline-flex;align-items:center;align-self:flex-start;gap:6px;margin-top:auto;padding-top:13px;color:var(--nova-category-accent);font-size:13px;letter-spacing:.04em;transition:gap .22s ease,color .22s ease}
+.nova-category-card-action span{display:inline-block}
+.nova-category-card-action:hover{gap:10px;color:#df86a3}
+.nova-category-sidebar{display:flex;height:auto;min-width:0;align-self:start;flex-direction:column;gap:20px}
+.nova-category-side-card{padding:var(--nova-category-space-4);border-radius:20px}
+.nova-category-side-card header{margin-bottom:var(--nova-category-space-3);padding-bottom:var(--nova-category-space-3);border-bottom:1px solid var(--nova-category-border)}
+.nova-category-side-card header span{font-size:11px;line-height:1.4;letter-spacing:.13em}
+.nova-category-side-card h2{font-size:18px;line-height:1.45}
+.nova-category-focus ul{display:grid;margin:0;padding:0;gap:var(--nova-category-space-2);list-style:none}
+.nova-category-focus li{position:relative;padding:9px 12px 9px 28px;border-radius:10px;color:var(--nova-category-text-secondary);background:rgba(192,107,140,.055);font-size:13px;line-height:1.65}
+.nova-category-focus li::before{content:"";position:absolute;top:50%;left:13px;width:6px;height:6px;border:1px solid var(--nova-category-accent);transform:translateY(-50%) rotate(45deg)}
+.nova-category-index nav{display:grid}
+.nova-category-index-link{display:grid;margin:2px 0;padding:10px 12px;grid-template-columns:28px minmax(0,1fr) auto;align-items:center;gap:10px;border-radius:10px;color:var(--nova-category-text-secondary);font-size:14px;transition:transform .2s ease,background-color .2s ease,color .2s ease}
+.nova-category-index-link span{color:var(--nova-category-accent);font:500 10px Georgia,serif}
+.nova-category-index-link strong{overflow:hidden;font-weight:500;text-overflow:ellipsis;white-space:nowrap}
+.nova-category-index-link b{color:var(--nova-category-text-muted);font-size:12px;font-weight:400}
+.nova-category-index-link:hover{transform:translateX(3px);color:var(--nova-category-accent);background:rgba(197,99,137,.08)}
+.nova-category-tags>div{display:flex;flex-wrap:wrap;gap:var(--nova-category-space-2)}
+.nova-category-tag-link{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border:1px solid var(--nova-category-border);border-radius:999px;color:var(--nova-category-text-secondary);background:rgba(255,255,255,.035);font-size:12px}
+.nova-category-tag-link span{color:var(--nova-category-text-muted);font-size:10px}
+.nova-category-tag-link:hover{border-color:rgba(206,113,143,.25);color:var(--nova-category-accent)}
+body.nova-category-route footer#footer{margin:0;border-top:1px solid rgba(199,97,132,.14);background:linear-gradient(180deg,rgba(12,20,39,.88),#0b162a)}
+html[data-theme="light"] body.nova-category-route #body-wrap{background:radial-gradient(circle at 82% 8%,rgba(189,96,125,.06),transparent 30%),radial-gradient(circle at 16% 26%,rgba(112,130,144,.045),transparent 34%),linear-gradient(180deg,#eeebf1,#e7e5ec)}
+html[data-theme="light"] body.nova-category-route #page-header.nova-category-hero::after{background:linear-gradient(180deg,rgba(8,13,27,.03) 0%,rgba(8,13,27,.02) 62%,rgba(105,98,122,.09) 80%,rgba(211,207,218,.32) 92%,var(--nova-category-page-bg) 100%)}
+html[data-theme="light"] .nova-category-main{border-color:rgba(75,62,83,.09);background:linear-gradient(145deg,rgba(255,254,255,.82),rgba(244,241,247,.74));box-shadow:0 22px 60px rgba(53,43,62,.1)}
+html[data-theme="light"] .nova-category-side-card,html[data-theme="light"] .nova-category-summary{border-color:rgba(255,255,255,.56);background:linear-gradient(145deg,rgba(255,254,255,.84),rgba(244,241,247,.74));box-shadow:0 22px 60px rgba(53,43,62,.1)}
+html[data-theme="light"] .nova-category-card{border-color:rgba(75,62,83,.1);background:linear-gradient(145deg,rgba(255,255,255,.84),rgba(246,243,248,.78));box-shadow:0 12px 32px rgba(53,43,62,.08)}
+html[data-theme="light"] .nova-category-card:hover{border-color:rgba(189,96,125,.22);box-shadow:0 16px 38px rgba(53,43,62,.11)}
+html[data-theme="light"] .nova-category-focus li,html[data-theme="light"] .nova-category-child-link,html[data-theme="light"] .nova-category-tag-link{background:rgba(179,89,120,.055)}
+html[data-theme="light"] body.nova-category-route footer#footer{border-top-color:rgba(189,96,125,.14);background:linear-gradient(180deg,rgba(224,221,230,.92),#d0d2dd);color:#514c59}
+@media(min-width:1101px) and (min-height:820px){
+  .nova-category-sidebar{position:sticky;top:88px}
+}
+@media(max-width:1180px){
+  .nova-category-summary,.nova-category-layout{width:calc(100% - 40px)}
+  .nova-category-layout{grid-template-columns:minmax(0,1fr) minmax(280px,.65fr);gap:clamp(26px,3vw,34px)}
+  .nova-category-main{padding:22px}
+  .nova-category-card{grid-template-columns:minmax(175px,30%) minmax(0,1fr)}
+}
+@media(max-width:1024px){
+  body.nova-category-route #page-header.nova-category-hero{height:360px}
+  .nova-category-summary{width:calc(100% - 28px);margin-top:-30px;grid-template-columns:1fr 1fr}
+  .nova-category-summary>div:nth-child(3)::before{display:none}
+  .nova-category-summary>div:nth-child(n+3){border-top:1px solid var(--nova-category-border)}
+  .nova-category-layout{display:block;width:calc(100% - 28px);margin-top:28px}
+  .nova-category-sidebar{position:static;margin-top:22px}
+}
+@media(max-width:560px){
+  .nova-category-hero-content #site-title{font-size:52px}
+  .nova-category-subtitle{font-size:13px}
+  .nova-category-summary>div{padding:15px}
+  .nova-category-summary strong{font-size:18px}
+  .nova-category-main{padding:14px;border-radius:18px}
+  .nova-category-main-heading{align-items:flex-start;flex-direction:column;gap:8px}
+  .nova-category-card{display:block;min-height:0;border-radius:16px}
+  .nova-category-card-cover{min-height:178px;aspect-ratio:16/9}
+  .nova-category-card-cover img{min-height:178px}
+  .nova-category-card-body{padding:18px 16px}
+  .nova-category-card-heading{gap:9px}
+  .nova-category-card-heading h2{font-size:19px}
+  .nova-category-post-link{gap:8px}
+}
+@media(max-width:390px){
+  .nova-category-summary{grid-template-columns:1fr}
+  .nova-category-summary>div+div::before{top:0;right:15px;bottom:auto;left:15px;width:auto;height:1px}
+  .nova-category-summary>div:nth-child(3)::before{display:block}
+  .nova-category-summary>div:nth-child(n+3){border-top:0}
+  .nova-category-card-heading p{font-size:10px}
+  .nova-category-post-link{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .nova-category-card,.nova-category-card-cover img,.nova-category-card-arrow,.nova-category-card-action,.nova-category-index-link{transition:none!important}
+  .nova-category-card:hover,.nova-category-card:hover .nova-category-card-cover img,.nova-category-card:hover .nova-category-card-arrow,.nova-category-index-link:hover{transform:none!important}
+}
