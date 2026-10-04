@@ -308,8 +308,9 @@
   function syncRouteState() {
     document.body.classList.remove(...ROUTE_CLASSES)
     const routeMarkers = [
-      ['[data-nova-home]', ['nova-home-active']],
       ['.nova-music-page', ['nova-music-route']],
+      ['.nova-about-shell', ['nova-about-route']],
+      ['.coast-home[data-nova-home]', ['nova-home-active']],
       ['main.nova-archive-main', ['nova-archive-route']],
       ['main.nova-category-content', ['nova-category-route']],
       ['main.nova-tags-overview', ['nova-tag-route', 'nova-tags-route']],

@@ -1,0 +1,14 @@
+:root {
+  --coast-ink: #c3ccd3;
+  --coast-muted: #aab7c2;
+  --coast-surface: #233749;
+  --coast-rule: rgba(216,229,238,.18);
+  --coast-glass-border: rgba(216,229,238,.19);
+  --coast-glass: linear-gradient(160deg,rgba(134,151,165,.10),rgba(13,23,30,.12));
+  --coast-blur: 10px;
+  --coast-radius: 12px;
+  --coast-font: Inter,"Microsoft YaHei",sans-serif;
+  --coast-panel-x: .85%;
+  --coast-panel-y: 1.4%;
+  --coast-panel-width: 12%;
+}

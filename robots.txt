@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mikejosion.github.io/sitemap.xml
+Sitemap: https://novafliex.github.io/sitemap.xml

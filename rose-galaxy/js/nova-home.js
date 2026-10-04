@@ -1,107 +1,49 @@
 (() => {
   'use strict'
-
-  if (window.__novaHomeBootstrap) {
-    window.__novaHomeBootstrap.init()
-    return
-  }
-
-  let reveal = null
-  const timers = new Set()
-
-  const later = (callback, delay) => {
-    const timer = window.setTimeout(() => {
-      timers.delete(timer)
-      callback()
-    }, delay)
-    timers.add(timer)
-    return timer
-  }
-
-  const destroy = () => {
-    reveal?.disconnect()
-    reveal = null
-    timers.forEach(timer => window.clearTimeout(timer))
-    timers.clear()
-  }
-
+  if (window.__novaHomeBootstrap) { window.__novaHomeBootstrap.init(); return }
+  let cleanup = () => {}
+  const destroy = () => { cleanup(); cleanup = () => {} }
   const init = () => {
-  const root = document.querySelector('[data-nova-home]')
-  if (!root || root.dataset.ready) return
-  destroy()
-  root.dataset.ready = 'true'
-
-  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches
-  const searchInput = document.querySelector('#nova-archive-search')
-
-  reveal = new IntersectionObserver(entries => {
-    entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('is-visible'))
-  }, { threshold: .12 })
-  root.querySelectorAll('.nova-reveal').forEach(node => reveal.observe(node))
-
-  root.querySelectorAll('.nova-note-card[data-href]').forEach(card => {
-    const navigate = () => { location.href = card.dataset.href }
-    card.addEventListener('click', event => {
-      if (!event.target.closest('a')) navigate()
-    })
-    card.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault()
-        navigate()
-      }
-    })
-  })
-
-  const openSearch = value => {
-    document.querySelector('#search-button .search')?.click()
-    later(() => {
-      const target = document.querySelector('#local-search input')
-      if (target) {
-        target.value = value
-        target.dispatchEvent(new Event('input', { bubbles: true }))
-        target.focus()
-      }
-    }, 180)
-  }
-
-  searchInput?.addEventListener('keydown', event => {
-    if (event.key !== 'Enter') return
-    const value = searchInput.value.trim()
-    openSearch(value)
-  })
-
-  const bloom = event => {
-    if (reduceMotion) return
-    const x = event.clientX || innerWidth * .38
-    const y = event.clientY || innerHeight * .35
-    for (let i = 0; i < 14; i++) {
-      const petal = document.createElement('i')
-      petal.className = 'nova-petal'
-      petal.style.left = `${x}px`
-      petal.style.top = `${y}px`
-      petal.style.setProperty('--x', `${(Math.random() - .5) * 180}px`)
-      petal.style.setProperty('--y', `${40 + Math.random() * 150}px`)
-      petal.style.setProperty('--r', `${Math.random() * 540 - 270}deg`)
-      document.body.appendChild(petal)
-      later(() => petal.remove(), 1550)
+    const root = document.querySelector('[data-nova-home]')
+    if (!root || root.dataset.ready) return
+    destroy()
+    root.dataset.ready = 'true'
+    const listeners = []
+    const on = (target, name, fn) => {
+      target.addEventListener(name, fn)
+      listeners.push(() => target.removeEventListener(name, fn))
     }
-    const message = root.querySelector('.nova-bloom-message')
-    message.classList.add('show')
-    later(() => message.classList.remove('show'), 2200)
+    const stopSnow = window.__fliexSnow.mount(root)
+    on(root.querySelector('[data-coast-search]'), 'click', () => window.__fliexOpenSearch?.())
+    on(root.querySelector('[data-coast-theme]'), 'click', () => document.getElementById('darkmode')?.click())
+    const renderMusic = () => {
+      const state = window.__fliexMusic?.snapshot()
+      if (!state) return
+      root.querySelectorAll('[data-music-title]').forEach(el => { el.textContent = state.title })
+      root.querySelectorAll('[data-music-artist]').forEach(el => { el.textContent = state.artist })
+      root.querySelectorAll('[data-music-summary]').forEach(el => { el.textContent = state.playing ? state.artist + ' — ' + state.title : state.ready ? 'Music / Ready' : 'Music' })
+      root.querySelectorAll('[data-music-toggle]').forEach(el => {
+        el.disabled = !state.ready
+        el.title = state.ready ? '' : '等待添加歌曲'
+        el.setAttribute('aria-label', state.ready ? (state.playing ? '暂停音乐' : '播放音乐') : '暂无可播放音乐')
+        el.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path ' + (state.playing ? 'd="M8 4v16M16 4v16"' : 'data-play d="m9 5 11 7-11 7z"') + '/></svg>'
+      })
+      const progress = state.duration ? Math.min(100, state.currentTime / state.duration * 100) : 0
+      root.querySelector('[data-music-progress]').style.width = progress + '%'
+      root.querySelector('.coast-progress').setAttribute('aria-valuenow', String(Math.round(progress)))
+      root.querySelector('[data-music-retry]').hidden = !state.failed
+    }
+    on(document, 'fliex:music', renderMusic)
+    root.querySelectorAll('[data-music-toggle]').forEach(el => on(el, 'click', () => window.__fliexMusic?.toggle()))
+    on(root.querySelector('[data-music-retry]'), 'click', () => window.__fliexMusic?.retry())
+    cleanup = () => { stopSnow(); listeners.splice(0).forEach(off => off()); delete root.dataset.ready }
+    renderMusic()
+    window.__fliexMusic?.load()
   }
-  root.querySelector('.nova-letter-o')?.addEventListener('click', bloom)
-
-  const subtitle = root.querySelector('.nova-cn-subtitle')
-  const hour = new Date().getHours()
-  if (subtitle && hour < 5) subtitle.textContent = '还没有睡的人，也许都在构建些什么。'
-  }
-
-  window.__novaHomeBootstrap = { init, destroy }
+  window.__novaHomeBootstrap = { init, destroy, get running() { return window.__fliexSnow.running } }
   document.addEventListener('pjax:send', destroy)
   document.addEventListener('pjax:complete', init)
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true })
-  } else {
-    init()
-  }
+  document.addEventListener('pjax:error', init)
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true })
+  else init()
 })()
