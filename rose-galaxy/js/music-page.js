@@ -11,9 +11,18 @@
     const api = window.__fliexMusic, off = [], favorites = new Set(read('fliex-music-favorites-v1'))
     const $ = selector => root.querySelector(selector)
     const on = (node, event, handler) => { node.addEventListener(event, handler); off.push(() => node.removeEventListener(event, handler)) }
-    let tab = 'all', rendered = '', lyricSong = '', lines = [], active = -1, frame = 0, destroyed = false
+    let tab = 'all', rendered = '', lyricSong = '', displayedTitle = '', lines = [], active = -1, frame = 0, destroyed = false, scrubbing = false
     const rows = $('.sea-playlist-rows'), lyrics = $('.sea-lyrics-lines'), wave = $('.sea-waveform'), ctx = wave.getContext('2d')
     const escape = text => String(text || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
+    const syncTitle = title => {
+      if (title === displayedTitle) return
+      displayedTitle = title
+      const node = $('.nova-music-current-title'), viewport = node.parentElement
+      node.textContent = title
+      node.classList.remove('is-marquee'); node.style.removeProperty('--music-title-shift')
+      const overflow = Math.ceil(node.scrollWidth - viewport.clientWidth)
+      if (overflow > 2) { node.style.setProperty('--music-title-shift', `-${overflow}px`); node.classList.add('is-marquee') }
+    }
     const renderRows = state => {
       const songs = state.tracks
       const signature = JSON.stringify([songs.map(s => s.id), state.index, tab, [...favorites]])
@@ -46,14 +55,15 @@
     const render = () => {
       const state = api.snapshot(), song = state.song
       root.classList.toggle('is-playing', state.playing)
-      $('.nova-music-current-title').textContent = state.title
+      syncTitle(state.title)
       $('.nova-music-current-artist').textContent = state.failed ? state.artist : [state.artist, song?.album].filter(Boolean).join('  |  ')
       if (song) { const cover = song.cover || '/img/background_sea.png'; if ($('.nova-music-current-cover').getAttribute('src') !== cover) $('.nova-music-current-cover').src = cover }
       $('.nova-music-toggle').textContent = state.playing ? 'Ⅱ' : '▶'
       $('.nova-music-toggle').setAttribute('aria-label', state.playing ? '暂停' : '播放')
       const duration = state.duration || song?.duration || 0, progress = duration ? state.currentTime / duration * 1000 : 0
-      const input = $('.nova-music-progress-input'); input.value = progress; input.style.setProperty('--music-progress', progress / 10 + '%')
-      $('.nova-music-current-time').textContent = time(state.currentTime); $('.nova-music-duration').textContent = time(duration)
+      const input = $('.nova-music-progress-input')
+      if (!scrubbing) { input.value = progress; input.style.setProperty('--music-progress', progress / 10 + '%'); $('.nova-music-current-time').textContent = time(state.currentTime) }
+      $('.nova-music-duration').textContent = time(duration)
       $('.nova-music-count').textContent = state.failed ? state.title : '本地音乐 · ' + state.tracks.length + ' 首'
       $('.nova-music-retry').hidden = !state.failed
       root.querySelectorAll('.nova-music-toggle,.nova-music-previous,.nova-music-next,.nova-music-progress-input').forEach(node => { node.disabled = !state.ready })
@@ -69,7 +79,17 @@
     const toggleFavorite = id => { if (!id) return; favorites.has(id) ? favorites.delete(id) : favorites.add(id); try { localStorage.setItem('fliex-music-favorites-v1', JSON.stringify([...favorites])) } catch (_) {} render() }
     on($('.nova-music-toggle'), 'click', () => api.toggle())
     on($('.nova-music-next'), 'click', () => api.next()); on($('.nova-music-previous'), 'click', () => api.previous())
-    on($('.nova-music-progress-input'), 'input', event => api.seek(Number(event.target.value) / 1000 * api.snapshot().duration))
+    const progressInput = $('.nova-music-progress-input')
+    const finishScrub = () => { if (!scrubbing) return; scrubbing = false; render() }
+    on(progressInput, 'pointerdown', () => { scrubbing = true })
+    on(progressInput, 'input', event => {
+      const ratio = Number(event.target.value) / 1000
+      const target = ratio * api.snapshot().duration
+      event.target.style.setProperty('--music-progress', ratio * 100 + '%')
+      $('.nova-music-current-time').textContent = time(target)
+      api.seek(target)
+    })
+    on(progressInput, 'pointerup', finishScrub); on(progressInput, 'pointercancel', finishScrub); on(progressInput, 'change', finishScrub); on(progressInput, 'blur', finishScrub)
     on($('[data-music-volume]'), 'input', event => api.setVolume(event.target.value))
     on($('[data-music-shuffle]'), 'click', () => api.setMode(api.snapshot().mode === 'shuffle' ? 'list' : 'shuffle'))
     on($('[data-music-repeat]'), 'click', () => api.setMode(api.snapshot().mode === 'single' ? 'list' : 'single'))
