@@ -44,13 +44,14 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
 .sea-player button:hover{opacity:1;transform:translateY(-2px)}
 .sea-player button[aria-pressed=true]{opacity:.96}
 /* A six-line reading window, centered on the active lyric. */
-.sea-lyrics{--lyric-height:clamp(330px,54vh,440px);position:relative;align-self:start;margin-top:7vh;height:var(--lyric-height);min-width:0;overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;mask-image:linear-gradient(transparent,#000 35%,#000 65%,transparent);-webkit-mask-image:linear-gradient(transparent,#000 35%,#000 65%,transparent)}
+.sea-lyrics{--lyric-height:clamp(330px,54vh,440px);position:relative;align-self:start;margin-top:7vh;height:var(--lyric-height);min-width:0;overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;mask-image:linear-gradient(rgba(0,0,0,.65),#000 30%,#000 70%,rgba(0,0,0,.65));-webkit-mask-image:linear-gradient(rgba(0,0,0,.65),#000 30%,#000 70%,rgba(0,0,0,.65))}
 .sea-lyrics-lines{padding:calc(var(--lyric-height)/2 - 17px) 0}
-.sea-lyrics-lines p{margin:0 0 28px;padding:0;color:#d8e6f0;font:400 clamp(18px,1.3vw,22px)/1.7 var(--coast-font);opacity:.3;transition:opacity .6s ease}
+.sea-lyrics-lines p{margin:0 0 28px;padding:0;color:rgba(220,229,235,.42);font:400 19px/1.8 "Noto Serif SC","Source Han Serif SC","Songti SC",serif;opacity:1;text-shadow:0 1px 10px rgba(0,0,0,.2);transform-origin:left center;transition:color .4s ease,opacity .4s ease,transform .4s ease,font-size .4s ease}
+.sea-lyrics-lines .lyric-line{min-height:45px;line-height:1.8}
 .sea-lyrics-lines p:empty{min-height:24px;margin-bottom:16px}
-.sea-lyrics-lines p.is-distant{opacity:.12}
-.sea-lyrics-lines p.is-near{opacity:.32}
-.sea-lyrics-lines p.is-active{opacity:1;color:#edf5fa;font-weight:450}
+.sea-lyrics-lines p.is-distant{color:rgba(220,229,235,.28)}
+.sea-lyrics-lines p.is-near{color:rgba(224,232,237,.58)}
+.sea-lyrics-lines p.is-active{opacity:1;color:rgba(244,247,249,.96);font-size:25px;font-weight:500;transform:translateY(-1px) scale(1.02);text-shadow:0 2px 14px rgba(0,0,0,.46),0 0 24px rgba(190,210,222,.08)}
 .sea-lyrics-lines .sea-lyrics-empty{font-size:13px;line-height:1.8;opacity:.46}
 .sea-lyrics-lines .sea-lyrics-empty small{font-size:10px}
 .sea-lyrics-lines .sea-lyrics-status{font-size:10px;opacity:.4}
@@ -81,3 +82,4 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
 @media(max-width:900px){.coast-music-shell .coast-sidebar{position:relative;top:auto;left:auto;right:auto;bottom:auto;margin:74px 16px 0;width:auto}.coast-music-shell .coast-brand-name{font-size:32px}.coast-music-shell .coast-sidebar-bottom{z-index:8}.coast-music-shell .coast-nav{gap:8px}.coast-music-shell .coast-nav a{font-size:12px;gap:4px}.coast-music-shell .coast-toolbar{position:absolute}.nova-music-page{margin:0;padding:40px 24px 130px;grid-template-columns:1fr 1fr;gap:35px}.sea-playlist{grid-column:1/-1;width:100%;max-height:400px}.sea-playlist-tabs{justify-content:flex-start;gap:28px}.sea-playlist-tabs button{font-size:12px}.sea-lyrics{--lyric-height:340px;margin-top:0}.sea-player{width:88%}.sea-track{grid-template-columns:20px 32px minmax(0,1fr) 16px}}
 @media(max-width:560px){.nova-music-page{grid-template-columns:1fr;padding:30px 24px 140px;gap:30px}.sea-player{max-width:320px;margin:0 auto;width:100%}.sea-art{width:72%;margin:0 auto 20px}.sea-song-heading h2{font-size:23px}.sea-lyrics{--lyric-height:340px;text-align:center}.sea-playlist{grid-column:auto;max-height:400px;width:100%}}
 @media(prefers-reduced-motion:reduce){.nova-music-current-title.is-marquee{animation:none}.nova-music-current-title{max-width:100%;overflow:hidden;text-overflow:ellipsis}.nova-music-page *{transition:none!important}.sea-track:hover,.sea-player button:hover{transform:none}}
+@media(max-width:900px){.coast-music-shell .coast-nav a{font-size:13px;gap:8px}}

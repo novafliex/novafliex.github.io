@@ -1,155 +1,54 @@
-/* ============================================================
-   About page — built on the homepage coast shell
-   left homepage rail + right-top controls + sea background
-   ============================================================ */
-
-body.nova-about-route{background:#0b1620;color:var(--coast-ink);overflow-x:clip}
+/* About shares the homepage sea, rail and typography. */
+body.nova-about-route{background:var(--coast-surface);color:var(--coast-ink);overflow-x:clip}
 body.nova-about-route #body-wrap{background:transparent}
-body.nova-about-route #sidebar,
-body.nova-about-route #rightside,
-body.nova-about-route #web_bg{display:none!important}
-
-.nova-about-shell{position:relative;isolation:isolate;min-height:100svh;overflow-x:clip;font:400 14px/1.5 var(--coast-font);color:var(--coast-ink)}
+body.nova-about-route :is(#rightside,#web_bg){display:none!important}
+.nova-about-shell{position:relative;isolation:isolate;min-height:100svh;font:400 14px/1.5 var(--coast-font);color:var(--coast-ink)}
 .nova-about-shell *{box-sizing:border-box}
 .nova-about-shell a{color:inherit;text-decoration:none}
-
-/* Sea / lighthouse background. The shade matches the homepage exactly so the
-   left rail's frosted glass reads the same in light and dark mode. */
-.nova-about-shell .coast-background{position:fixed;z-index:-3}
-.nova-about-shell .coast-shade{position:fixed;z-index:-2;background:linear-gradient(180deg,rgba(20,37,51,.10),rgba(9,20,30,.06) 65%,rgba(9,20,30,.12))}
-.nova-about-shell .coast-snow{position:fixed;z-index:-1}
-.nova-about-shell .coast-lightning{position:fixed}
-
-/* Left rail and toolbar match the homepage. */
-.nova-about-shell .coast-toolbar{position:fixed;z-index:8}
+.nova-about-shell .coast-background,.nova-about-shell .coast-shade,.nova-about-shell .coast-snow{position:fixed}
+.nova-about-shell .coast-background{object-position:center;filter:saturate(.94) brightness(.94)}
+.nova-about-shell .coast-shade{background:linear-gradient(90deg,rgba(20,37,51,.2),rgba(20,37,51,.04) 65%,rgba(9,20,30,.08))}
+.nova-about-shell .coast-sidebar{position:fixed}
 .nova-about-shell .coast-brand-name{margin:0 0 12px;color:#c7cfd6;font:400 40px/1.4 var(--coast-display);letter-spacing:-.025em}
-.nova-about-shell .coast-brand-name a{color:inherit}
-.nova-about-shell .coast-snow-toggle{min-width:78px;height:30px;font:400 12px/30px Consolas,"Courier New",monospace;letter-spacing:.02em;color:rgba(188,204,216,.65);white-space:nowrap}
-.nova-about-shell .coast-snow-toggle[aria-checked=true]{color:rgba(205,221,233,.82)}
-
-/* Content column: clear of the fixed left rail and the right sea. */
-.nova-about-content{position:relative;z-index:2;max-width:764px;padding:clamp(72px,9vh,120px) clamp(24px,4vw,72px) 96px 0}
-.nova-about-content::before{content:"";position:absolute;z-index:-1;inset:-60px -8vw -80px 0;pointer-events:none;background:radial-gradient(95% 72% at 36% 32%,rgba(8,18,27,.58),rgba(8,18,27,.32) 58%,transparent 82%);filter:blur(8px)}
-
-/* Editorial typography */
-.nova-about-head{max-width:640px}
-.nova-about-eyebrow{margin:0;color:rgba(159,196,220,.72);font:600 11px/1.4 var(--coast-mono);letter-spacing:.22em}
-.nova-about-head h1{margin:18px 0 0;color:#eef4f8;font-size:clamp(2.6rem,5.4vw,4.2rem);font-weight:520;line-height:1.02;letter-spacing:.02em}
-.nova-about-lede{margin:20px 0 0;max-width:600px;color:rgba(199,211,221,.8);font-size:clamp(1rem,1.5vw,1.16rem);line-height:1.85}
-.nova-about-story{max-width:620px;margin:36px 0 0}
-.nova-about-story p{margin:0 0 1.05em;color:rgba(206,217,226,.82);font-size:15px;line-height:1.95}
-.nova-about-story p:last-child{margin-bottom:0}
-
-/* Two offset photos: the visual focus, slightly rotated, kept off-centre. */
-.nova-about-gallery{position:relative;width:min(560px,92%);height:clamp(230px,30vw,330px);margin:46px 0 10px}
-.nova-about-photo{position:absolute;margin:0;border:1px solid rgba(216,229,238,.16);border-radius:3px;overflow:hidden;background:rgba(9,19,28,.4)}
-.nova-about-photo img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.78) brightness(.9) contrast(1.02)}
-.nova-about-photo--back{left:0;top:6%;width:60%;height:84%;transform:rotate(-2.6deg);box-shadow:0 18px 44px rgba(3,9,15,.4)}
-.nova-about-photo--front{right:0;bottom:0;z-index:1;width:54%;height:80%;transform:rotate(2.2deg);box-shadow:0 22px 52px rgba(3,9,15,.48)}
-
-/* Bottom: NOW / PROJECTS / CONTACT — hairlines and whitespace only. */
-.nova-about-editorial{margin-top:70px;border-top:1px solid rgba(216,229,238,.14)}
-.nova-about-block{padding:30px 0;border-bottom:1px solid rgba(216,229,238,.12)}
-.nova-about-label{margin:0 0 18px;color:rgba(159,196,220,.68);font:600 10px/1 var(--coast-mono);letter-spacing:.22em}
-.nova-about-block dl{margin:0;display:grid;gap:12px}
-.nova-about-block dl div{display:grid;grid-template-columns:88px minmax(0,1fr);gap:18px;align-items:baseline}
-.nova-about-block dt{color:rgba(150,170,185,.72);font-size:11px;letter-spacing:.04em}
-.nova-about-block dd{margin:0;color:#e2eaf0;font-size:14px;line-height:1.6;overflow-wrap:anywhere}
-.nova-about-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
-.nova-about-links a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(216,229,238,.1);color:#cfe0ea;font-size:14px;transition:color .2s ease,border-color .2s ease}
-.nova-about-links a span{flex:0 0 auto;color:rgba(150,170,185,.6);font:10px/1.5 var(--coast-mono);letter-spacing:.06em;text-transform:uppercase}
-.nova-about-links a:hover{color:#fff;border-top-color:rgba(216,229,238,.24)}
-.nova-about-links a:focus-visible{outline:2px solid rgba(159,196,220,.7);outline-offset:3px;border-radius:2px}
-
-/* Comments, kept light. */
-.nova-about-comments{margin-top:76px;padding-top:38px;border-top:1px solid rgba(216,229,238,.14)}
-.nova-about-comments > header{margin-bottom:22px}
-.nova-about-comments > header h2{margin:9px 0 0;color:#eef4f8;font-size:1.5rem;font-weight:520;letter-spacing:.02em}
-.nova-about-comments #post-comment{margin:0}
+.nova-about-content{position:relative;z-index:2;width:min(580px,calc(100vw - 450px));margin-left:calc(var(--coast-panel-x) + max(var(--coast-panel-width),180px) + clamp(54px,6vw,104px));padding:76px 0 70px}
+.nova-about-head{max-width:580px}
+.nova-about-eyebrow{display:flex;align-items:center;gap:18px;margin:0;color:rgba(190,207,219,.5);font:400 11px/1.4 var(--coast-mono);letter-spacing:.12em}
+.nova-about-eyebrow i{width:110px;height:1px;background:rgba(216,229,238,.18)}
+.nova-about-head h1{margin:14px 0 0;color:rgba(235,241,244,.88);font:400 var(--coast-page-title-size)/1 var(--coast-display);letter-spacing:-.025em}
+.nova-about-subtitle{margin:12px 0 0;color:rgba(203,215,222,.5);font:400 17px/1.5 var(--coast-display)}
+.nova-about-story{max-width:520px;margin-top:36px;color:rgba(215,226,232,.7)}
+.nova-about-story p{margin:0;font:400 14px/1.9 var(--coast-font);letter-spacing:.015em}
+.nova-about-editorial{display:grid;grid-template-columns:1fr 1.2fr;max-width:650px;gap:24px 90px;margin-top:52px;padding-top:16px;border-top:1px solid rgba(216,229,238,.1)}
+.nova-about-label{margin:0 0 18px;color:rgba(188,208,222,.5);font:400 9px/1.4 var(--coast-mono);letter-spacing:.14em}
+.nova-about-label b{margin-left:10px;font-weight:400}
+.nova-about-block dl{display:grid;gap:16px;margin:0}
+.nova-about-block dl div{display:grid;grid-template-columns:18px minmax(0,1fr);align-items:start;gap:var(--space-sm)}
+.nova-about-block dt{color:rgba(183,203,218,.5)}
+.nova-about-block dt svg,.nova-about-links svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+.nova-about-block dd{margin:0;color:rgba(230,237,241,.78);font:400 14px/1.55 var(--coast-font)}
+.nova-about-block dd span,.nova-about-links em{font-size:10px;font-style:normal;color:rgba(185,201,211,.35)}
+.nova-about-links{display:grid;gap:16px}
+.nova-about-links a{display:flex;align-items:start;gap:var(--space-sm);color:rgba(230,237,241,.78);font:400 14px/1.55 var(--coast-font);transition:opacity .4s ease,transform .4s ease}
+.nova-about-links svg{flex:0 0 16px;margin-top:2px;color:rgba(183,203,218,.46)}
+.nova-about-links a:hover{opacity:.85;transform:translateX(2px)}
+.nova-about-links a:focus-visible{outline:1px solid rgba(190,215,230,.65);outline-offset:5px}
+.nova-about-comments{margin-top:64px;padding-top:28px;border-top:1px solid rgba(216,229,238,.13)}
+.nova-about-comments h2{font:400 24px/1.4 var(--coast-display);color:rgba(222,232,239,.78)}
 .nova-about-comments .comment-head{display:none}
-.nova-about-comments .wl-panel{border:1px solid rgba(216,229,238,.14)!important;border-radius:6px!important;background:rgba(15,30,43,.5)!important;box-shadow:none!important}
-.nova-about-comments .wl-header,.nova-about-comments .wl-footer{border-color:rgba(216,229,238,.12)!important}
-.nova-about-comments .wl-editor,.nova-about-comments .wl-header input{color:#dce4ea!important}
-.nova-about-comments .wl-btn.primary{border-color:rgba(159,196,220,.8)!important;background:rgba(159,196,220,.92)!important;color:#0b1620!important}
-
-@keyframes nova-about-reveal{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.nova-about-head{animation:nova-about-reveal .5s .02s cubic-bezier(.22,.61,.36,1) both}
-.nova-about-gallery{animation:nova-about-reveal .5s .08s cubic-bezier(.22,.61,.36,1) both}
-.nova-about-story{animation:nova-about-reveal .5s .14s cubic-bezier(.22,.61,.36,1) both}
-
-/* Desktop rail is fixed; the column starts after it. */
-@media(min-width:901px){
-  .nova-about-shell .coast-sidebar{position:fixed;top:var(--coast-panel-y);bottom:var(--coast-panel-y);left:var(--coast-panel-x);width:var(--coast-panel-width)}
-  .nova-about-content{margin-left:calc(var(--coast-panel-x) + max(var(--coast-panel-width),180px) + 54px)}
-}
-
-@media(max-width:1280px){
-  .nova-about-content{max-width:min(700px,calc(100vw - 300px))}
-}
-
+.nova-about-comments .wl-panel{border:1px solid rgba(216,229,238,.13)!important;background:rgba(25,45,62,.25)!important;box-shadow:none!important}
+@media(min-width:901px){.nova-about-comments{display:none}}
+@media(max-width:1180px) and (min-width:901px){.nova-about-content{width:min(580px,calc(100vw - 390px));margin-left:300px}.nova-about-editorial{column-gap:var(--space-xl)}}
 @media(max-width:900px){
-  .nova-about-shell .coast-sidebar{position:fixed;top:74px;right:16px;bottom:auto;left:16px;width:auto}
-  .nova-about-shell .coast-brand-name{font-size:32px;margin-bottom:5px}
-  .nova-about-content{max-width:none;margin:0;padding:232px 20px 178px}
-  .nova-about-gallery{width:min(460px,100%)}
+ .nova-about-shell .coast-sidebar{position:absolute;top:74px;left:16px;right:16px;bottom:auto;width:auto}
+ .nova-about-shell .coast-brand-name{font-size:32px;margin-bottom:5px}
+ .nova-about-content{width:auto;margin:0 24px;padding:292px 0 130px}
+ .nova-about-story{margin-top:30px}
+ .nova-about-editorial{margin-top:40px;gap:32px}
 }
-
-@media(max-width:640px){
-  .nova-about-content{padding:224px 18px 168px}
-  .nova-about-head h1{font-size:clamp(2.2rem,11vw,2.8rem)}
-  .nova-about-lede{font-size:1rem}
-  .nova-about-gallery{width:100%;height:230px;margin-top:34px}
-  .nova-about-photo--back{width:64%;height:80%}
-  .nova-about-photo--front{width:58%;height:76%}
-  .nova-about-block dl div{grid-template-columns:74px minmax(0,1fr);gap:14px}
-  .nova-about-links{grid-template-columns:1fr;gap:0}
-  .nova-about-editorial{margin-top:54px}
+@media(max-width:560px){
+ .nova-about-content{margin:0 22px}
+ .nova-about-head h1{font-size:44px}
+ .nova-about-story p{font-size:14px}
+ .nova-about-editorial{grid-template-columns:1fr;gap:28px}
 }
-
-@media(prefers-reduced-motion:reduce){
-  .nova-about-head,.nova-about-gallery,.nova-about-story{animation:none}
-}
-
-/* Reference composition: quiet editorial layout with the image and three bottom columns. */
-.nova-about-shell .coast-background{inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;filter:saturate(.86) brightness(.86)}
-.nova-about-shell .coast-shade{inset:0;background:linear-gradient(90deg,rgba(17,31,45,.26),rgba(20,37,52,.05) 56%,rgba(12,24,36,.18))}
-.nova-about-content{width:calc(100% - (var(--coast-panel-x) + var(--coast-panel-width) + 120px));max-width:none;min-height:100svh;margin-left:calc(var(--coast-panel-x) + var(--coast-panel-width) + 54px);padding:19vh 10px 48px 0}
-.nova-about-content::before{inset:0 -30vw 0 -8vw;background:radial-gradient(70% 70% at 34% 38%,rgba(8,18,27,.34),transparent 80%);filter:blur(14px)}
-.nova-about-head{max-width:620px;position:relative}
-.nova-about-eyebrow{display:flex;align-items:center;gap:14px;color:#e0e8ed;font:400 13px/1.4 Georgia,serif;letter-spacing:.08em}
-.nova-about-eyebrow i{display:block;width:170px;height:1px;background:rgba(225,238,246,.38)}
-.nova-about-head h1{margin:22px 0 0;font:400 clamp(4rem,6vw,5.3rem)/.95 Georgia,"Times New Roman",serif;color:#f2f5f6;letter-spacing:-.02em}
-.nova-about-subtitle{margin:12px 0 0;color:rgba(230,238,242,.92);font:italic 400 clamp(1.6rem,2.3vw,2.2rem)/1.2 "Segoe Script","Bradley Hand",cursive;letter-spacing:.03em}
-.nova-about-lede{display:none}
-.nova-about-gallery{position:absolute;left:40%;top:19%;width:min(660px,48vw);height:440px;margin:0}
-.nova-about-photo{border:5px solid rgba(247,249,248,.88);border-radius:0;background:#dbe1e3;box-shadow:0 18px 42px rgba(5,12,19,.32)}
-.nova-about-photo img{filter:saturate(.9) brightness(.96);}
-.nova-about-photo--back{left:0;top:0;width:70%;height:78%;transform:rotate(-5deg)}
-.nova-about-photo--front{right:0;bottom:0;width:57%;height:66%;transform:rotate(6deg)}
-.nova-about-story{position:relative;max-width:470px;margin:64px 0 0;color:rgba(225,232,236,.76)}
-.nova-about-story p{font-family:Georgia,"Microsoft YaHei",serif;font-size:16px;line-height:1.95;letter-spacing:.03em}
-.nova-about-editorial{position:absolute;left:0;right:0;bottom:28px;display:grid;grid-template-columns:1.05fr 1.15fr 1fr;margin:0;border-top:0}
-.nova-about-block{min-height:182px;padding:0 34px 0 0;border:0;border-right:1px solid rgba(225,238,246,.3)}
-.nova-about-block+ .nova-about-block{padding-left:54px}
-.nova-about-block:last-child{border-right:0}
-.nova-about-label{margin:0 0 20px;color:#edf3f5;font:400 15px/1 Georgia,serif;letter-spacing:.02em}
-.nova-about-label b{font-weight:400;margin-left:8px}
-.nova-about-block dl{gap:11px}
-.nova-about-block dl div{grid-template-columns:34px minmax(0,1fr);gap:12px}
-.nova-about-block dt svg{width:20px;height:20px;fill:none;stroke:#eef4f6;stroke-width:1.6;vertical-align:middle}
-.nova-about-block dd{font:14px/1.25 Georgia,"Microsoft YaHei",serif;color:#e2eaee}
-.nova-about-block dd span,.nova-about-links em{font-style:normal;color:rgba(198,214,222,.7);font-size:12px}
-.nova-about-links{display:grid;grid-template-columns:1fr;gap:8px}
-.nova-about-links a{justify-content:flex-start;padding:0;border:0;color:#e3eaed;font-size:13px;line-height:1.3}
-.nova-about-links a img{width:64px;height:34px;object-fit:cover;margin-right:10px;opacity:.86}
-.nova-about-links a svg{width:22px;height:22px;flex:0 0 22px;fill:none;stroke:#eff4f5;stroke-width:1.6;margin-right:16px}
-.nova-about-links a span{font:13px/1.25 Georgia,"Microsoft YaHei",serif;color:#e4ecef;letter-spacing:0;text-transform:none}
-.nova-about-links a:hover{color:#fff;border:0}
-@media(max-width:1280px){.nova-about-gallery{left:38%;width:min(580px,48vw)}.nova-about-block+ .nova-about-block{padding-left:32px}}
-@media(max-width:900px){.nova-about-content{width:auto;margin:0;padding:232px 20px 178px}.nova-about-gallery{position:relative;left:auto;top:auto;width:min(520px,100%);height:300px;margin:42px 0 0}.nova-about-story{margin-top:38px}.nova-about-editorial{position:relative;bottom:auto;display:block;margin-top:58px}.nova-about-block,.nova-about-block+ .nova-about-block{padding:26px 0;border-right:0;border-bottom:1px solid rgba(225,238,246,.16)}}
-@media(min-width:901px){
-  .nova-about-editorial{position:fixed;z-index:4;left:calc(var(--coast-panel-x) + var(--coast-panel-width) + 54px);right:48px;bottom:28px}
-  .nova-about-comments{display:none}
-}
-
-.nova-about-head h1,.nova-about-subtitle{font-family:var(--coast-display);font-weight:400}
+@media(prefers-reduced-motion:reduce){.nova-about-links a{transition:none}}

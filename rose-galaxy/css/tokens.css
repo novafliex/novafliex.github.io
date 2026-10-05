@@ -1,6 +1,7 @@
 :root {
   --coast-ink: rgba(255,255,255,.82);
   --coast-display: Newsreader,"Playfair Display","Noto Serif SC","Songti SC",Georgia,serif;
+  --coast-page-title-size: clamp(44px,3.8vw,50px);
   --coast-mono: "JetBrains Mono","SF Mono",SFMono-Regular,Consolas,monospace;
   --coast-muted: #aab7c2;
   --coast-surface: #233749;
@@ -13,4 +14,13 @@
   --coast-panel-x: .85%;
   --coast-panel-y: 1.4%;
   --coast-panel-width: 12%;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 }

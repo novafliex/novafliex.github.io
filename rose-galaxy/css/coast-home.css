@@ -4,11 +4,11 @@
 .coast-home,.coast-home *{box-sizing:border-box}
 .coast-home{position:relative;isolation:isolate;min-height:650px;height:100svh;overflow:hidden;color:var(--coast-ink);font:400 14px/1.5 var(--coast-font)}
 .coast-home a{color:inherit;text-decoration:none}
-:is(.coast-home,.nova-about-shell) button:disabled{cursor:default}
-:is(.coast-home,.nova-about-shell) button{margin:0;padding:0;border:0;color:inherit;background:transparent;font:inherit;cursor:pointer}
-:is(.coast-home,.nova-about-shell) svg{display:block;width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
-:is(.coast-home,.nova-about-shell) a:focus-visible,:is(.coast-home,.nova-about-shell) button:focus-visible{outline:2px solid #d8e9f2;outline-offset:6px;border-radius:3px}
-:is(.coast-home,.nova-about-shell) a:hover,:is(.coast-home,.nova-about-shell) button:hover{color:#fff}
+:is(.coast-home,.nova-notes-shell,.nova-about-shell) button:disabled{cursor:default}
+:is(.coast-home,.nova-notes-shell,.nova-about-shell) button{margin:0;padding:0;border:0;color:inherit;background:transparent;font:inherit;cursor:pointer}
+:is(.coast-home,.nova-notes-shell,.nova-about-shell) svg{display:block;width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+:is(.coast-home,.nova-notes-shell,.nova-about-shell) a:focus-visible,:is(.coast-home,.nova-notes-shell,.nova-about-shell) button:focus-visible{outline:2px solid #d8e9f2;outline-offset:6px;border-radius:3px}
+:is(.coast-home,.nova-notes-shell,.nova-about-shell) a:hover,:is(.coast-home,.nova-notes-shell,.nova-about-shell) button:hover{color:#fff}
 .coast-background,.coast-shade,.coast-snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .coast-background{z-index:-3;object-fit:cover;object-position:center}
 .coast-shade{z-index:-2;background:linear-gradient(180deg,rgba(20,37,51,.10),rgba(9,20,30,.06) 65%,rgba(9,20,30,.12))}
@@ -22,8 +22,8 @@
 .coast-brand p{margin:0;font-size:clamp(11px,.72vw,12px);line-height:1.8;color:rgba(195,208,219,.62);letter-spacing:.025em}
 .coast-brand{padding-bottom:28px;border-bottom:1px solid rgba(207,223,235,.12)}
 .coast-nav{display:grid;gap:19px;margin-top:27px}
-.coast-nav a{display:grid;grid-template-columns:22px 8px 1fr;align-items:center;gap:9px;font-size:14px;line-height:23px;color:#aab7c2}
-.coast-nav a>span{color:rgba(170,183,194,.48);font-size:12px;font-variant-numeric:tabular-nums;letter-spacing:.04em}.coast-nav b{font-weight:400;letter-spacing:.025em}.coast-nav i{height:1px;width:8px;border-radius:0;background:transparent}
+.coast-nav a{display:grid;grid-template-columns:8px 8px minmax(0,1fr);align-items:center;gap:9px;font-size:14px;line-height:23px;color:#aab7c2}
+.coast-nav a>span{display:none}.coast-nav b{grid-column:3;min-width:0;white-space:nowrap;font-weight:400;letter-spacing:.025em}.coast-nav i{grid-column:2;height:1px;width:8px;border-radius:0;background:transparent}
 .coast-nav .is-selected{color:#edf3f7}.coast-nav .is-selected>span{color:rgba(170,183,194,.48)}.coast-nav .is-selected i{background:rgba(227,237,243,.82)}
 .coast-sidebar-bottom{margin-top:auto}
 .coast-music-art{position:relative;height:66px;overflow:hidden;border-radius:6px;margin-bottom:8px}
@@ -79,3 +79,15 @@ html[data-theme="dark"] .coast-theme-icon--moon{transform:rotate(24deg) scale(.7
 
 .coast-nav a>span,.coast-entry time,.coast-timeline{font-family:var(--coast-mono)}
 .coast-brand p{color:rgba(255,255,255,.5)}
+
+/* A quiet shared pending state; real media content appears when available. */
+.music-loading{display:inline-flex;align-items:center;gap:9px;color:rgba(211,225,234,.38);font:11px var(--coast-font,sans-serif);letter-spacing:.08em}
+.music-loading[hidden],[data-music-loading][hidden],.coast-music-info[hidden]{display:none!important}
+.music-loading-wave{display:inline-block;letter-spacing:-2px;font-size:20px;animation:music-sea-breathe 2.4s ease-in-out infinite}
+@keyframes music-sea-breathe{0%,100%{opacity:.3;transform:translateY(1px)}50%{opacity:.7;transform:translateY(-2px)}}
+.music-page-loading{position:absolute;top:40%;left:18%}
+.music-page-loading[hidden]{display:none}
+.nova-music-page.is-loading .sea-player{visibility:hidden}
+.nova-music-page.is-loading .sea-lyrics-lines{visibility:hidden}
+.nova-music-page.is-loading .nova-music-toggle{visibility:visible}
+@media(prefers-reduced-motion:reduce){.music-loading-wave{animation:none}}

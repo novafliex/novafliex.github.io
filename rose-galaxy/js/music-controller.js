@@ -123,7 +123,7 @@
     return loading
   }
   const toggle = async () => {
-    const ap = player || await load()
+    const ap = failed && !player?.list.audios.length ? await retry() : player || await load()
     if (!ap?.list.audios.length) return
     if (ap.audio.paused) await play()
     else ap.pause()

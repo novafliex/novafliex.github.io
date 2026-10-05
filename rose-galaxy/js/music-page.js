@@ -3,6 +3,7 @@
   if (window.__novaMusicBootstrap) { window.__novaMusicBootstrap.init(); return }
   let cleanup = () => {}, mounted = null
   const time = seconds => Number.isFinite(seconds) ? Math.floor(seconds / 60) + ':' + String(Math.floor(seconds % 60)).padStart(2, '0') : '0:00'
+  const loadingMarkup = '<span class="music-loading" role="status"><span class="music-loading-wave" aria-hidden="true">∿∿∿</span><span>Loading</span></span>'
   const read = key => { try { return JSON.parse(localStorage.getItem(key)) || [] } catch (_) { return [] } }
   const init = () => {
     const root = document.querySelector('.nova-music-page')
@@ -28,17 +29,18 @@
       const signature = JSON.stringify([songs.map(s => s.id), state.index, tab, [...favorites]])
       if (signature === rendered) return
       rendered = signature
+      if (!state.ready) { rows.innerHTML = state.failed || state.configured ? '' : loadingMarkup; return }
       if (tab === 'notes') { rows.innerHTML = '<p class="sea-playlist-empty">暂无音乐随笔</p>'; return }
       const items = songs.map((song, index) => ({ song, index })).filter(({song}) => tab !== 'favorites' || favorites.has(song.id))
-      rows.innerHTML = items.length ? items.map(({ song, index }) => `<div class="sea-track ${index === state.index ? 'is-current' : ''}"><button data-song-index="${index}" aria-label="播放 ${escape(song.name)}" aria-current="${index === state.index}"><span class="sea-track-number">${String(index + 1).padStart(2, '0')}</span><img src="${escape(song.cover || '/img/background_sea.png')}" alt=""><span><span class="sea-track-name">${escape(song.name)}</span><span class="sea-track-artist">${escape(song.artist)}</span></span><span class="sea-track-time">${time(song.duration)}</span></button><button class="sea-track-more" data-favorite-id="${escape(song.id)}" aria-label="${favorites.has(song.id) ? '取消收藏' : '收藏'} ${escape(song.name)}">${favorites.has(song.id) ? '♥' : '···'}</button></div>`).join('') : '<p class="sea-playlist-empty">' + (tab === 'favorites' ? '还没有收藏的歌曲' : '暂无可播放歌曲') + '</p>'
+      rows.innerHTML = items.length ? items.map(({ song, index }) => `<div class="sea-track ${index === state.index ? 'is-current' : ''}"><button data-song-index="${index}" aria-label="播放 ${escape(song.name)}" aria-current="${index === state.index}"><span class="sea-track-number">${String(index + 1).padStart(2, '0')}</span><img src="${escape(song.cover || '/img/background_sea.png')}" alt=""><span><span class="sea-track-name">${escape(song.name)}</span><span class="sea-track-artist">${escape(song.artist)}</span></span><span class="sea-track-time">${song.duration > 0 ? time(song.duration) : ''}</span></button><button class="sea-track-more" data-favorite-id="${escape(song.id)}" aria-label="${favorites.has(song.id) ? '取消收藏' : '收藏'} ${escape(song.name)}">${favorites.has(song.id) ? '♥' : '···'}</button></div>`).join('') : '<p class="sea-playlist-empty">' + (tab === 'favorites' ? '还没有收藏的歌曲' : '暂无可播放歌曲') + '</p>'
     }
     const loadLyrics = async song => {
-      if (!song) { lyrics.innerHTML = '<p class="sea-lyrics-empty">暂无歌曲</p>'; return }
+      if (!song) { lyricSong = ''; lines = []; lyrics.innerHTML = ''; return }
       const key = song?.id || ''
       if (key === lyricSong) return
       lyricSong = key; lines = []; active = -1
       if (song.instrumental) { lyrics.innerHTML = '<p class="sea-lyrics-empty">纯音乐 · 请欣赏</p>'; return }
-      lyrics.innerHTML = '<p class="sea-lyrics-empty">正在读取歌词</p>'
+      lyrics.innerHTML = loadingMarkup
       try {
         let text = song?.lyrics || ''
         if (typeof text === 'string' && /^\/(?!\/)|^https:\/\//.test(text)) {
@@ -48,25 +50,27 @@
         if (destroyed || lyricSong !== key) return
         lines = api.parseLyrics(text, song.lyricCues)
         const untimed = typeof text === 'string' ? text.split(/\r?\n/).map(line => line.trim()).filter(Boolean) : []
-        lyrics.innerHTML = lines.length ? lines.map(line => '<p>' + escape(line.text) + '</p>').join('') : untimed.length ? '<p class="sea-lyrics-status">歌词原文 · 暂无时间轴</p>' + untimed.map(line => '<p>' + escape(line) + '</p>').join('') : '<p class="sea-lyrics-empty">暂无歌词<br><small>添加本地 LRC 后，歌词将在这里同步。</small></p>'
+        lyrics.innerHTML = lines.length ? lines.map(line => '<p class="lyric-line">' + escape(line.text) + '</p>').join('') : untimed.map(line => '<p class="lyric-line">' + escape(line) + '</p>').join('')
         render()
-      } catch (error) { if (destroyed || lyricSong !== key) return; console.error('[Fliex Music] 歌词加载失败', error); lyrics.innerHTML = '<p class="sea-lyrics-empty">歌词加载失败</p>' }
+      } catch (error) { if (destroyed || lyricSong !== key) return; console.error('[Fliex Music] 歌词加载失败', error); lyrics.innerHTML = '' }
     }
     const render = () => {
       const state = api.snapshot(), song = state.song
       root.classList.toggle('is-playing', state.playing)
-      syncTitle(state.title)
-      $('.nova-music-current-artist').textContent = state.failed ? state.artist : [state.artist, song?.album].filter(Boolean).join('  |  ')
+      root.classList.toggle('is-loading', !state.ready)
+      const pending = $('[data-player-loading]'); if (pending) pending.hidden = state.ready || state.failed || state.configured
+      syncTitle(song?.name || '')
+      $('.nova-music-current-artist').textContent = [song?.artist, song?.album].filter(Boolean).join('  |  ')
       if (song) { const cover = song.cover || '/img/background_sea.png'; if ($('.nova-music-current-cover').getAttribute('src') !== cover) $('.nova-music-current-cover').src = cover }
       $('.nova-music-toggle').textContent = state.playing ? 'Ⅱ' : '▶'
       $('.nova-music-toggle').setAttribute('aria-label', state.playing ? '暂停' : '播放')
       const duration = state.duration || song?.duration || 0, progress = duration ? state.currentTime / duration * 1000 : 0
       const input = $('.nova-music-progress-input')
-      if (!scrubbing) { input.value = progress; input.style.setProperty('--music-progress', progress / 10 + '%'); $('.nova-music-current-time').textContent = time(state.currentTime) }
-      $('.nova-music-duration').textContent = time(duration)
-      $('.nova-music-count').textContent = state.failed ? state.title : '本地音乐 · ' + state.tracks.length + ' 首'
-      $('.nova-music-retry').hidden = !state.failed
-      root.querySelectorAll('.nova-music-toggle,.nova-music-previous,.nova-music-next,.nova-music-progress-input').forEach(node => { node.disabled = !state.ready })
+      if (!scrubbing) { input.value = progress; input.style.setProperty('--music-progress', progress / 10 + '%'); $('.nova-music-current-time').textContent = duration > 0 ? time(state.currentTime) : '' }
+      $('.nova-music-duration').textContent = duration > 0 ? time(duration) : ''
+      $('.nova-music-count').textContent = state.ready ? '本地音乐 · ' + state.tracks.length + ' 首' : ''
+      $('.nova-music-retry').hidden = true
+      root.querySelectorAll('.nova-music-toggle,.nova-music-previous,.nova-music-next,.nova-music-progress-input').forEach(node => { node.disabled = !state.ready && !node.matches('.nova-music-toggle') })
       $('[data-music-shuffle]').setAttribute('aria-pressed', state.mode === 'shuffle')
       $('[data-music-repeat]').setAttribute('aria-label', state.mode === 'single' ? '单曲循环' : '列表循环')
       $('[data-music-repeat]').textContent = state.mode === 'single' ? '↻₁' : '↻'
@@ -74,7 +78,25 @@
       $('[data-music-favorite]').setAttribute('aria-pressed', favorites.has(song?.id)); $('[data-music-favorite]').textContent = favorites.has(song?.id) ? '♥' : '♡'
       renderRows(state); loadLyrics(song)
       let next = -1; lines.forEach((line, index) => { if (line.time <= state.currentTime) next = index })
-      if (next !== active) { active = next; [...lyrics.children].forEach((p, index) => p.classList.toggle('is-active', index === active && Boolean(lines[active]?.text))); const p = lines[active]?.text ? lyrics.children[active] : null; if (p) { const container = $('.sea-lyrics'); container.scrollTo({top:container.scrollTop + p.getBoundingClientRect().top - container.getBoundingClientRect().top - container.clientHeight / 2 + p.clientHeight / 2,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'}) } }
+      if (next !== active) {
+        active = next
+        const visibleIndices = lines.map((line, index) => line.text ? index : -1).filter(index => index >= 0)
+        const before = visibleIndices.filter(index => index < active).at(-1)
+        const after = visibleIndices.find(index => index > active)
+        const hasActive = Boolean(lines[active]?.text)
+        ;[...lyrics.children].forEach((p, index) => {
+          const current = hasActive && index === active
+          const near = hasActive && (index === before || index === after)
+          p.classList.toggle('is-active', current)
+          p.classList.toggle('is-near', near)
+          p.classList.toggle('is-distant', hasActive && !current && !near)
+        })
+        const p = hasActive ? lyrics.children[active] : null
+        if (p) {
+          const container = $('.sea-lyrics')
+          container.scrollTo({top:container.scrollTop + p.getBoundingClientRect().top - container.getBoundingClientRect().top - container.clientHeight / 2 + p.clientHeight / 2,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'})
+        }
+      }
     }
     const toggleFavorite = id => { if (!id) return; favorites.has(id) ? favorites.delete(id) : favorites.add(id); try { localStorage.setItem('fliex-music-favorites-v1', JSON.stringify([...favorites])) } catch (_) {} render() }
     on($('.nova-music-toggle'), 'click', () => api.toggle())
