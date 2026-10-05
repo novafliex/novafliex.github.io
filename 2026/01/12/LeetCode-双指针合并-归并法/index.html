@@ -186,7 +186,7 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20260731-seo"><link rel="stylesheet" href="/rose-galaxy/css/night-visitor.css?v=20260813-prince-quotes-v1"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
+}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261005-current-cleanup"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"LeetCode-双指针合并（归并法）","url":"https://novafliex.github.io/2026/01/12/LeetCode-%E5%8F%8C%E6%8C%87%E9%92%88%E5%90%88%E5%B9%B6-%E5%BD%92%E5%B9%B6%E6%B3%95/","image":"https://novafliex.github.io/img/leetcode.webp","datePublished":"2026-01-11T16:45:53.000Z","dateModified":"2026-01-11T16:45:53.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"使用哨兵节点和双指针按顺序合并两个有序链表，并说明剩余节点的处理。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/2026/01/12/LeetCode-%E5%8F%8C%E6%8C%87%E9%92%88%E5%90%88%E5%B9%B6-%E5%BD%92%E5%B9%B6%E6%B3%95/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
@@ -215,14 +215,14 @@
       document.body.classList.add('nova-loading-active')
     }, 1200)
   })()
-</script><!-- hexo injector body_begin end --><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/logo1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar" width="1080" height="1080" decoding="async"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">主分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/projects/"><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/notes/"><span> 笔记</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><main class="article-reading-shell" id="content-inner">
+</script><!-- hexo injector body_begin end --><div class="post" id="body-wrap"><main class="article-reading-shell" id="content-inner">
     <div class="article-page-bg" aria-hidden="true"><img src="/img/background_sea.png" alt="" width="1683" height="935" decoding="async"></div>
     <div class="article-reading-dimmer" aria-hidden="true"></div>
     <div class="article-sea-snow" aria-hidden="true" data-article-snow-root=""><canvas class="coast-snow" data-coast-snow=""></canvas></div>
     <aside class="coast-sidebar" aria-label="Fliex 与导航">
       <header class="coast-brand"><div class="coast-brand-name"><a href="/" aria-label="Fliex 首页">Fliex</a></div><p>记录一些<br>真正值得留下来的东西。</p></header>
       <nav class="coast-nav" aria-label="主导航">
-        <a href="/projects/" class=""><span>01</span><i aria-hidden="true"></i><b>Projects</b></a><a href="/notes/" class="is-selected" aria-current="page"><span>02</span><i aria-hidden="true"></i><b>Notes</b></a><a href="/music/"><span>03</span><i aria-hidden="true"></i><b>Music</b></a><a href="/about/"><span>04</span><i aria-hidden="true"></i><b>About</b></a>
+        <a href="/projects/"><span>01</span><i aria-hidden="true"></i><b>Projects</b></a><a href="/notes/" class="is-selected" aria-current="page"><span>02</span><i aria-hidden="true"></i><b>Notes</b></a><a href="/music/"><span>03</span><i aria-hidden="true"></i><b>Music</b></a><a href="/about/"><span>04</span><i aria-hidden="true"></i><b>About</b></a>
       </nav>
       <div class="coast-sidebar-bottom">
         <section class="coast-mini-player" aria-label="音乐控制器">
@@ -699,12 +699,12 @@
   } else {
     window.loadOtherComment = loadWaline
   }
-})()</script><link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261004-projects-notes-v8">
-<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261004-projects-notes-v8">
-<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261004-projects-notes-v8">
-<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261004-projects-notes-v8">
-<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261004-projects-notes-v8"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261004-projects-notes-v8"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261004-global-audio-v1"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20260731-a11y-seo"></script><script defer="" src="/rose-galaxy/js/night-visitor.js?v=20260813-prince-quotes-v1"></script><script defer="" src="/rose-galaxy/js/decorative-loader.js?v=20260814-no-click-text"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+})()</script><link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261005-current-pages-v13">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261005-current-pages-v13">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261005-current-pages-v13">
+<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261005-current-pages-v13">
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261005-current-pages-v13"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261005-current-pages-v13"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261004-global-audio-v1"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({

@@ -18,12 +18,12 @@
 .coast-lightning[data-region=right]{left:79%;top:5%;width:21%;height:42%}
 @media(max-width:900px){.coast-lightning{left:6%;top:0;width:88%;height:30%}}
 .coast-sidebar{position:absolute;left:var(--coast-panel-x);top:var(--coast-panel-y);bottom:var(--coast-panel-y);width:var(--coast-panel-width);min-width:180px;padding:38px 26px 40px;display:flex;flex-direction:column;border:1px solid var(--coast-glass-border);border-radius:var(--coast-radius);background:var(--coast-glass);backdrop-filter:blur(var(--coast-blur));-webkit-backdrop-filter:blur(var(--coast-blur));box-shadow:inset 0 1px rgba(255,255,255,.04),0 4px 18px rgba(0,0,0,.06)}
-.coast-brand h1{margin:0 0 12px;color:#c7cfd6;font:400 40px/1.4 Inter,"Microsoft YaHei",sans-serif}
+.coast-brand h1{margin:0 0 12px;color:#c7cfd6;font:400 40px/1.4 var(--coast-display);letter-spacing:-.025em}
 .coast-brand p{margin:0;font-size:clamp(11px,.72vw,12px);line-height:1.8;color:rgba(195,208,219,.62);letter-spacing:.025em}
 .coast-brand{padding-bottom:28px;border-bottom:1px solid rgba(207,223,235,.12)}
 .coast-nav{display:grid;gap:19px;margin-top:27px}
 .coast-nav a{display:grid;grid-template-columns:22px 8px 1fr;align-items:center;gap:9px;font-size:14px;line-height:23px;color:#aab7c2}
-.coast-nav a>span{color:rgba(170,183,194,.48)}.coast-nav b{font-weight:300}.coast-nav i{height:1px;width:8px;border-radius:0;background:transparent}
+.coast-nav a>span{color:rgba(170,183,194,.48);font-size:12px;font-variant-numeric:tabular-nums;letter-spacing:.04em}.coast-nav b{font-weight:400;letter-spacing:.025em}.coast-nav i{height:1px;width:8px;border-radius:0;background:transparent}
 .coast-nav .is-selected{color:#edf3f7}.coast-nav .is-selected>span{color:rgba(170,183,194,.48)}.coast-nav .is-selected i{background:rgba(227,237,243,.82)}
 .coast-sidebar-bottom{margin-top:auto}
 .coast-music-art{position:relative;height:66px;overflow:hidden;border-radius:6px;margin-bottom:8px}
@@ -71,3 +71,11 @@ html[data-theme="dark"] .coast-theme-icon--moon{transform:rotate(24deg) scale(.7
  .coast-timeline{top:312px;right:14px;width:43px;font-size:10px}.coast-months a{height:57px;padding-left:10px}.coast-year,.coast-more{gap:9px}
 }
 @media(prefers-reduced-motion:reduce){.coast-home *{transition:none!important;animation:none!important}}
+
+/* Shared typography keeps every scene aligned with the homepage. */
+:is(.coast-home,.nova-notes-shell,.nova-about-shell,.coast-music-shell,.article-reading-shell){-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.coast-entry>span{font-weight:400;letter-spacing:.02em}
+.coast-brand p{font-weight:400}
+
+.coast-nav a>span,.coast-entry time,.coast-timeline{font-family:var(--coast-mono)}
+.coast-brand p{color:rgba(255,255,255,.5)}

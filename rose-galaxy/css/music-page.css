@@ -7,7 +7,7 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
 .coast-music-shell .coast-background{object-position:center;filter:saturate(.88) brightness(.94)}
 .coast-music-shell .coast-shade{background:rgba(20,37,51,.08)}
 .coast-music-shell .coast-sidebar{position:fixed;z-index:5}
-.coast-brand-name{margin:0 0 12px;color:#c7cfd6;font:400 40px/1.4 Inter,"Microsoft YaHei",sans-serif}
+.coast-brand-name{margin:0 0 12px;color:#c7cfd6;font:400 40px/1.4 var(--coast-display);letter-spacing:-.025em}
 .coast-music-shell .coast-toolbar{position:fixed;z-index:6;gap:18px;color:rgba(184,196,206,.78)}
 .coast-music-shell .coast-toolbar-rule{opacity:.72}
 .coast-music-shell .coast-now-playing{gap:8px}

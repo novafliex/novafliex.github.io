@@ -22,7 +22,7 @@ body.nova-about-route #web_bg{display:none!important}
 
 /* Left rail and toolbar match the homepage. */
 .nova-about-shell .coast-toolbar{position:fixed;z-index:8}
-.nova-about-shell .coast-brand-name{margin:0 0 12px;color:#c7cfd6;font:400 40px/1.4 Inter,"Microsoft YaHei",sans-serif}
+.nova-about-shell .coast-brand-name{margin:0 0 12px;color:#c7cfd6;font:400 40px/1.4 var(--coast-display);letter-spacing:-.025em}
 .nova-about-shell .coast-brand-name a{color:inherit}
 .nova-about-shell .coast-snow-toggle{min-width:78px;height:30px;font:400 12px/30px Consolas,"Courier New",monospace;letter-spacing:.02em;color:rgba(188,204,216,.65);white-space:nowrap}
 .nova-about-shell .coast-snow-toggle[aria-checked=true]{color:rgba(205,221,233,.82)}
@@ -33,7 +33,7 @@ body.nova-about-route #web_bg{display:none!important}
 
 /* Editorial typography */
 .nova-about-head{max-width:640px}
-.nova-about-eyebrow{margin:0;color:rgba(159,196,220,.72);font:600 11px/1.4 "JetBrains Mono",Consolas,monospace;letter-spacing:.22em}
+.nova-about-eyebrow{margin:0;color:rgba(159,196,220,.72);font:600 11px/1.4 var(--coast-mono);letter-spacing:.22em}
 .nova-about-head h1{margin:18px 0 0;color:#eef4f8;font-size:clamp(2.6rem,5.4vw,4.2rem);font-weight:520;line-height:1.02;letter-spacing:.02em}
 .nova-about-lede{margin:20px 0 0;max-width:600px;color:rgba(199,211,221,.8);font-size:clamp(1rem,1.5vw,1.16rem);line-height:1.85}
 .nova-about-story{max-width:620px;margin:36px 0 0}
@@ -50,14 +50,14 @@ body.nova-about-route #web_bg{display:none!important}
 /* Bottom: NOW / PROJECTS / CONTACT — hairlines and whitespace only. */
 .nova-about-editorial{margin-top:70px;border-top:1px solid rgba(216,229,238,.14)}
 .nova-about-block{padding:30px 0;border-bottom:1px solid rgba(216,229,238,.12)}
-.nova-about-label{margin:0 0 18px;color:rgba(159,196,220,.68);font:600 10px/1 "JetBrains Mono",Consolas,monospace;letter-spacing:.22em}
+.nova-about-label{margin:0 0 18px;color:rgba(159,196,220,.68);font:600 10px/1 var(--coast-mono);letter-spacing:.22em}
 .nova-about-block dl{margin:0;display:grid;gap:12px}
 .nova-about-block dl div{display:grid;grid-template-columns:88px minmax(0,1fr);gap:18px;align-items:baseline}
 .nova-about-block dt{color:rgba(150,170,185,.72);font-size:11px;letter-spacing:.04em}
 .nova-about-block dd{margin:0;color:#e2eaf0;font-size:14px;line-height:1.6;overflow-wrap:anywhere}
 .nova-about-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
 .nova-about-links a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(216,229,238,.1);color:#cfe0ea;font-size:14px;transition:color .2s ease,border-color .2s ease}
-.nova-about-links a span{flex:0 0 auto;color:rgba(150,170,185,.6);font:10px/1.5 "JetBrains Mono",Consolas,monospace;letter-spacing:.06em;text-transform:uppercase}
+.nova-about-links a span{flex:0 0 auto;color:rgba(150,170,185,.6);font:10px/1.5 var(--coast-mono);letter-spacing:.06em;text-transform:uppercase}
 .nova-about-links a:hover{color:#fff;border-top-color:rgba(216,229,238,.24)}
 .nova-about-links a:focus-visible{outline:2px solid rgba(159,196,220,.7);outline-offset:3px;border-radius:2px}
 
@@ -151,3 +151,5 @@ body.nova-about-route #web_bg{display:none!important}
   .nova-about-editorial{position:fixed;z-index:4;left:calc(var(--coast-panel-x) + var(--coast-panel-width) + 54px);right:48px;bottom:28px}
   .nova-about-comments{display:none}
 }
+
+.nova-about-head h1,.nova-about-subtitle{font-family:var(--coast-display);font-weight:400}

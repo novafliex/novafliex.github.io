@@ -10,14 +10,7 @@
   const ROUTE_CLASSES = [
     'nova-home-active',
     'nova-music-route',
-    'nova-archive-route',
-    'nova-category-route',
-    'nova-tag-route',
-    'nova-tags-route',
-    'nova-template-route',
-    'nova-shuoshuo-route',
     'nova-about-route',
-    'nova-gallery-route'
   ]
   let initialFinishTimer = 0
   let initialFallbackTimer = 0
@@ -64,9 +57,9 @@
       <strong>从这里进入夜航档案</strong>
       <p>输入关键词，或先浏览常用页面。</p>
       <nav aria-label="搜索快速入口">
-        <a href="/archives/">归档</a>
-        <a href="/categories/">分类</a>
-        <a href="/Gallery/">光影</a>
+        <a href="/notes/">笔记</a>
+        <a href="/about/">关于</a>
+        <a href="/projects/">项目</a>
         <a href="/music/">音乐</a>
       </nav>`
     results.before(state)
@@ -311,14 +304,7 @@
       ['.nova-music-page', ['nova-music-route']],
       ['.nova-about-shell', ['nova-about-route']],
       ['.coast-home[data-nova-home]', ['nova-home-active']],
-      ['main.nova-archive-main', ['nova-archive-route']],
-      ['main.nova-category-content', ['nova-category-route']],
-      ['main.nova-tags-overview', ['nova-tag-route', 'nova-tags-route']],
-      ['main.nova-tag-content:not(.nova-tags-overview)', ['nova-tag-route']],
-      ['.nova-template-page', ['nova-template-route']],
-      ['.nova-shuoshuo-page', ['nova-shuoshuo-route']],
       ['.nova-about-page', ['nova-about-route']],
-      ['[data-gallery-root]', ['nova-gallery-route']]
     ]
     const match = routeMarkers.find(([selector]) => document.querySelector(selector))
     if (match) document.body.classList.add(...match[1])
