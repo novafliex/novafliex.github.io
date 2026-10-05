@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LeetCode-单调栈 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#080B14"><meta name="description" content="整理寻找左右第一个更大或更小元素时的单调栈判断与结算模板。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LeetCode-单调栈 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="整理寻找左右第一个更大或更小元素时的单调栈判断与结算模板。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode-单调栈">
 <meta property="og:url" content="https://novafliex.github.io/2026/01/07/LeetCode-%E5%8D%95%E8%B0%83%E6%A0%88/">
@@ -111,13 +111,13 @@
       const activateDarkMode = () => {
         document.documentElement.dataset.theme = 'dark'
         if (metaThemeColor !== null) {
-          metaThemeColor.setAttribute('content', '#080B14')
+          metaThemeColor.setAttribute('content', '#233749')
         }
       }
       const activateLightMode = () => {
         document.documentElement.dataset.theme = 'light'
         if (metaThemeColor !== null) {
-          metaThemeColor.setAttribute('content', '#F7F4F1')
+          metaThemeColor.setAttribute('content', '#E8EFF4')
         }
       }
 
@@ -192,7 +192,7 @@
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
     <strong>FLIEX</strong>
-    <small>LOADING THE NIGHT...</small>
+    <small>正在加载...</small>
   </div>
 </div>
 <script>
@@ -941,7 +941,7 @@ initUI();render(steps[0]);
 <link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261005-nav-about-v25">
 <link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261005-nav-about-v25">
 <script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261005-nav-about-v25"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261005-nav-about-v25"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261004-global-audio-v1"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261005-nav-about-v25"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({

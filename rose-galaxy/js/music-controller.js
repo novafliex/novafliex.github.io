@@ -66,6 +66,7 @@
         save(); clearTimeout(skipTimer)
         list.index = ((index % list.audios.length) + list.audios.length) % list.audios.length
         restoreTime = 0; failed = false
+        try { document.dispatchEvent(new Event('fliex:track')) } catch (_) {}
         audio.src = list.audios[list.index].url
         emit()
       },

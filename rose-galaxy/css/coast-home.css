@@ -11,7 +11,7 @@
 :is(.coast-home,.nova-notes-shell,.nova-about-shell) a:hover,:is(.coast-home,.nova-notes-shell,.nova-about-shell) button:hover{color:#fff}
 .coast-background,.coast-shade,.coast-snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .coast-background{z-index:-3;object-fit:cover;object-position:center}
-.coast-shade{z-index:-2;background:linear-gradient(180deg,rgba(20,37,51,.10),rgba(9,20,30,.06) 65%,rgba(9,20,30,.12))}
+.coast-shade{z-index:-2;background:var(--coast-shade)}
 .coast-snow{z-index:-1;opacity:.38}
 .coast-lightning{position:absolute;left:16%;top:0;width:40%;height:35%;z-index:-1;pointer-events:none;overflow:hidden;opacity:0;mix-blend-mode:screen;mask-image:radial-gradient(ellipse,black 35%,transparent 73%);-webkit-mask-image:radial-gradient(ellipse,black 35%,transparent 73%)}
 .coast-lightning img{position:absolute;left:50%;top:50%;width:auto;height:155%;max-width:none;filter:contrast(2.3) brightness(1.1);mask-image:radial-gradient(ellipse,black 35%,transparent 73%);-webkit-mask-image:radial-gradient(ellipse,black 35%,transparent 73%)}

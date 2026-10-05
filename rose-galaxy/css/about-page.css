@@ -6,8 +6,8 @@ body.nova-about-route :is(#rightside,#web_bg){display:none!important}
 .nova-about-shell *{box-sizing:border-box}
 .nova-about-shell a{color:inherit;text-decoration:none}
 .nova-about-shell .coast-background,.nova-about-shell .coast-shade,.nova-about-shell .coast-snow{position:fixed}
-.nova-about-shell .coast-background{object-position:center;filter:saturate(.94) brightness(.94)}
-.nova-about-shell .coast-shade{background:linear-gradient(90deg,rgba(20,37,51,.2),rgba(20,37,51,.04) 65%,rgba(9,20,30,.08))}
+.nova-about-shell .coast-background{object-position:center}
+.nova-about-shell .coast-shade{background:var(--coast-shade)}
 .nova-about-shell .coast-sidebar{position:fixed}
 .nova-about-shell .coast-brand-name{margin:0 0 12px;color:#c7cfd6;font:400 40px/1.4 var(--coast-display);letter-spacing:-.025em}
 .nova-about-content{position:relative;z-index:2;width:min(580px,calc(100vw - 450px));margin-left:calc(var(--coast-panel-x) + max(var(--coast-panel-width),180px) + clamp(54px,6vw,104px));padding:76px 0 70px}
@@ -32,11 +32,6 @@ body.nova-about-route :is(#rightside,#web_bg){display:none!important}
 .nova-about-links svg{flex:0 0 16px;margin-top:2px;color:rgba(183,203,218,.46)}
 .nova-about-links a:hover{opacity:.85;transform:translateX(2px)}
 .nova-about-links a:focus-visible{outline:1px solid rgba(190,215,230,.65);outline-offset:5px}
-.nova-about-comments{margin-top:64px;padding-top:28px;border-top:1px solid rgba(216,229,238,.13)}
-.nova-about-comments h2{font:400 24px/1.4 var(--coast-display);color:rgba(222,232,239,.78)}
-.nova-about-comments .comment-head{display:none}
-.nova-about-comments .wl-panel{border:1px solid rgba(216,229,238,.13)!important;background:rgba(25,45,62,.25)!important;box-shadow:none!important}
-@media(min-width:901px){.nova-about-comments{display:none}}
 @media(max-width:1180px) and (min-width:901px){.nova-about-content{width:min(580px,calc(100vw - 390px));margin-left:300px}.nova-about-editorial{column-gap:var(--space-xl)}}
 @media(max-width:900px){
  .nova-about-shell .coast-sidebar{position:absolute;top:74px;left:16px;right:16px;bottom:auto;width:auto}

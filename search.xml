@@ -4024,19 +4024,19 @@ Tips：Lock 和 MVCC 不是二选一
   --post-surface-secondary: #1c2633;
   --post-surface-raised: #222d3b;
   --post-surface-soft: #263241;
-  --post-text: #e7e3e9;
-  --post-text-secondary: #bbb5bf;
-  --post-text-muted: #918b96;
-  --post-border: rgba(213, 203, 211, .11);
-  --post-border-strong: rgba(213, 203, 211, .18);
-  --post-accent: #a47789;
-  --post-accent-hover: #bc899d;
-  --post-accent-soft: rgba(164, 119, 137, .16);
+  --post-text: #e7eef3;
+  --post-text-secondary: #bacbd7;
+  --post-text-muted: #aab7c2;
+  --post-border: rgba(196, 213, 224, .11);
+  --post-border-strong: rgba(196, 213, 224, .18);
+  --post-accent: #a9c6da;
+  --post-accent-hover: #d8e9f2;
+  --post-accent-soft: rgba(169, 198, 218, .16);
   --post-code-bg: #131a24;
   --post-code-header-bg: #1b2430;
   --post-code-gutter-bg: #161e29;
-  --post-code-text: #d9d6dc;
-  --post-inline-code-bg: rgba(164, 119, 137, .15);
+  --post-code-text: #d9e4ec;
+  --post-inline-code-bg: rgba(169, 198, 218, .15);
   --post-shadow: 0 16px 42px rgba(0, 0, 0, .24);
   --post-shadow-soft: 0 7px 20px rgba(0, 0, 0, .16);
   --nova-note-warning: #a98a69;
@@ -4047,23 +4047,23 @@ Tips：Lock 和 MVCC 不是二选一
 html[data-theme="light"] {
   --post-page-bg: #eef0f3;
   --post-page-bg-secondary: #e8ebef;
-  --post-surface: #fbfafc;
-  --post-surface-secondary: #f6f4f7;
-  --post-surface-raised: #f1eef3;
-  --post-surface-soft: #ece8ee;
+  --post-surface: #f7fafc;
+  --post-surface-secondary: #f1f6f9;
+  --post-surface-raised: #eaf1f6;
+  --post-surface-soft: #e3edf3;
   --post-text: #30323a;
   --post-text-secondary: #5d6069;
   --post-text-muted: #838690;
-  --post-border: rgba(72, 62, 73, .12);
-  --post-border-strong: rgba(72, 62, 73, .19);
-  --post-accent: #93697b;
-  --post-accent-hover: #795365;
-  --post-accent-soft: rgba(147, 105, 123, .11);
-  --post-code-bg: #f3f1f5;
-  --post-code-header-bg: #ebe8ee;
-  --post-code-gutter-bg: #eeebf0;
+  --post-border: rgba(52, 74, 91, .12);
+  --post-border-strong: rgba(52, 74, 91, .19);
+  --post-accent: #789bb4;
+  --post-accent-hover: #587d99;
+  --post-accent-soft: rgba(120, 155, 180, .11);
+  --post-code-bg: #edf4f8;
+  --post-code-header-bg: #e4edf3;
+  --post-code-gutter-bg: #e7eff4;
   --post-code-text: #303540;
-  --post-inline-code-bg: #eee9ef;
+  --post-inline-code-bg: #e6eef3;
   --post-shadow: 0 12px 32px rgba(47, 40, 48, .08);
   --post-shadow-soft: 0 5px 16px rgba(47, 40, 48, .05);
 }
@@ -4101,7 +4101,7 @@ body.nova-loading-active {
   justify-content:center;
   visibility:hidden;
   opacity:0;
-  background:radial-gradient(circle at 50% 42%,rgba(92,39,57,.1) 0%,rgba(10,16,28,.98) 36%,#050912 78%);
+  background:linear-gradient(rgba(27,49,67,.55),rgba(27,49,67,.55)),url('/img/background_sea.png') center/cover no-repeat;
   transform:scale(1.01);
   transition:opacity 180ms ease,visibility 0s linear 180ms,transform 180ms ease;
   pointer-events:none;
@@ -4145,8 +4145,8 @@ body.nova-loading-active {
 .nova-page-loading__mark {
   position:relative;
   display:block;
-  width:44px;
-  height:44px;
+  width:310px;
+  height:62px;
   flex:none;
 }
 
@@ -4159,42 +4159,38 @@ body.nova-loading-active {
 }
 
 .nova-page-loading__mark::before {
-  border:1px solid rgba(137,67,91,.44);
-  box-shadow:0 0 16px rgba(105,46,67,.08);
-  animation:nova-loading-breathe 2.2s ease-in-out infinite;
+  inset:30px 0 auto;
+  height:1px;
+  border:0;
+  border-radius:0;
+  background:linear-gradient(90deg,transparent,rgba(214,229,237,.18) 18%,rgba(214,229,237,.52) 50%,rgba(214,229,237,.18) 82%,transparent);
+  box-shadow:none;
+  animation:none;
 }
 
 .nova-page-loading__mark::after {
-  border:1.5px solid transparent;
-  border-top-color:rgba(169,82,111,.72);
-  border-right-color:rgba(169,82,111,.12);
-  animation:nova-loading-turn 2.2s linear infinite;
+  inset:10px auto auto 50%;
+  width:40px;
+  height:40px;
+  margin-left:-20px;
+  border:1px solid transparent;
+  border-top-color:rgba(214,229,237,.5);
+  border-right-color:rgba(214,229,237,.13);
+  animation:nova-loading-turn 2.8s linear infinite;
 }
 
 .nova-page-loading__inner strong {
   margin-top:16px;
-  color:rgba(224,218,223,.84);
-  font:500 1rem/1.2"Cormorant Garamond",Georgia,serif;
-  letter-spacing:.26em;
+  color:rgba(239,245,248,.9);
+  font:400 1.7rem/1.2 "Cormorant Garamond",Georgia,serif;
+  letter-spacing:.42em;
 }
 
 .nova-page-loading__inner small {
-  margin-top:7px;
-  color:rgba(143,137,146,.58);
-  font-size:.66rem;
-  letter-spacing:.22em;
-}
-
-@keyframes nova-loading-breathe {
-  0%,
-  100% {
-    opacity:.42;
-    transform:scale(.96);
-  }
-  50% {
-    opacity:.9;
-    transform:scale(1.03);
-  }
+  margin-top:23px;
+  color:rgba(224,235,241,.68);
+  font-size:.82rem;
+  letter-spacing:.12em;
 }
 
 @keyframes nova-loading-turn {
@@ -4205,12 +4201,13 @@ body.nova-loading-active {
 
 @media (max-width:480px) {
   .nova-page-loading__mark {
-    width:38px;
-    height:38px;
+    width:min(310px,calc(100vw - 56px));
+    height:58px;
   }
   .nova-page-loading__inner strong {
     margin-top:14px;
-    font-size:.94rem;
+    font-size:1.35rem;
+    letter-spacing:.32em;
   }
   .nova-page-loading__inner small {
     font-size:.58rem;
@@ -4678,10 +4675,6 @@ html[data-theme="light"] #local-search .local-search-hit-item:hover {
 }
 
 body.read-mode #body-wrap.post #aside-content {
-  display:none!important;
-}
-
-body:has(#body-wrap.post) #rightside #hide-aside-btn {
   display:none!important;
 }
 
@@ -5186,21 +5179,6 @@ html[data-theme="light"] #body-wrap.post #pagination .pagination-related {
   background:#35343a;
 }
 
-#body-wrap.post #rightside>div>button,
-#body-wrap.post #rightside>div>a {
-  border:1px solid var(--border-default);
-  color:var(--text-secondary);
-  background:var(--surface-secondary);
-  opacity:.62;
-}
-
-#body-wrap.post #rightside>div>button:hover,
-#body-wrap.post #rightside>div>a:hover {
-  color:var(--text-primary);
-  opacity:1;
-  transform:translateY(-1px);
-}
-
 @media (max-width:960px) {
   #body-wrap.post #content-inner.layout {
     flex-direction:column;
@@ -5253,9 +5231,6 @@ html[data-theme="light"] #body-wrap.post #pagination .pagination-related {
   }
   #body-wrap.post #article-container .table-wrap table {
     min-width:560px;
-  }
-  #body-wrap.post #rightside {
-    bottom:18px;
   }
 }
 
@@ -5361,26 +5336,26 @@ html[data-theme="light"] #body-wrap.post #pagination .pagination-related {
 
 @media (min-width:769px) {
   html[data-theme="dark"] #nav .menus_item_child {
-    border:1px solid rgba(185,128,153,.24);
-    background:linear-gradient(145deg,rgba(16,22,35,.97),rgba(25,22,33,.97));
-    box-shadow:0 14px 34px rgba(0,0,0,.36),0 0 18px rgba(137,79,105,.05);
+    border:1px solid rgba(169,198,218,.24);
+    background:linear-gradient(145deg,rgba(16,22,35,.97),rgba(22,37,49,.97));
+    box-shadow:0 14px 34px rgba(0,0,0,.36),0 0 18px rgba(120,155,180,.05);
     -webkit-backdrop-filter:blur(10px);
     backdrop-filter:blur(10px);
   }
   html[data-theme="dark"] #nav .menus_item_child .site-page {
-    color:rgba(225,216,223,.88);
+    color:rgba(216,229,238,.88);
   }
   html[data-theme="dark"] #nav .menus_item_child .site-page:hover {
-    color:rgba(232,151,183,.98);
-    background:rgba(194,122,151,.10);
+    color:rgba(216,233,242,.98);
+    background:rgba(169,198,218,.10);
   }
 }
 
 @media (min-width:769px) {
   html[data-theme="light"] #nav .menus_item_child {
-    border:1px solid rgba(207,183,195,.50);
-    background:linear-gradient(145deg,rgba(255,252,253,.98),rgba(247,241,245,.97));
-    box-shadow:0 12px 28px rgba(104,79,94,.12),0 2px 7px rgba(104,79,94,.05);
+    border:1px solid rgba(184,205,220,.50);
+    background:linear-gradient(145deg,rgba(247,250,252,.98),rgba(235,243,248,.97));
+    box-shadow:0 12px 28px rgba(68,94,113,.12),0 2px 7px rgba(68,94,113,.05);
     -webkit-backdrop-filter:blur(9px);
     backdrop-filter:blur(9px);
   }
@@ -5388,92 +5363,12 @@ html[data-theme="light"] #body-wrap.post #pagination .pagination-related {
     color:rgba(65,59,68,.92);
   }
   html[data-theme="light"] #nav .menus_item_child .site-page:hover {
-    color:rgba(181,91,129,.98);
-    background:rgba(205,142,168,.11);
+    color:rgba(110,151,180,.98);
+    background:rgba(169,198,218,.11);
   }
 }
 
-@media (min-width:769px) {
 
-}
-
-body:not(.nova-home-active) #home-theme-toggle {
-  display:none!important;
-}
-
-body:not(.nova-home-active) #rightside .fliex-rightside-button {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:38px;
-  height:38px;
-  margin-bottom:8px;
-  padding:0;
-  border-radius:10px;
-  line-height:1;
-  transition:background-color .24s ease,border-color .24s ease,color .24s ease,box-shadow .24s ease,transform .24s ease;
-}
-
-body:not(.nova-home-active) #rightside .fliex-rightside-button:hover {
-  transform:translateY(-2px);
-}
-
-body:not(.nova-home-active) #rightside .fliex-rightside-button:active {
-  transform:translateY(0) scale(.94);
-}
-
-body:not(.nova-home-active) #rightside .fliex-rightside-button svg {
-  display:block;
-  width:17px;
-  height:17px;
-  flex:0 0 auto;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
-body:not(.nova-home-active) #rightside .fliex-rightside-button i {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:18px;
-  height:18px;
-  font-size:16px;
-  line-height:1;
-  color:currentColor;
-}
-
-html[data-theme="light"] body:not(.nova-home-active) #rightside .fliex-rightside-button {
-  color:rgba(85,78,88,.9);
-  background:linear-gradient(145deg,rgba(255,252,253,.96),rgba(247,241,245,.94))!important;
-  border:1px solid rgba(204,181,193,.52);
-  box-shadow:0 6px 18px rgba(103,78,94,.1),0 2px 5px rgba(103,78,94,.05);
-  -webkit-backdrop-filter:blur(8px);
-  backdrop-filter:blur(8px);
-}
-
-html[data-theme="light"] body:not(.nova-home-active) #rightside .fliex-rightside-button:hover {
-  color:rgba(181,91,129,.98);
-  background:linear-gradient(145deg,rgba(251,242,247,.98),rgba(244,233,239,.98))!important;
-  border-color:rgba(190,119,149,.48);
-}
-
-html[data-theme="dark"] body:not(.nova-home-active) #rightside .fliex-rightside-button {
-  color:rgba(214,202,211,.88);
-  background:linear-gradient(145deg,rgba(19,26,41,.95),rgba(24,22,34,.94))!important;
-  border:1px solid rgba(184,128,151,.24);
-  box-shadow:0 8px 21px rgba(0,0,0,.3),0 0 18px rgba(136,79,104,.05);
-  -webkit-backdrop-filter:blur(8px);
-  backdrop-filter:blur(8px);
-}
-
-html[data-theme="dark"] body:not(.nova-home-active) #rightside .fliex-rightside-button:hover {
-  color:rgba(222,140,173,.98);
-  background:linear-gradient(145deg,rgba(31,34,50,.98),rgba(35,27,41,.98))!important;
-  border-color:rgba(193,123,151,.42);
-}
 
 .error-info .nova-error-home {
   display:inline-flex;
@@ -5483,7 +5378,7 @@ html[data-theme="dark"] body:not(.nova-home-active) #rightside .fliex-rightside-
   min-height:42px;
   margin-top:22px;
   padding:8px 20px;
-  border:1px solid rgba(184,106,131,.5);
+  border:1px solid rgba(169,198,218,.5);
   border-radius:999px;
   color:var(--font-color);
   background:rgba(164,119,137,.12);
@@ -5492,10 +5387,15 @@ html[data-theme="dark"] body:not(.nova-home-active) #rightside .fliex-rightside-
 }
 
 .error-info .nova-error-home:hover {
-  border-color:#b86a83;
+  border-color:#8dafc5;
   color:#fff;
-  background:#b86a83;
+  background:#8dafc5;
 }
+
+/* The fallback page shares the sea palette as well. */
+body:has(#error-wrap){background:#233749 url(/img/background_sea.png) center/cover fixed;color:#e7eef3}
+#error-wrap .error-content{border:1px solid rgba(216,229,238,.18);background:rgba(25,45,62,.55);color:#e7eef3;backdrop-filter:blur(16px)}
+#error-wrap .error-info :is(.error_title,.error_subtitle){color:#e7eef3}
 ]]></content>
   </entry>
   <entry>
@@ -5516,8 +5416,8 @@ body.nova-about-route :is(#rightside,#web_bg){display:none!important}
 .nova-about-shell *{box-sizing:border-box}
 .nova-about-shell a{color:inherit;text-decoration:none}
 .nova-about-shell .coast-background,.nova-about-shell .coast-shade,.nova-about-shell .coast-snow{position:fixed}
-.nova-about-shell .coast-background{object-position:center;filter:saturate(.94) brightness(.94)}
-.nova-about-shell .coast-shade{background:linear-gradient(90deg,rgba(20,37,51,.2),rgba(20,37,51,.04) 65%,rgba(9,20,30,.08))}
+.nova-about-shell .coast-background{object-position:center}
+.nova-about-shell .coast-shade{background:var(--coast-shade)}
 .nova-about-shell .coast-sidebar{position:fixed}
 .nova-about-shell .coast-brand-name{margin:0 0 12px;color:#c7cfd6;font:400 40px/1.4 var(--coast-display);letter-spacing:-.025em}
 .nova-about-content{position:relative;z-index:2;width:min(580px,calc(100vw - 450px));margin-left:calc(var(--coast-panel-x) + max(var(--coast-panel-width),180px) + clamp(54px,6vw,104px));padding:76px 0 70px}
@@ -5542,11 +5442,6 @@ body.nova-about-route :is(#rightside,#web_bg){display:none!important}
 .nova-about-links svg{flex:0 0 16px;margin-top:2px;color:rgba(183,203,218,.46)}
 .nova-about-links a:hover{opacity:.85;transform:translateX(2px)}
 .nova-about-links a:focus-visible{outline:1px solid rgba(190,215,230,.65);outline-offset:5px}
-.nova-about-comments{margin-top:64px;padding-top:28px;border-top:1px solid rgba(216,229,238,.13)}
-.nova-about-comments h2{font:400 24px/1.4 var(--coast-display);color:rgba(222,232,239,.78)}
-.nova-about-comments .comment-head{display:none}
-.nova-about-comments .wl-panel{border:1px solid rgba(216,229,238,.13)!important;background:rgba(25,45,62,.25)!important;box-shadow:none!important}
-@media(min-width:901px){.nova-about-comments{display:none}}
 @media(max-width:1180px) and (min-width:901px){.nova-about-content{width:min(580px,calc(100vw - 390px));margin-left:300px}.nova-about-editorial{column-gap:var(--space-xl)}}
 @media(max-width:900px){
  .nova-about-shell .coast-sidebar{position:absolute;top:74px;left:16px;right:16px;bottom:auto;width:auto}
@@ -6049,8 +5944,8 @@ body.article-sea-route a{color:inherit;text-decoration:none}
 .article-reading-shell{position:relative;isolation:isolate;display:block!important;width:100%!important;max-width:none!important;min-height:100svh;margin:0!important;padding:36px 0 80px!important;font:400 17px/1.75 var(--ar-font)}
 .article-reading-shell *{box-sizing:border-box}
 .article-page-bg,.article-reading-dimmer,.article-sea-snow{position:fixed;inset:0;pointer-events:none;z-index:-3}
-.article-page-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.88) saturate(.85) blur(1.5px);transform:scale(1.015)}
-.article-reading-dimmer{z-index:-2;background:rgba(15,29,41,.15)}
+.article-page-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.article-reading-dimmer{z-index:-2;background:var(--coast-shade)}
 .article-sea-snow{z-index:-1;opacity:.25}
 .article-reading-shell .coast-sidebar{position:fixed;z-index:8;color:var(--coast-ink)}
 .article-reading-shell .coast-sidebar button{border:0;background:transparent;color:inherit;padding:0;cursor:pointer}
@@ -6138,7 +6033,7 @@ body.article-sea-route a{color:inherit;text-decoration:none}
 :is(.coast-home,.nova-notes-shell,.nova-about-shell) a:hover,:is(.coast-home,.nova-notes-shell,.nova-about-shell) button:hover{color:#fff}
 .coast-background,.coast-shade,.coast-snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .coast-background{z-index:-3;object-fit:cover;object-position:center}
-.coast-shade{z-index:-2;background:linear-gradient(180deg,rgba(20,37,51,.10),rgba(9,20,30,.06) 65%,rgba(9,20,30,.12))}
+.coast-shade{z-index:-2;background:var(--coast-shade)}
 .coast-snow{z-index:-1;opacity:.38}
 .coast-lightning{position:absolute;left:16%;top:0;width:40%;height:35%;z-index:-1;pointer-events:none;overflow:hidden;opacity:0;mix-blend-mode:screen;mask-image:radial-gradient(ellipse,black 35%,transparent 73%);-webkit-mask-image:radial-gradient(ellipse,black 35%,transparent 73%)}
 .coast-lightning img{position:absolute;left:50%;top:50%;width:auto;height:155%;max-width:none;filter:contrast(2.3) brightness(1.1);mask-image:radial-gradient(ellipse,black 35%,transparent 73%);-webkit-mask-image:radial-gradient(ellipse,black 35%,transparent 73%)}
@@ -6229,8 +6124,8 @@ body.nova-music-route :is(#page-header,#web_bg,#rightside,#footer){display:none!
 body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:0}
 .coast-home.coast-music-shell{height:auto;min-height:100svh;overflow:clip}
 .coast-music-shell :is(.coast-background,.coast-shade,.coast-snow){position:fixed}
-.coast-music-shell .coast-background{object-position:center;filter:saturate(.88) brightness(.94)}
-.coast-music-shell .coast-shade{background:rgba(20,37,51,.08)}
+.coast-music-shell .coast-background{object-position:center}
+.coast-music-shell .coast-shade{background:var(--coast-shade)}
 .coast-music-shell .coast-sidebar{position:fixed;z-index:5}
 .coast-brand-name{margin:0 0 12px;color:#c7cfd6;font:400 40px/1.4 var(--coast-display);letter-spacing:-.025em}
 .coast-music-shell .coast-toolbar{position:fixed;z-index:6;gap:18px;color:rgba(184,196,206,.78)}
@@ -6241,9 +6136,9 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
 .music-sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .nova-music-page{position:relative;display:grid;grid-template-columns:minmax(0,1.16fr) minmax(0,1fr) minmax(0,1.1fr);gap:4.4vw;margin-left:calc(var(--coast-panel-x) + max(var(--coast-panel-width),180px) + 3.6vw);padding:14vh 1.5vw 8vh 0;min-height:100svh;color:rgba(221,233,243,.78)}
 .sea-player{position:relative;z-index:2;min-width:0;width:88%;align-self:start}
-.sea-art{position:relative;width:88%;aspect-ratio:1;margin-bottom:20px;isolation:isolate}
-.nova-music-current-cover{display:block;width:100%;height:100%;object-fit:cover;border:1px solid rgba(209,229,243,.16);border-radius:7px;filter:saturate(.56) brightness(.82);transition:filter .6s ease}
-.sea-art::after{content:"";position:absolute;inset:0;border-radius:7px;background:rgba(59,86,109,.16);mix-blend-mode:color;pointer-events:none;transition:opacity .6s ease}
+.sea-art{position:relative;width:88%;aspect-ratio:1;margin-bottom:20px;padding:4px;box-sizing:border-box;isolation:isolate;border:1px solid rgba(211,229,241,.13);border-radius:9px;background:rgba(187,211,226,.06);box-shadow:0 10px 28px rgba(11,27,40,.16),inset 0 0 18px rgba(201,221,234,.06)}
+.nova-music-current-cover{display:block;width:100%;height:100%;object-fit:cover;border:0;border-radius:6px;filter:saturate(.5) brightness(.8) blur(.1px);transition:filter .6s ease}
+.sea-art::after{content:"";position:absolute;inset:4px;border-radius:6px;background:linear-gradient(135deg,rgba(201,222,235,.12),rgba(34,59,77,.12));mix-blend-mode:screen;pointer-events:none;transition:opacity .6s ease}
 .sea-art:hover .nova-music-current-cover,.sea-player:focus-within .nova-music-current-cover{filter:saturate(.78) brightness(.9)}
 .sea-art:hover::after,.sea-player:focus-within .sea-art::after{opacity:.45}
 .sea-song-heading{display:flex;align-items:center;gap:10px}
@@ -6257,9 +6152,20 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
 .nova-music-progress-input{display:block;width:100%;height:2px;appearance:none;background:linear-gradient(90deg,rgba(195,219,235,.7) var(--music-progress,0%),rgba(191,215,233,.15) var(--music-progress,0%));border:0;border-radius:1px;cursor:pointer}
 .nova-music-progress-input::-webkit-slider-thumb{appearance:none;width:7px;height:7px;border-radius:50%;background:#bbcfdd}
 .nova-music-time{display:flex;justify-content:space-between;margin:7px 0 2px;color:rgba(178,200,216,.58);font-size:10px}
-.nova-music-controls{display:flex;justify-content:center;align-items:center;gap:23px;margin:4px 0 6px}
-.nova-music-controls button{width:32px;height:32px;color:rgba(197,217,232,.78);font-size:19px}
-.nova-music-controls .nova-music-toggle{width:40px;height:40px;border:0;border-radius:0;background:transparent;box-shadow:none;font-size:23px}
+.nova-music-controls{display:flex;justify-content:space-between;align-items:center;gap:12px;width:78%;max-width:300px;margin:12px auto 8px}
+.nova-music-controls button{position:relative;display:grid;place-items:center;flex:0 0 30px;width:30px;height:36px;padding:0;border:0;background:transparent;color:rgba(203,217,229,.82);opacity:.88}
+.nova-music-controls svg{display:block;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
+.nova-music-controls .music-icon-solid{fill:currentColor;stroke:none}
+.nova-music-controls .nova-music-toggle{flex-basis:34px;width:34px;height:34px;border:1px solid rgba(208,224,235,.12);border-radius:50%;background:rgba(155,181,204,.32);box-shadow:inset 0 1px 8px rgba(214,230,242,.08),0 2px 14px rgba(17,33,47,.12);color:#e2ebf2;opacity:1;backdrop-filter:blur(8px)}
+.nova-music-controls .nova-music-toggle svg{width:17px;height:17px}
+.nova-music-controls .music-icon-pause{display:none}
+.is-playing .nova-music-controls .music-icon-play{display:none}
+.is-playing .nova-music-controls .music-icon-pause{display:block}
+.music-repeat-one{display:none;position:absolute;inset:0;place-items:center;font-size:8px;line-height:1}
+.is-single .music-repeat-one{display:grid}
+.nova-music-controls [data-music-shuffle][aria-pressed=true]{color:#dce7ef;background:transparent;box-shadow:none;opacity:1}
+.nova-music-controls [data-music-shuffle][aria-pressed=true]::after{content:"";position:absolute;bottom:2px;width:10px;height:1px;background:rgba(181,204,222,.65)}
+@media(max-width:560px){.nova-music-controls{width:84%;max-width:280px}}
 .sea-secondary-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:3px;color:rgba(166,189,206,.48)}
 .sea-secondary-controls button{font-size:16px}
 .sea-volume{display:flex;align-items:center;gap:8px;margin:0;font-size:10px}
@@ -6271,12 +6177,12 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
 /* A six-line reading window, centered on the active lyric. */
 .sea-lyrics{--lyric-height:clamp(330px,54vh,440px);position:relative;align-self:start;margin-top:7vh;height:var(--lyric-height);min-width:0;overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;mask-image:linear-gradient(rgba(0,0,0,.65),#000 30%,#000 70%,rgba(0,0,0,.65));-webkit-mask-image:linear-gradient(rgba(0,0,0,.65),#000 30%,#000 70%,rgba(0,0,0,.65))}
 .sea-lyrics-lines{padding:calc(var(--lyric-height)/2 - 17px) 0}
-.sea-lyrics-lines p{margin:0 0 28px;padding:0;color:rgba(220,229,235,.42);font:400 19px/1.8 "Noto Serif SC","Source Han Serif SC","Songti SC",serif;opacity:1;text-shadow:0 1px 10px rgba(0,0,0,.2);transform-origin:left center;transition:color .4s ease,opacity .4s ease,transform .4s ease,font-size .4s ease}
+.sea-lyrics-lines p{margin:0 0 34px;padding:0;color:rgba(220,229,235,.5);font:400 19px/1.95 "Noto Serif SC","Source Han Serif SC","Songti SC",serif;opacity:1;text-shadow:0 1px 10px rgba(0,0,0,.2);transform-origin:left center;transition:color .4s ease,opacity .4s ease,transform .4s ease,font-size .4s ease}
 .sea-lyrics-lines .lyric-line{min-height:45px;line-height:1.8}
 .sea-lyrics-lines p:empty{min-height:24px;margin-bottom:16px}
-.sea-lyrics-lines p.is-distant{color:rgba(220,229,235,.28)}
-.sea-lyrics-lines p.is-near{color:rgba(224,232,237,.58)}
-.sea-lyrics-lines p.is-active{opacity:1;color:rgba(244,247,249,.96);font-size:25px;font-weight:500;transform:translateY(-1px) scale(1.02);text-shadow:0 2px 14px rgba(0,0,0,.46),0 0 24px rgba(190,210,222,.08)}
+.sea-lyrics-lines p.is-distant{color:rgba(220,229,235,.32)}
+.sea-lyrics-lines p.is-near{color:rgba(224,232,237,.66)}
+.sea-lyrics-lines p.is-active{opacity:1;color:rgba(248,251,252,.98);font-size:26px;font-weight:500;transform:translateY(-1px) scale(1.025);text-shadow:0 2px 14px rgba(0,0,0,.46),0 0 24px rgba(190,210,222,.12)}
 .sea-lyrics-lines .sea-lyrics-empty{font-size:13px;line-height:1.8;opacity:.46}
 .sea-lyrics-lines .sea-lyrics-empty small{font-size:10px}
 .sea-lyrics-lines .sea-lyrics-status{font-size:10px;opacity:.4}
@@ -6348,6 +6254,7 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
   --coast-mono: "JetBrains Mono","SF Mono",SFMono-Regular,Consolas,monospace;
   --coast-muted: #aab7c2;
   --coast-surface: #233749;
+  --coast-shade: linear-gradient(180deg,rgba(20,37,51,.10),rgba(9,20,30,.06) 65%,rgba(9,20,30,.12));
   --coast-rule: rgba(216,229,238,.18);
   --coast-glass-border: rgba(216,229,238,.19);
   --coast-glass: linear-gradient(160deg,rgba(134,151,165,.10),rgba(13,23,30,.12));
@@ -6691,6 +6598,7 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
         save(); clearTimeout(skipTimer)
         list.index = ((index % list.audios.length) + list.audios.length) % list.audios.length
         restoreTime = 0; failed = false
+        try { document.dispatchEvent(new Event('fliex:track')) } catch (_) {}
         audio.src = list.audios[list.index].url
         emit()
       },
@@ -6862,18 +6770,18 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
       syncTitle(song?.name || '')
       $('.nova-music-current-artist').textContent = [song?.artist, song?.album].filter(Boolean).join('  |  ')
       if (song) { const cover = song.cover || '/img/background_sea.png'; if ($('.nova-music-current-cover').getAttribute('src') !== cover) $('.nova-music-current-cover').src = cover }
-      $('.nova-music-toggle').textContent = state.playing ? 'Ⅱ' : '▶'
       $('.nova-music-toggle').setAttribute('aria-label', state.playing ? '暂停' : '播放')
       const duration = state.duration || song?.duration || 0, progress = duration ? state.currentTime / duration * 1000 : 0
       const input = $('.nova-music-progress-input')
       if (!scrubbing) { input.value = progress; input.style.setProperty('--music-progress', progress / 10 + '%'); $('.nova-music-current-time').textContent = duration > 0 ? time(state.currentTime) : '' }
       $('.nova-music-duration').textContent = duration > 0 ? time(duration) : ''
-      $('.nova-music-count').textContent = state.ready ? '本地音乐 · ' + state.tracks.length + ' 首' : ''
+      $('.nova-music-count').textContent = state.ready ? '本地音乐 · ' + state.tracks.length + ' 首 · ' + ({ list: '列表循环', shuffle: '随机播放', single: '单曲循环' }[state.mode] || '列表循环') : ''
       $('.nova-music-retry').hidden = true
       root.querySelectorAll('.nova-music-toggle,.nova-music-previous,.nova-music-next,.nova-music-progress-input').forEach(node => { node.disabled = !state.ready && !node.matches('.nova-music-toggle') })
       $('[data-music-shuffle]').setAttribute('aria-pressed', state.mode === 'shuffle')
+      $('[data-music-shuffle]').title = state.mode === 'shuffle' ? '随机播放已开启 · 点击恢复列表循环' : '开启随机播放 · 下一曲随机选择'
       $('[data-music-repeat]').setAttribute('aria-label', state.mode === 'single' ? '单曲循环' : '列表循环')
-      $('[data-music-repeat]').textContent = state.mode === 'single' ? '↻₁' : '↻'
+      $('[data-music-repeat]').classList.toggle('is-single', state.mode === 'single')
       $('[data-music-volume]').value = state.volume
       $('[data-music-favorite]').setAttribute('aria-pressed', favorites.has(song?.id)); $('[data-music-favorite]').textContent = favorites.has(song?.id) ? '♥' : '♡'
       renderRows(state); loadLyrics(song)
@@ -6923,10 +6831,11 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
       ctx.clearRect(0,0,wave.width,wave.height)
       const analyser = api.analyser, bins = new Uint8Array(analyser?.frequencyBinCount || 64)
       if (analyser) analyser.getByteFrequencyData(bins)
-      ctx.fillStyle = '#b4d2e8'
+      if (typeof ctx.beginPath !== 'function') { frame = requestAnimationFrame(draw); return }
+      ctx.strokeStyle = 'rgba(180,210,232,.62)'; ctx.lineWidth = 1; ctx.beginPath()
       for (let i=0;i { if (frame) cancelAnimationFrame(frame); frame=0; if (api.snapshot().playing && !document.hidden) draw() }
     on(document,'fliex:music',()=>{if (!frame) startWave()}); on(document,'visibilitychange',startWave)
-    ctx.fillStyle='#8199ab'; ctx.fillRect(0,36,wave.width,1)
+    if (typeof ctx.beginPath === 'function') { ctx.strokeStyle='rgba(129,153,171,.34)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(0,36); ctx.lineTo(wave.width,36); ctx.stroke() }
     render(); api.load().then(render)
     cleanup = () => { destroyed=true; cancelAnimationFrame(frame); off.forEach(remove=>remove()); mounted=null }
   }
@@ -6957,7 +6866,13 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
     }
     const stopSnow = window.__fliexSnow.mount(root)
     on(root.querySelector('[data-coast-search]'), 'click', () => window.__fliexOpenSearch?.())
-    on(root.querySelector('[data-coast-theme]'), 'click', () => document.getElementById('darkmode')?.click())
+    on(root.querySelector('[data-coast-theme]'), 'click', () => {
+      const dark = document.documentElement.getAttribute('data-theme') === 'dark'
+      if (window.btf?.activateDarkMode && window.btf?.activateLightMode) {
+        if (dark) window.btf.activateLightMode(); else window.btf.activateDarkMode()
+        window.btf.saveToLocal?.set('theme', dark ? 'light' : 'dark', 2)
+      } else document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark')
+    })
     const renderMusic = () => {
       const state = window.__fliexMusic?.snapshot()
       if (!state) return
@@ -6996,14 +6911,14 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
   <entry>
     <title></title>
     <url>/rose-galaxy/css/notes-page.css</url>
-    <content><![CDATA[body.nova-notes-route{overflow-x:clip;background:#0b1721;color:var(--coast-ink)}
+    <content><![CDATA[body.nova-notes-route{overflow-x:clip;background:var(--coast-surface);color:var(--coast-ink)}
 body.nova-notes-route #body-wrap{background:transparent}
 body.nova-notes-route #sidebar,body.nova-notes-route #rightside,body.nova-notes-route #web_bg{display:none!important}
 .nova-notes-shell{position:relative;isolation:isolate;min-height:100svh;font:400 14px/1.5 var(--coast-font);color:var(--coast-ink)}
 .nova-notes-shell *{box-sizing:border-box}.nova-notes-shell a{color:inherit;text-decoration:none}
 .nova-notes-shell .coast-background,.nova-notes-shell .coast-shade,.nova-notes-shell .coast-snow{position:fixed}
-.nova-notes-shell .coast-background{filter:saturate(.87) brightness(.88);object-position:center}
-.nova-notes-shell .coast-shade{background:linear-gradient(90deg,rgba(8,20,30,.28),rgba(13,28,40,.11) 48%,rgba(8,20,30,.24)),linear-gradient(180deg,rgba(10,24,35,.08),rgba(6,16,24,.3))}
+.nova-notes-shell .coast-background{object-position:center}
+.nova-notes-shell .coast-shade{background:var(--coast-shade)}
 .nova-notes-shell .coast-toolbar{position:fixed;z-index:8;opacity:.9}
 .nova-notes-shell .coast-brand-name{margin:0 0 12px;color:#c7cfd6;font:400 40px/1.4 var(--coast-display);letter-spacing:-.025em}
 .nova-notes-shell .coast-brand-name a{color:inherit}
@@ -7173,7 +7088,7 @@ body.nova-notes-route #sidebar,body.nova-notes-route #rightside,body.nova-notes-
       
         
         FLIEX
-        LOADING THE NIGHT...
+        正在加载...
       `
     document.body.appendChild(loader)
     return loader
@@ -7311,87 +7226,6 @@ body.nova-notes-route #sidebar,body.nova-notes-route #rightside,body.nova-notes-
     finishInitialLoading()
   }
 
-  function normalizePath(value) {
-    const path = `/${value || ''}`.replace(/\/+/g, '/')
-    return path.length > 1 ? path.replace(/\/$/, '') : path
-  }
-
-  function isHomePage() {
-    if (
-      document.body.classList.contains('nova-home-active') ||
-      document.body.classList.contains('page-type-index') ||
-      document.body.classList.contains('home')
-    ) {
-      return true
-    }
-
-    return normalizePath(location.pathname) === normalizePath(window.GLOBAL_CONFIG?.root || '/')
-  }
-
-  function syncHomeThemeToggle() {
-    const button = document.getElementById('home-theme-toggle')
-    if (!button) return
-
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
-    const label = isDark ? '切换到浅色模式' : '切换到深色模式'
-    button.setAttribute('aria-label', label)
-    button.setAttribute('title', label)
-  }
-
-  function createHomeThemeToggle() {
-    const button = document.createElement('button')
-    button.id = 'home-theme-toggle'
-    button.className = 'fliex-rightside-button'
-    button.type = 'button'
-    button.innerHTML = `
-      
-        
-          
-        
-        
-          
-          
-        
-      `
-
-    button.addEventListener('click', event => {
-      event.preventDefault()
-      event.stopPropagation()
-      document.getElementById('darkmode')?.click()
-    })
-    button.dataset.bound = 'true'
-    return button
-  }
-
-  function initRightsideEnhancement() {
-    const rightside = document.getElementById('rightside')
-    const goUpButton = document.getElementById('go-up')
-    if (!rightside || !goUpButton) return
-
-    rightside
-      .querySelectorAll('button[id], a[id]')
-      .forEach(button => button.classList.add('fliex-rightside-button'))
-
-    let homeThemeToggle = document.getElementById('home-theme-toggle')
-    if (!homeThemeToggle) homeThemeToggle = createHomeThemeToggle()
-
-    const visibleControls = goUpButton.parentElement
-    if (homeThemeToggle.parentElement !== visibleControls || homeThemeToggle.nextElementSibling !== goUpButton) {
-      visibleControls.insertBefore(homeThemeToggle, goUpButton)
-    }
-
-    rightside.classList.toggle('is-home-minimal', isHomePage())
-    syncHomeThemeToggle()
-
-    if (!window.__fliexRightsideThemeObserver) {
-      window.__fliexRightsideThemeObserver = new MutationObserver(syncHomeThemeToggle)
-      window.__fliexRightsideThemeObserver.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['data-theme']
-      })
-    }
-  }
-
   function initStatsFallback() {
     window.clearTimeout(statsTimer)
     const targets = [
@@ -7453,12 +7287,10 @@ body.nova-notes-route #sidebar,body.nova-notes-route #rightside,body.nova-notes-
   document.addEventListener('pjax:complete', finishNavigation)
   document.addEventListener('pjax:error', finishNavigation)
   document.addEventListener('DOMContentLoaded', enhanceSearch, { once: true })
-  document.addEventListener('DOMContentLoaded', initRightsideEnhancement, { once: true })
   document.addEventListener('DOMContentLoaded', initStatsFallback, { once: true })
   document.addEventListener('DOMContentLoaded', syncNavigationSemantics, { once: true })
   document.addEventListener('DOMContentLoaded', syncRouteState, { once: true })
   document.addEventListener('pjax:complete', enhanceSearch)
-  document.addEventListener('pjax:complete', initRightsideEnhancement)
   document.addEventListener('pjax:complete', initStatsFallback)
   document.addEventListener('pjax:complete', syncNavigationSemantics)
   document.addEventListener('pjax:complete', syncRouteState)
@@ -7468,7 +7300,6 @@ body.nova-notes-route #sidebar,body.nova-notes-route #rightside,body.nova-notes-
   initInitialLoading()
   if (document.readyState !== 'loading') {
     enhanceSearch()
-    initRightsideEnhancement()
     initStatsFallback()
     syncNavigationSemantics()
     syncRouteState()
@@ -7482,6 +7313,368 @@ body.nova-notes-route #sidebar,body.nova-notes-route #rightside,body.nova-notes-
     <content><![CDATA[
 
 前往 Notes
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/rose-galaxy/css/listening-archive.css</url>
+    <content><![CDATA[.listening-entry{display:flex;flex:0 0 auto;align-items:center;gap:12px;margin:0 -2px;padding:9px 18px 9px 12px;width:calc(100% + 4px);min-height:62px;box-sizing:border-box;border:0;border-top:1px solid rgba(186,208,223,.16);border-radius:0;background:rgba(139,158,177,.08);color:#c8d6e0;text-align:left;font:400 12px/1.4 var(--coast-font);cursor:pointer;transition:background .25s ease}
+.listening-entry:hover{background:rgba(139,158,177,.14)}
+.listening-entry:focus-visible{outline:1px solid #d3e1eb;outline-offset:4px}
+.listening-entry strong{display:block;font-size:12px;font-weight:500;letter-spacing:.04em}
+.listening-entry small{display:block;margin-top:1px;font-size:10px;color:#93a8b8}
+.listening-entry-icon{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border-radius:50%;border:4px solid rgba(177,197,215,.06);background:rgba(141,166,191,.12);box-shadow:0 0 0 4px rgba(167,188,207,.035),inset 0 0 0 4px rgba(173,196,217,.08);font-size:14px;color:#b8c8d5;text-shadow:0 0 7px rgba(186,207,230,.3)}
+.listening-entry-arrow{margin-left:auto;font-size:20px;font-weight:200;color:rgba(172,190,205,.68)}
+.listening-archive[hidden]{display:none!important}
+.nova-music-page.is-archive{grid-template-columns:160px minmax(0,1fr);grid-template-rows:min-content 1fr;gap:28px;margin-left:24px;padding:60px 30px 90px 0;align-items:start}
+.coast-music-shell:has(.is-archive) .coast-sidebar{display:none}
+.is-archive .sea-player{grid-column:1;grid-row:1;width:100%;padding-top:22px}
+.is-archive .sea-art{width:100%}
+.is-archive .sea-song-heading h2{font-size:19px}
+.is-archive .nova-music-controls{width:100%;gap:4px}
+.is-archive .nova-music-controls button{flex-basis:22px;width:22px}
+.is-archive .nova-music-controls .nova-music-toggle{flex-basis:34px;width:34px}
+.is-archive .nova-music-controls svg{width:17px;height:17px}
+.is-archive .sea-waveform{display:block;width:100%;height:24px;margin:18px 0;opacity:.65}
+.is-archive .sea-lyrics{grid-column:1;grid-row:2;--lyric-height:300px;margin-top:-30px}
+.is-archive .sea-lyrics-lines p{font-size:11px}
+.is-archive .sea-lyrics-lines p.is-active{font-size:13px}
+.is-archive .sea-playlist{display:none}
+.listening-archive{grid-column:2;grid-row:1/3;min-width:0;max-width:1200px;width:100%;background:rgba(24,43,59,.48);border:1px solid rgba(170,194,211,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#b6c6d2;font-size:11px;line-height:1.6;box-shadow:0 18px 60px rgba(6,18,28,.15)}
+.listening-archive :is(h2,h3,h4,p){margin:0}
+.listening-archive button{border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;padding:0}
+.listening-archive button:hover{color:#edf3f7}
+.listening-archive button:focus-visible{outline:1px solid #bdd0df;outline-offset:4px}
+.listening-archive h3{font-size:10px;font-weight:500;letter-spacing:.22em;color:#95afc2;margin-bottom:14px}
+.archive-heading{display:flex;align-items:start;gap:18px;padding:20px 24px 14px;border-bottom:1px solid rgba(170,194,211,.16)}
+.archive-heading h2{font:400 21px/1.3 var(--coast-display);letter-spacing:.22em;color:#d1dde6}
+.archive-heading p{font-size:10px;letter-spacing:.14em;opacity:.65;margin-top:6px}
+.archive-heading>span{margin-left:auto;font-size:10px;opacity:.65;white-space:nowrap}
+.archive-heading>button{font-size:20px;line-height:1}
+.archive-overview{display:grid;grid-template-columns:38% 62%;border-bottom:1px solid rgba(170,194,211,.16)}
+.archive-total{padding:22px 24px;border-right:1px solid rgba(170,194,211,.16)}
+.archive-total>strong{font:400 clamp(30px,3.5vw,54px)/1.15 var(--coast-display);color:#d5e0e7;display:block}
+.archive-total h3{margin:6px 0;font-size:9px}
+.archive-total p{opacity:.7;font-size:10px;letter-spacing:.06em}
+.archive-period{display:flex;border-bottom:1px solid rgba(170,194,211,.16);justify-content:space-around;padding:12px 18px 0;gap:12px}
+.archive-period button{font-size:10px;letter-spacing:.16em;padding:0 2px 10px;border-bottom:1px solid transparent}
+.archive-period [aria-pressed=true]{color:#dce8f0;border-color:#a8bdcd}
+.archive-date{display:flex;justify-content:center;align-items:center;gap:16px;padding:9px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.archive-date button:last-child{font-size:9px;opacity:.6}
+.archive-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:10px 14px 20px}
+.archive-metrics>div{padding:0 10px;border-right:1px solid rgba(170,194,211,.14)}
+.archive-metrics>div:last-child{border:0}
+.archive-metrics strong{display:block;font:400 22px var(--coast-display);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.archive-metrics small{display:block;font-size:8px;letter-spacing:.12em;margin-top:5px}
+.archive-activity{padding:20px 24px 12px;border-bottom:1px solid rgba(170,194,211,.16)}
+.archive-chart{display:grid;grid-template-columns:repeat(var(--buckets),minmax(0,1fr));gap:clamp(2px,.65vw,10px);height:95px;padding:0 0 20px;border-bottom:1px solid rgba(170,194,211,.12)}
+.archive-chart>div{position:relative;display:flex;align-items:end;justify-content:center;min-width:0;border-bottom:1px solid rgba(174,199,217,.25)}
+.archive-chart span{width:4px;max-width:40%;background:#87a5bc;opacity:.8;min-height:1px}
+.archive-chart small{position:absolute;bottom:-19px;font-size:8px;opacity:.65}
+.archive-activity>p{font-size:9px;opacity:.55;padding-top:8px}
+.archive-moments{display:grid;grid-template-columns:1fr 1fr 1.15fr;border-bottom:1px solid rgba(170,194,211,.16)}
+.archive-moments>section{padding:18px 20px;border-right:1px solid rgba(170,194,211,.16);min-width:0}
+.archive-moments>section:last-child{border:0}
+.archive-listen{display:flex;gap:13px;text-align:left;max-width:100%}
+.archive-listen img,.archive-cover{width:60px;height:60px;object-fit:cover;filter:saturate(.5);border:1px solid rgba(170,194,211,.2)}
+.archive-listen>span:last-child{display:flex;flex-direction:column;min-width:0}
+.archive-listen strong{font:400 24px var(--coast-display)}
+.archive-listen span span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.archive-listen small,.archive-moments p{font-size:9px;opacity:.6}
+.archive-moments p{margin-top:8px}
+.archive-longest{position:relative}
+.archive-longest>strong{display:block;font:400 25px/1.35 var(--coast-display)}
+.archive-moon{position:absolute;right:22px;top:46px;width:20px;height:20px;border-radius:50%;background:#839fb6;box-shadow:inset 4px -4px 0 #b6cad9;opacity:.7}
+.archive-detail{display:grid;grid-template-columns:60% 40%;border-bottom:1px solid rgba(170,194,211,.16)}
+.archive-detail>section,.archive-bottom>section{padding:18px 24px;min-width:0}
+.archive-detail>section:first-child,.archive-bottom>section:first-child{border-right:1px solid rgba(170,194,211,.16)}
+.archive-ranked{display:grid;grid-template-columns:18px minmax(0,1.4fr) minmax(0,.8fr) minmax(24px,1fr) 76px;gap:10px;align-items:center;margin:11px 0}
+.archive-ranked button{display:flex;gap:10px;align-items:center;min-width:0;text-align:left}
+.archive-ranked img{width:24px;height:24px;object-fit:cover;filter:saturate(.5)}
+.archive-ranked button span,.archive-ranked>small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.archive-ranked>small{font-size:10px;opacity:.75}
+.archive-ranked>small:last-child{text-align:right}
+.archive-detail i{display:block;height:3px;background:rgba(142,166,184,.09);border-radius:2px}
+.archive-detail i b{display:block;height:100%;background:#91adc2;border-radius:2px;opacity:.75}
+.archive-activity-list{max-height:174px;overflow:auto;scrollbar-width:thin;scrollbar-color:#536c80 transparent}
+.archive-activity-list>div{display:grid;grid-template-columns:53px minmax(0,1fr) 72px;align-items:center;gap:12px;margin:7px 0}
+.archive-activity-list small{font-size:9px;text-transform:uppercase;letter-spacing:.07em}
+.archive-activity-list small:last-child{text-align:right}
+.archive-bottom{display:grid;grid-template-columns:72% 28%}
+.archive-section-heading{display:flex;justify-content:space-between;gap:10px}
+.archive-section-heading button{font-size:10px;align-self:start}
+.archive-history{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.archive-history h4{font-size:9px;letter-spacing:.12em;font-weight:400;text-transform:uppercase;margin-bottom:9px;opacity:.65}
+.archive-history-row{display:grid;grid-template-columns:35px minmax(0,1fr) minmax(0,.65fr) 34px;gap:8px;margin:8px 0;font-size:10px}
+.archive-history-row :is(button,span){overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left}
+.archive-history-row span,.archive-history-row time{opacity:.7;font-variant-numeric:tabular-nums}
+.archive-data>button{display:block;text-align:left;margin:12px 0;font-size:10px}
+.archive-data p{font-size:9px;opacity:.55;margin-top:14px}
+.archive-empty{padding:10px 0;opacity:.5;font-size:11px}
+.archive-status{padding:0 24px 15px;font-size:11px}
+.archive-status:empty{display:none}
+.archive-dialog{color:#c8d5df;background:#203447;border:1px solid #6f8799;padding:30px;width:min(420px,calc(100vw - 40px));box-sizing:border-box}
+.archive-dialog::backdrop{background:rgba(6,17,27,.65);backdrop-filter:blur(5px)}
+.archive-dialog h3{font-size:14px;letter-spacing:.06em}
+.archive-dialog p{font-size:12px;margin:16px 0}
+.archive-dialog form>div{display:flex;gap:20px;justify-content:end}
+.archive-dialog button{padding:8px;border-bottom:1px solid #6f8799}
+.archive-total>strong,.archive-longest>strong{font-variant-numeric:tabular-nums}
+@media(min-width:1500px){.nova-music-page.is-archive{grid-template-columns:190px minmax(0,1fr);margin-inline:5vw;padding-right:0;gap:36px}}
+@media(max-width:1050px){.nova-music-page.is-archive{grid-template-columns:135px minmax(0,1fr);gap:18px;margin-left:18px;padding-right:18px}.archive-heading{padding:16px}.archive-total{padding:18px 16px}.archive-metrics{padding-inline:4px}.archive-metrics strong{font-size:18px}.archive-metrics>div{padding-inline:6px}.archive-detail>section,.archive-bottom>section,.archive-moments>section{padding:16px}.archive-history{grid-template-columns:1fr}.archive-listen img,.archive-cover{width:44px;height:44px}.archive-ranked{gap:7px}.archive-heading h2{font-size:18px}}
+@media(max-width:760px){.nova-music-page.is-archive{grid-template-columns:1fr;margin:0;padding:75px 16px 100px;gap:24px}.is-archive .sea-player{grid-row:auto;grid-column:1;max-width:330px;padding-top:0}.is-archive .sea-art{width:50%;margin-bottom:14px}.is-archive .sea-lyrics{display:none}.listening-archive{grid-column:1;grid-row:auto}.archive-heading>span{display:none}.archive-heading>button{margin-left:auto}.archive-overview{grid-template-columns:1fr}.archive-total{border-right:0;border-bottom:1px solid rgba(170,194,211,.16)}.archive-total>strong{font-size:42px}.archive-metrics strong{font-size:23px}.archive-moments{grid-template-columns:1fr 1fr}.archive-longest{grid-column:1/-1;border-top:1px solid rgba(170,194,211,.16)}.archive-detail,.archive-bottom{grid-template-columns:1fr}.archive-detail>section:first-child,.archive-bottom>section:first-child{border-right:0;border-bottom:1px solid rgba(170,194,211,.16)}.archive-history{grid-template-columns:1fr}.archive-chart{gap:2px}.archive-chart small{font-size:7px}.archive-ranked{grid-template-columns:16px minmax(0,1.2fr) minmax(0,.65fr) minmax(20px,.7fr) 46px}.archive-heading h2{font-size:17px;letter-spacing:.18em}.archive-activity{padding-inline:16px}}
+@media(max-width:760px){.archive-ranked{grid-template-columns:16px minmax(0,1.2fr) minmax(0,.65fr) minmax(20px,.7fr) 72px}.archive-ranked>small:last-child{font-size:9px}.archive-metrics strong{font-size:18px}}
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/rose-galaxy/js/listening-db.js</url>
+    <content><![CDATA[(() => {
+  'use strict'
+  if (window.NovaListeningDB) return
+  let connection
+  const open = () => connection ||= new Promise((resolve, reject) => {
+    const request = indexedDB.open('novafliex_music', 1)
+    request.onupgradeneeded = () => {
+      const store = request.result.createObjectStore('listening_sessions', { keyPath: 'id' })
+      store.createIndex('startedAt', 'startedAt')
+      store.createIndex('trackId', 'trackId')
+    }
+    request.onsuccess = () => { request.result.onversionchange = () => { request.result.close(); connection = null }; resolve(request.result) }
+    request.onerror = () => { connection = null; reject(request.error) }
+    request.onblocked = () => { connection = null; reject(new Error('请关闭其他档案页面后重试')) }
+  })
+  const run = async (mode, operation) => {
+    const db = await open()
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction('listening_sessions', mode), store = tx.objectStore('listening_sessions')
+      let result
+      try { result = operation(store) } catch (error) { tx.abort(); reject(error); return }
+      tx.oncomplete = () => { if (mode === 'readwrite') document.dispatchEvent(new Event('listening:changed')); resolve(result?.result) }
+      tx.onerror = tx.onabort = () => reject(tx.error || new Error('本地数据写入失败'))
+    })
+  }
+  const validate = input => {
+    const rows = Array.isArray(input) ? input : input?.sessions
+    if (!Array.isArray(rows) || rows.length > 100000) throw new Error('无效档案格式或记录过多')
+    const ids = new Set()
+    return rows.map(row => {
+      if (!row || !['id', 'trackId', 'title', 'artist', 'cover'].every(key => typeof row[key] === 'string' && row[key].length  store.getAll()), put: row => run('readwrite', store => store.put(row)), validate,
+    import: (input, replace = false) => { const rows = validate(input); return run('readwrite', store => { if (replace) store.clear(); rows.forEach(row => store.put(row)) }) },
+    reset: () => run('readwrite', store => store.clear()) }
+  open().catch(() => {})
+})()
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/rose-galaxy/js/listening-stats.js</url>
+    <content><![CDATA[(() => {
+  'use strict'
+  if (window.NovaListeningStats) return
+  const dayKey = value => { const d = new Date(value); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}` }
+  const range = (mode, date) => {
+    const start = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+    if (mode === 'week') start.setDate(start.getDate() - (start.getDay() + 6) % 7)
+    if (mode === 'month') start.setDate(1)
+    if (mode === 'year') start.setMonth(0, 1)
+    const end = new Date(start)
+    if (mode === 'year') end.setFullYear(end.getFullYear() + 1)
+    else if (mode === 'month') end.setMonth(end.getMonth() + 1)
+    else end.setDate(end.getDate() + (mode === 'week' ? 7 : 1))
+    return { start, end }
+  }
+  // Tracker closes sessions at local midnight. Imported sessions belong to their start day.
+  const calculate = (all, mode, date) => {
+    const { start, end } = range(mode, date), rows = all.filter(row => row.startedAt >= +start && row.startedAt < +end).sort((a,b) => b.startedAt-a.startedAt || b.id.localeCompare(a.id))
+    const days = new Map(), tracks = new Map()
+    rows.forEach(row => {
+      const key = dayKey(row.startedAt); days.set(key, (days.get(key) || 0) + row.listenedSeconds)
+      const item = tracks.get(row.trackId) || { ...row, seconds: 0, sessions: 0 }; item.seconds += row.listenedSeconds; item.sessions++; tracks.set(row.trackId,item)
+    })
+    const activity = []
+    for (let d = new Date(start); d < end;) {
+      const key = dayKey(d), seconds = mode === 'year' ? [...days].filter(([day]) => day.startsWith(key.slice(0,7))).reduce((sum,[,value]) => sum+value,0) : days.get(key) || 0
+      activity.push({ date: +d, seconds }); if (mode === 'year') d.setMonth(d.getMonth()+1); else d.setDate(d.getDate()+1)
+    }
+    const longest = [...days].sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0]))[0]
+    return { rows, start, end, total: rows.reduce((sum,row) => sum+row.listenedSeconds,0), days: days.size, sessions: rows.length, tracks: tracks.size, first: rows.at(-1), last: rows[0], top: [...tracks.values()].sort((a,b) => b.seconds-a.seconds || a.trackId.localeCompare(b.trackId)).slice(0,mode === 'day' || mode === 'week' ? 1 : 5), longest, activity }
+  }
+  window.NovaListeningStats = { dayKey, range, calculate }
+})()
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/rose-galaxy/js/listening-tracker.js</url>
+    <content><![CDATA[(() => {
+  'use strict'
+  if (window.NovaListeningTracker) return
+  class Tracker {
+    constructor({ save, now = () => performance.now(), wall = () => Date.now(), visible = () => true, schedule = true }) {
+      Object.assign(this, { save, now, wall, visible }); this.session = null; this.active = false; this.last = null; this.lastWall = null; this.checkpoint = 0; this.queue = Promise.resolve(); this.frozen = false
+      this.pending = new Map()
+      if (schedule) this.timer = setInterval(() => { this.tick(); this.notify(); if (this.now() - this.checkpoint >= 15000) this.persist() }, 1000)
+    }
+    notify() { document.dispatchEvent(new Event('listening:tick')) }
+    snapshot() {
+      const records = new Map(this.pending)
+      if (this.session?.listenedSeconds >= 5) records.set(this.session.id, { ...this.session })
+      return [...records.values()].map(row => ({ ...row }))
+    }
+    acknowledge(rows) { rows.forEach(row => { const pending = this.pending.get(row.id); if (pending && row.listenedSeconds >= pending.listenedSeconds && row.completed === pending.completed && row.endedAt >= pending.endedAt) this.pending.delete(row.id) }) }
+    tick() {
+      const now = this.now(), wall = this.wall()
+      if (this.session && new Date(this.session.startedAt).toDateString() !== new Date(wall).toDateString()) {
+        const active = this.active; this.persist(); this.session = null; this.active = false; this.last = null
+        if (active) this.resume()
+      }
+      if (this.session && this.active && this.visible() && !this.frozen && this.last !== null) {
+        const elapsed = now - this.last, real = wall - this.lastWall
+        // Long timer gaps are discarded, never capped into invented listening time.
+        if (elapsed >= 0 && elapsed = 0 && real  {
+        document.dispatchEvent(new CustomEvent('listening:saved', { detail: { ...row } }))
+        if (JSON.stringify(this.pending.get(row.id)) === signature) this.pending.delete(row.id)
+      }).catch(error => { if (this.persisted === signature) this.persisted = null; document.dispatchEvent(new CustomEvent('listening:error', { detail: error.message })) })
+      return this.queue
+    }
+    endTrack(completed = false) { this.tick(); this.active = false; if (this.session) { this.session.completed = completed; this.persist() } this.session = null; this.last = null; this.notify() }
+    async clearPending() { const active = this.active; this.holding = true; this.session = null; this.active = false; this.last = null; this.pending.clear(); await this.queue; return () => { this.holding = false; if (active || this.canPlay?.()) this.resume() } }
+    destroy() { this.endTrack(); clearInterval(this.timer) }
+  }
+  window.NovaListeningTracker = Tracker
+  const tracker = new Tracker({ save: row => window.NovaListeningDB.put(row) })
+  window.novaListeningTracker = tracker
+  let attached = null, off = []
+  const bind = () => {
+    try {
+      const api = window.__fliexMusic, audio = api?.player?.audio
+      if (!audio || audio === attached) return
+      off.forEach(fn => fn()); off = []; tracker.endTrack(); attached = audio
+      tracker.canPlay = () => !audio.paused && !audio.ended && !audio.seeking && audio.readyState >= 3
+      const on = (target, name, handler, options) => { const safe = () => { try { handler() } catch (_) {} }; target.addEventListener(name, safe, options); off.push(() => target.removeEventListener(name, safe, options)) }
+      const resume = () => { if (!audio.paused && !audio.ended && !audio.seeking && audio.readyState >= 3) tracker.resume() }
+      tracker.startTrack(api.snapshot().song)
+      on(audio, 'playing', resume)
+      ;['pause','waiting','seeking','error','emptied'].forEach(name => on(audio, name, () => tracker.pause()))
+      // stalled is a network event; buffered audio can still be playing.
+      on(audio, 'stalled', () => { if (audio.readyState < 3) tracker.pause() })
+      // Sample real elapsed time on media heartbeats too. Never use currentTime
+      // differences: seeking and playbackRate must not change listened seconds.
+      on(audio, 'timeupdate', () => { if (tracker.canPlay()) { resume(); tracker.tick() } })
+      on(audio, 'seeked', resume)
+      on(audio, 'ended', () => tracker.endTrack(true), true)
+      on(document, 'fliex:track', () => { tracker.startTrack(api.snapshot().song) })
+      on(document, 'visibilitychange', () => { tracker.tick(); tracker.persist(); resume() })
+      on(document, 'freeze', () => { tracker.pause(); tracker.frozen = true })
+      on(document, 'resume', () => { tracker.frozen = false; resume() })
+      on(window, 'pagehide', () => tracker.endTrack())
+      on(window, 'pageshow', resume)
+      resume()
+    } catch (_) { /* Archive failures must never reach the playback stack. */ }
+  }
+  document.addEventListener('fliex:music', bind)
+  bind()
+})()
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/rose-galaxy/js/listening-ui.js</url>
+    <content><![CDATA[(() => {
+  'use strict'
+  if (window.NovaListeningUI) { window.NovaListeningUI.init(); return }
+  let mounted, cleanup = () => {}
+  const escape = text => String(text ?? '').replace(/[&"']/g, c => ({'&':'&amp;','':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
+  const date = (value, options) => new Date(value).toLocaleDateString('en-US', options)
+  const clock = value => new Date(value).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
+  const duration = value => { const seconds = Math.floor(value), minutes = Math.floor(seconds/60), tail = String(seconds%60).padStart(2,'0'); return minutes >= 60 ? `${Math.floor(minutes/60)}h ${String(minutes%60).padStart(2,'0')}m ${tail}s` : minutes ? `${minutes}m ${tail}s` : `${seconds}s` }
+  // Patch existing nodes: live updates must preserve focus and scroll positions.
+  const syncDOM = (target, source) => {
+    if (target.nodeType !== source.nodeType || target.nodeName !== source.nodeName) { target.replaceWith(source.cloneNode(true)); return }
+    if (target.nodeType !== 1) { if (target.nodeValue !== source.nodeValue) target.nodeValue = source.nodeValue; return }
+    for (const attr of [...target.attributes]) if (!source.hasAttribute(attr.name)) target.removeAttribute(attr.name)
+    for (const attr of [...source.attributes]) if (target.getAttribute(attr.name) !== attr.value) target.setAttribute(attr.name,attr.value)
+    const old = [...target.childNodes], next = [...source.childNodes]
+    next.forEach((node,index) => { if (old[index]) syncDOM(old[index],node); else target.append(node.cloneNode(true)) })
+    old.slice(next.length).forEach(node => node.remove())
+  }
+  const trackTime = value => `${String(Math.floor(value/60)).padStart(2,'0')}:${String(Math.floor(value%60)).padStart(2,'0')}`
+  const init = () => {
+    const root = document.querySelector('.nova-music-page')
+    if (!root || root === mounted || !window.NovaListeningStats || !window.NovaListeningDB) return
+    cleanup(); mounted = root
+    const off = [], on = (node,event,handler) => { node.addEventListener(event,handler); off.push(() => node.removeEventListener(event,handler)) }
+    const existingEntry = root.querySelector('[data-listening-entry]')
+    const entry = existingEntry || document.createElement('button')
+    if (!existingEntry) { entry.className = 'listening-entry'; entry.textContent = '听歌档案 · Listening Archive ↗'; root.querySelector('.sea-player').append(entry) }
+    entry.setAttribute('aria-expanded','false')
+    const panel = document.createElement('section'); panel.className = 'listening-archive'; panel.hidden = true; panel.setAttribute('aria-label','Listening Archive')
+    panel.innerHTML = `LISTENING ARCHIVE在音乐里，时间变得很轻。Stored locally on this device.×`
+    root.append(panel)
+    const content = panel.querySelector('[data-content]'), status = panel.querySelector('.archive-status'), dialog = panel.querySelector('dialog')
+    let rows = [], mode = 'month', selected = new Date(), limit = 20, alive = true, generation = 0, importRows, pendingAction, busy = false, refreshTimer
+    const statusText = text => { status.textContent = text }
+    const listen = row => row ? `${row.cover ? `` : ''}${clock(row.startedAt)}${escape(row.title)}${escape(row.artist)}` : '尚无聆听记录'
+    const render = () => {
+      const combined = new Map(rows.map(row => [row.id,row]))
+      for (const row of window.novaListeningTracker?.snapshot?.() || []) combined.set(row.id,row)
+      const liveRows = [...combined.values()], output = document.createElement('div')
+      const s = window.NovaListeningStats.calculate(liveRows,mode,selected), total = liveRows.reduce((sum,row) => sum+row.listenedSeconds,0), started = liveRows.length ? liveRows.reduce((min,row) => Math.min(min,row.startedAt),Infinity) : null
+      const shown = mode === 'day' ? s.rows : s.rows.slice(0,limit), groups = new Map()
+      shown.forEach(row => { const key = window.NovaListeningStats.dayKey(row.startedAt); if (!groups.has(key)) groups.set(key,[]); groups.get(key).push(row) })
+      const max = Math.max(1,...s.activity.map(item => item.seconds)), daily = s.activity
+      const label = mode === 'year' ? String(selected.getFullYear()) : mode === 'month' ? date(selected,{ month:'long',year:'numeric' }) : mode === 'week' ? `${date(s.start,{ month:'short',day:'2-digit' })} – ${date(+s.end-1,{ month:'short',day:'2-digit',year:'numeric' })}` : date(selected,{month:'short',day:'2-digit',year:'numeric'})
+      output.innerHTML = `${duration(total)}TOTAL LISTENINGStarted tracking · ${started === null ? 'Waiting for your first listen' : date(started,{month:'short',day:'2-digit',year:'numeric'})}${['day','week','month','year'].map(value => `${value.toUpperCase()}`).join('')}‹${label}›Today${[[duration(s.total),'LISTENING TIME'],[s.days,'LISTENING DAYS'],[s.sessions,'SESSIONS'],[s.tracks,'TRACKS']].map(([value,title]) => `${value}${title}`).join('')}
+      LISTENING ACTIVITY${daily.map(item => `${mode === 'year' ? date(item.date,{month:'short'}) : String(new Date(item.date).getDate()).padStart(2,'0')}`).join('')}${duration(max === 1 ? 0 : max)} peak · ${mode === 'year' ? 'Monthly' : 'Daily'} listening
+      FIRST LISTEN${listen(s.first)}${s.first ? `${date(s.first.startedAt,{month:'short',day:'2-digit'})}` : ''}LAST LISTEN${listen(s.last)}${s.last ? `${date(s.last.startedAt,{month:'short',day:'2-digit'})}` : ''}LONGEST LISTENING DAY${s.longest ? date(new Date(s.longest[0]+'T12:00:00'),{month:'short',day:'2-digit'}) : '—'}${s.longest ? duration(s.longest[1]) : '0s'}
+      MOST LISTENED${s.top.length ? s.top.map((row,index) => `${String(index+1).padStart(2,'0')}${row.cover ? `` : ''}${escape(row.title)}${escape(row.artist)}${duration(row.seconds)}`).join('') : '音乐会留下时间的痕迹。'}${mode.toUpperCase()} ACTIVITY${daily.map(item => `${date(item.date,mode === 'year' ? {month:'short'} : {month:'short',day:'2-digit'})}${duration(item.seconds)}`).join('')}
+      HISTORY${mode !== 'day' && shown.length < s.rows.length ? 'View more →' : ''}${[...groups].map(([,items]) => `${date(items[0].startedAt,{month:'short',day:'2-digit',year:'numeric'})}${items.map(row => `${clock(row.startedAt)}${escape(row.title)}${escape(row.artist)}${trackTime(row.listenedSeconds)}`).join('')}`).join('') || '这个时间段还没有记录。'}DATA↧　Export listening history↥　Import listening history⌫　Reset historyAll data is stored locally on this device.`
+      syncDOM(content, output)
+    }
+    const refresh = async () => { const version = ++generation; try { const data = await window.NovaListeningDB.all(); if (!alive || version !== generation) return; rows = data; window.novaListeningTracker?.acknowledge?.(data); render() } catch (error) { if (alive) statusText('本地档案不可用：' + error.message) } }
+    const show = value => { panel.hidden = !value; root.classList.toggle('is-archive',value); entry.setAttribute('aria-expanded',String(value)); if (value) { window.novaListeningTracker?.tick(); window.novaListeningTracker?.persist(); refresh(); panel.querySelector('[data-close]').focus(); history.replaceState(null,'', '#listening-archive') } else { history.replaceState(null,'',location.pathname+location.search); entry.focus() } }
+    const ask = (title,copy,actions,action) => { pendingAction = action; panel.querySelector('[data-dialog-title]').textContent = title; panel.querySelector('[data-dialog-copy]').textContent = copy; panel.querySelector('[data-dialog-actions]').innerHTML = actions.map(([value,label]) => `${label}`).join('') + 'Cancel'; dialog.returnValue = 'cancel'; dialog.showModal() }
+    on(entry,'click',() => show(panel.hidden)); on(panel.querySelector('[data-close]'),'click',() => show(false))
+    on(content,'click',async event => {
+      const button = event.target.closest('button'); if (!button || busy) return
+      if (button.dataset.track) { const api = window.__fliexMusic; const index = api?.snapshot().tracks.findIndex(track => track.id === button.dataset.track); if (index >= 0) api.select(index); else statusText('这首歌曲已不在当前播放列表中。'); return }
+      if (button.dataset.mode) { mode = button.dataset.mode; limit = 20; render() }
+      if (button.dataset.step) { const step = Number(button.dataset.step), start = window.NovaListeningStats.range(mode,selected).start; if (mode === 'year') start.setFullYear(start.getFullYear()+step); else if (mode === 'month') start.setMonth(start.getMonth()+step); else start.setDate(start.getDate()+step*(mode === 'week' ? 7 : 1)); selected = start; limit = 20; render() }
+      if (button.hasAttribute('data-today')) { selected = new Date(); limit = 20; render() }
+      if (button.hasAttribute('data-more')) { limit += 20; render() }
+      if (button.hasAttribute('data-import')) panel.querySelector('[data-import-file]').click()
+      if (button.hasAttribute('data-reset')) ask('Reset listening history?', '此操作会删除本机全部听歌记录。请先导出备份。', [['next','Continue']], 'reset-first')
+      if (button.hasAttribute('data-export')) {
+        try { window.novaListeningTracker?.tick(); await window.novaListeningTracker?.persist(); const data = await window.NovaListeningDB.all(); const url = URL.createObjectURL(new Blob([JSON.stringify({format:'novafliex-listening',version:1,sessions:data},null,2)],{type:'application/json'})); const link = document.createElement('a'); link.href = url; link.download = `novafliex-listening-${window.NovaListeningStats.dayKey(Date.now())}.json`; link.click(); setTimeout(() => URL.revokeObjectURL(url),1000); statusText('档案已导出。') } catch (error) { statusText(error.message) }
+      }
+    })
+    on(panel.querySelector('[data-import-file]'),'change',async event => {
+      const file = event.target.files[0]; event.target.value = ''; if (!file) return
+      try { if (file.size > 50*1024*1024) throw new Error('文件超过 50 MB'); importRows = window.NovaListeningDB.validate(JSON.parse(await file.text())); ask('Import listening history', `${importRows.length} 条记录。Merge 按 id 合并；Replace 会替换现有档案。`, [['merge','Merge'],['replace','Replace']], 'import') } catch (error) { statusText('导入失败：' + error.message) }
+    })
+    on(dialog,'close',async () => {
+      const action = pendingAction, value = dialog.returnValue; if (value === 'cancel' || !value) return
+      if (action === 'reset-first' && value === 'next') { ask('Permanently reset history?', '再次确认：删除全部记录，无法撤销。', [['reset','Delete all history']], 'reset'); return }
+      busy = true; let restart
+      try {
+        if (action === 'reset' && value === 'reset') { restart = await window.novaListeningTracker?.clearPending(); await window.NovaListeningDB.reset(); statusText('档案已清空。') }
+        if (action === 'import' && ['merge','replace'].includes(value)) { if (value === 'replace') restart = await window.novaListeningTracker?.clearPending(); else { window.novaListeningTracker?.tick(); await window.novaListeningTracker?.persist() } await window.NovaListeningDB.import(importRows,value === 'replace'); statusText('档案已导入。') }
+        await refresh()
+      } catch (error) { statusText('操作失败：' + error.message) } finally { restart?.(); busy = false }
+    })
+    on(document,'listening:changed',() => { if (!panel.hidden) { clearTimeout(refreshTimer); refreshTimer = setTimeout(refresh,100) } })
+    on(document,'listening:saved',event => { const row = event.detail; generation++; rows = rows.filter(item => item.id !== row.id); rows.push(row); if (alive && !panel.hidden && !busy) render() })
+    on(document,'listening:tick',() => { if (alive && !panel.hidden && !document.hidden && !busy) render() })
+    on(document,'listening:error',event => statusText('本地档案写入失败：' + event.detail))
+    on(document,'pjax:send',() => cleanup())
+    cleanup = () => { alive = false; generation++; clearTimeout(refreshTimer); off.forEach(fn => fn()); panel.remove(); if (!existingEntry) entry.remove(); else entry.setAttribute('aria-expanded','false'); root.classList.remove('is-archive'); mounted = null }
+    if (location.hash === '#listening-archive') show(true)
+  }
+  window.NovaListeningUI = { init }
+  document.addEventListener('pjax:complete',init)
+  if (document.readyState !== 'complete') document.addEventListener('DOMContentLoaded',init,{once:true}); else init()
+})()
 ]]></content>
   </entry>
 </search>

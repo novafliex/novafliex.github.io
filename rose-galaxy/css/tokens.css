@@ -5,6 +5,7 @@
   --coast-mono: "JetBrains Mono","SF Mono",SFMono-Regular,Consolas,monospace;
   --coast-muted: #aab7c2;
   --coast-surface: #233749;
+  --coast-shade: linear-gradient(180deg,rgba(20,37,51,.10),rgba(9,20,30,.06) 65%,rgba(9,20,30,.12));
   --coast-rule: rgba(216,229,238,.18);
   --coast-glass-border: rgba(216,229,238,.19);
   --coast-glass: linear-gradient(160deg,rgba(134,151,165,.10),rgba(13,23,30,.12));

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>夜里的旋律 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#080B14"><meta property="og:type" content="website">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>夜里的旋律 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta property="og:type" content="website">
 <meta property="og:title" content="夜里的旋律">
 <meta property="og:url" content="https://novafliex.github.io/music/">
 <meta property="og:site_name" content="Fliex">
@@ -108,13 +108,13 @@
       const activateDarkMode = () => {
         document.documentElement.dataset.theme = 'dark'
         if (metaThemeColor !== null) {
-          metaThemeColor.setAttribute('content', '#080B14')
+          metaThemeColor.setAttribute('content', '#233749')
         }
       }
       const activateLightMode = () => {
         document.documentElement.dataset.theme = 'light'
         if (metaThemeColor !== null) {
-          metaThemeColor.setAttribute('content', '#F7F4F1')
+          metaThemeColor.setAttribute('content', '#E8EFF4')
         }
       }
 
@@ -189,7 +189,7 @@
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
     <strong>FLIEX</strong>
-    <small>LOADING THE NIGHT...</small>
+    <small>正在加载...</small>
   </div>
 </div>
 <script>
@@ -245,15 +245,21 @@
     <div class="sea-song-heading"><h2><span class="nova-music-current-title"></span></h2><button data-music-favorite="" aria-label="收藏当前歌曲" aria-pressed="false">♡</button><button data-music-more="" aria-label="歌曲信息" aria-expanded="false">···</button></div>
     <p class="nova-music-current-artist"></p><p class="sea-song-detail" hidden=""></p>
     <div class="nova-music-progress"><input class="nova-music-progress-input" type="range" min="0" max="1000" value="0" aria-label="播放进度"><div class="nova-music-time"><span class="nova-music-current-time"></span><span class="nova-music-duration"></span></div></div>
-    <div class="nova-music-controls"><button data-music-shuffle="" aria-label="随机播放" aria-pressed="false">⤨</button><button class="nova-music-previous" aria-label="上一首">❮│</button><button class="nova-music-toggle" aria-label="播放">▶</button><button class="nova-music-next" aria-label="下一首">│❯</button><button data-music-repeat="" aria-label="列表循环">↻</button></div>
+    <div class="nova-music-controls">
+      <button data-music-shuffle="" aria-label="随机播放" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3c4 0 6 10 10 10h3M4 17h3c1.6 0 3-1.7 4.3-4M13 9c1.3-1.3 2.5-2 4-2h3M17 4l3 3-3 3M17 14l3 3-3 3"></path></svg></button>
+      <button class="nova-music-previous" aria-label="上一首"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="music-icon-solid" d="M6 5h2v14H6zm12 0v14L8 12z"></path></svg></button>
+      <button class="nova-music-toggle" aria-label="播放"><svg class="music-icon-play" viewBox="0 0 24 24" aria-hidden="true"><path class="music-icon-solid" d="M9 5v14l11-7z"></path></svg><svg class="music-icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path class="music-icon-solid" d="M7 5h3v14H7zm7 0h3v14h-3z"></path></svg></button>
+      <button class="nova-music-next" aria-label="下一首"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="music-icon-solid" d="M16 5h2v14h-2zM6 5l10 7-10 7z"></path></svg></button>
+      <button data-music-repeat="" aria-label="列表循环"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8a8 8 0 0 0-13-3L4 8m0-4v4h4M4 16a8 8 0 0 0 13 3l3-3m0 4v-4h-4"></path></svg><span class="music-repeat-one" aria-hidden="true">1</span></button>
+    </div>
     <canvas class="sea-waveform" width="480" height="72" aria-label="音频波形"></canvas>
     <label class="sea-volume">音量 <input data-music-volume="" type="range" min="0" max="1" step="0.01" value="0.6" aria-label="音量"></label>
     <p class="nova-music-count"></p><button class="nova-music-retry" hidden="">Loading</button>
   </section>
   <section class="sea-lyrics" aria-label="同步歌词"><div class="sea-lyrics-lines"></div></section>
-  <section class="sea-playlist" aria-label="播放列表"><div class="sea-playlist-tabs" role="tablist"><button role="tab" aria-selected="true" data-music-tab="all">播放列表</button><button role="tab" aria-selected="false" data-music-tab="notes">音乐随笔</button><button role="tab" aria-selected="false" data-music-tab="favorites">我喜欢的</button></div><div class="sea-playlist-rows" role="region" aria-label="歌曲列表" tabindex="0"></div></section>
+  <section class="sea-playlist" aria-label="播放列表"><div class="sea-playlist-tabs" role="tablist"><button role="tab" aria-selected="true" data-music-tab="all">播放列表</button><button role="tab" aria-selected="false" data-music-tab="notes">音乐随笔</button><button role="tab" aria-selected="false" data-music-tab="favorites">我喜欢的</button></div><div class="sea-playlist-rows" role="region" aria-label="歌曲列表" tabindex="0"></div><button type="button" class="listening-entry" data-listening-entry="" aria-expanded="false" aria-label="打开听歌档案"><span class="listening-entry-icon" aria-hidden="true">♥</span><span><strong>听歌档案</strong><small>Listening Archive</small></span><span class="listening-entry-arrow" aria-hidden="true">→</span></button></section>
 </section>
-</main></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
+</main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
   const parseViewBox = viewBox => {
     if (!viewBox) return null
     const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
@@ -615,68 +621,16 @@
 
   btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
   window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
-})()</script><script>(() => {
-  let initFn = window.walineFn || null
-  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
-  const option = null
-
-  const destroyWaline = ele => ele.destroy()
-
-  const initWaline = (Fn, el = document, path = window.location.pathname) => {
-    const waline = Fn({
-      el: el.querySelector('#waline-wrap'),
-      serverURL: 'https://waline527.vercel.app',
-      pageview: true,
-      dark: 'html[data-theme="dark"]',
-      comment: false,
-      ...option,
-      path: isShuoshuo ? path : (option && option.path) || path
-    })
-
-    if (isShuoshuo) {
-      window.shuoshuoComment.destroyWaline = () => {
-        destroyWaline(waline)
-        if (el.children.length) {
-          el.innerHTML = ''
-          el.classList.add('no-comment')
-        }
-      }
-    }
-  }
-
-  const loadWaline = (el, path) => {
-    if (initFn) initWaline(initFn, el, path)
-    else {
-      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.15.2/dist/waline.min.css')
-        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client@3.15.2/dist/waline.min.js'))
-        .then(({ init }) => {
-          initFn = init || Waline.init
-          initWaline(initFn, el, path)
-          window.walineFn = initFn
-        })
-    }
-  }
-
-  if (isShuoshuo) {
-    'Waline' === 'Waline'
-      ? window.shuoshuoComment = { loadComment: loadWaline } 
-      : window.loadOtherComment = loadWaline
-    return
-  }
-
-  if ('Waline' === 'Waline' || !false) {
-    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
-    else setTimeout(loadWaline, 0)
-  } else {
-    window.loadOtherComment = loadWaline
-  }
 })()</script><link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261005-nav-about-v25">
 <link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261005-nav-about-v25">
 <link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261005-nav-about-v25">
 <link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261005-nav-about-v25">
+<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261005-nav-about-v25">
 <script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261005-nav-about-v25"></script>
 <script defer="" data-pjax="" src="/rose-galaxy/js/nova-home.js?v=20261005-nav-about-v25"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/music-page.js?v=20261005-nav-about-v25"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261004-global-audio-v1"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+<script defer="" data-pjax="" src="/rose-galaxy/js/music-page.js?v=20261005-nav-about-v25"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/listening-stats.js?v=20261005-nav-about-v25"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/listening-ui.js?v=20261005-nav-about-v25"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({

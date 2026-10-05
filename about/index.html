@@ -1,1317 +1,699 @@
-<!doctype html>
-<html lang="zh-CN" data-theme="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0,viewport-fit=cover"
-    />
-    <title>关于 | Fliex</title>
-    <meta name="author" content="Fliex" />
-    <meta name="copyright" content="Fliex" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="theme-color" content="#080B14" />
-    <meta
-      name="description"
-      content="记录正在学习的技术、正在构建的项目，以及一些普通的生活片段。"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="关于" />
-    <meta property="og:url" content="https://novafliex.github.io/about/" />
-    <meta property="og:site_name" content="Fliex" />
-    <meta
-      property="og:description"
-      content="记录正在学习的技术、正在构建的项目，以及一些普通的生活片段。"
-    />
-    <meta property="og:locale" content="zh_CN" />
-    <meta
-      property="og:image"
-      content="https://novafliex.github.io/img/logo1.jpg"
-    />
-    <meta
-      property="article:published_time"
-      content="2025-10-17T16:00:00.000Z"
-    />
-    <meta property="article:modified_time" content="2025-10-17T16:00:00.000Z" />
-    <meta property="article:author" content="Fliex" />
-    <meta name="twitter:card" content="summary" />
-    <meta
-      name="twitter:image"
-      content="https://novafliex.github.io/img/logo1.jpg"
-    />
-    <link rel="shortcut icon" href="/img/favicon-small.ico" />
-    <link rel="canonical" href="https://novafliex.github.io/about/" />
-    <link rel="preconnect" href="//cdn.jsdelivr.net" />
-    <link rel="preconnect" href="//busuanzi.ibruce.info" />
-    <link rel="stylesheet" href="/css/index.css?v=5.6.1" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"
-    />
-    <script>
-      (() => {
-        const saveToLocal = {
-          set: (key, value, ttl) => {
-            const data = { value };
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>关于 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="记录正在学习的技术、正在构建的项目，以及一些普通的生活片段。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于">
+<meta property="og:url" content="https://novafliex.github.io/about/">
+<meta property="og:site_name" content="Fliex">
+<meta property="og:description" content="记录正在学习的技术、正在构建的项目，以及一些普通的生活片段。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://novafliex.github.io/img/logo1.jpg">
+<meta property="article:published_time" content="2025-10-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-10-17T16:00:00.000Z">
+<meta property="article:author" content="Fliex">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://novafliex.github.io/img/logo1.jpg"><link rel="shortcut icon" href="/img/favicon-small.ico"><link rel="canonical" href="https://novafliex.github.io/about/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
 
-            if (ttl != null) {
-              data.expiry = Date.now() + ttl * 86400000;
-            }
-
-            localStorage.setItem(key, JSON.stringify(data));
-          },
-          get: (key) => {
-            const itemStr = localStorage.getItem(key);
-            if (!itemStr) return;
-
-            try {
-              const data = JSON.parse(itemStr);
-
-              if (data.expiry && Date.now() > data.expiry) {
-                localStorage.removeItem(key);
-                return;
-              }
-
-              return data.value;
-            } catch {
-              localStorage.removeItem(key);
-            }
-          },
-        };
-
-        const scriptCache = new Map();
-        const cssCache = new Map();
-        window.btf = {
-          saveToLocal,
-          getScript: (url, attr = {}) => {
-            if (scriptCache.has(url)) {
-              return scriptCache.get(url);
-            }
-
-            const promise = new Promise((resolve, reject) => {
-              const script = document.createElement("script");
-
-              script.src = url;
-              script.async = true;
-
-              for (const key in attr) {
-                script.setAttribute(key, attr[key]);
-              }
-
-              script.onload = resolve;
-              script.onerror = reject;
-
-              document.head.appendChild(script);
-            });
-
-            scriptCache.set(url, promise);
-
-            return promise;
-          },
-          getCSS: (url, id) => {
-            if (cssCache.has(url)) {
-              return cssCache.get(url);
-            }
-
-            const promise = new Promise((resolve, reject) => {
-              const link = document.createElement("link");
-
-              link.rel = "stylesheet";
-              link.href = url;
-
-              if (id) {
-                link.id = id;
-              }
-
-              link.onload = resolve;
-              link.onerror = reject;
-
-              document.head.appendChild(link);
-            });
-
-            cssCache.set(url, promise);
-
-            return promise;
-          },
-          addGlobalFn: (key, fn, name = false, parent = window) => {
-            if (!true && key.startsWith("pjax")) return;
-            const globalFn = parent.globalFn || {};
-            globalFn[key] = globalFn[key] || {};
-            globalFn[key][name || Object.keys(globalFn[key]).length] = fn;
-            parent.globalFn = globalFn;
-          },
-        };
-
-        const metaThemeColor = document.querySelector(
-          'meta[name="theme-color"]',
-        );
-        const activateDarkMode = () => {
-          document.documentElement.dataset.theme = "dark";
-          if (metaThemeColor !== null) {
-            metaThemeColor.setAttribute("content", "#080B14");
-          }
-        };
-        const activateLightMode = () => {
-          document.documentElement.dataset.theme = "light";
-          if (metaThemeColor !== null) {
-            metaThemeColor.setAttribute("content", "#F7F4F1");
-          }
-        };
-
-        btf.activateDarkMode = activateDarkMode;
-        btf.activateLightMode = activateLightMode;
-
-        const theme = saveToLocal.get("theme");
-
-        theme === "dark"
-          ? activateDarkMode()
-          : theme === "light"
-            ? activateLightMode()
-            : null;
-
-        const asideStatus = saveToLocal.get("aside-status");
-        if (asideStatus !== undefined) {
-          document.documentElement.classList.toggle(
-            "hide-aside",
-            asideStatus === "hide",
-          );
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
         }
 
-        const detectApple = () => {
-          if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-            document.documentElement.classList.add("apple");
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
           }
-        };
-        detectApple();
-      })();
-    </script>
-    <script>
-      const GLOBAL_CONFIG = {
-        root: "/",
-        algolia: undefined,
-        localSearch: {
-          path: "/search.xml",
-          preload: false,
-          top_n_per_article: 1,
-          unescape: true,
-          pagination: { enable: false, hitsPerPage: 8 },
-          languages: {
-            hits_empty: "未找到符合您查询的内容：${query}",
-            hits_stats: "共找到 ${hits} 篇文章",
-          },
-        },
-        translate: undefined,
-        highlight: {
-          plugin: "highlight.js",
-          highlightCopy: true,
-          highlightLang: true,
-          highlightHeightLimit: false,
-          highlightFullpage: false,
-          highlightMacStyle: false,
-        },
-        copy: {
-          success: "复制成功",
-          error: "复制失败",
-          noSupport: "浏览器不支持",
-        },
-        relativeDate: {
-          homepage: false,
-          post: false,
-        },
-        runtime: "",
-        dateSuffix: {
-          just: "刚刚",
-          min: "分钟前",
-          hour: "小时前",
-          day: "天前",
-          month: "个月前",
-        },
-        copyright: undefined,
-        lightbox: "medium_zoom",
-        Snackbar: undefined,
-        infinitegrid: {
-          js: "https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js",
-          buttonText: "加载更多",
-        },
-        isPhotoFigcaption: false,
-        islazyloadPlugin: false,
-        isAnchor: false,
-        percent: {
-          toc: true,
-          rightside: false,
-        },
-        autoDarkmode: false,
-      };
-    </script>
-    <script id="config-diff">
-      var GLOBAL_CONFIG_SITE = {
-        title: "关于",
-        isHighlightShrink: false,
-        isToc: false,
-        pageType: "page",
-      };
-    </script>
-    <link
-      rel="stylesheet"
-      href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"
-    />
-    <link rel="stylesheet" href="/css/custom.css?v=20261005-current-cleanup" />
-    <meta name="generator" content="Hexo 8.1.2" />
-    <link
-      rel="alternate"
-      href="https://novafliex.github.io/atom.xml"
-      title="Fliex"
-      type="application/atom+xml"
-    />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "@id": "https://novafliex.github.io/about/#webpage",
-        "name": "About",
-        "url": "https://novafliex.github.io/about/",
-        "description": "记录正在学习的技术、正在构建的项目，以及一些普通的生活片段。",
-        "inLanguage": "zh-CN",
-        "isPartOf": {
-          "@type": "WebSite",
-          "@id": "https://novafliex.github.io/#website",
-          "url": "https://novafliex.github.io/",
-          "name": "Fliex"
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
         }
       }
-    </script>
-  </head>
-  <body class="nova-about-route">
-    <!-- hexo injector body_begin start -->
-    <div
-      class="nova-page-loading"
-      data-nova-loading=""
-      aria-hidden="true"
-      aria-live="polite"
-    >
-      <div class="nova-page-loading__inner">
-        <span class="nova-page-loading__mark" aria-hidden="true"></span>
-        <strong>FLIEX</strong>
-        <small>LOADING THE NIGHT...</small>
-      </div>
-    </div>
-    <script>
-      (() => {
-        const loaders = Array.from(
-          document.querySelectorAll("[data-nova-loading]"),
-        );
-        const loader = loaders.shift();
-        loaders.forEach((item) => item.remove());
-        if (!loader || window.__novaLoaderBootstrapped) {
-          loader?.remove();
-          return;
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
         }
-        window.__novaLoaderBootstrapped = true;
-        window.clearTimeout(window.__novaLoaderDelayTimer);
-        window.__novaLoaderDelayTimer = window.setTimeout(() => {
-          if (
-            !loader.isConnected ||
-            loader.dataset.novaLoadingState === "leaving"
-          )
-            return;
-          window.__novaLoaderVisibleAt = Date.now();
-          loader.dataset.novaLoadingState = "visible";
-          loader.setAttribute("aria-hidden", "false");
-          loader.classList.add("is-visible");
-          document.body.classList.add("nova-loading-active");
-        }, 1200);
-      })();
-    </script>
-    <!-- hexo injector body_begin end -->
-    <div class="page type-about" id="body-wrap">
-      <main class="nova-about-shell" id="content-inner" data-nova-home="">
-        <img
-          class="coast-background"
-          src="/img/background_sea.png"
-          width="1683"
-          height="935"
-          alt=""
-          aria-hidden="true"
-          loading="eager"
-          decoding="async"
-        />
-        <div class="coast-shade" aria-hidden="true"></div>
-        <canvas
-          class="coast-snow"
-          data-coast-snow=""
-          aria-hidden="true"
-        ></canvas>
-        <aside class="coast-sidebar" aria-label="Fliex 与导航">
-          <header class="coast-brand">
-            <div class="coast-brand-name">
-              <a href="/" aria-label="Fliex 首页">Fliex</a>
-            </div>
-            <p>记录一些<br />真正值得留下来的东西。</p>
-          </header>
-          <nav class="coast-nav" aria-label="主导航">
-            <a href="/projects/"><i aria-hidden="true"></i><b>Projects</b></a
-            ><a href="/notes/"><i aria-hidden="true"></i><b>Notes</b></a
-            ><a href="/music/"><i aria-hidden="true"></i><b>Music</b></a
-            ><a href="/about/" class="is-selected" aria-current="page"
-              ><i aria-hidden="true"></i><b>About</b></a
-            >
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#233749')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#E8EFF4')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '关于',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261005-current-cleanup"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","@id":"https://novafliex.github.io/about/#webpage","name":"About","url":"https://novafliex.github.io/about/","description":"记录正在学习的技术、正在构建的项目，以及一些普通的生活片段。","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="nova-about-route"><!-- hexo injector body_begin start -->
+<div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
+  <div class="nova-page-loading__inner">
+    <span class="nova-page-loading__mark" aria-hidden="true"></span>
+    <strong>FLIEX</strong>
+    <small>正在加载...</small>
+  </div>
+</div>
+<script>
+  ;(() => {
+    const loaders = Array.from(document.querySelectorAll('[data-nova-loading]'))
+    const loader = loaders.shift()
+    loaders.forEach(item => item.remove())
+    if (!loader || window.__novaLoaderBootstrapped) {
+      loader?.remove()
+      return
+    }
+    window.__novaLoaderBootstrapped = true
+    window.clearTimeout(window.__novaLoaderDelayTimer)
+    window.__novaLoaderDelayTimer = window.setTimeout(() => {
+      if (!loader.isConnected || loader.dataset.novaLoadingState === 'leaving') return
+      window.__novaLoaderVisibleAt = Date.now()
+      loader.dataset.novaLoadingState = 'visible'
+      loader.setAttribute('aria-hidden', 'false')
+      loader.classList.add('is-visible')
+      document.body.classList.add('nova-loading-active')
+    }, 1200)
+  })()
+</script><!-- hexo injector body_begin end --><div class="page type-about" id="body-wrap"><main class="nova-about-shell" id="content-inner" data-nova-home="">
+    <img class="coast-background" src="/img/background_sea.png" width="1683" height="935" alt="" aria-hidden="true" loading="eager" decoding="async">
+    <div class="coast-shade" aria-hidden="true"></div>
+    <canvas class="coast-snow" data-coast-snow="" aria-hidden="true"></canvas>
+    <aside class="coast-sidebar" aria-label="Fliex 与导航">
+      <header class="coast-brand"><div class="coast-brand-name"><a href="/" aria-label="Fliex 首页">Fliex</a></div><p>记录一些<br>真正值得留下来的东西。</p></header>
+      <nav class="coast-nav" aria-label="主导航">
+        <a href="/projects/"><i aria-hidden="true"></i><b>Projects</b></a><a href="/notes/"><i aria-hidden="true"></i><b>Notes</b></a><a href="/music/"><i aria-hidden="true"></i><b>Music</b></a><a href="/about/" class="is-selected" aria-current="page"><i aria-hidden="true"></i><b>About</b></a>
+      </nav>
+      <div class="coast-sidebar-bottom">
+        <section class="coast-mini-player" aria-label="音乐控制器">
+          <div class="coast-music-art"><img src="/img/background_sea.png" width="1683" height="935" alt="风雪海岸" decoding="async"><button type="button" data-music-toggle="" aria-label="播放音乐"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7z"></path></svg></button></div>
+          <span class="music-loading" data-music-loading="" role="status"><span class="music-loading-wave" aria-hidden="true">∿∿∿</span><span>Loading</span></span><a class="coast-music-info" href="/music/" hidden=""><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 10v4M6 6v12M10 2v20M14 5v14M18 8v8M22 11v2"></path></svg><span><span data-music-artist=""></span><span data-music-title=""></span></span></a>
+          <div class="coast-progress" role="progressbar" aria-label="歌曲播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-music-progress=""></span></div>
+          <button class="coast-music-retry" type="button" data-music-retry="" hidden="">Loading</button>
+        </section>
+        <div class="coast-social"><a href="https://github.com/novafliex" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" stroke="none" d="M12 1a11 11 0 0 0-3.48 21.44c.55.1.75-.24.75-.53v-2.1c-3.06.67-3.71-1.3-3.71-1.3-.5-1.27-1.22-1.61-1.22-1.61-1-.68.08-.67.08-.67 1.1.08 1.68 1.13 1.68 1.13.98 1.68 2.57 1.2 3.2.92.1-.72.39-1.2.7-1.48-2.44-.28-5-1.22-5-5.44 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.4.1-2.91 0 0 .93-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.42 3.02-1.13 3.02-1.13.6 1.51.22 2.63.1 2.91.7.77 1.13 1.75 1.13 2.95 0 4.23-2.56 5.16-5 5.44.39.34.74 1 .74 2.04v3.07c0 .3.2.64.76.53A11 11 0 0 0 12 1z"></path></svg></a><a href="mailto:257399435@qq.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="1"></rect><path d="m2 5 10 8L22 5M2 19l7-7m13 7-7-7"></path></svg></a><button type="button" data-coast-theme="" aria-label="切换阅读页明暗主题"><span class="coast-theme-icons" aria-hidden="true"><svg class="coast-theme-icon coast-theme-icon--moon" viewBox="0 0 24 24" focusable="false"><path d="M21 14A9 9 0 0 1 10 3a9 9 0 1 0 11 11z"></path></svg><svg class="coast-theme-icon coast-theme-icon--sun" viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"></path></svg></span></button></div>
+      </div>
+    </aside>
+    <div class="coast-toolbar" role="group" aria-label="搜索、音乐和风雪">
+      <button class="coast-search" type="button" data-coast-search="" aria-label="搜索，Ctrl 或 Command K"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="7.5"></circle><path d="m16 16 5 5"></path></svg></button><span class="coast-toolbar-rule" aria-hidden="true"></span>
+      <a class="coast-now-playing" href="/music/"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 10v4M6 6v12M10 2v20M14 5v14M18 8v8M22 11v2"></path></svg><span data-music-summary="" aria-live="polite">Music</span></a>
+      <button class="coast-top-play" type="button" data-music-toggle="" aria-label="播放音乐"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7z"></path></svg></button><span class="coast-toolbar-rule" aria-hidden="true"></span>
+      <button class="coast-snow-toggle" type="button" data-coast-snow-toggle="" role="switch" aria-checked="false" aria-label="风雪动画">SNOW · OFF</button>
+    </div>
+
+    <article class="nova-about-content">
+      <header class="nova-about-head">
+        <p class="nova-about-eyebrow"><i aria-hidden="true"></i></p>
+        <h1 id="nova-about-title">About</h1>
+        <p class="nova-about-subtitle">Code, notes, and music.</p>
+      </header>
+
+      <section class="nova-about-story" aria-label="个人简介">
+        <p>这里放我的编程笔记、项目和音乐。<br>目前主要学习 Go 后端，也整理算法题解。<br>博客会随着学习进度持续更新。</p>
+      </section>
+
+      <section class="nova-about-editorial" aria-label="关于我">
+        <section class="nova-about-block">
+          <p class="nova-about-label">02 / <b>NOW</b></p>
+          <dl>
+            <div><dt><svg class="" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12v-3m4 8V7m4 13V4m4 13V7m4 8v-6"></path></svg></dt><dd>Go Backend<br><span>Go · Gin · MySQL</span></dd></div>
+            <div><dt><svg class="" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 3h11l3 3v15H5z"></path><path d="M16 3v4h4M8 11h8M8 15h8"></path></svg></dt><dd>Music<br><span>收藏的歌曲</span></dd></div>
+            <div><dt><svg class="" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21zM4 5.5v15"></path></svg></dt><dd>Reading<br><span>阅读笔记</span></dd></div>
+          </dl>
+        </section>
+        <section class="nova-about-block">
+          <p class="nova-about-label">03 / <b>CONTACT</b></p>
+          <nav class="nova-about-links" aria-label="联系方式">
+            <a href="https://github.com/novafliex" target="_blank" rel="noopener noreferrer"><svg class="" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" stroke="none" d="M12 1a11 11 0 0 0-3.48 21.44c.55.1.75-.24.75-.53v-2.1c-3.06.67-3.71-1.3-3.71-1.3-.5-1.27-1.22-1.61-1.22-1.61-1-.68.08-.67.08-.67 1.1.08 1.68 1.13 1.68 1.13.98 1.68 2.57 1.2 3.2.92.1-.72.39-1.2.7-1.48-2.44-.28-5-1.22-5-5.44 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.4.1-2.91 0 0 .93-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.42 3.02-1.13 3.02-1.13.6 1.51.22 2.63.1 2.91.7.77 1.13 1.75 1.13 2.95 0 4.23-2.56 5.16-5 5.44.39.34.74 1 .74 2.04v3.07c0 .3.2.64.76.53A11 11 0 0 0 12 1z"></path></svg><span>GitHub<br><em>@novafliex</em></span></a>
+            <a href="mailto:257399435@qq.com"><svg class="" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="1"></rect><path d="m2 5 10 8L22 5M2 19l7-7m13 7-7-7"></path></svg><span>E-Mail<br><em>257399435@qq.com</em></span></a>
+            <a href="/atom.xml"><svg class="" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19h.01M5 13a6 6 0 0 1 6 6M5 7a12 12 0 0 1 12 12"></path></svg><span>RSS<br><em>订阅博客</em></span></a>
           </nav>
-          <div class="coast-sidebar-bottom">
-            <section class="coast-mini-player" aria-label="音乐控制器">
-              <div class="coast-music-art">
-                <img
-                  src="/img/background_sea.png"
-                  width="1683"
-                  height="935"
-                  alt="风雪海岸"
-                  decoding="async"
-                /><button
-                  type="button"
-                  data-music-toggle=""
-                  aria-label="播放音乐"
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path d="m9 5 11 7-11 7z"></path>
-                  </svg>
-                </button>
-              </div>
-              <span class="music-loading" data-music-loading="" role="status"
-                ><span class="music-loading-wave" aria-hidden="true">∿∿∿</span
-                ><span>Loading</span></span
-              ><a class="coast-music-info" href="/music/" hidden=""
-                ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path
-                    d="M2 10v4M6 6v12M10 2v20M14 5v14M18 8v8M22 11v2"
-                  ></path></svg
-                ><span
-                  ><span data-music-artist=""></span
-                  ><span data-music-title=""></span></span
-              ></a>
-              <div
-                class="coast-progress"
-                role="progressbar"
-                aria-label="歌曲播放进度"
-                aria-valuemin="0"
-                aria-valuemax="100"
-                aria-valuenow="0"
-              >
-                <span data-music-progress=""></span>
-              </div>
-              <button
-                class="coast-music-retry"
-                type="button"
-                data-music-retry=""
-                hidden=""
-              >
-                Loading
-              </button>
-            </section>
-            <div class="coast-social">
-              <a href="https://github.com/novafliex" aria-label="GitHub"
-                ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path
-                    fill="currentColor"
-                    stroke="none"
-                    d="M12 1a11 11 0 0 0-3.48 21.44c.55.1.75-.24.75-.53v-2.1c-3.06.67-3.71-1.3-3.71-1.3-.5-1.27-1.22-1.61-1.22-1.61-1-.68.08-.67.08-.67 1.1.08 1.68 1.13 1.68 1.13.98 1.68 2.57 1.2 3.2.92.1-.72.39-1.2.7-1.48-2.44-.28-5-1.22-5-5.44 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.4.1-2.91 0 0 .93-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.42 3.02-1.13 3.02-1.13.6 1.51.22 2.63.1 2.91.7.77 1.13 1.75 1.13 2.95 0 4.23-2.56 5.16-5 5.44.39.34.74 1 .74 2.04v3.07c0 .3.2.64.76.53A11 11 0 0 0 12 1z"
-                  ></path></svg></a
-              ><a href="mailto:257399435@qq.com" aria-label="Email"
-                ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <rect x="2" y="4" width="20" height="16" rx="1"></rect>
-                  <path d="m2 5 10 8L22 5M2 19l7-7m13 7-7-7"></path></svg></a
-              ><button
-                type="button"
-                data-coast-theme=""
-                aria-label="切换阅读页明暗主题"
-              >
-                <span class="coast-theme-icons" aria-hidden="true"
-                  ><svg
-                    class="coast-theme-icon coast-theme-icon--moon"
-                    viewBox="0 0 24 24"
-                    focusable="false"
-                  >
-                    <path
-                      d="M21 14A9 9 0 0 1 10 3a9 9 0 1 0 11 11z"
-                    ></path></svg
-                  ><svg
-                    class="coast-theme-icon coast-theme-icon--sun"
-                    viewBox="0 0 24 24"
-                    focusable="false"
-                  >
-                    <circle cx="12" cy="12" r="4"></circle>
-                    <path
-                      d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"
-                    ></path></svg
-                ></span>
-              </button>
-            </div>
-          </div>
-        </aside>
-        <div class="coast-toolbar" role="group" aria-label="搜索、音乐和风雪">
-          <button
-            class="coast-search"
-            type="button"
-            data-coast-search=""
-            aria-label="搜索，Ctrl 或 Command K"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <circle cx="10.5" cy="10.5" r="7.5"></circle>
-              <path d="m16 16 5 5"></path>
-            </svg></button
-          ><span class="coast-toolbar-rule" aria-hidden="true"></span>
-          <a class="coast-now-playing" href="/music/"
-            ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path
-                d="M2 10v4M6 6v12M10 2v20M14 5v14M18 8v8M22 11v2"
-              ></path></svg
-            ><span data-music-summary="" aria-live="polite">Music</span></a
-          >
-          <button
-            class="coast-top-play"
-            type="button"
-            data-music-toggle=""
-            aria-label="播放音乐"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="m9 5 11 7-11 7z"></path>
-            </svg></button
-          ><span class="coast-toolbar-rule" aria-hidden="true"></span>
-          <button
-            class="coast-snow-toggle"
-            type="button"
-            data-coast-snow-toggle=""
-            role="switch"
-            aria-checked="false"
-            aria-label="风雪动画"
-          >
-            SNOW · OFF
-          </button>
-        </div>
+        </section>
+      </section>
 
-        <article class="nova-about-content">
-          <header class="nova-about-head">
-            <p class="nova-about-eyebrow"><i aria-hidden="true"></i></p>
-            <h1 id="nova-about-title">About</h1>
-            <p class="nova-about-subtitle">Code, notes, and music.</p>
-          </header>
 
-          <section class="nova-about-story" aria-label="个人简介">
-            <p>
-              Everyone gets tired and feels down, <br />but they can also fall
-              in love with life again because of a certain moment
-            </p>
-          </section>
+    </article></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
 
-          <section class="nova-about-editorial" aria-label="关于我">
-            <section class="nova-about-block">
-              <p class="nova-about-label">02 / <b>NOW</b></p>
-              <dl>
-                <div>
-                  <dt>
-                    <svg
-                      class=""
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      <path d="M4 12v-3m4 8V7m4 13V4m4 13V7m4 8v-6"></path>
-                    </svg>
-                  </dt>
-                  <dd>Go Backend<br /><span>Go · Gin · MySQL</span></dd>
-                </div>
-                <div>
-                  <dt>
-                    <svg
-                      class=""
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      <path d="M5 3h11l3 3v15H5z"></path>
-                      <path d="M16 3v4h4M8 11h8M8 15h8"></path>
-                    </svg>
-                  </dt>
-                  <dd>Music<br /><span>收藏的歌曲</span></dd>
-                </div>
-                <div>
-                  <dt>
-                    <svg
-                      class=""
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      <path
-                        d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21zM4 5.5v15"
-                      ></path>
-                    </svg>
-                  </dt>
-                  <dd>Reading<br /><span>阅读笔记</span></dd>
-                </div>
-              </dl>
-            </section>
-            <section class="nova-about-block">
-              <p class="nova-about-label">03 / <b>CONTACT</b></p>
-              <nav class="nova-about-links" aria-label="联系方式">
-                <a
-                  href="https://github.com/novafliex"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><svg
-                    class=""
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path
-                      fill="currentColor"
-                      stroke="none"
-                      d="M12 1a11 11 0 0 0-3.48 21.44c.55.1.75-.24.75-.53v-2.1c-3.06.67-3.71-1.3-3.71-1.3-.5-1.27-1.22-1.61-1.22-1.61-1-.68.08-.67.08-.67 1.1.08 1.68 1.13 1.68 1.13.98 1.68 2.57 1.2 3.2.92.1-.72.39-1.2.7-1.48-2.44-.28-5-1.22-5-5.44 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.4.1-2.91 0 0 .93-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.42 3.02-1.13 3.02-1.13.6 1.51.22 2.63.1 2.91.7.77 1.13 1.75 1.13 2.95 0 4.23-2.56 5.16-5 5.44.39.34.74 1 .74 2.04v3.07c0 .3.2.64.76.53A11 11 0 0 0 12 1z"
-                    ></path></svg
-                  ><span>GitHub<br /><em>@novafliex</em></span></a
-                >
-                <a href="mailto:257399435@qq.com"
-                  ><svg
-                    class=""
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <rect x="2" y="4" width="20" height="16" rx="1"></rect>
-                    <path d="m2 5 10 8L22 5M2 19l7-7m13 7-7-7"></path></svg
-                  ><span>E-Mail<br /><em>257399435@qq.com</em></span></a
-                >
-                <a href="/atom.xml"
-                  ><svg
-                    class=""
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path
-                      d="M5 19h.01M5 13a6 6 0 0 1 6 6M5 7a12 12 0 0 1 12 12"
-                    ></path></svg
-                  ><span>RSS<br /><em>订阅博客</em></span></a
-                >
-              </nav>
-            </section>
-          </section>
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
 
-          <section class="nova-about-comments">
-            <header>
-              <p class="nova-about-label">NIGHT MESSAGES</p>
-              <h2>留言</h2>
-            </header>
-            <div id="post-comment">
-              <div class="comment-head">
-                <div class="comment-headline">
-                  <i class="fas fa-comments fa-fw"></i><span> 评论</span>
-                </div>
-              </div>
-              <div class="comment-wrap">
-                <div><div id="waline-wrap"></div></div>
-              </div>
-            </div>
-          </section>
-        </article>
-      </main>
-    </div>
-    <div id="rightside">
-      <div id="rightside-config-hide">
-        <button id="darkmode" type="button" title="日间和夜间模式切换">
-          <i class="fas fa-adjust"></i>
-        </button>
-      </div>
-      <div id="rightside-config-show">
-        <button id="rightside-config" type="button" title="设置">
-          <i class="fas fa-cog fa-spin"></i></button
-        ><a id="to_comment" href="#post-comment" title="前往评论"
-          ><i class="fas fa-comments"></i></a
-        ><button id="go-up" type="button" title="回到顶部">
-          <span class="scroll-percent"></span><i class="fas fa-arrow-up"></i>
-        </button>
-      </div>
-    </div>
-    <div>
-      <script src="/js/utils.js?v=5.6.1"></script>
-      <script src="/js/main.js?v=5.6.1"></script>
-      <script
-        defer=""
-        src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"
-      ></script>
-      <div class="js-pjax">
-        <script>
-          (() => {
-            const parseViewBox = (viewBox) => {
-              if (!viewBox) return null;
-              const parts = viewBox
-                .trim()
-                .split(/[\s,]+/)
-                .map((n) => Number(n));
-              if (parts.length !== 4 || parts.some((n) => Number.isNaN(n)))
-                return null;
-              return parts;
-            };
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
 
-            const getSvgViewBox = (svg) => {
-              const attr = parseViewBox(svg.getAttribute("viewBox"));
-              if (attr) return attr;
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
 
-              // Fallback: use bbox to build a viewBox
-              try {
-                const bbox = svg.getBBox();
-                if (bbox && bbox.width && bbox.height)
-                  return [bbox.x, bbox.y, bbox.width, bbox.height];
-              } catch (e) {
-                // getBBox may fail on some edge cases; ignore
-              }
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
 
-              const w = Number(svg.getAttribute("width")) || 0;
-              const h = Number(svg.getAttribute("height")) || 0;
-              if (w > 0 && h > 0) return [0, 0, w, h];
-              return [0, 0, 100, 100];
-            };
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
 
-            const setSvgViewBox = (svg, vb) => {
-              svg.setAttribute(
-                "viewBox",
-                `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`,
-              );
-            };
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
 
-            const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.innerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
 
-            const openSvgInNewTab = ({ source, initViewBox }) => {
-              const getClonedSvg = () => {
-                if (typeof source === "string") {
-                  const template = document.createElement("template");
-                  template.innerHTML = source.trim();
-                  const svg = template.content.querySelector("svg");
-                  return svg ? svg.cloneNode(true) : null;
-                }
-                if (source && typeof source.cloneNode === "function") {
-                  return source.cloneNode(true);
-                }
-                return null;
-              };
-
-              const clone = getClonedSvg();
-              if (!clone) return;
-              if (initViewBox && initViewBox.length === 4) {
-                clone.setAttribute("viewBox", initViewBox.join(" "));
-              }
-              if (!clone.getAttribute("xmlns"))
-                clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-              if (
-                !clone.getAttribute("xmlns:xlink") &&
-                clone.innerHTML.includes("xlink:")
-              ) {
-                clone.setAttribute(
-                  "xmlns:xlink",
-                  "http://www.w3.org/1999/xlink",
-                );
-              }
-              // inject background to match current theme
-              const isDark =
-                document.documentElement.getAttribute("data-theme") === "dark";
-              const bg =
-                getComputedStyle(document.body).backgroundColor ||
-                (isDark ? "#1e1e1e" : "#ffffff");
-              if (!clone.style.background) clone.style.background = bg;
-
-              const serializer = new XMLSerializer();
-              const svgSource = serializer.serializeToString(clone);
-              const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
       <style>
         html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
         svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
       </style>
-      </head><body>${svgSource}</body></html>`;
-              const blob = new Blob([htmlSource], {
-                type: "text/html;charset=utf-8",
-              });
-              const url = URL.createObjectURL(blob);
-              window.open(url, "_blank", "noopener");
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
 
-              setTimeout(() => URL.revokeObjectURL(url), 5000);
-            };
+    setTimeout(() => URL.revokeObjectURL(url), 5000)
+  }
 
-            const attachMermaidViewerButton = (wrap) => {
-              let btn = wrap.querySelector(".mermaid-open-btn");
-              if (!btn) {
-                btn = document.createElement("button");
-                btn.type = "button";
-                btn.className = "mermaid-open-btn";
-                wrap.appendChild(btn);
-              }
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
 
-              btn.innerHTML =
-                '<i class="fa fa-search fa-fw" aria-hidden="true"></i>';
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
 
-              if (!btn.__mermaidViewerBound) {
-                btn.addEventListener("click", (e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  const svg =
-                    wrap.__mermaidOriginalSvg || wrap.querySelector("svg");
-                  if (!svg) return;
-                  const initViewBox = wrap.__mermaidInitViewBox;
-                  openSvgInNewTab({ source: svg, initViewBox });
-                });
-                btn.__mermaidViewerBound = true;
-              }
-            };
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
 
-            // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
-            const zoomAtPoint = (vb, factor, px, py) => {
-              const w = vb[2] * factor;
-              const h = vb[3] * factor;
-              const nx = px - (px - vb[0]) * factor;
-              const ny = py - (py - vb[1]) * factor;
-              return [nx, ny, w, h];
-            };
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
 
-            const initMermaidGestures = (wrap) => {
-              // Clean up previous event listeners and pending frames
-              if (wrap.__mermaidAbortController) {
-                wrap.__mermaidAbortController.abort();
-                if (wrap.__mermaidRafId)
-                  cancelAnimationFrame(wrap.__mermaidRafId);
-              }
-              const ac = new AbortController();
-              wrap.__mermaidAbortController = ac;
-              const svg = wrap.querySelector("svg");
-              if (!svg) return;
+  const initMermaidGestures = wrap => {
+    // Clean up previous event listeners and pending frames
+    if (wrap.__mermaidAbortController) {
+      wrap.__mermaidAbortController.abort()
+      if (wrap.__mermaidRafId) cancelAnimationFrame(wrap.__mermaidRafId)
+    }
+    const ac = new AbortController()
+    wrap.__mermaidAbortController = ac
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
 
-              // Ensure viewBox exists so gestures always work
-              const initVb = getSvgViewBox(svg);
-              wrap.__mermaidInitViewBox = initVb;
-              wrap.__mermaidCurViewBox = initVb.slice();
-              setSvgViewBox(svg, initVb);
-              // Disable default gestures to prevent scroll chaining and pinch-zoom penetration in Chrome
-              svg.style.touchAction = "none";
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+    // Disable default gestures to prevent scroll chaining and pinch-zoom penetration in Chrome
+    svg.style.touchAction = 'none'
 
-              // Cache BoundingClientRect, throttled on scroll to reduce reflow
-              let cachedRect = svg.getBoundingClientRect();
-              let rectDirty = false;
-              const markRectDirty = () => {
-                rectDirty = true;
-              };
-              window.addEventListener("resize", markRectDirty, {
-                signal: ac.signal,
-              });
-              window.addEventListener("scroll", markRectDirty, {
-                signal: ac.signal,
-                capture: true,
-              });
-              const getRect = () => {
-                if (rectDirty) {
-                  cachedRect = svg.getBoundingClientRect();
-                  rectDirty = false;
-                }
-                return cachedRect;
-              };
+    // Cache BoundingClientRect, throttled on scroll to reduce reflow
+    let cachedRect = svg.getBoundingClientRect()
+    let rectDirty = false
+    const markRectDirty = () => { rectDirty = true }
+    window.addEventListener('resize', markRectDirty, { signal: ac.signal })
+    window.addEventListener('scroll', markRectDirty, { signal: ac.signal, capture: true })
+    const getRect = () => {
+      if (rectDirty) {
+        cachedRect = svg.getBoundingClientRect()
+        rectDirty = false
+      }
+      return cachedRect
+    }
 
-              // Precompute clamp bounds from initial viewBox
-              const minW = initVb[2] * 0.1;
-              const maxW = initVb[2] * 10;
-              const minH = initVb[3] * 0.1;
-              const maxH = initVb[3] * 10;
-              const clampVb = (vb) => {
-                const out = vb.slice();
-                out[2] = clamp(out[2], minW, maxW);
-                out[3] = clamp(out[3], minH, maxH);
-                return out;
-              };
+    // Precompute clamp bounds from initial viewBox
+    const minW = initVb[2] * 0.1
+    const maxW = initVb[2] * 10
+    const minH = initVb[3] * 0.1
+    const maxH = initVb[3] * 10
+    const clampVb = vb => {
+      const out = vb.slice()
+      out[2] = clamp(out[2], minW, maxW)
+      out[3] = clamp(out[3], minH, maxH)
+      return out
+    }
 
-              // Throttle DOM updates using requestAnimationFrame
-              let pendingVb = null;
-              let rafId = null;
-              const applyVb = () => {
-                if (pendingVb) {
-                  wrap.__mermaidCurViewBox = pendingVb;
-                  setSvgViewBox(svg, pendingVb);
-                  pendingVb = null;
-                }
-                rafId = null;
-                wrap.__mermaidRafId = null;
-              };
-              const setCurVb = (vb) => {
-                pendingVb = clampVb(vb);
-                if (!rafId) {
-                  rafId = requestAnimationFrame(applyVb);
-                  wrap.__mermaidRafId = rafId;
-                }
-              };
+    // Throttle DOM updates using requestAnimationFrame
+    let pendingVb = null
+    let rafId = null
+    const applyVb = () => {
+      if (pendingVb) {
+        wrap.__mermaidCurViewBox = pendingVb
+        setSvgViewBox(svg, pendingVb)
+        pendingVb = null
+      }
+      rafId = null
+      wrap.__mermaidRafId = null
+    }
+    const setCurVb = vb => {
+      pendingVb = clampVb(vb)
+      if (!rafId) {
+        rafId = requestAnimationFrame(applyVb)
+        wrap.__mermaidRafId = rafId
+      }
+    }
 
-              const state = {
-                pointers: new Map(),
-                startVb: null,
-                startDist: 0,
-                lastPointerX: 0,
-                lastPointerY: 0,
-              };
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      lastPointerX: 0,
+      lastPointerY: 0
+    }
 
-              const onPointerDown = (e) => {
-                if (e.pointerType === "mouse" && e.button !== 0) return;
-                svg.setPointerCapture(e.pointerId);
-                const curVb = wrap.__mermaidCurViewBox;
-                state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-                if (state.pointers.size === 1) {
-                  state.startVb = curVb.slice();
-                  state.lastPointerX = e.clientX;
-                  state.lastPointerY = e.clientY;
-                } else if (state.pointers.size === 2) {
-                  const pts = [...state.pointers.values()];
-                  const dx = pts[0].x - pts[1].x;
-                  const dy = pts[0].y - pts[1].y;
-                  state.startDist = Math.hypot(dx, dy);
-                  state.startVb = curVb.slice();
-                }
-              };
+    const onPointerDown = e => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      const curVb = wrap.__mermaidCurViewBox
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      if (state.pointers.size === 1) {
+        state.startVb = curVb.slice()
+        state.lastPointerX = e.clientX
+        state.lastPointerY = e.clientY
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = curVb.slice()
+      }
+    }
 
-              const onPointerMove = (e) => {
-                if (!state.pointers.has(e.pointerId)) return;
-                state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-                const curVb = wrap.__mermaidCurViewBox;
-                const rect = getRect();
-                if (state.pointers.size === 1 && state.startVb) {
-                  const p = state.pointers.values().next().value;
-                  const dxClient = p.x - state.lastPointerX;
-                  const dyClient = p.y - state.lastPointerY;
-                  state.lastPointerX = p.x;
-                  state.lastPointerY = p.y;
-                  const dx = dxClient * (curVb[2] / rect.width);
-                  const dy = dyClient * (curVb[3] / rect.height);
-                  setCurVb([curVb[0] - dx, curVb[1] - dy, curVb[2], curVb[3]]);
-                  return;
-                }
-                if (
-                  state.pointers.size === 2 &&
-                  state.startVb &&
-                  state.startDist > 0
-                ) {
-                  const pts = [...state.pointers.values()];
-                  const dx = pts[0].x - pts[1].x;
-                  const dy = pts[0].y - pts[1].y;
-                  const dist = Math.hypot(dx, dy);
-                  if (!dist) return;
-                  const factor = state.startDist / dist;
-                  const cx = (pts[0].x + pts[1].x) / 2;
-                  const cy = (pts[0].y + pts[1].y) / 2;
-                  const px =
-                    curVb[0] + (cx - rect.left) * (curVb[2] / rect.width);
-                  const py =
-                    curVb[1] + (cy - rect.top) * (curVb[3] / rect.height);
-                  setCurVb(zoomAtPoint(state.startVb, factor, px, py));
-                }
-              };
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = state.pointers.values().next().value
+        const dxClient = p.x - state.lastPointerX
+        const dyClient = p.y - state.lastPointerY
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+        const dx = dxClient * (curVb[2] / rect.width)
+        const dy = dyClient * (curVb[3] / rect.height)
+        setCurVb([curVb[0] - dx, curVb[1] - dy, curVb[2], curVb[3]])
+        return
+      }
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const px = curVb[0] + (cx - rect.left) * (curVb[2] / rect.width)
+        const py = curVb[1] + (cy - rect.top) * (curVb[3] / rect.height)
+        setCurVb(zoomAtPoint(state.startVb, factor, px, py))
+      }
+    }
 
-              const onPointerUpOrCancel = (e) => {
-                // Release PointerCapture to avoid event capture anomalies
-                if (
-                  svg.hasPointerCapture &&
-                  svg.hasPointerCapture(e.pointerId)
-                ) {
-                  svg.releasePointerCapture(e.pointerId);
-                }
-                state.pointers.delete(e.pointerId);
-                if (state.pointers.size === 0) {
-                  state.startVb = null;
-                  state.startDist = 0;
-                } else if (state.pointers.size === 1) {
-                  const p = state.pointers.values().next().value;
-                  state.lastPointerX = p.x;
-                  state.lastPointerY = p.y;
-                }
-              };
+    const onPointerUpOrCancel = e => {
+      // Release PointerCapture to avoid event capture anomalies
+      if (svg.hasPointerCapture && svg.hasPointerCapture(e.pointerId)) {
+        svg.releasePointerCapture(e.pointerId)
+      }
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+      } else if (state.pointers.size === 1) {
+        const p = state.pointers.values().next().value
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+      }
+    }
 
-              const onWheel = (e) => {
-                // Prevent event bubbling from triggering external scroll
-                e.preventDefault();
-                e.stopPropagation();
-                // Normalize deltaY across deltaMode (Chrome uses pixels, Safari uses lines)
-                let delta = e.deltaY;
-                if (e.deltaMode === 1) delta *= 16;
-                else if (e.deltaMode === 2) delta *= 400;
+    const onWheel = e => {
+      // Prevent event bubbling from triggering external scroll
+      e.preventDefault()
+      e.stopPropagation()
+      // Normalize deltaY across deltaMode (Chrome uses pixels, Safari uses lines)
+      let delta = e.deltaY
+      if (e.deltaMode === 1) delta *= 16
+      else if (e.deltaMode === 2) delta *= 400
 
-                // Continuous zoom factor: smoother than fixed 1.1/0.9 steps
-                const zoomFactor = Math.pow(1.001, delta);
+      // Continuous zoom factor: smoother than fixed 1.1/0.9 steps
+      const zoomFactor = Math.pow(1.001, delta)
 
-                const curVb = wrap.__mermaidCurViewBox;
-                const rect = getRect();
-                const px =
-                  curVb[0] + (e.clientX - rect.left) * (curVb[2] / rect.width);
-                const py =
-                  curVb[1] + (e.clientY - rect.top) * (curVb[3] / rect.height);
-                setCurVb(zoomAtPoint(curVb, zoomFactor, px, py));
-              };
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      const px = curVb[0] + (e.clientX - rect.left) * (curVb[2] / rect.width)
+      const py = curVb[1] + (e.clientY - rect.top) * (curVb[3] / rect.height)
+      setCurVb(zoomAtPoint(curVb, zoomFactor, px, py))
+    }
 
-              const onDblClick = () => {
-                const init = wrap.__mermaidInitViewBox;
-                if (init) setCurVb(init);
-              };
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (init) setCurVb(init)
+    }
 
-              svg.addEventListener("pointerdown", onPointerDown, {
-                signal: ac.signal,
-              });
-              svg.addEventListener("pointermove", onPointerMove, {
-                signal: ac.signal,
-              });
-              svg.addEventListener("pointerup", onPointerUpOrCancel, {
-                signal: ac.signal,
-              });
-              svg.addEventListener("pointercancel", onPointerUpOrCancel, {
-                signal: ac.signal,
-              });
-              svg.addEventListener("wheel", onWheel, {
-                passive: false,
-                signal: ac.signal,
-              });
-              svg.addEventListener("dblclick", onDblClick, {
-                signal: ac.signal,
-              });
-            };
+    svg.addEventListener('pointerdown', onPointerDown, { signal: ac.signal })
+    svg.addEventListener('pointermove', onPointerMove, { signal: ac.signal })
+    svg.addEventListener('pointerup', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('pointercancel', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('wheel', onWheel, { passive: false, signal: ac.signal })
+    svg.addEventListener('dblclick', onDblClick, { signal: ac.signal })
+  }
 
-            const runMermaid = (ele) => {
-              window.loadMermaid = true;
-              const theme =
-                document.documentElement.getAttribute("data-theme") === "dark"
-                  ? "dark"
-                  : "default";
-              ele.forEach((item, index) => {
-                const mermaidSrc = item.firstElementChild;
-                // Clean up event listeners before removing old SVG
-                if (item.__mermaidAbortController) {
-                  item.__mermaidAbortController.abort();
-                }
-                const oldSvg = item.querySelector("svg");
-                if (oldSvg) oldSvg.remove();
-                let config = {};
-                try {
-                  config = mermaidSrc.dataset.config
-                    ? JSON.parse(mermaidSrc.dataset.config)
-                    : {};
-                } catch (e) {
-                  console.warn("[mermaid] failed to parse dataset.config:", e);
-                }
-                if (!config.theme) {
-                  config.theme = theme;
-                }
-                const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`;
-                const mermaidID = `mermaid-${index}`;
-                const mermaidDefinition =
-                  mermaidThemeConfig + mermaidSrc.textContent;
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      // Clean up event listeners before removing old SVG
+      if (item.__mermaidAbortController) {
+        item.__mermaidAbortController.abort()
+      }
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      let config = {}
+      try {
+        config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      } catch (e) {
+        console.warn('[mermaid] failed to parse dataset.config:', e)
+      }
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
 
-                const renderMermaid = (svg) => {
-                  mermaidSrc.insertAdjacentHTML("afterend", svg);
-                  if (true) initMermaidGestures(item);
-                  item.__mermaidOriginalSvg = svg;
-                  if (true) attachMermaidViewerButton(item);
-                };
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
 
-                const handleError = (err) => {
-                  console.error(
-                    `[mermaid] render failed for block #${index}:`,
-                    err,
-                  );
-                  const errorEl = document.createElement("div");
-                  errorEl.className = "mermaid-error";
-                  errorEl.textContent = `Mermaid render error: ${err.message || err}`;
-                  mermaidSrc.insertAdjacentElement("afterend", errorEl);
-                };
+      const handleError = err => {
+        console.error(`[mermaid] render failed for block #${index}:`, err)
+        const errorEl = document.createElement('div')
+        errorEl.className = 'mermaid-error'
+        errorEl.textContent = `Mermaid render error: ${err.message || err}`
+        mermaidSrc.insertAdjacentElement('afterend', errorEl)
+      }
 
-                try {
-                  const renderFn = mermaid.render(mermaidID, mermaidDefinition);
-                  // mermaid v9 and v10 compatibility
-                  if (typeof renderFn === "string") {
-                    renderMermaid(renderFn);
-                  } else {
-                    renderFn
-                      .then(({ svg }) => renderMermaid(svg))
-                      .catch(handleError);
-                  }
-                } catch (err) {
-                  handleError(err);
-                }
-              });
-            };
+      try {
+        const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+        // mermaid v9 and v10 compatibility
+        if (typeof renderFn === 'string') {
+          renderMermaid(renderFn)
+        } else {
+          renderFn.then(({ svg }) => renderMermaid(svg)).catch(handleError)
+        }
+      } catch (err) {
+        handleError(err)
+      }
+    })
+  }
 
-            const codeToMermaid = ($article) => {
-              const codeMermaidEle =
-                $article.querySelectorAll("pre > code.mermaid");
-              if (codeMermaidEle.length === 0) return;
+  const codeToMermaid = $article => {
+    const codeMermaidEle = $article.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
 
-              codeMermaidEle.forEach((ele) => {
-                const preEle = document.createElement("pre");
-                preEle.className = "mermaid-src";
-                preEle.hidden = true;
-                preEle.textContent = ele.textContent;
-                const newEle = document.createElement("div");
-                newEle.className = "mermaid-wrap";
-                newEle.appendChild(preEle);
-                ele.parentNode.replaceWith(newEle);
-              });
-            };
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
 
-            const loadMermaid = () => {
-              const $article = document.getElementById("article-container");
-              if (!$article) return;
+  const loadMermaid = () => {
+    const $article = document.getElementById('article-container')
+    if (!$article) return
 
-              if (true) codeToMermaid($article);
-              const $mermaid = $article.querySelectorAll(".mermaid-wrap");
-              if ($mermaid.length === 0) return;
+    if (true) codeToMermaid($article)
+    const $mermaid = $article.querySelectorAll('.mermaid-wrap')
+    if ($mermaid.length === 0) return
 
-              const runMermaidFn = () => runMermaid($mermaid);
-              btf.addGlobalFn("themeChange", runMermaidFn, "mermaid");
-              window.loadMermaid
-                ? runMermaidFn()
-                : btf
-                    .getScript(
-                      "https://cdn.jsdelivr.net/npm/mermaid@11.16.0/dist/mermaid.min.js",
-                    )
-                    .then(runMermaidFn);
-            };
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.16.0/dist/mermaid.min.js').then(runMermaidFn)
+  }
 
-            btf.addGlobalFn("encrypt", loadMermaid, "mermaid");
-            window.pjax
-              ? loadMermaid()
-              : document.addEventListener("DOMContentLoaded", loadMermaid);
-          })();
-        </script>
-        <script>
-          (() => {
-            let initFn = window.walineFn || null;
-            const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === "shuoshuo";
-            const option = null;
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261005-nav-about-v25">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261005-nav-about-v25">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261005-nav-about-v25">
+<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261005-nav-about-v25">
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261005-nav-about-v25"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/nova-home.js?v=20261005-nav-about-v25"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
-            const destroyWaline = (ele) => ele.destroy();
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"]):not([data-fancybox])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
 
-            const initWaline = (
-              Fn,
-              el = document,
-              path = window.location.pathname,
-            ) => {
-              const waline = Fn({
-                el: el.querySelector("#waline-wrap"),
-                serverURL: "https://waline527.vercel.app",
-                pageview: true,
-                dark: 'html[data-theme="dark"]',
-                comment: false,
-                ...option,
-                path: isShuoshuo ? path : (option && option.path) || path,
-              });
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
 
-              if (isShuoshuo) {
-                window.shuoshuoComment.destroyWaline = () => {
-                  destroyWaline(waline);
-                  if (el.children.length) {
-                    el.innerHTML = "";
-                    el.classList.add("no-comment");
-                  }
-                };
-              }
-            };
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
 
-            const loadWaline = (el, path) => {
-              if (initFn) initWaline(initFn, el, path);
-              else {
-                btf
-                  .getCSS(
-                    "https://cdn.jsdelivr.net/npm/@waline/client@3.15.2/dist/waline.min.css",
-                  )
-                  .then(
-                    () =>
-                      import("https://cdn.jsdelivr.net/npm/@waline/client@3.15.2/dist/waline.min.js"),
-                  )
-                  .then(({ init }) => {
-                    initFn = init || Waline.init;
-                    initWaline(initFn, el, path);
-                    window.walineFn = initFn;
-                  });
-              }
-            };
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
 
-            if (isShuoshuo) {
-              "Waline" === "Waline"
-                ? (window.shuoshuoComment = { loadComment: loadWaline })
-                : (window.loadOtherComment = loadWaline);
-              return;
-            }
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
 
-            if ("Waline" === "Waline" || !false) {
-              if (false)
-                btf.loadComment(
-                  document.getElementById("waline-wrap"),
-                  loadWaline,
-                );
-              else setTimeout(loadWaline, 0);
-            } else {
-              window.loadOtherComment = loadWaline;
-            }
-          })();
-        </script>
-        <link
-          rel="stylesheet"
-          href="/rose-galaxy/css/tokens.css?v=20261005-nav-about-v25"
-        />
-        <link
-          rel="stylesheet"
-          href="/rose-galaxy/css/nova-fonts.css?v=20261005-nav-about-v25"
-        />
-        <link
-          rel="stylesheet"
-          href="/rose-galaxy/css/coast-home.css?v=20261005-nav-about-v25"
-        />
-        <link
-          rel="stylesheet"
-          href="/rose-galaxy/css/about-page.css?v=20261005-nav-about-v25"
-        />
-        <script
-          defer=""
-          data-pjax=""
-          src="/rose-galaxy/js/home-snow.js?v=20261005-nav-about-v25"
-        ></script>
-        <script
-          defer=""
-          data-pjax=""
-          src="/rose-galaxy/js/nova-home.js?v=20261005-nav-about-v25"
-        ></script>
-      </div>
-      <script
-        defer=""
-        src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"
-      ></script>
-      <script
-        defer=""
-        src="/rose-galaxy/js/music-controller.js?v=20261004-global-audio-v1"
-      ></script>
-      <script
-        defer=""
-        src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"
-      ></script>
-      <script
-        src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"
-        defer="defer"
-      ></script>
-      <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const pjaxSelectors = [
-            "head > title",
-            "#config-diff",
-            "#body-wrap",
-            "#rightside-config-hide",
-            "#rightside-config-show",
-            ".js-pjax",
-          ];
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      if (!item.parentNode) return
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || ''
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
 
-          window.pjax = new Pjax({
-            elements: 'a:not([target="_blank"]):not([data-fancybox])',
-            selectors: pjaxSelectors,
-            cacheBust: false,
-            analytics: false,
-            scrollRestoration: false,
-          });
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
 
-          const triggerPjaxFn = (val) => {
-            if (!val) return;
-            Object.values(val).forEach((fn) => {
-              try {
-                fn();
-              } catch (err) {
-                console.debug("Pjax callback failed:", err);
-              }
-            });
-          };
-
-          document.addEventListener("pjax:send", () => {
-            // removeEventListener
-            btf.removeGlobalFnEvent("pjaxSendOnce");
-            btf.removeGlobalFnEvent("themeChange");
-
-            // reset readmode
-            const $bodyClassList = document.body.classList;
-            if ($bodyClassList.contains("read-mode"))
-              $bodyClassList.remove("read-mode");
-
-            triggerPjaxFn(window.globalFn.pjaxSend);
-          });
-
-          document.addEventListener("pjax:complete", () => {
-            btf.removeGlobalFnEvent("pjaxCompleteOnce");
-            document.querySelectorAll("script[data-pjax]").forEach((item) => {
-              if (!item.parentNode) return;
-              const newScript = document.createElement("script");
-              const content = item.text || item.textContent || "";
-              Array.from(item.attributes).forEach((attr) =>
-                newScript.setAttribute(attr.name, attr.value),
-              );
-              newScript.appendChild(document.createTextNode(content));
-              item.parentNode.replaceChild(newScript, item);
-            });
-
-            triggerPjaxFn(window.globalFn.pjaxComplete);
-          });
-
-          document.addEventListener("pjax:error", (e) => {
-            const responseURL = e.request && e.request.responseURL;
-            if (e.request && e.request.status === 404) {
-              true
-                ? pjax.loadUrl("/404")
-                : responseURL && (window.location.href = responseURL);
-            } else if (responseURL) {
-              window.location.href = responseURL;
-            }
-          });
-        });
-      </script>
-      <script
-        async=""
-        data-pjax=""
-        src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
-      ></script>
-      <div id="local-search">
-        <div class="search-dialog">
-          <nav class="search-nav">
-            <span class="search-dialog-title">搜索</span
-            ><i
-              class="fas fa-spinner fa-pulse"
-              id="loading-status"
-              hidden="hidden"
-            ></i
-            ><button
-              class="search-close-button"
-              type="button"
-              aria-label="关闭搜索"
-            >
-              <i class="fas fa-times" aria-hidden="true"></i>
-            </button>
-          </nav>
-          <div class="text-center" id="loading-database">
-            <i class="fas fa-spinner fa-pulse"></i><span> 数据加载中</span>
-          </div>
-          <div class="local-search-input">
-            <label class="sr-only" for="global-search-input">搜索文章</label
-            ><input
-              placeholder="Search..."
-              type="text"
-              id="global-search-input"
-            />
-          </div>
-          <hr />
-          <div id="local-search-results"></div>
-          <div
-            class="ais-Pagination"
-            id="local-search-pagination"
-            style="display: none"
-          >
-            <ul class="ais-Pagination-list"></ul>
-          </div>
-          <div id="local-search-stats"></div>
-        </div>
-        <div id="search-mask"></div>
-        <script defer="" src="/js/search/local-search.js?v=5.6.1"></script>
-      </div>
-    </div>
-  </body>
-</html>
+  document.addEventListener('pjax:error', e => {
+    const responseURL = e.request && e.request.responseURL
+    if (e.request && e.request.status === 404) {
+      true
+        ? pjax.loadUrl('/404')
+        : responseURL && (window.location.href = responseURL)
+    } else if (responseURL) {
+      window.location.href = responseURL
+    }
+  })
+})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button" type="button" aria-label="关闭搜索"><i class="fas fa-times" aria-hidden="true"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><label class="sr-only" for="global-search-input">搜索文章</label><input placeholder="Search..." type="text" id="global-search-input"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script defer="" src="/js/search/local-search.js?v=5.6.1"></script></div></div></body></html>

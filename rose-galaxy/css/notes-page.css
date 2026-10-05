@@ -1,11 +1,11 @@
-body.nova-notes-route{overflow-x:clip;background:#0b1721;color:var(--coast-ink)}
+body.nova-notes-route{overflow-x:clip;background:var(--coast-surface);color:var(--coast-ink)}
 body.nova-notes-route #body-wrap{background:transparent}
 body.nova-notes-route #sidebar,body.nova-notes-route #rightside,body.nova-notes-route #web_bg{display:none!important}
 .nova-notes-shell{position:relative;isolation:isolate;min-height:100svh;font:400 14px/1.5 var(--coast-font);color:var(--coast-ink)}
 .nova-notes-shell *{box-sizing:border-box}.nova-notes-shell a{color:inherit;text-decoration:none}
 .nova-notes-shell .coast-background,.nova-notes-shell .coast-shade,.nova-notes-shell .coast-snow{position:fixed}
-.nova-notes-shell .coast-background{filter:saturate(.87) brightness(.88);object-position:center}
-.nova-notes-shell .coast-shade{background:linear-gradient(90deg,rgba(8,20,30,.28),rgba(13,28,40,.11) 48%,rgba(8,20,30,.24)),linear-gradient(180deg,rgba(10,24,35,.08),rgba(6,16,24,.3))}
+.nova-notes-shell .coast-background{object-position:center}
+.nova-notes-shell .coast-shade{background:var(--coast-shade)}
 .nova-notes-shell .coast-toolbar{position:fixed;z-index:8;opacity:.9}
 .nova-notes-shell .coast-brand-name{margin:0 0 12px;color:#c7cfd6;font:400 40px/1.4 var(--coast-display);letter-spacing:-.025em}
 .nova-notes-shell .coast-brand-name a{color:inherit}

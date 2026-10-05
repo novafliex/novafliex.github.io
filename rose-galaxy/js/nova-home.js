@@ -15,7 +15,13 @@
     }
     const stopSnow = window.__fliexSnow.mount(root)
     on(root.querySelector('[data-coast-search]'), 'click', () => window.__fliexOpenSearch?.())
-    on(root.querySelector('[data-coast-theme]'), 'click', () => document.getElementById('darkmode')?.click())
+    on(root.querySelector('[data-coast-theme]'), 'click', () => {
+      const dark = document.documentElement.getAttribute('data-theme') === 'dark'
+      if (window.btf?.activateDarkMode && window.btf?.activateLightMode) {
+        if (dark) window.btf.activateLightMode(); else window.btf.activateDarkMode()
+        window.btf.saveToLocal?.set('theme', dark ? 'light' : 'dark', 2)
+      } else document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark')
+    })
     const renderMusic = () => {
       const state = window.__fliexMusic?.snapshot()
       if (!state) return

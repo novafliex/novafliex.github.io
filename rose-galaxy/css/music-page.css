@@ -4,8 +4,8 @@ body.nova-music-route :is(#page-header,#web_bg,#rightside,#footer){display:none!
 body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:0}
 .coast-home.coast-music-shell{height:auto;min-height:100svh;overflow:clip}
 .coast-music-shell :is(.coast-background,.coast-shade,.coast-snow){position:fixed}
-.coast-music-shell .coast-background{object-position:center;filter:saturate(.88) brightness(.94)}
-.coast-music-shell .coast-shade{background:rgba(20,37,51,.08)}
+.coast-music-shell .coast-background{object-position:center}
+.coast-music-shell .coast-shade{background:var(--coast-shade)}
 .coast-music-shell .coast-sidebar{position:fixed;z-index:5}
 .coast-brand-name{margin:0 0 12px;color:#c7cfd6;font:400 40px/1.4 var(--coast-display);letter-spacing:-.025em}
 .coast-music-shell .coast-toolbar{position:fixed;z-index:6;gap:18px;color:rgba(184,196,206,.78)}
@@ -16,9 +16,9 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
 .music-sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .nova-music-page{position:relative;display:grid;grid-template-columns:minmax(0,1.16fr) minmax(0,1fr) minmax(0,1.1fr);gap:4.4vw;margin-left:calc(var(--coast-panel-x) + max(var(--coast-panel-width),180px) + 3.6vw);padding:14vh 1.5vw 8vh 0;min-height:100svh;color:rgba(221,233,243,.78)}
 .sea-player{position:relative;z-index:2;min-width:0;width:88%;align-self:start}
-.sea-art{position:relative;width:88%;aspect-ratio:1;margin-bottom:20px;isolation:isolate}
-.nova-music-current-cover{display:block;width:100%;height:100%;object-fit:cover;border:1px solid rgba(209,229,243,.16);border-radius:7px;filter:saturate(.56) brightness(.82);transition:filter .6s ease}
-.sea-art::after{content:"";position:absolute;inset:0;border-radius:7px;background:rgba(59,86,109,.16);mix-blend-mode:color;pointer-events:none;transition:opacity .6s ease}
+.sea-art{position:relative;width:88%;aspect-ratio:1;margin-bottom:20px;padding:4px;box-sizing:border-box;isolation:isolate;border:1px solid rgba(211,229,241,.13);border-radius:9px;background:rgba(187,211,226,.06);box-shadow:0 10px 28px rgba(11,27,40,.16),inset 0 0 18px rgba(201,221,234,.06)}
+.nova-music-current-cover{display:block;width:100%;height:100%;object-fit:cover;border:0;border-radius:6px;filter:saturate(.5) brightness(.8) blur(.1px);transition:filter .6s ease}
+.sea-art::after{content:"";position:absolute;inset:4px;border-radius:6px;background:linear-gradient(135deg,rgba(201,222,235,.12),rgba(34,59,77,.12));mix-blend-mode:screen;pointer-events:none;transition:opacity .6s ease}
 .sea-art:hover .nova-music-current-cover,.sea-player:focus-within .nova-music-current-cover{filter:saturate(.78) brightness(.9)}
 .sea-art:hover::after,.sea-player:focus-within .sea-art::after{opacity:.45}
 .sea-song-heading{display:flex;align-items:center;gap:10px}
@@ -32,9 +32,20 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
 .nova-music-progress-input{display:block;width:100%;height:2px;appearance:none;background:linear-gradient(90deg,rgba(195,219,235,.7) var(--music-progress,0%),rgba(191,215,233,.15) var(--music-progress,0%));border:0;border-radius:1px;cursor:pointer}
 .nova-music-progress-input::-webkit-slider-thumb{appearance:none;width:7px;height:7px;border-radius:50%;background:#bbcfdd}
 .nova-music-time{display:flex;justify-content:space-between;margin:7px 0 2px;color:rgba(178,200,216,.58);font-size:10px}
-.nova-music-controls{display:flex;justify-content:center;align-items:center;gap:23px;margin:4px 0 6px}
-.nova-music-controls button{width:32px;height:32px;color:rgba(197,217,232,.78);font-size:19px}
-.nova-music-controls .nova-music-toggle{width:40px;height:40px;border:0;border-radius:0;background:transparent;box-shadow:none;font-size:23px}
+.nova-music-controls{display:flex;justify-content:space-between;align-items:center;gap:12px;width:78%;max-width:300px;margin:12px auto 8px}
+.nova-music-controls button{position:relative;display:grid;place-items:center;flex:0 0 30px;width:30px;height:36px;padding:0;border:0;background:transparent;color:rgba(203,217,229,.82);opacity:.88}
+.nova-music-controls svg{display:block;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
+.nova-music-controls .music-icon-solid{fill:currentColor;stroke:none}
+.nova-music-controls .nova-music-toggle{flex-basis:34px;width:34px;height:34px;border:1px solid rgba(208,224,235,.12);border-radius:50%;background:rgba(155,181,204,.32);box-shadow:inset 0 1px 8px rgba(214,230,242,.08),0 2px 14px rgba(17,33,47,.12);color:#e2ebf2;opacity:1;backdrop-filter:blur(8px)}
+.nova-music-controls .nova-music-toggle svg{width:17px;height:17px}
+.nova-music-controls .music-icon-pause{display:none}
+.is-playing .nova-music-controls .music-icon-play{display:none}
+.is-playing .nova-music-controls .music-icon-pause{display:block}
+.music-repeat-one{display:none;position:absolute;inset:0;place-items:center;font-size:8px;line-height:1}
+.is-single .music-repeat-one{display:grid}
+.nova-music-controls [data-music-shuffle][aria-pressed=true]{color:#dce7ef;background:transparent;box-shadow:none;opacity:1}
+.nova-music-controls [data-music-shuffle][aria-pressed=true]::after{content:"";position:absolute;bottom:2px;width:10px;height:1px;background:rgba(181,204,222,.65)}
+@media(max-width:560px){.nova-music-controls{width:84%;max-width:280px}}
 .sea-secondary-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:3px;color:rgba(166,189,206,.48)}
 .sea-secondary-controls button{font-size:16px}
 .sea-volume{display:flex;align-items:center;gap:8px;margin:0;font-size:10px}
@@ -46,12 +57,12 @@ body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:
 /* A six-line reading window, centered on the active lyric. */
 .sea-lyrics{--lyric-height:clamp(330px,54vh,440px);position:relative;align-self:start;margin-top:7vh;height:var(--lyric-height);min-width:0;overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;mask-image:linear-gradient(rgba(0,0,0,.65),#000 30%,#000 70%,rgba(0,0,0,.65));-webkit-mask-image:linear-gradient(rgba(0,0,0,.65),#000 30%,#000 70%,rgba(0,0,0,.65))}
 .sea-lyrics-lines{padding:calc(var(--lyric-height)/2 - 17px) 0}
-.sea-lyrics-lines p{margin:0 0 28px;padding:0;color:rgba(220,229,235,.42);font:400 19px/1.8 "Noto Serif SC","Source Han Serif SC","Songti SC",serif;opacity:1;text-shadow:0 1px 10px rgba(0,0,0,.2);transform-origin:left center;transition:color .4s ease,opacity .4s ease,transform .4s ease,font-size .4s ease}
+.sea-lyrics-lines p{margin:0 0 34px;padding:0;color:rgba(220,229,235,.5);font:400 19px/1.95 "Noto Serif SC","Source Han Serif SC","Songti SC",serif;opacity:1;text-shadow:0 1px 10px rgba(0,0,0,.2);transform-origin:left center;transition:color .4s ease,opacity .4s ease,transform .4s ease,font-size .4s ease}
 .sea-lyrics-lines .lyric-line{min-height:45px;line-height:1.8}
 .sea-lyrics-lines p:empty{min-height:24px;margin-bottom:16px}
-.sea-lyrics-lines p.is-distant{color:rgba(220,229,235,.28)}
-.sea-lyrics-lines p.is-near{color:rgba(224,232,237,.58)}
-.sea-lyrics-lines p.is-active{opacity:1;color:rgba(244,247,249,.96);font-size:25px;font-weight:500;transform:translateY(-1px) scale(1.02);text-shadow:0 2px 14px rgba(0,0,0,.46),0 0 24px rgba(190,210,222,.08)}
+.sea-lyrics-lines p.is-distant{color:rgba(220,229,235,.32)}
+.sea-lyrics-lines p.is-near{color:rgba(224,232,237,.66)}
+.sea-lyrics-lines p.is-active{opacity:1;color:rgba(248,251,252,.98);font-size:26px;font-weight:500;transform:translateY(-1px) scale(1.025);text-shadow:0 2px 14px rgba(0,0,0,.46),0 0 24px rgba(190,210,222,.12)}
 .sea-lyrics-lines .sea-lyrics-empty{font-size:13px;line-height:1.8;opacity:.46}
 .sea-lyrics-lines .sea-lyrics-empty small{font-size:10px}
 .sea-lyrics-lines .sea-lyrics-status{font-size:10px;opacity:.4}

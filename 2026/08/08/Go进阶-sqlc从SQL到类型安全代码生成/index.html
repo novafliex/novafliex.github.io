@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Go 进阶：sqlc 从 SQL 到类型安全代码生成 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#080B14"><meta name="description" content="从重复 CRUD 和类型错位问题出发，理解 sqlc 如何把 PostgreSQL、MySQL 查询生成为类型安全的 Go 数据访问代码。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Go 进阶：sqlc 从 SQL 到类型安全代码生成 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="从重复 CRUD 和类型错位问题出发，理解 sqlc 如何把 PostgreSQL、MySQL 查询生成为类型安全的 Go 数据访问代码。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go 进阶：sqlc 从 SQL 到类型安全代码生成">
 <meta property="og:url" content="https://novafliex.github.io/2026/08/08/Go%E8%BF%9B%E9%98%B6-sqlc%E4%BB%8ESQL%E5%88%B0%E7%B1%BB%E5%9E%8B%E5%AE%89%E5%85%A8%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/">
@@ -114,13 +114,13 @@
       const activateDarkMode = () => {
         document.documentElement.dataset.theme = 'dark'
         if (metaThemeColor !== null) {
-          metaThemeColor.setAttribute('content', '#080B14')
+          metaThemeColor.setAttribute('content', '#233749')
         }
       }
       const activateLightMode = () => {
         document.documentElement.dataset.theme = 'light'
         if (metaThemeColor !== null) {
-          metaThemeColor.setAttribute('content', '#F7F4F1')
+          metaThemeColor.setAttribute('content', '#E8EFF4')
         }
       }
 
@@ -195,7 +195,7 @@
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
     <strong>FLIEX</strong>
-    <small>LOADING THE NIGHT...</small>
+    <small>正在加载...</small>
   </div>
 </div>
 <script>
@@ -958,7 +958,7 @@
 <link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261005-nav-about-v25">
 <link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261005-nav-about-v25">
 <script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261005-nav-about-v25"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261005-nav-about-v25"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261004-global-audio-v1"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261005-nav-about-v25"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({

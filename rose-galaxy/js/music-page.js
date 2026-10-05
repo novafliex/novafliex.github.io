@@ -62,18 +62,18 @@
       syncTitle(song?.name || '')
       $('.nova-music-current-artist').textContent = [song?.artist, song?.album].filter(Boolean).join('  |  ')
       if (song) { const cover = song.cover || '/img/background_sea.png'; if ($('.nova-music-current-cover').getAttribute('src') !== cover) $('.nova-music-current-cover').src = cover }
-      $('.nova-music-toggle').textContent = state.playing ? 'Ⅱ' : '▶'
       $('.nova-music-toggle').setAttribute('aria-label', state.playing ? '暂停' : '播放')
       const duration = state.duration || song?.duration || 0, progress = duration ? state.currentTime / duration * 1000 : 0
       const input = $('.nova-music-progress-input')
       if (!scrubbing) { input.value = progress; input.style.setProperty('--music-progress', progress / 10 + '%'); $('.nova-music-current-time').textContent = duration > 0 ? time(state.currentTime) : '' }
       $('.nova-music-duration').textContent = duration > 0 ? time(duration) : ''
-      $('.nova-music-count').textContent = state.ready ? '本地音乐 · ' + state.tracks.length + ' 首' : ''
+      $('.nova-music-count').textContent = state.ready ? '本地音乐 · ' + state.tracks.length + ' 首 · ' + ({ list: '列表循环', shuffle: '随机播放', single: '单曲循环' }[state.mode] || '列表循环') : ''
       $('.nova-music-retry').hidden = true
       root.querySelectorAll('.nova-music-toggle,.nova-music-previous,.nova-music-next,.nova-music-progress-input').forEach(node => { node.disabled = !state.ready && !node.matches('.nova-music-toggle') })
       $('[data-music-shuffle]').setAttribute('aria-pressed', state.mode === 'shuffle')
+      $('[data-music-shuffle]').title = state.mode === 'shuffle' ? '随机播放已开启 · 点击恢复列表循环' : '开启随机播放 · 下一曲随机选择'
       $('[data-music-repeat]').setAttribute('aria-label', state.mode === 'single' ? '单曲循环' : '列表循环')
-      $('[data-music-repeat]').textContent = state.mode === 'single' ? '↻₁' : '↻'
+      $('[data-music-repeat]').classList.toggle('is-single', state.mode === 'single')
       $('[data-music-volume]').value = state.volume
       $('[data-music-favorite]').setAttribute('aria-pressed', favorites.has(song?.id)); $('[data-music-favorite]').textContent = favorites.has(song?.id) ? '♥' : '♡'
       renderRows(state); loadLyrics(song)
@@ -126,13 +126,15 @@
       ctx.clearRect(0,0,wave.width,wave.height)
       const analyser = api.analyser, bins = new Uint8Array(analyser?.frequencyBinCount || 64)
       if (analyser) analyser.getByteFrequencyData(bins)
-      ctx.fillStyle = '#b4d2e8'
-      for (let i=0;i<80;i++) { const value = bins[Math.floor(i/80*bins.length)] || 0; const h = 1 + value / 255 * 62; ctx.fillRect(i*6,36-h/2,2,h) }
+      if (typeof ctx.beginPath !== 'function') { frame = requestAnimationFrame(draw); return }
+      ctx.strokeStyle = 'rgba(180,210,232,.62)'; ctx.lineWidth = 1; ctx.beginPath()
+      for (let i=0;i<160;i++) { const value = bins[Math.floor(i/160*bins.length)] || 0; const x = i / 159 * wave.width; const y = 36 + Math.sin(i * .45) * (1 + value / 255 * 15); if (i === 0) ctx.moveTo(x,y); else ctx.lineTo(x,y) }
+      ctx.stroke()
       frame = requestAnimationFrame(draw)
     }
     const startWave = () => { if (frame) cancelAnimationFrame(frame); frame=0; if (api.snapshot().playing && !document.hidden) draw() }
     on(document,'fliex:music',()=>{if (!frame) startWave()}); on(document,'visibilitychange',startWave)
-    ctx.fillStyle='#8199ab'; ctx.fillRect(0,36,wave.width,1)
+    if (typeof ctx.beginPath === 'function') { ctx.strokeStyle='rgba(129,153,171,.34)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(0,36); ctx.lineTo(wave.width,36); ctx.stroke() }
     render(); api.load().then(render)
     cleanup = () => { destroyed=true; cancelAnimationFrame(frame); off.forEach(remove=>remove()); mounted=null }
   }
