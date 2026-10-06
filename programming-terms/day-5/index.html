@@ -1,16 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>文章 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="文章入口已统一至 Notes，浏览技术笔记、算法模板与编程记录。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="文章">
-<meta property="og:url" content="https://novafliex.github.io/writings/">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编程术语 · Day 5｜数据库基础结构 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="Day 5｜数据库基础结构：通过正式解释、通俗理解和项目示例复习Table（表）、Row（行）、Primary Key（主键）、Foreign Key（外键）、Constraint（约束）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编程术语 · Day 5｜数据库基础结构">
+<meta property="og:url" content="https://novafliex.github.io/programming-terms/day-5/">
 <meta property="og:site_name" content="Fliex">
-<meta property="og:description" content="文章入口已统一至 Notes，浏览技术笔记、算法模板与编程记录。">
+<meta property="og:description" content="Day 5｜数据库基础结构：通过正式解释、通俗理解和项目示例复习Table（表）、Row（行）、Primary Key（主键）、Foreign Key（外键）、Constraint（约束）。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://novafliex.github.io/img/logo1.jpg">
-<meta property="article:published_time" content="2026-10-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-10-04T16:00:00.000Z">
+<meta property="og:image" content="https://novafliex.github.io/img/covers/tech-go.webp">
+<meta property="article:published_time" content="2026-08-22T01:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-05T16:00:00.000Z">
 <meta property="article:author" content="Fliex">
+<meta property="article:tag" content="编程术语">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://novafliex.github.io/img/logo1.jpg"><link rel="shortcut icon" href="/img/favicon-small.ico"><link rel="canonical" href="https://novafliex.github.io/writings/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+<meta name="twitter:image" content="https://novafliex.github.io/img/covers/tech-go.webp"><link rel="shortcut icon" href="/img/favicon-small.ico"><link rel="canonical" href="https://novafliex.github.io/programming-terms/day-5/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -181,12 +182,12 @@
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '文章',
+  title: '编程术语 · Day 5｜数据库基础结构',
   isHighlightShrink: false,
-  isToc: false,
-  pageType: 'page'
+  isToc: true,
+  pageType: 'post'
 }</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261005-current-cleanup"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://novafliex.github.io/writings/#webpage","name":"文章","url":"https://novafliex.github.io/writings/","description":"文章入口已统一至 Notes，浏览技术笔记、算法模板与编程记录。","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0; url=/notes/"><script>location.replace("/notes/" + location.search + location.hash)</script></head><body><!-- hexo injector body_begin start -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"编程术语 · Day 5｜数据库基础结构","url":"https://novafliex.github.io/programming-terms/day-5/","image":"https://novafliex.github.io/img/covers/tech-go.webp","datePublished":"2026-08-22T01:00:00.000Z","dateModified":"2026-10-05T16:00:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"Day 5｜数据库基础结构：通过正式解释、通俗理解和项目示例复习Table（表）、Row（行）、Primary Key（主键）、Foreign Key（外键）、Constraint（约束）。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/programming-terms/day-5/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -214,10 +215,84 @@
       document.body.classList.add('nova-loading-active')
     }, 1200)
   })()
-</script><!-- hexo injector body_begin end --><div class="bg-animation" id="web_bg" style="background-image: url(/img/background_sea.png);"></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Fliex</span></a></span><div id="menus"><div id="search-button"><button class="site-page social-icon search search-nav-link" type="button" aria-label="打开搜索"><svg class="search-nav-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span> 搜索</span></button></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/projects/"><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/notes/"><span> 笔记</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><span> 关于</span></a></div></div></div></nav><h1 class="title-seo">文章</h1></header><main class="layout hide-aside" id="content-inner"><div id="page"><div class="page-title">文章</div><div class="container" id="article-container">
+</script><!-- hexo injector body_begin end --><div class="post" id="body-wrap"><main class="article-reading-shell" id="content-inner">
+    <div class="article-page-bg" aria-hidden="true"><img src="/img/background_sea.png" alt="" width="1683" height="935" decoding="async"></div>
+    <div class="article-reading-dimmer" aria-hidden="true"></div>
+    <div class="article-sea-snow" aria-hidden="true" data-article-snow-root=""><canvas class="coast-snow" data-coast-snow=""></canvas></div>
+    <aside class="coast-sidebar" aria-label="Fliex 与导航">
+      <header class="coast-brand"><div class="coast-brand-name"><a href="/" aria-label="Fliex 首页">Fliex</a></div><p>记录一些<br>真正值得留下来的东西。</p></header>
+      <nav class="coast-nav" aria-label="主导航">
+        <a href="/projects/"><i aria-hidden="true"></i><b>Projects</b></a><a href="/notes/" class="is-selected" aria-current="page"><i aria-hidden="true"></i><b>Notes</b></a><a href="/music/"><i aria-hidden="true"></i><b>Music</b></a><a href="/about/"><i aria-hidden="true"></i><b>About</b></a>
+      </nav>
+      <div class="coast-sidebar-bottom">
+        <section class="coast-mini-player" aria-label="音乐控制器">
+          <div class="coast-music-art"><img src="/img/background_sea.png" width="1683" height="935" alt="风雪海岸" decoding="async"><button type="button" data-music-toggle="" aria-label="播放音乐"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7z"></path></svg></button></div>
+          <span class="music-loading" data-music-loading="" role="status" aria-label="音乐加载中"><span class="music-loading-wave" aria-hidden="true">∿∿∿</span></span><a class="coast-music-info" href="/music/" hidden=""><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 10v4M6 6v12M10 2v20M14 5v14M18 8v8M22 11v2"></path></svg><span><span data-music-artist=""></span><span data-music-title=""></span></span></a>
+          <div class="coast-progress" role="progressbar" aria-label="歌曲播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-music-progress=""></span></div>
+          <button class="coast-music-retry" type="button" data-music-retry="" hidden="">重试</button>
+        </section>
+        <div class="coast-social"><a href="https://github.com/novafliex" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" stroke="none" d="M12 1a11 11 0 0 0-3.48 21.44c.55.1.75-.24.75-.53v-2.1c-3.06.67-3.71-1.3-3.71-1.3-.5-1.27-1.22-1.61-1.22-1.61-1-.68.08-.67.08-.67 1.1.08 1.68 1.13 1.68 1.13.98 1.68 2.57 1.2 3.2.92.1-.72.39-1.2.7-1.48-2.44-.28-5-1.22-5-5.44 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.4.1-2.91 0 0 .93-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.42 3.02-1.13 3.02-1.13.6 1.51.22 2.63.1 2.91.7.77 1.13 1.75 1.13 2.95 0 4.23-2.56 5.16-5 5.44.39.34.74 1 .74 2.04v3.07c0 .3.2.64.76.53A11 11 0 0 0 12 1z"></path></svg></a><a href="mailto:257399435@qq.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="1"></rect><path d="m2 5 10 8L22 5M2 19l7-7m13 7-7-7"></path></svg></a><button type="button" data-coast-theme="" aria-label="切换阅读页明暗主题"><span class="coast-theme-icons" aria-hidden="true"><svg class="coast-theme-icon coast-theme-icon--moon" viewBox="0 0 24 24" focusable="false"><path d="M21 14A9 9 0 0 1 10 3a9 9 0 1 0 11 11z"></path></svg><svg class="coast-theme-icon coast-theme-icon--sun" viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"></path></svg></span></button></div>
+      </div>
+    </aside>
+    <aside class="article-toc-sidebar" aria-label="文章目录">
+      <header><span>目录</span></header>
+      <nav class="article-toc-list"><a class="article-toc-link article-toc-link--h2" href="#Day-5｜数据库基础结构" data-article-toc="Day-5｜数据库基础结构" data-article-chapter="01"><span>01</span>Day 5｜数据库基础结构</a><a class="article-toc-link article-toc-link--h3" href="#一、Table（表）" data-article-toc="一、Table（表）" data-article-chapter="01"><span>·</span>一、Table（表）</a><a class="article-toc-link article-toc-link--h3" href="#二、Row（行）" data-article-toc="二、Row（行）" data-article-chapter="01"><span>·</span>二、Row（行）</a><a class="article-toc-link article-toc-link--h3" href="#三、Primary-Key（主键）" data-article-toc="三、Primary-Key（主键）" data-article-chapter="01"><span>·</span>三、Primary Key（主键）</a><a class="article-toc-link article-toc-link--h3" href="#四、Foreign-Key（外键）" data-article-toc="四、Foreign-Key（外键）" data-article-chapter="01"><span>·</span>四、Foreign Key（外键）</a><a class="article-toc-link article-toc-link--h3" href="#五、Constraint（约束）" data-article-toc="五、Constraint（约束）" data-article-chapter="01"><span>·</span>五、Constraint（约束）</a><a class="article-toc-link article-toc-link--h2" href="#复习提示" data-article-toc="复习提示" data-article-chapter="02"><span>02</span>复习提示</a></nav>
+    </aside>
+    <button class="article-mobile-toc-trigger" type="button" data-article-mobile-toc="" aria-expanded="false"><i aria-hidden="true"></i><span>INDEX</span></button>
+    <section class="article-workspace">
+      <header class="article-header">
+        <nav class="article-breadcrumb" aria-label="面包屑"><a href="/">Home</a><span>›</span><a href="/notes/">Notes</a><span>›</span><span>编程术语</span></nav>
+        <h1>编程术语 · Day 5｜数据库基础结构</h1>
+        <div class="article-meta"><time datetime="2026-08-22">◷ &nbsp;2026.08.22</time><span>▱ &nbsp;编程术语</span><span>◷ &nbsp;约 4 分钟阅读</span><span class="article-tag">编程术语</span></div>
+        <p>Day 5｜数据库基础结构：通过正式解释、通俗理解和项目示例复习Table（表）、Row（行）、Primary Key（主键）、Foreign Key（外键）、Constraint（约束）。</p>
+      </header>
+      <article class="article-prose" id="article-container"><p><a href="/programming-terms/">知识总览</a> · <a href="/programming-terms/day-4/">上一节：Day 4</a> · <a href="/programming-terms/day-6/">下一节：Day 6</a></p>
+<h2 id="Day-5｜数据库基础结构" data-section-label="SECTION" data-chapter="01"><a href="#Day-5｜数据库基础结构" class="headerlink" title="Day 5｜数据库基础结构"></a>Day 5｜数据库基础结构</h2><figure class="highlight text"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">text</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Table（表）</span><br><span class="line">│</span><br><span class="line">├─ Row（行）             → 保存一条数据</span><br><span class="line">├─ Primary Key（主键）   → 唯一标识一行</span><br><span class="line">├─ Foreign Key（外键）   → 关联另一张表</span><br><span class="line">└─ Constraint（约束）    → 限制数据必须符合规则</span><br></pre></td></tr></tbody></table></figure>
 
-<p><a href="/notes/">前往 Notes</a></p>
-</div></div></main><footer id="footer" style="background-image: url(/img/background_sea.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">©&nbsp;2025 - 2026 By Fliex</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.6.1</a></span></div></div></footer></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
+<h3 id="一、Table（表）"><a href="#一、Table（表）" class="headerlink" title="一、Table（表）"></a>一、Table（表）</h3><p><strong>正式解释：</strong></p>
+<p>Table 是关系型数据库中用于组织和存储同一类数据的结构，由列和行组成。每一列定义数据的字段，每一行保存一条具体记录。</p>
+<p><strong>通俗理解：</strong></p>
+<p>Table 就是把现实中某一类事物抽象出的“全部属性模版”及其“所有具体数据”给打包封装在一起的容器</p>
+<h3 id="二、Row（行）"><a href="#二、Row（行）" class="headerlink" title="二、Row（行）"></a>二、Row（行）</h3><p><strong>正式解释：</strong></p>
+<p>Row 是表中的一条数据记录，由该表各列对应的值组成。</p>
+<p><strong>通俗理解：</strong></p>
+<p>在“结构”上必须是完整的一行数据（表有几列，这一行就必须对应几列），但在“内容”上允许某些非必填项留白（NULL）</p>
+<h3 id="三、Primary-Key（主键）"><a href="#三、Primary-Key（主键）" class="headerlink" title="三、Primary Key（主键）"></a>三、Primary Key（主键）</h3><p><strong>正式解释：</strong></p>
+<p>Primary Key 是用于唯一标识表中每一行数据的列或列组合。主键值不能重复，也不能为 <code>NULL</code>。</p>
+<p><strong>通俗理解：</strong></p>
+<p>唯一标识(身份证号码)</p>
+<h3 id="四、Foreign-Key（外键）"><a href="#四、Foreign-Key（外键）" class="headerlink" title="四、Foreign Key（外键）"></a>四、Foreign Key（外键）</h3><p><strong>正式解释：</strong></p>
+<p>Foreign Key 是表中的一个列或列组合，用来引用另一张表中的主键或唯一键，从而建立表之间的关联并维护引用完整性。</p>
+<p><strong>通俗理解：</strong></p>
+<p>单子上不抄对方容易变的详细信息（如住址），只留一个对方的“唯一编号”（外键）；发货时顺着编号一查，永远能拿到他最新的实时数据</p>
+<p><strong>项目例子：</strong></p>
+<p>如果每门课程都属于一名教师，可以让 <code>teacher_id</code> 引用 <code>users</code> 表的主键：</p>
+<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">teacher_id <span class="type">BIGINT</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line"><span class="keyword">CONSTRAINT</span> fk_courses_teacher</span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (teacher_id) <span class="keyword">REFERENCES</span> users(id)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这样，课程中的 <code>teacher_id</code> 必须对应 <code>users</code> 表中真实存在的用户。</p>
+<blockquote>
+<p><strong>Tips：主键和外键的区别</strong></p>
+<p>主键负责唯一标识“自己表中的这一行”，外键负责指向“另一张表中的某一行”。主键不能重复，外键可以重复，例如同一名教师可以拥有多门课程。</p>
+</blockquote>
+<h3 id="五、Constraint（约束）"><a href="#五、Constraint（约束）" class="headerlink" title="五、Constraint（约束）"></a>五、Constraint（约束）</h3><p><strong>正式解释：</strong></p>
+<p>Constraint 是数据库为表中数据规定的校验规则，用于阻止不符合要求的数据被写入，从而保证数据的正确性和一致性。</p>
+<p><strong>通俗理解：</strong></p>
+<p>限制条件，比如不能为空、不能重复、必须满足指定条件等等。</p>
+<p><strong>项目例子：</strong></p>
+<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">email <span class="type">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT NULL</span> <span class="keyword">UNIQUE</span>,</span><br><span class="line">price <span class="type">DECIMAL</span>(<span class="number">10</span>, <span class="number">2</span>) <span class="keyword">NOT NULL</span> <span class="keyword">CHECK</span> (price <span class="operator">&gt;=</span> <span class="number">0</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><code>NOT NULL</code>：值不能为空。</li>
+<li><code>UNIQUE</code>：值不能重复。</li>
+<li><code>CHECK</code>：值必须满足指定条件。</li>
+<li><code>PRIMARY KEY</code> 和 <code>FOREIGN KEY</code> 也属于约束。</li>
+</ul>
+<h2 id="复习提示" data-section-label="SECTION" data-chapter="02"><a href="#复习提示" class="headerlink" title="复习提示"></a>复习提示</h2><p>表、行、主键、外键和约束如何共同保证数据结构与关系？</p>
+<p>试着不看正文，用自己的项目举一个例子，再回到对应术语核对。</p>
+<p><a href="/programming-terms/">知识总览</a> · <a href="/programming-terms/day-4/">上一节：Day 4</a> · <a href="/programming-terms/day-6/">下一节：Day 6</a></p>
+</article>
+      <section class="article-comments"><header><span>DISCUSSION</span><h2>评论</h2></header><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></section>
+    </section></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
   const parseViewBox = viewBox => {
     if (!viewBox) return null
     const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
@@ -579,7 +654,67 @@
 
   btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
   window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
-})()</script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://waline527.vercel.app',
+      pageview: true,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.15.2/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client@3.15.2/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261005-nav-about-v25">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261005-nav-about-v25">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261005-nav-about-v25">
+<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261005-nav-about-v25">
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261005-nav-about-v25"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261005-nav-about-v25"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({

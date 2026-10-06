@@ -1,17 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LeetCode-双指针合并（归并法） | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="使用哨兵节点和双指针按顺序合并两个有序链表，并说明剩余节点的处理。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编程术语 · Day 7｜数据库索引与查询计划 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="Day 7｜数据库索引与查询计划：通过正式解释、通俗理解和项目示例复习Index（索引）、B+ Tree（B+ 树）、Full Table Scan（全表扫描）、Query Plan（查询计划）、Covering Index（覆盖索引）。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-双指针合并（归并法）">
-<meta property="og:url" content="https://novafliex.github.io/2026/01/12/LeetCode-%E5%8F%8C%E6%8C%87%E9%92%88%E5%90%88%E5%B9%B6-%E5%BD%92%E5%B9%B6%E6%B3%95/">
+<meta property="og:title" content="编程术语 · Day 7｜数据库索引与查询计划">
+<meta property="og:url" content="https://novafliex.github.io/programming-terms/day-7/">
 <meta property="og:site_name" content="Fliex">
-<meta property="og:description" content="使用哨兵节点和双指针按顺序合并两个有序链表，并说明剩余节点的处理。">
+<meta property="og:description" content="Day 7｜数据库索引与查询计划：通过正式解释、通俗理解和项目示例复习Index（索引）、B+ Tree（B+ 树）、Full Table Scan（全表扫描）、Query Plan（查询计划）、Covering Index（覆盖索引）。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://novafliex.github.io/img/leetcode.webp">
-<meta property="article:published_time" content="2026-01-11T16:45:53.000Z">
-<meta property="article:modified_time" content="2026-01-11T16:45:53.000Z">
+<meta property="og:image" content="https://novafliex.github.io/img/covers/tech-go.webp">
+<meta property="article:published_time" content="2026-08-22T01:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-05T16:00:00.000Z">
 <meta property="article:author" content="Fliex">
-<meta property="article:tag" content="链表">
+<meta property="article:tag" content="编程术语">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://novafliex.github.io/img/leetcode.webp"><link rel="shortcut icon" href="/img/favicon-small.ico"><link rel="canonical" href="https://novafliex.github.io/2026/01/12/LeetCode-%E5%8F%8C%E6%8C%87%E9%92%88%E5%90%88%E5%B9%B6-%E5%BD%92%E5%B9%B6%E6%B3%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+<meta name="twitter:image" content="https://novafliex.github.io/img/covers/tech-go.webp"><link rel="shortcut icon" href="/img/favicon-small.ico"><link rel="canonical" href="https://novafliex.github.io/programming-terms/day-7/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -182,12 +182,12 @@
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'LeetCode-双指针合并（归并法）',
+  title: '编程术语 · Day 7｜数据库索引与查询计划',
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
 }</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261005-current-cleanup"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"LeetCode-双指针合并（归并法）","url":"https://novafliex.github.io/2026/01/12/LeetCode-%E5%8F%8C%E6%8C%87%E9%92%88%E5%90%88%E5%B9%B6-%E5%BD%92%E5%B9%B6%E6%B3%95/","image":"https://novafliex.github.io/img/leetcode.webp","datePublished":"2026-01-11T16:45:53.000Z","dateModified":"2026-01-11T16:45:53.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"使用哨兵节点和双指针按顺序合并两个有序链表，并说明剩余节点的处理。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/2026/01/12/LeetCode-%E5%8F%8C%E6%8C%87%E9%92%88%E5%90%88%E5%B9%B6-%E5%BD%92%E5%B9%B6%E6%B3%95/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><!-- hexo injector body_begin start -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"编程术语 · Day 7｜数据库索引与查询计划","url":"https://novafliex.github.io/programming-terms/day-7/","image":"https://novafliex.github.io/img/covers/tech-go.webp","datePublished":"2026-08-22T01:00:00.000Z","dateModified":"2026-10-05T16:00:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"Day 7｜数据库索引与查询计划：通过正式解释、通俗理解和项目示例复习Index（索引）、B+ Tree（B+ 树）、Full Table Scan（全表扫描）、Query Plan（查询计划）、Covering Index（覆盖索引）。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/programming-terms/day-7/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -236,50 +236,62 @@
     </aside>
     <aside class="article-toc-sidebar" aria-label="文章目录">
       <header><span>目录</span></header>
-      <nav class="article-toc-list"><a class="article-toc-link article-toc-link--h2" href="#🧠-涉及两个有序链表的合并、排序问题" data-article-toc="🧠-涉及两个有序链表的合并、排序问题" data-article-chapter="01"><span>01</span>涉及两个有序链表的合并、排序问题</a><a class="article-toc-link article-toc-link--h3" href="#⭐-模板" data-article-toc="⭐-模板" data-article-chapter="01"><span>·</span>模板</a><a class="article-toc-link article-toc-link--h3" href="#Notice" data-article-toc="Notice" data-article-chapter="01"><span>·</span>Notice:</a><a class="article-toc-link article-toc-link--h3" href="#相关练习题" data-article-toc="相关练习题" data-article-chapter="01"><span>·</span>相关练习题</a></nav>
+      <nav class="article-toc-list"><a class="article-toc-link article-toc-link--h2" href="#Day-7｜数据库索引与查询计划" data-article-toc="Day-7｜数据库索引与查询计划" data-article-chapter="01"><span>01</span>Day 7｜数据库索引与查询计划</a><a class="article-toc-link article-toc-link--h3" href="#一、Index（索引）" data-article-toc="一、Index（索引）" data-article-chapter="01"><span>·</span>一、Index（索引）</a><a class="article-toc-link article-toc-link--h3" href="#二、B-Tree（B-树）" data-article-toc="二、B-Tree（B-树）" data-article-chapter="01"><span>·</span>二、B+ Tree（B+ 树）</a><a class="article-toc-link article-toc-link--h3" href="#三、Full-Table-Scan（全表扫描）" data-article-toc="三、Full-Table-Scan（全表扫描）" data-article-chapter="01"><span>·</span>三、Full Table Scan（全表扫描）</a><a class="article-toc-link article-toc-link--h3" href="#四、Query-Plan（查询计划）" data-article-toc="四、Query-Plan（查询计划）" data-article-chapter="01"><span>·</span>四、Query Plan（查询计划）</a><a class="article-toc-link article-toc-link--h3" href="#五、Covering-Index（覆盖索引）" data-article-toc="五、Covering-Index（覆盖索引）" data-article-chapter="01"><span>·</span>五、Covering Index（覆盖索引）</a><a class="article-toc-link article-toc-link--h2" href="#复习提示" data-article-toc="复习提示" data-article-chapter="02"><span>02</span>复习提示</a></nav>
     </aside>
     <button class="article-mobile-toc-trigger" type="button" data-article-mobile-toc="" aria-expanded="false"><i aria-hidden="true"></i><span>INDEX</span></button>
     <section class="article-workspace">
       <header class="article-header">
-        <nav class="article-breadcrumb" aria-label="面包屑"><a href="/">Home</a><span>›</span><a href="/notes/">Notes</a><span>›</span><span>LeetCode / 模板</span></nav>
-        <h1>LeetCode-双指针合并（归并法）</h1>
-        <div class="article-meta"><time datetime="2026-01-11">◷ &nbsp;2026.01.11</time><span>▱ &nbsp;LeetCode / 模板</span><span>◷ &nbsp;约 3 分钟阅读</span><span class="article-tag">链表</span></div>
-        <p>使用哨兵节点和双指针按顺序合并两个有序链表，并说明剩余节点的处理。</p>
+        <nav class="article-breadcrumb" aria-label="面包屑"><a href="/">Home</a><span>›</span><a href="/notes/">Notes</a><span>›</span><span>编程术语</span></nav>
+        <h1>编程术语 · Day 7｜数据库索引与查询计划</h1>
+        <div class="article-meta"><time datetime="2026-08-22">◷ &nbsp;2026.08.22</time><span>▱ &nbsp;编程术语</span><span>◷ &nbsp;约 5 分钟阅读</span><span class="article-tag">编程术语</span></div>
+        <p>Day 7｜数据库索引与查询计划：通过正式解释、通俗理解和项目示例复习Index（索引）、B+ Tree（B+ 树）、Full Table Scan（全表扫描）、Query Plan（查询计划）、Covering Index（覆盖索引）。</p>
       </header>
-      <article class="article-prose" id="article-container"><h2 id="🧠-涉及两个有序链表的合并、排序问题" data-section-label="QUESTIONS" data-chapter="01"><a href="#🧠-涉及两个有序链表的合并、排序问题" class="headerlink" title="🧠 涉及两个有序链表的合并、排序问题"></a>涉及两个有序链表的合并、排序问题</h2><div class="note primary disabled"><p>一句话结论：<br>👉 “谁小谁先走”。这就是拉链原理：同时遍历两条链表，比较当前头节点，较小的那个接在结果链表后面，然后向前走一步。</p>
-<p>⭐ 核心逻辑<br>哨兵节点 (Dummy Node)：只要一个 dummy，用来挂接结果。</p>
-<p>拉链 (Comparison)：while 循环同时检查两个链表，谁小就把谁接上，被接走的那个指针后移，没被接走的保持不动。</p>
-<p>接余部 (Post-processing)：这是链表对比数组的巨大优势 —— 当一条链表遍历完，另一条链表剩下的部分不需要遍历，直接把指针指过去就行（因为剩下的肯定也是有序的）。</p>
-</div>
+      <article class="article-prose" id="article-container"><p><a href="/programming-terms/">知识总览</a> · <a href="/programming-terms/day-6/">上一节：Day 6</a> · <a href="/programming-terms/day-8/">下一节：Day 8</a></p>
+<h2 id="Day-7｜数据库索引与查询计划" data-section-label="SECTION" data-chapter="01"><a href="#Day-7｜数据库索引与查询计划" class="headerlink" title="Day 7｜数据库索引与查询计划"></a>Day 7｜数据库索引与查询计划</h2><figure class="highlight text"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">text</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SQL 查询</span><br><span class="line">│</span><br><span class="line">└─ Query Plan（查询计划）</span><br><span class="line">   ├─ 使用 Index（索引）</span><br><span class="line">   │  ├─ 常见结构：B+ Tree</span><br><span class="line">   │  └─ 覆盖全部所需字段：Covering Index</span><br><span class="line">   │</span><br><span class="line">   └─ 不使用索引：Full Table Scan</span><br></pre></td></tr></tbody></table></figure>
 
-<div class="note info disabled"><h3 id="⭐-模板"><a href="#⭐-模板" class="headerlink" title="⭐ 模板"></a>模板</h3><ol>
-<li><p>初始化</p>
-<p>//虚拟头节点（锚点）<br>ListNode dummy = new ListNode(0);<br>ListNode tail = dummy;</p>
-<p>//两个并行指针<br>ListNode p1 = l1;<br>ListNode p2 = l2;</p>
-</li>
-<li><p>循环处理(控制指针移动)</p>
-<p>//同时遍历，按规则选择<br>while (p1 != null &amp;&amp; p2 != null) {</p>
-<p>if (choose(p1, p2)) {<br>tail.next = p1;<br>p1 = p1.next;<br>} else {<br>tail.next = p2;<br>p2 = p2.next;<br>}</p>
-<p>tail = tail.next;<br>}</p>
-<p>//接上剩余部分<br>tail.next = (p1 != null) ? p1 : p2;</p>
-</li>
-<li><p>返回结果<br>return dummy.next;</p>
-</li>
-</ol>
-</div>
+<h3 id="一、Index（索引）"><a href="#一、Index（索引）" class="headerlink" title="一、Index（索引）"></a>一、Index（索引）</h3><p><strong>正式解释：</strong></p>
+<p>Index 是数据库为了加快数据查找而维护的辅助数据结构，保存索引键与对应数据位置之间的关系。</p>
+<h3 id="二、B-Tree（B-树）"><a href="#二、B-Tree（B-树）" class="headerlink" title="二、B+ Tree（B+ 树）"></a>二、B+ Tree（B+ 树）</h3><p><strong>正式解释：</strong></p>
+<p>B+ Tree 是一种多路平衡树。它的非叶子节点主要保存索引键和子节点指针，叶子节点按顺序保存索引记录，适合数据库的等值查询和范围查询。</p>
+<p><strong>项目例子：</strong></p>
+<p>为课程创建时间建立常见的 B+ Tree 索引后，可以高效查询某个时间范围的数据：</p>
+<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX idx_courses_created_at <span class="keyword">ON</span> courses (created_at);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> id, title</span><br><span class="line"><span class="keyword">FROM</span> courses</span><br><span class="line"><span class="keyword">WHERE</span> created_at <span class="operator">&gt;=</span> <span class="string">'2026-09-01 00:00:00'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> created_at;</span><br></pre></td></tr></tbody></table></figure>
 
-<div class="note warning disabled"><h3 id="Notice"><a href="#Notice" class="headerlink" title="Notice:"></a>Notice:</h3><blockquote>
-<p>1.最大的优势：接余部（不要写循环！）</p>
+<p>B+ Tree 的叶子节点有序，因此特别适合范围查询和排序。</p>
+<h3 id="三、Full-Table-Scan（全表扫描）"><a href="#三、Full-Table-Scan（全表扫描）" class="headerlink" title="三、Full Table Scan（全表扫描）"></a>三、Full Table Scan（全表扫描）</h3><p><strong>正式解释：</strong></p>
+<p>Full Table Scan 是数据库依次读取表中大量或全部数据行，再判断哪些行满足查询条件的访问方式。</p>
+<p><strong>通俗理解：</strong></p>
+<p>在没有导航目录时(除了全部查找没有更快的方法了),需要查找指定的数据,对所有的数据进行全部查找</p>
+<p><strong>项目例子：</strong></p>
+<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> courses</span><br><span class="line"><span class="keyword">WHERE</span> description <span class="keyword">LIKE</span> <span class="string">'%Go%'</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>普通 B+ Tree 索引通常无法直接处理以 <code>%</code> 开头的模糊匹配，这类查询可能出现全表扫描。在 MySQL 的执行计划中，常见表现是 <code>type = ALL</code>。</p>
+<blockquote>
+<p><strong>Tips：全表扫描不一定是错误</strong></p>
+<p>当表很小，或者查询本来就要读取大部分数据时，数据库主动选择全表扫描可能比频繁访问索引更合适。</p>
 </blockquote>
-<p>这是链表对比数组最大的优势，也是这个模板最容易写“多余”的地方。</p>
-<p>直接一个 if 把剩下的整条链表挂在后面。因为剩下的部分本身就是有序的，不需要再遍历。</p>
-<p>✅ 正确（利用链表特性，O(1) 操作）<br>if (l1 != null) tail.next = l1;<br>if (l2 != null) tail.next = l2;</p>
-<p>❌ 错误/低效（把链表当数组用了，O(N) 操作）<br>while (l1 != null) {<br>tail.next = l1;<br>l1 = l1.next;<br>tail = tail.next;<br>}</p>
-</div>
+<h3 id="四、Query-Plan（查询计划）"><a href="#四、Query-Plan（查询计划）" class="headerlink" title="四、Query Plan（查询计划）"></a>四、Query Plan（查询计划）</h3><p><strong>正式解释：</strong></p>
+<p>Query Plan 是数据库优化器为执行一条 SQL 选择的具体方案，包括表的访问方式、使用的索引、连接顺序以及预计读取的数据量等信息。</p>
+<p><strong>通俗理解：</strong></p>
+<p>高级的筛选器，可以有效提高查询效率</p>
+<p><strong>项目例子：</strong></p>
+<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN</span><br><span class="line"><span class="keyword">SELECT</span> id, title</span><br><span class="line"><span class="keyword">FROM</span> courses</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">=</span> <span class="string">'published'</span>;</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="相关练习题"><a href="#相关练习题" class="headerlink" title="相关练习题"></a>相关练习题</h3><h4 id="1-LeetCode-21-合并两个有序链表"><a href="#1-LeetCode-21-合并两个有序链表" class="headerlink" title="1. LeetCode 21. 合并两个有序链表"></a>1. <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-two-sorted-lists/">LeetCode 21. 合并两个有序链表</a></h4><p><strong>题意：</strong> 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
-<h4 id="2-LeetCode-23-合并-K-个升序链表"><a href="#2-LeetCode-23-合并-K-个升序链表" class="headerlink" title="2. LeetCode 23. 合并 K 个升序链表"></a>2. <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-k-sorted-lists/">LeetCode 23. 合并 K 个升序链表</a></h4><p><strong>题意：</strong> 给你一个链表数组，每个链表都已经按升序排列。请你将所有链表合并到一个升序链表中，返回合并后的链表。</p>
-<h4 id="3-LeetCode-148-排序链表"><a href="#3-LeetCode-148-排序链表" class="headerlink" title="3. LeetCode 148. 排序链表"></a>3. <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sort-list/">LeetCode 148. 排序链表</a></h4><p><strong>题意：</strong> 给你链表的头结点 head ，请将其按 升序 排列并返回 排序后的链表 。</p>
+<h3 id="五、Covering-Index（覆盖索引）"><a href="#五、Covering-Index（覆盖索引）" class="headerlink" title="五、Covering Index（覆盖索引）"></a>五、Covering Index（覆盖索引）</h3><p><strong>正式解释：</strong></p>
+<p>Covering Index 是能够直接提供某条查询所需全部字段的索引。数据库只读取索引就能返回结果，不需要再访问原始数据行。</p>
+<p><strong>通俗理解：</strong></p>
+<p>要看的数据都在【索引目录】里面，不用再跑去翻【底层的原始数据表/原始档案】（不用回表）</p>
+<p><strong>项目例子：</strong></p>
+<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX idx_courses_status_title</span><br><span class="line"><span class="keyword">ON</span> courses (status, title);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> title</span><br><span class="line"><span class="keyword">FROM</span> courses</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">=</span> <span class="string">'published'</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这条查询只使用了索引中的 <code>status</code> 和 <code>title</code>，因此该索引可以成为这条查询的覆盖索引。在 MySQL 执行计划的 <code>Extra</code> 中，通常可以看到 <code>Using index</code>。</p>
+<blockquote>
+<p><strong>Tips：覆盖索引不是一种新的索引结构</strong></p>
+<p>“覆盖”是索引相对于某一条查询的效果。同一个索引可能覆盖查询 A，却无法覆盖需要更多字段的查询 B。</p>
+</blockquote>
+<h2 id="复习提示" data-section-label="SECTION" data-chapter="02"><a href="#复习提示" class="headerlink" title="复习提示"></a>复习提示</h2><p>什么时候会全表扫描？如何用查询计划判断索引和覆盖索引是否有效？</p>
+<p>试着不看正文，用自己的项目举一个例子，再回到对应术语核对。</p>
+<p><a href="/programming-terms/">知识总览</a> · <a href="/programming-terms/day-6/">上一节：Day 6</a> · <a href="/programming-terms/day-8/">下一节：Day 8</a></p>
 </article>
       <section class="article-comments"><header><span>DISCUSSION</span><h2>评论</h2></header><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></section>
     </section></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {

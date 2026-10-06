@@ -37,7 +37,9 @@
       const progress = state.duration ? Math.min(100, state.currentTime / state.duration * 100) : 0
       root.querySelector('[data-music-progress]').style.width = progress + '%'
       root.querySelector('.coast-progress').setAttribute('aria-valuenow', String(Math.round(progress)))
-      root.querySelector('[data-music-retry]').hidden = true
+      const retry = root.querySelector('[data-music-retry]')
+      retry.hidden = !state.failed
+      retry.textContent = state.failed ? '音乐暂时不可用 · 重试' : '重试'
       root.querySelector('[data-music-loading]').hidden = state.ready || state.failed || state.configured
       root.querySelector('.coast-music-info').hidden = !state.ready
     }

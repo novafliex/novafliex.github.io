@@ -81,7 +81,8 @@
 .archive-activity-list small{font-size:9px;text-transform:uppercase;letter-spacing:.07em}
 .archive-activity-list small:last-child{text-align:right}
 .archive-bottom{display:grid;grid-template-columns:72% 28%}
-.archive-section-heading{display:flex;justify-content:space-between;gap:10px}
+.archive-section-heading{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px}
+.archive-history-count{margin-left:auto;font-size:10px;opacity:.65}
 .archive-section-heading button{font-size:10px;align-self:start}
 .archive-history{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .archive-history h4{font-size:9px;letter-spacing:.12em;font-weight:400;text-transform:uppercase;margin-bottom:9px;opacity:.65}

@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, Fliex</rights>
   <subtitle>记录 Go 后端学习、数据结构与算法、LeetCode 练习及个人技术成长过程的博客。</subtitle>
   <title>Fliex</title>
-  <updated>2026-09-03T16:00:00.000Z</updated>
+  <updated>2026-10-05T16:00:00.000Z</updated>
   <entry>
     <author>
       <name>Fliex</name>
@@ -20,9 +20,113 @@
     <id>https://novafliex.github.io/programming-terms/</id>
     <link href="https://novafliex.github.io/programming-terms/"/>
     <published>2026-08-22T01:00:00.000Z</published>
-    <summary>持续记录每天认识的 5 个编程术语，通过正式解释、通俗理解和项目示例建立自己的计算机知识体系。</summary>
+    <summary>编程术语知识总览：按网络、HTTP、身份认证、数据库与并发组织 8 个 Day、40 个术语，提供独立短篇、学习路径与复习入口。</summary>
     <title>编程术语</title>
-    <updated>2026-09-03T16:00:00.000Z</updated>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/day-1/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-1/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>Day 1｜HTTP 与网络基础：通过正式解释、通俗理解和项目示例复习IP Address（IP 地址）、Port（端口）、DNS（域名系统）、TCP（传输控制协议）、HTTP（超文本传输协议）。</summary>
+    <title>编程术语 · Day 1｜HTTP 与网络基础</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/day-5/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-5/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>Day 5｜数据库基础结构：通过正式解释、通俗理解和项目示例复习Table（表）、Row（行）、Primary Key（主键）、Foreign Key（外键）、Constraint（约束）。</summary>
+    <title>编程术语 · Day 5｜数据库基础结构</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/day-3/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-3/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>Day 3｜请求参数与身份状态：通过正式解释、通俗理解和项目示例复习Query Parameter（查询参数）、Path Parameter（路径参数）、Cookie、Session（会话）、JWT（JSON Web Token）。</summary>
+    <title>编程术语 · Day 3｜请求参数与身份状态</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/day-2/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-2/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>Day 2｜HTTP 请求结构：通过正式解释、通俗理解和项目示例复习URL（统一资源定位符）、HTTP Method（HTTP 请求方法）、HTTP Header（HTTP 头字段）、HTTP Body（HTTP 消息体）、HTTP Status Code（HTTP 状态码）。</summary>
+    <title>编程术语 · Day 2｜HTTP 请求结构</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/day-8/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-8/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>Day 8｜数据库事务与并发控制：通过正式解释、通俗理解和项目示例复习Transaction（事务）、ACID（事务的四个基本特性）、Isolation Level（隔离级别）、Lock（锁）、MVCC（多版本并发控制）。</summary>
+    <title>编程术语 · Day 8｜数据库事务与并发控制</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/day-4/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-4/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>Day 4｜安全、连接与实时通信：通过正式解释、通俗理解和项目示例复习HTTPS（超文本传输安全协议）、TLS（传输层安全协议）、Keep-Alive（持久连接）、CORS（跨源资源共享）、WebSocket（全双工通信协议）。</summary>
+    <title>编程术语 · Day 4｜安全、连接与实时通信</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/day-6/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-6/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>Day 6｜数据库字段与唯一性：通过正式解释、通俗理解和项目示例复习模式、字段类型、空值语义、唯一索引与复合键。</summary>
+    <title>编程术语 · Day 6｜数据库字段与唯一性</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/day-7/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-7/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>Day 7｜数据库索引与查询计划：通过正式解释、通俗理解和项目示例复习Index（索引）、B+ Tree（B+ 树）、Full Table Scan（全表扫描）、Query Plan（查询计划）、Covering Index（覆盖索引）。</summary>
+    <title>编程术语 · Day 7｜数据库索引与查询计划</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
   </entry>
   <entry>
     <author>
@@ -180,117 +284,5 @@
     <summary>说明 BFS 如何借助队列按层遍历，并整理层序搜索的通用初始化和处理模板。</summary>
     <title>LeetCode-BFS</title>
     <updated>2026-01-16T05:49:48.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="LeetCode" scheme="https://novafliex.github.io/categories/LeetCode/"/>
-    <category term="模板" scheme="https://novafliex.github.io/categories/LeetCode/%E6%A8%A1%E6%9D%BF/"/>
-    <category term="数组" scheme="https://novafliex.github.io/tags/%E6%95%B0%E7%BB%84/"/>
-    <id>https://novafliex.github.io/2026/01/15/LeetCode-%E4%B8%AD%E5%BF%83%E6%89%A9%E6%95%A3/</id>
-    <link href="https://novafliex.github.io/2026/01/15/LeetCode-%E4%B8%AD%E5%BF%83%E6%89%A9%E6%95%A3/"/>
-    <published>2026-01-15T00:38:01.000Z</published>
-    <summary>使用奇偶两类中心向两侧扩展，整理回文子串问题的中心扩散通用模板。</summary>
-    <title>LeetCode-中心扩散</title>
-    <updated>2026-01-15T00:38:01.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="LeetCode" scheme="https://novafliex.github.io/categories/LeetCode/"/>
-    <category term="模板" scheme="https://novafliex.github.io/categories/LeetCode/%E6%A8%A1%E6%9D%BF/"/>
-    <category term="链表" scheme="https://novafliex.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
-    <id>https://novafliex.github.io/2026/01/12/LeetCode-%E5%8F%8C%E6%8C%87%E9%92%88%E5%90%88%E5%B9%B6-%E5%BD%92%E5%B9%B6%E6%B3%95/</id>
-    <link href="https://novafliex.github.io/2026/01/12/LeetCode-%E5%8F%8C%E6%8C%87%E9%92%88%E5%90%88%E5%B9%B6-%E5%BD%92%E5%B9%B6%E6%B3%95/"/>
-    <published>2026-01-11T16:45:53.000Z</published>
-    <summary>使用哨兵节点和双指针按顺序合并两个有序链表，并说明剩余节点的处理。</summary>
-    <title>LeetCode-双指针合并（归并法）</title>
-    <updated>2026-01-11T16:45:53.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="LeetCode" scheme="https://novafliex.github.io/categories/LeetCode/"/>
-    <category term="模板" scheme="https://novafliex.github.io/categories/LeetCode/%E6%A8%A1%E6%9D%BF/"/>
-    <category term="链表" scheme="https://novafliex.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
-    <id>https://novafliex.github.io/2026/01/11/LeetCode-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</id>
-    <link href="https://novafliex.github.io/2026/01/11/LeetCode-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/"/>
-    <published>2026-01-11T08:16:38.000Z</published>
-    <summary>使用 prev、curr 和 next 三个指针安全改变链表指向，完成整链反转。</summary>
-    <title>LeetCode-反转链表</title>
-    <updated>2026-01-11T08:16:38.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="LeetCode" scheme="https://novafliex.github.io/categories/LeetCode/"/>
-    <category term="模板" scheme="https://novafliex.github.io/categories/LeetCode/%E6%A8%A1%E6%9D%BF/"/>
-    <category term="链表" scheme="https://novafliex.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
-    <id>https://novafliex.github.io/2026/01/10/LeetCode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88(%E9%93%BE%E8%A1%A8)/</id>
-    <link href="https://novafliex.github.io/2026/01/10/LeetCode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88(%E9%93%BE%E8%A1%A8)/"/>
-    <published>2026-01-10T11:42:22.000Z</published>
-    <summary>整理链表判环、寻找中点和倒数节点时的倍速与定距双指针模板。</summary>
-    <title>LeetCode-快慢指针（链表）</title>
-    <updated>2026-01-10T11:42:22.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="LeetCode" scheme="https://novafliex.github.io/categories/LeetCode/"/>
-    <category term="模板" scheme="https://novafliex.github.io/categories/LeetCode/%E6%A8%A1%E6%9D%BF/"/>
-    <category term="数组" scheme="https://novafliex.github.io/tags/%E6%95%B0%E7%BB%84/"/>
-    <id>https://novafliex.github.io/2026/01/07/LeetCode-%E5%8D%95%E8%B0%83%E6%A0%88/</id>
-    <link href="https://novafliex.github.io/2026/01/07/LeetCode-%E5%8D%95%E8%B0%83%E6%A0%88/"/>
-    <published>2026-01-07T12:18:16.000Z</published>
-    <summary>整理寻找左右第一个更大或更小元素时的单调栈判断与结算模板。</summary>
-    <title>LeetCode-单调栈</title>
-    <updated>2026-01-07T12:18:16.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="LeetCode" scheme="https://novafliex.github.io/categories/LeetCode/"/>
-    <category term="模板" scheme="https://novafliex.github.io/categories/LeetCode/%E6%A8%A1%E6%9D%BF/"/>
-    <category term="数组" scheme="https://novafliex.github.io/tags/%E6%95%B0%E7%BB%84/"/>
-    <id>https://novafliex.github.io/2026/01/06/LeetCode-%E5%89%8D%E7%BC%80%E5%92%8C/</id>
-    <link href="https://novafliex.github.io/2026/01/06/LeetCode-%E5%89%8D%E7%BC%80%E5%92%8C/"/>
-    <published>2026-01-06T08:24:33.000Z</published>
-    <summary>通过预处理前缀累计值，把连续区间求和转化为两次前缀值相减。</summary>
-    <title>LeetCode-前缀和</title>
-    <updated>2026-01-06T08:24:33.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="LeetCode" scheme="https://novafliex.github.io/categories/LeetCode/"/>
-    <category term="模板" scheme="https://novafliex.github.io/categories/LeetCode/%E6%A8%A1%E6%9D%BF/"/>
-    <category term="数组" scheme="https://novafliex.github.io/tags/%E6%95%B0%E7%BB%84/"/>
-    <id>https://novafliex.github.io/2026/01/04/LeetCode-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</id>
-    <link href="https://novafliex.github.io/2026/01/04/LeetCode-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"/>
-    <published>2026-01-04T13:35:54.000Z</published>
-    <summary>使用左右边界维护连续区间，整理定长与变长滑动窗口的通用写法。</summary>
-    <title>LeetCode-滑动窗口</title>
-    <updated>2026-01-04T13:35:54.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="LeetCode" scheme="https://novafliex.github.io/categories/LeetCode/"/>
-    <category term="模板" scheme="https://novafliex.github.io/categories/LeetCode/%E6%A8%A1%E6%9D%BF/"/>
-    <category term="数组" scheme="https://novafliex.github.io/tags/%E6%95%B0%E7%BB%84/"/>
-    <id>https://novafliex.github.io/2026/01/02/LeetCode-%E5%B7%A6%E5%8F%B3%E5%8F%8C%E6%8C%87%E9%92%88/</id>
-    <link href="https://novafliex.github.io/2026/01/02/LeetCode-%E5%B7%A6%E5%8F%B3%E5%8F%8C%E6%8C%87%E9%92%88/"/>
-    <published>2026-01-02T12:03:04.000Z</published>
-    <summary>针对有序数组和两端收缩问题，整理左右指针的移动条件与边界判断。</summary>
-    <title>LeetCode-左右双指针</title>
-    <updated>2026-01-02T12:03:04.000Z</updated>
   </entry>
 </feed>

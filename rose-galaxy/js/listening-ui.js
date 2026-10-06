@@ -1,6 +1,7 @@
 (() => {
   'use strict'
   if (window.NovaListeningUI) { window.NovaListeningUI.init(); return }
+  const HISTORY_PAGE_SIZE = 10
   let mounted, cleanup = () => {}
   const escape = text => String(text ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
   const date = (value, options) => new Date(value).toLocaleDateString('en-US', options)
@@ -30,7 +31,7 @@
     panel.innerHTML = `<header class="archive-heading"><div><h2>LISTENING ARCHIVE</h2><p>在音乐里，时间变得很轻。</p></div><span>Stored locally on this device.</span><button data-close aria-label="返回音乐页面">×</button></header><div data-content></div><p class="archive-status" role="status"></p><dialog class="archive-dialog"><form method="dialog"><h3 data-dialog-title></h3><p data-dialog-copy></p><div data-dialog-actions></div></form></dialog><input data-import-file type="file" accept="application/json,.json" hidden>`
     root.append(panel)
     const content = panel.querySelector('[data-content]'), status = panel.querySelector('.archive-status'), dialog = panel.querySelector('dialog')
-    let rows = [], mode = 'month', selected = new Date(), limit = 20, alive = true, generation = 0, importRows, pendingAction, busy = false, refreshTimer
+    let rows = [], mode = 'month', selected = new Date(), limit = HISTORY_PAGE_SIZE, alive = true, generation = 0, importRows, pendingAction, busy = false, refreshTimer
     const statusText = text => { status.textContent = text }
     const listen = row => row ? `<button class="archive-listen" data-track="${escape(row.trackId)}">${row.cover ? `<img src="${escape(row.cover)}" alt="" loading="lazy">` : '<span class="archive-cover"></span>'}<span><strong>${clock(row.startedAt)}</strong><span>${escape(row.title)}</span><small>${escape(row.artist)}</small></span></button>` : '<p class="archive-empty">尚无聆听记录</p>'
     const render = () => {
@@ -38,7 +39,7 @@
       for (const row of window.novaListeningTracker?.snapshot?.() || []) combined.set(row.id,row)
       const liveRows = [...combined.values()], output = document.createElement('div')
       const s = window.NovaListeningStats.calculate(liveRows,mode,selected), total = liveRows.reduce((sum,row) => sum+row.listenedSeconds,0), started = liveRows.length ? liveRows.reduce((min,row) => Math.min(min,row.startedAt),Infinity) : null
-      const shown = mode === 'day' ? s.rows : s.rows.slice(0,limit), groups = new Map()
+      const shown = s.rows.slice(0,limit), groups = new Map()
       shown.forEach(row => { const key = window.NovaListeningStats.dayKey(row.startedAt); if (!groups.has(key)) groups.set(key,[]); groups.get(key).push(row) })
       const max = Math.max(1,...s.activity.map(item => item.seconds)), daily = s.activity
       const label = mode === 'year' ? String(selected.getFullYear()) : mode === 'month' ? date(selected,{ month:'long',year:'numeric' }) : mode === 'week' ? `${date(s.start,{ month:'short',day:'2-digit' })} – ${date(+s.end-1,{ month:'short',day:'2-digit',year:'numeric' })}` : date(selected,{month:'short',day:'2-digit',year:'numeric'})
@@ -46,7 +47,7 @@
       <section class="archive-activity"><h3>LISTENING ACTIVITY</h3><div class="archive-chart" style="--buckets:${daily.length}">${daily.map(item => `<div title="${date(item.date,{month:'short',day:'2-digit'})} · ${duration(item.seconds)}"><span style="height:${item.seconds/max*100}%"></span><small>${mode === 'year' ? date(item.date,{month:'short'}) : String(new Date(item.date).getDate()).padStart(2,'0')}</small></div>`).join('')}</div><p>${duration(max === 1 ? 0 : max)} peak · ${mode === 'year' ? 'Monthly' : 'Daily'} listening</p></section>
       <div class="archive-moments"><section><h3>FIRST LISTEN</h3>${listen(s.first)}${s.first ? `<p>${date(s.first.startedAt,{month:'short',day:'2-digit'})}</p>` : ''}</section><section><h3>LAST LISTEN</h3>${listen(s.last)}${s.last ? `<p>${date(s.last.startedAt,{month:'short',day:'2-digit'})}</p>` : ''}</section><section class="archive-longest"><h3>LONGEST LISTENING DAY</h3><strong>${s.longest ? date(new Date(s.longest[0]+'T12:00:00'),{month:'short',day:'2-digit'}) : '—'}</strong><strong>${s.longest ? duration(s.longest[1]) : '0s'}</strong><span class="archive-moon" aria-hidden="true"></span></section></div>
       <div class="archive-detail"><section><h3>MOST LISTENED</h3>${s.top.length ? s.top.map((row,index) => `<div class="archive-ranked"><small>${String(index+1).padStart(2,'0')}</small><button data-track="${escape(row.trackId)}">${row.cover ? `<img src="${escape(row.cover)}" alt="" loading="lazy">` : ''}<span>${escape(row.title)}</span></button><small>${escape(row.artist)}</small><i><b style="width:${row.seconds/s.top[0].seconds*100}%"></b></i><small>${duration(row.seconds)}</small></div>`).join('') : '<p class="archive-empty">音乐会留下时间的痕迹。</p>'}</section><section><h3>${mode.toUpperCase()} ACTIVITY</h3><div class="archive-activity-list">${daily.map(item => `<div><small>${date(item.date,mode === 'year' ? {month:'short'} : {month:'short',day:'2-digit'})}</small><i><b style="width:${item.seconds/max*100}%"></b></i><small>${duration(item.seconds)}</small></div>`).join('')}</div></section></div>
-      <div class="archive-bottom"><section><div class="archive-section-heading"><h3>HISTORY</h3>${mode !== 'day' && shown.length < s.rows.length ? '<button data-more>View more →</button>' : ''}</div><div class="archive-history">${[...groups].map(([,items]) => `<div><h4>${date(items[0].startedAt,{month:'short',day:'2-digit',year:'numeric'})}</h4>${items.map(row => `<div class="archive-history-row"><time>${clock(row.startedAt)}</time><button data-track="${escape(row.trackId)}">${escape(row.title)}</button><span>${escape(row.artist)}</span><time>${trackTime(row.listenedSeconds)}</time></div>`).join('')}</div>`).join('') || '<p class="archive-empty">这个时间段还没有记录。</p>'}</div></section><section class="archive-data"><h3>DATA</h3><button data-export>↧　Export listening history</button><button data-import>↥　Import listening history</button><button data-reset>⌫　Reset history</button><p>All data is stored locally on this device.</p></section></div>`
+      <div class="archive-bottom"><section><div class="archive-section-heading"><h3>HISTORY</h3><span class="archive-history-count" aria-live="polite">已显示 ${shown.length} / ${s.rows.length} 条</span>${shown.length < s.rows.length ? '<button data-more>查看更早记录 →</button>' : ''}</div><div class="archive-history">${[...groups].map(([,items]) => `<div><h4>${date(items[0].startedAt,{month:'short',day:'2-digit',year:'numeric'})}</h4>${items.map(row => `<div class="archive-history-row"><time>${clock(row.startedAt)}</time><button data-track="${escape(row.trackId)}">${escape(row.title)}</button><span>${escape(row.artist)}</span><time>${trackTime(row.listenedSeconds)}</time></div>`).join('')}</div>`).join('') || '<p class="archive-empty">这个时间段还没有记录。</p>'}</div></section><section class="archive-data"><h3>DATA</h3><button data-export>↧　Export listening history</button><button data-import>↥　Import listening history</button><button data-reset>⌫　Reset history</button><p>All data is stored locally on this device.</p></section></div>`
       syncDOM(content, output)
     }
     const refresh = async () => { const version = ++generation; try { const data = await window.NovaListeningDB.all(); if (!alive || version !== generation) return; rows = data; window.novaListeningTracker?.acknowledge?.(data); render() } catch (error) { if (alive) statusText('本地档案不可用：' + error.message) } }
@@ -55,6 +56,8 @@
       root.classList.toggle('is-archive',value)
       entry.setAttribute('aria-expanded',String(value))
       if (value) {
+        limit = HISTORY_PAGE_SIZE
+        render()
         panel.querySelector('[data-close]').focus()
         try {
           window.novaListeningTracker?.tick()
@@ -72,10 +75,10 @@
     on(content,'click',async event => {
       const button = event.target.closest('button'); if (!button || busy) return
       if (button.dataset.track) { const api = window.__fliexMusic; const index = api?.snapshot().tracks.findIndex(track => track.id === button.dataset.track); if (index >= 0) api.select(index); else statusText('这首歌曲已不在当前播放列表中。'); return }
-      if (button.dataset.mode) { mode = button.dataset.mode; limit = 20; render() }
-      if (button.dataset.step) { const step = Number(button.dataset.step), start = window.NovaListeningStats.range(mode,selected).start; if (mode === 'year') start.setFullYear(start.getFullYear()+step); else if (mode === 'month') start.setMonth(start.getMonth()+step); else start.setDate(start.getDate()+step*(mode === 'week' ? 7 : 1)); selected = start; limit = 20; render() }
-      if (button.hasAttribute('data-today')) { selected = new Date(); limit = 20; render() }
-      if (button.hasAttribute('data-more')) { limit += 20; render() }
+      if (button.dataset.mode) { mode = button.dataset.mode; limit = HISTORY_PAGE_SIZE; render() }
+      if (button.dataset.step) { const step = Number(button.dataset.step), start = window.NovaListeningStats.range(mode,selected).start; if (mode === 'year') start.setFullYear(start.getFullYear()+step); else if (mode === 'month') start.setMonth(start.getMonth()+step); else start.setDate(start.getDate()+step*(mode === 'week' ? 7 : 1)); selected = start; limit = HISTORY_PAGE_SIZE; render() }
+      if (button.hasAttribute('data-today')) { selected = new Date(); limit = HISTORY_PAGE_SIZE; render() }
+      if (button.hasAttribute('data-more')) { limit += HISTORY_PAGE_SIZE; render() }
       if (button.hasAttribute('data-import')) panel.querySelector('[data-import-file]').click()
       if (button.hasAttribute('data-reset')) ask('Reset listening history?', '此操作会删除本机全部听歌记录。请先导出备份。', [['next','Continue']], 'reset-first')
       if (button.hasAttribute('data-export')) {
@@ -93,6 +96,7 @@
       try {
         if (action === 'reset' && value === 'reset') { restart = await window.novaListeningTracker?.clearPending(); await window.NovaListeningDB.reset(); statusText('档案已清空。') }
         if (action === 'import' && ['merge','replace'].includes(value)) { if (value === 'replace') restart = await window.novaListeningTracker?.clearPending(); else { window.novaListeningTracker?.tick(); await window.novaListeningTracker?.persist() } await window.NovaListeningDB.import(importRows,value === 'replace'); statusText('档案已导入。') }
+        limit = HISTORY_PAGE_SIZE
         await refresh()
       } catch (error) { statusText('操作失败：' + error.message) } finally { restart?.(); busy = false }
     })

@@ -3,7 +3,7 @@
   if (window.__novaMusicBootstrap) { window.__novaMusicBootstrap.init(); return }
   let cleanup = () => {}, mounted = null
   const time = seconds => Number.isFinite(seconds) ? Math.floor(seconds / 60) + ':' + String(Math.floor(seconds % 60)).padStart(2, '0') : '0:00'
-  const loadingMarkup = '<span class="music-loading" role="status"><span class="music-loading-wave" aria-hidden="true">∿∿∿</span><span>Loading</span></span>'
+  const loadingMarkup = '<span class="music-loading" role="status" aria-label="音乐加载中"><span class="music-loading-wave" aria-hidden="true">∿∿∿</span></span>'
   const read = key => { try { return JSON.parse(localStorage.getItem(key)) || [] } catch (_) { return [] } }
   const init = () => {
     const root = document.querySelector('.nova-music-page')
@@ -26,7 +26,7 @@
     }
     const renderRows = state => {
       const songs = state.tracks
-      const signature = JSON.stringify([songs.map(s => s.id), state.index, tab, [...favorites]])
+      const signature = JSON.stringify([songs.map(s => s.id), state.ready, state.failed, state.configured, state.index, tab, [...favorites]])
       if (signature === rendered) return
       rendered = signature
       if (!state.ready) { rows.innerHTML = state.failed || state.configured ? '' : loadingMarkup; return }
@@ -52,12 +52,12 @@
         const untimed = typeof text === 'string' ? text.split(/\r?\n/).map(line => line.trim()).filter(Boolean) : []
         lyrics.innerHTML = lines.length ? lines.map(line => '<p class="lyric-line">' + escape(line.text) + '</p>').join('') : untimed.map(line => '<p class="lyric-line">' + escape(line) + '</p>').join('')
         render()
-      } catch (error) { if (destroyed || lyricSong !== key) return; console.error('[Fliex Music] 歌词加载失败', error); lyrics.innerHTML = '' }
+      } catch (error) { if (destroyed || lyricSong !== key) return; console.error('[Fliex Music] 歌词加载失败', error); lyrics.innerHTML = '<p class="sea-lyrics-empty">歌词暂时不可用</p><button type="button" data-lyrics-retry>重试</button>' }
     }
     const render = () => {
       const state = api.snapshot(), song = state.song
       root.classList.toggle('is-playing', state.playing)
-      root.classList.toggle('is-loading', !state.ready)
+      root.classList.toggle('is-loading', !state.ready && !state.failed && !state.configured)
       const pending = $('[data-player-loading]'); if (pending) pending.hidden = state.ready || state.failed || state.configured
       syncTitle(song?.name || '')
       $('.nova-music-current-artist').textContent = [song?.artist, song?.album].filter(Boolean).join('  |  ')
@@ -68,7 +68,8 @@
       if (!scrubbing) { input.value = progress; input.style.setProperty('--music-progress', progress / 10 + '%'); $('.nova-music-current-time').textContent = duration > 0 ? time(state.currentTime) : '' }
       $('.nova-music-duration').textContent = duration > 0 ? time(duration) : ''
       $('.nova-music-count').textContent = state.ready ? '本地音乐 · ' + state.tracks.length + ' 首 · ' + ({ list: '列表循环', shuffle: '随机播放', single: '单曲循环' }[state.mode] || '列表循环') : ''
-      $('.nova-music-retry').hidden = true
+      $('.nova-music-retry').hidden = !state.failed
+      $('.nova-music-count').textContent = state.failed ? '音乐暂时不可用' : $('.nova-music-count').textContent
       root.querySelectorAll('.nova-music-toggle,.nova-music-previous,.nova-music-next,.nova-music-progress-input').forEach(node => { node.disabled = !state.ready && !node.matches('.nova-music-toggle') })
       $('[data-music-shuffle]').setAttribute('aria-pressed', state.mode === 'shuffle')
       $('[data-music-shuffle]').title = state.mode === 'shuffle' ? '随机播放已开启 · 点击恢复列表循环' : '开启随机播放 · 下一曲随机选择'
@@ -120,6 +121,7 @@
     on(rows, 'click', event => { const button = event.target.closest('[data-song-index],[data-favorite-id]'); if (!button) return; if (button.dataset.favoriteId) toggleFavorite(button.dataset.favoriteId); else api.select(Number(button.dataset.songIndex)) })
     root.querySelectorAll('[data-music-tab]').forEach(button => on(button,'click',() => { tab = button.dataset.musicTab; root.querySelectorAll('[data-music-tab]').forEach(b=>b.setAttribute('aria-selected',b===button)); render() }))
     on($('.nova-music-retry'), 'click', () => api.retry())
+    on(lyrics, 'click', event => { if (event.target.closest('[data-lyrics-retry]')) { lyricSong = ''; loadLyrics(api.snapshot().song) } })
     on(document, 'fliex:music', render)
     const draw = () => {
       frame = 0; if (destroyed || document.hidden || !api.snapshot().playing) return

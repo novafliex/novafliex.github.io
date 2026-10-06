@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编程术语 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="持续记录每天认识的 5 个编程术语，通过正式解释、通俗理解和项目示例建立自己的计算机知识体系。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编程术语 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="编程术语知识总览：按网络、HTTP、身份认证、数据库与并发组织 8 个 Day、40 个术语，提供独立短篇、学习路径与复习入口。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编程术语">
 <meta property="og:url" content="https://novafliex.github.io/programming-terms/">
 <meta property="og:site_name" content="Fliex">
-<meta property="og:description" content="持续记录每天认识的 5 个编程术语，通过正式解释、通俗理解和项目示例建立自己的计算机知识体系。">
+<meta property="og:description" content="编程术语知识总览：按网络、HTTP、身份认证、数据库与并发组织 8 个 Day、40 个术语，提供独立短篇、学习路径与复习入口。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://novafliex.github.io/img/covers/tech-go.webp">
 <meta property="article:published_time" content="2026-08-22T01:00:00.000Z">
-<meta property="article:modified_time" content="2026-09-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-05T16:00:00.000Z">
 <meta property="article:author" content="Fliex">
 <meta property="article:tag" content="编程术语">
 <meta name="twitter:card" content="summary">
@@ -187,7 +187,7 @@
   isToc: true,
   pageType: 'post'
 }</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261005-current-cleanup"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"编程术语","url":"https://novafliex.github.io/programming-terms/","image":"https://novafliex.github.io/img/covers/tech-go.webp","datePublished":"2026-08-22T01:00:00.000Z","dateModified":"2026-09-03T16:00:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"持续记录每天认识的 5 个编程术语，通过正式解释、通俗理解和项目示例建立自己的计算机知识体系。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/programming-terms/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><!-- hexo injector body_begin start -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"编程术语","url":"https://novafliex.github.io/programming-terms/","image":"https://novafliex.github.io/img/covers/tech-go.webp","datePublished":"2026-08-22T01:00:00.000Z","dateModified":"2026-10-05T16:00:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"编程术语知识总览：按网络、HTTP、身份认证、数据库与并发组织 8 个 Day、40 个术语，提供独立短篇、学习路径与复习入口。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/programming-terms/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -227,536 +227,91 @@
       <div class="coast-sidebar-bottom">
         <section class="coast-mini-player" aria-label="音乐控制器">
           <div class="coast-music-art"><img src="/img/background_sea.png" width="1683" height="935" alt="风雪海岸" decoding="async"><button type="button" data-music-toggle="" aria-label="播放音乐"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7z"></path></svg></button></div>
-          <span class="music-loading" data-music-loading="" role="status"><span class="music-loading-wave" aria-hidden="true">∿∿∿</span><span>Loading</span></span><a class="coast-music-info" href="/music/" hidden=""><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 10v4M6 6v12M10 2v20M14 5v14M18 8v8M22 11v2"></path></svg><span><span data-music-artist=""></span><span data-music-title=""></span></span></a>
+          <span class="music-loading" data-music-loading="" role="status" aria-label="音乐加载中"><span class="music-loading-wave" aria-hidden="true">∿∿∿</span></span><a class="coast-music-info" href="/music/" hidden=""><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 10v4M6 6v12M10 2v20M14 5v14M18 8v8M22 11v2"></path></svg><span><span data-music-artist=""></span><span data-music-title=""></span></span></a>
           <div class="coast-progress" role="progressbar" aria-label="歌曲播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-music-progress=""></span></div>
-          <button class="coast-music-retry" type="button" data-music-retry="" hidden="">Loading</button>
+          <button class="coast-music-retry" type="button" data-music-retry="" hidden="">重试</button>
         </section>
         <div class="coast-social"><a href="https://github.com/novafliex" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" stroke="none" d="M12 1a11 11 0 0 0-3.48 21.44c.55.1.75-.24.75-.53v-2.1c-3.06.67-3.71-1.3-3.71-1.3-.5-1.27-1.22-1.61-1.22-1.61-1-.68.08-.67.08-.67 1.1.08 1.68 1.13 1.68 1.13.98 1.68 2.57 1.2 3.2.92.1-.72.39-1.2.7-1.48-2.44-.28-5-1.22-5-5.44 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.4.1-2.91 0 0 .93-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.42 3.02-1.13 3.02-1.13.6 1.51.22 2.63.1 2.91.7.77 1.13 1.75 1.13 2.95 0 4.23-2.56 5.16-5 5.44.39.34.74 1 .74 2.04v3.07c0 .3.2.64.76.53A11 11 0 0 0 12 1z"></path></svg></a><a href="mailto:257399435@qq.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="1"></rect><path d="m2 5 10 8L22 5M2 19l7-7m13 7-7-7"></path></svg></a><button type="button" data-coast-theme="" aria-label="切换阅读页明暗主题"><span class="coast-theme-icons" aria-hidden="true"><svg class="coast-theme-icon coast-theme-icon--moon" viewBox="0 0 24 24" focusable="false"><path d="M21 14A9 9 0 0 1 10 3a9 9 0 1 0 11 11z"></path></svg><svg class="coast-theme-icon coast-theme-icon--sun" viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"></path></svg></span></button></div>
       </div>
     </aside>
     <aside class="article-toc-sidebar" aria-label="文章目录">
       <header><span>目录</span></header>
-      <nav class="article-toc-list"><a class="article-toc-link article-toc-link--h2" href="#Day-1｜HTTP-与网络基础" data-article-toc="Day-1｜HTTP-与网络基础" data-article-chapter="01"><span>01</span>Day 1｜HTTP 与网络基础</a><a class="article-toc-link article-toc-link--h3" href="#一、IP-Address（IP-地址）" data-article-toc="一、IP-Address（IP-地址）" data-article-chapter="01"><span>·</span>一、IP Address（IP 地址）</a><a class="article-toc-link article-toc-link--h3" href="#二、Port（端口）" data-article-toc="二、Port（端口）" data-article-chapter="01"><span>·</span>二、Port（端口）</a><a class="article-toc-link article-toc-link--h3" href="#三、DNS（域名系统）" data-article-toc="三、DNS（域名系统）" data-article-chapter="01"><span>·</span>三、DNS（域名系统）</a><a class="article-toc-link article-toc-link--h3" href="#四、TCP（传输控制协议）" data-article-toc="四、TCP（传输控制协议）" data-article-chapter="01"><span>·</span>四、TCP（传输控制协议）</a><a class="article-toc-link article-toc-link--h3" href="#五、HTTP（超文本传输协议）" data-article-toc="五、HTTP（超文本传输协议）" data-article-chapter="01"><span>·</span>五、HTTP（超文本传输协议）</a><a class="article-toc-link article-toc-link--h2" href="#Day-2｜HTTP-请求结构" data-article-toc="Day-2｜HTTP-请求结构" data-article-chapter="02"><span>02</span>Day 2｜HTTP 请求结构</a><a class="article-toc-link article-toc-link--h3" href="#一、URL（统一资源定位符）" data-article-toc="一、URL（统一资源定位符）" data-article-chapter="02"><span>·</span>一、URL（统一资源定位符）</a><a class="article-toc-link article-toc-link--h3" href="#二、HTTP-Method（HTTP-请求方法）" data-article-toc="二、HTTP-Method（HTTP-请求方法）" data-article-chapter="02"><span>·</span>二、HTTP Method（HTTP 请求方法）</a><a class="article-toc-link article-toc-link--h3" href="#三、HTTP-Header（HTTP-头字段）" data-article-toc="三、HTTP-Header（HTTP-头字段）" data-article-chapter="02"><span>·</span>三、HTTP Header（HTTP 头字段）</a><a class="article-toc-link article-toc-link--h3" href="#四、HTTP-Body（HTTP-消息体）" data-article-toc="四、HTTP-Body（HTTP-消息体）" data-article-chapter="02"><span>·</span>四、HTTP Body（HTTP 消息体）</a><a class="article-toc-link article-toc-link--h3" href="#五、HTTP-Status-Code（HTTP-状态码）" data-article-toc="五、HTTP-Status-Code（HTTP-状态码）" data-article-chapter="02"><span>·</span>五、HTTP Status Code（HTTP 状态码）</a><a class="article-toc-link article-toc-link--h2" href="#Day-3｜请求参数与身份状态" data-article-toc="Day-3｜请求参数与身份状态" data-article-chapter="03"><span>03</span>Day 3｜请求参数与身份状态</a><a class="article-toc-link article-toc-link--h3" href="#一、Query-Parameter（查询参数）" data-article-toc="一、Query-Parameter（查询参数）" data-article-chapter="03"><span>·</span>一、Query Parameter（查询参数）</a><a class="article-toc-link article-toc-link--h3" href="#二、Path-Parameter（路径参数）" data-article-toc="二、Path-Parameter（路径参数）" data-article-chapter="03"><span>·</span>二、Path Parameter（路径参数）</a><a class="article-toc-link article-toc-link--h3" href="#三、Cookie" data-article-toc="三、Cookie" data-article-chapter="03"><span>·</span>三、Cookie</a><a class="article-toc-link article-toc-link--h3" href="#四、Session（会话）" data-article-toc="四、Session（会话）" data-article-chapter="03"><span>·</span>四、Session（会话）</a><a class="article-toc-link article-toc-link--h3" href="#五、JWT（JSON-Web-Token）" data-article-toc="五、JWT（JSON-Web-Token）" data-article-chapter="03"><span>·</span>五、JWT（JSON Web Token）</a><a class="article-toc-link article-toc-link--h2" href="#Day-4｜安全、连接与实时通信" data-article-toc="Day-4｜安全、连接与实时通信" data-article-chapter="04"><span>04</span>Day 4｜安全、连接与实时通信</a><a class="article-toc-link article-toc-link--h3" href="#一、HTTPS（超文本传输安全协议）" data-article-toc="一、HTTPS（超文本传输安全协议）" data-article-chapter="04"><span>·</span>一、HTTPS（超文本传输安全协议）</a><a class="article-toc-link article-toc-link--h3" href="#二、TLS（传输层安全协议）" data-article-toc="二、TLS（传输层安全协议）" data-article-chapter="04"><span>·</span>二、TLS（传输层安全协议）</a><a class="article-toc-link article-toc-link--h3" href="#三、Keep-Alive（持久连接）" data-article-toc="三、Keep-Alive（持久连接）" data-article-chapter="04"><span>·</span>三、Keep-Alive（持久连接）</a><a class="article-toc-link article-toc-link--h3" href="#四、CORS（跨源资源共享）" data-article-toc="四、CORS（跨源资源共享）" data-article-chapter="04"><span>·</span>四、CORS（跨源资源共享）</a><a class="article-toc-link article-toc-link--h3" href="#五、WebSocket（全双工通信协议）" data-article-toc="五、WebSocket（全双工通信协议）" data-article-chapter="04"><span>·</span>五、WebSocket（全双工通信协议）</a><a class="article-toc-link article-toc-link--h2" href="#Day-5｜数据库基础结构" data-article-toc="Day-5｜数据库基础结构" data-article-chapter="05"><span>05</span>Day 5｜数据库基础结构</a><a class="article-toc-link article-toc-link--h3" href="#一、Table（表）" data-article-toc="一、Table（表）" data-article-chapter="05"><span>·</span>一、Table（表）</a><a class="article-toc-link article-toc-link--h3" href="#二、Row（行）" data-article-toc="二、Row（行）" data-article-chapter="05"><span>·</span>二、Row（行）</a><a class="article-toc-link article-toc-link--h3" href="#三、Primary-Key（主键）" data-article-toc="三、Primary-Key（主键）" data-article-chapter="05"><span>·</span>三、Primary Key（主键）</a><a class="article-toc-link article-toc-link--h3" href="#四、Foreign-Key（外键）" data-article-toc="四、Foreign-Key（外键）" data-article-chapter="05"><span>·</span>四、Foreign Key（外键）</a><a class="article-toc-link article-toc-link--h3" href="#五、Constraint（约束）" data-article-toc="五、Constraint（约束）" data-article-chapter="05"><span>·</span>五、Constraint（约束）</a><a class="article-toc-link article-toc-link--h2" href="#Day-6｜数据库字段与唯一性" data-article-toc="Day-6｜数据库字段与唯一性" data-article-chapter="06"><span>06</span>Day 6｜数据库字段与唯一性</a><a class="article-toc-link article-toc-link--h3" href="#一、Schema（模式）" data-article-toc="一、Schema（模式）" data-article-chapter="06"><span>·</span>一、Schema（模式）</a><a class="article-toc-link article-toc-link--h3" href="#二、Data-Type（数据类型）" data-article-toc="二、Data-Type（数据类型）" data-article-chapter="06"><span>·</span>二、Data Type（数据类型）</a><a class="article-toc-link article-toc-link--h3" href="#三、NULL（空值）" data-article-toc="三、NULL（空值）" data-article-chapter="06"><span>·</span>三、NULL（空值）</a><a class="article-toc-link article-toc-link--h3" href="#四、Unique-Index（唯一索引）" data-article-toc="四、Unique-Index（唯一索引）" data-article-chapter="06"><span>·</span>四、Unique Index（唯一索引）</a><a class="article-toc-link article-toc-link--h3" href="#五、Composite-Key（复合键）" data-article-toc="五、Composite-Key（复合键）" data-article-chapter="06"><span>·</span>五、Composite Key（复合键）</a><a class="article-toc-link article-toc-link--h2" href="#Day-7｜数据库索引与查询计划" data-article-toc="Day-7｜数据库索引与查询计划" data-article-chapter="07"><span>07</span>Day 7｜数据库索引与查询计划</a><a class="article-toc-link article-toc-link--h3" href="#一、Index（索引）" data-article-toc="一、Index（索引）" data-article-chapter="07"><span>·</span>一、Index（索引）</a><a class="article-toc-link article-toc-link--h3" href="#二、B-Tree（B-树）" data-article-toc="二、B-Tree（B-树）" data-article-chapter="07"><span>·</span>二、B+ Tree（B+ 树）</a><a class="article-toc-link article-toc-link--h3" href="#三、Full-Table-Scan（全表扫描）" data-article-toc="三、Full-Table-Scan（全表扫描）" data-article-chapter="07"><span>·</span>三、Full Table Scan（全表扫描）</a><a class="article-toc-link article-toc-link--h3" href="#四、Query-Plan（查询计划）" data-article-toc="四、Query-Plan（查询计划）" data-article-chapter="07"><span>·</span>四、Query Plan（查询计划）</a><a class="article-toc-link article-toc-link--h3" href="#五、Covering-Index（覆盖索引）" data-article-toc="五、Covering-Index（覆盖索引）" data-article-chapter="07"><span>·</span>五、Covering Index（覆盖索引）</a><a class="article-toc-link article-toc-link--h2" href="#Day-8｜数据库事务与并发控制" data-article-toc="Day-8｜数据库事务与并发控制" data-article-chapter="08"><span>08</span>Day 8｜数据库事务与并发控制</a><a class="article-toc-link article-toc-link--h3" href="#一、Transaction（事务）" data-article-toc="一、Transaction（事务）" data-article-chapter="08"><span>·</span>一、Transaction（事务）</a><a class="article-toc-link article-toc-link--h3" href="#二、ACID（事务的四个基本特性）" data-article-toc="二、ACID（事务的四个基本特性）" data-article-chapter="08"><span>·</span>二、ACID（事务的四个基本特性）</a><a class="article-toc-link article-toc-link--h3" href="#三、Isolation-Level（隔离级别）" data-article-toc="三、Isolation-Level（隔离级别）" data-article-chapter="08"><span>·</span>三、Isolation Level（隔离级别）</a><a class="article-toc-link article-toc-link--h3" href="#四、Lock（锁）" data-article-toc="四、Lock（锁）" data-article-chapter="08"><span>·</span>四、Lock（锁）</a><a class="article-toc-link article-toc-link--h3" href="#五、MVCC（多版本并发控制）" data-article-toc="五、MVCC（多版本并发控制）" data-article-chapter="08"><span>·</span>五、MVCC（多版本并发控制）</a></nav>
+      <nav class="article-toc-list"><a class="article-toc-link article-toc-link--h2" href="#按主题查找" data-article-toc="按主题查找" data-article-chapter="01"><span>01</span>按主题查找</a><a class="article-toc-link article-toc-link--h2" href="#建议学习路径" data-article-toc="建议学习路径" data-article-chapter="02"><span>02</span>建议学习路径</a><a class="article-toc-link article-toc-link--h2" href="#按-Day-复习" data-article-toc="按-Day-复习" data-article-chapter="03"><span>03</span>按 Day 复习</a><a class="article-toc-link article-toc-link--h2" href="#Day-1｜HTTP-与网络基础" data-article-toc="Day-1｜HTTP-与网络基础" data-article-chapter="04"><span>04</span>Day 1｜HTTP 与网络基础</a><a class="article-toc-link article-toc-link--h2" href="#Day-2｜HTTP-请求结构" data-article-toc="Day-2｜HTTP-请求结构" data-article-chapter="05"><span>05</span>Day 2｜HTTP 请求结构</a><a class="article-toc-link article-toc-link--h2" href="#Day-3｜请求参数与身份状态" data-article-toc="Day-3｜请求参数与身份状态" data-article-chapter="06"><span>06</span>Day 3｜请求参数与身份状态</a><a class="article-toc-link article-toc-link--h2" href="#Day-4｜安全、连接与实时通信" data-article-toc="Day-4｜安全、连接与实时通信" data-article-chapter="07"><span>07</span>Day 4｜安全、连接与实时通信</a><a class="article-toc-link article-toc-link--h2" href="#Day-5｜数据库基础结构" data-article-toc="Day-5｜数据库基础结构" data-article-chapter="08"><span>08</span>Day 5｜数据库基础结构</a><a class="article-toc-link article-toc-link--h2" href="#Day-6｜数据库字段与唯一性" data-article-toc="Day-6｜数据库字段与唯一性" data-article-chapter="09"><span>09</span>Day 6｜数据库字段与唯一性</a><a class="article-toc-link article-toc-link--h2" href="#Day-7｜数据库索引与查询计划" data-article-toc="Day-7｜数据库索引与查询计划" data-article-chapter="10"><span>10</span>Day 7｜数据库索引与查询计划</a><a class="article-toc-link article-toc-link--h2" href="#Day-8｜数据库事务与并发控制" data-article-toc="Day-8｜数据库事务与并发控制" data-article-chapter="11"><span>11</span>Day 8｜数据库事务与并发控制</a></nav>
     </aside>
     <button class="article-mobile-toc-trigger" type="button" data-article-mobile-toc="" aria-expanded="false"><i aria-hidden="true"></i><span>INDEX</span></button>
     <section class="article-workspace">
       <header class="article-header">
         <nav class="article-breadcrumb" aria-label="面包屑"><a href="/">Home</a><span>›</span><a href="/notes/">Notes</a><span>›</span><span>编程术语</span></nav>
         <h1>编程术语</h1>
-        <div class="article-meta"><time datetime="2026-08-22">◷ &nbsp;2026.08.22</time><span>▱ &nbsp;编程术语</span><span>◷ &nbsp;约 33 分钟阅读</span><span class="article-tag">编程术语</span></div>
-        <p>持续记录每天认识的 5 个编程术语，通过正式解释、通俗理解和项目示例建立自己的计算机知识体系。</p>
+        <div class="article-meta"><time datetime="2026-08-22">◷ &nbsp;2026.08.22</time><span>▱ &nbsp;编程术语</span><span>◷ &nbsp;约 5 分钟阅读</span><span class="article-tag">编程术语</span></div>
+        <p>编程术语知识总览：按网络、HTTP、身份认证、数据库与并发组织 8 个 Day、40 个术语，提供独立短篇、学习路径与复习入口。</p>
       </header>
-      <article class="article-prose" id="article-container"><h2 id="Day-1｜HTTP-与网络基础" data-section-label="SECTION" data-chapter="01"><a href="#Day-1｜HTTP-与网络基础" class="headerlink" title="Day 1｜HTTP 与网络基础"></a>Day 1｜HTTP 与网络基础</h2><p>今天认识的 5 个术语，可以组成一条完整的网络请求链：</p>
-<blockquote>
-<p>域名 → DNS → IP → 端口 → TCP → HTTP → Gin 服务</p>
-</blockquote>
-<p>假设浏览器访问 <code>http://api.example.com:8080/users</code>，背后的过程可以简单理解为：</p>
-<ol>
-<li>DNS 将 <code>api.example.com</code> 解析为服务器 IP <code>203.0.113.10</code>。</li>
-<li>客户端找到服务器的 <code>8080</code> 端口。</li>
-<li>客户端与服务器建立 TCP 连接。(如果是https还要建立TLS加密通道)</li>
-<li>客户端发送 HTTP 请求。</li>
-<li>请求进入 Gin Handler，处理完成后返回 HTTP 响应。</li>
-</ol>
-<h3 id="一、IP-Address（IP-地址）"><a href="#一、IP-Address（IP-地址）" class="headerlink" title="一、IP Address（IP 地址）"></a>一、IP Address（IP 地址）</h3><p><strong>正式解释：</strong></p>
-<p>IP 地址用于标识网络中的主机或网络接口。</p>
-<p><strong>通俗理解：</strong></p>
-<p>IP 地址负责告诉请求：“应该去找哪台机器？”</p>
-<p>例如，<code>127.0.0.1</code> 表示当前这台计算机，也就是本机。</p>
-<h3 id="二、Port（端口）"><a href="#二、Port（端口）" class="headerlink" title="二、Port（端口）"></a>二、Port（端口）</h3><p><strong>正式解释：</strong></p>
-<p>端口是传输层协议用来区分一台主机上不同网络服务的编号。</p>
-<p><strong>通俗理解：</strong></p>
-<p>IP 负责找到哪台机器，端口负责找到这台机器上的哪个程序。</p>
-<p><strong>项目例子：</strong></p>
-<p><code>r.Run(":8080")</code> 表示 Gin 服务监听 <code>8080</code> 端口，等待客户端连接。</p>
-<h3 id="三、DNS（域名系统）"><a href="#三、DNS（域名系统）" class="headerlink" title="三、DNS（域名系统）"></a>三、DNS（域名系统）</h3><p><strong>正式解释：</strong></p>
-<p>DNS 是一个分布式命名系统，最常见的作用是把域名解析为 IP 地址。</p>
-<p><strong>通俗理解：</strong></p>
-<p>人更容易记住域名，但计算机通信需要找到对应的 IP 地址。因此，DNS 就像网络中的通讯录：<code>api.example.com → 203.0.113.10</code>。</p>
-<h3 id="四、TCP（传输控制协议）"><a href="#四、TCP（传输控制协议）" class="headerlink" title="四、TCP（传输控制协议）"></a>四、TCP（传输控制协议）</h3><p><strong>正式解释：</strong></p>
-<p>TCP 是一种面向连接、可靠并且保证数据顺序的传输层协议。</p>
-<p><strong>通俗理解：</strong></p>
-<p>找到 IP 和端口以后，客户端还需要和服务器建立连接。TCP 负责尽量保证数据能够送达，并且顺序正确。</p>
-<p>HTTP/1.1 和 HTTP/2 通常运行在 TCP 之上。</p>
-<h3 id="五、HTTP（超文本传输协议）"><a href="#五、HTTP（超文本传输协议）" class="headerlink" title="五、HTTP（超文本传输协议）"></a>五、HTTP（超文本传输协议）</h3><p><strong>正式解释：</strong></p>
-<p>HTTP 是一种应用层协议，用来规定客户端和服务器之间请求与响应的格式及通信方式。</p>
-<p><strong>通俗理解：</strong></p>
-<p>HTTP 规定了客户端应该怎样提问，服务器应该怎样回答。</p>
-<p>例如，客户端发送：</p>
-<figure class="highlight http"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">http</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/users</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>api.example.com</span><br></pre></td></tr></tbody></table></figure>
-
-<p>服务器返回：</p>
-<figure class="highlight http"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">http</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">HTTP/1.1</span> <span class="number">200</span> OK</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/json</span><br><span class="line"></span><br><span class="line"><span class="language-elixir">{<span class="string">"users"</span><span class="symbol">:[]</span>}</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>在 Gin 项目中，<code>r.GET("/users", getUsers)</code> 就是在处理一个 HTTP 请求。</p>
-<h2 id="Day-2｜HTTP-请求结构" data-section-label="SECTION" data-chapter="02"><a href="#Day-2｜HTTP-请求结构" class="headerlink" title="Day 2｜HTTP 请求结构"></a>Day 2｜HTTP 请求结构</h2><p>今天认识的 5 个术语，可以组成一次完整的 HTTP 请求与响应：</p>
-<blockquote>
-<p>URL 表示访问哪个资源 → Method 表示希望执行什么操作 → Header 携带认证方式、数据格式等附加信息 → Body 携带主要业务数据 → Status Code 表示服务器最终的处理结果</p>
-</blockquote>
-<h3 id="一、URL（统一资源定位符）"><a href="#一、URL（统一资源定位符）" class="headerlink" title="一、URL（统一资源定位符）"></a>一、URL（统一资源定位符）</h3><p><strong>正式解释：</strong></p>
-<p>URL 用于描述网络资源的位置，以及访问这个资源所使用的方式。</p>
-<p><strong>通俗理解：</strong></p>
-<p>在互联网上找到特定网页、图片或数据的具体“网络地址” ,当前页面的 URL = 你当前在浏览器地址栏里看到的那一整串网址</p>
-<p><code>https://api.example.com:443/courses?page=2</code></p>
-<table>
+      <article class="article-prose" id="article-container"><p>从一次网络请求到数据库并发控制，这里按主题整理 <strong>8 个 Day、40 个术语</strong>。每个 Day 都有独立地址，可以单独收藏、搜索和复习。</p>
+<h2 id="按主题查找" data-section-label="SECTION" data-chapter="01"><a href="#按主题查找" class="headerlink" title="按主题查找"></a>按主题查找</h2><table>
 <thead>
 <tr>
-<th>组成部分</th>
-<th>示例</th>
-<th>作用</th>
+<th>主题</th>
+<th>阅读入口</th>
+<th>关注的问题</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Scheme</td>
-<td><code>https</code></td>
-<td>使用什么协议访问</td>
+<td>网络</td>
+<td><a href="/programming-terms/day-1/">Day 1</a>、<a href="/programming-terms/day-4/">Day 4</a></td>
+<td>请求如何到达服务，如何安全通信与保持连接</td>
 </tr>
 <tr>
-<td>Host</td>
-<td><code>api.example.com</code></td>
-<td>访问哪台主机</td>
+<td>HTTP</td>
+<td><a href="/programming-terms/day-2/">Day 2</a>、<a href="/programming-terms/day-3/">Day 3</a>、<a href="/programming-terms/day-4/">Day 4</a></td>
+<td>请求结构、参数、跨源访问</td>
 </tr>
 <tr>
-<td>Port</td>
-<td><code>443</code></td>
-<td>访问主机上的哪个端口</td>
+<td>身份认证</td>
+<td><a href="/programming-terms/day-3/">Day 3</a></td>
+<td>Cookie、Session 与 JWT</td>
 </tr>
 <tr>
-<td>Path</td>
-<td><code>/courses</code></td>
-<td>访问哪个资源路径</td>
+<td>数据库</td>
+<td><a href="/programming-terms/day-5/">Day 5</a>、<a href="/programming-terms/day-6/">Day 6</a>、<a href="/programming-terms/day-7/">Day 7</a></td>
+<td>结构、字段、约束、索引与查询计划</td>
 </tr>
 <tr>
-<td>Query</td>
-<td><code>page=2</code></td>
-<td>补充请求参数</td>
+<td>并发</td>
+<td><a href="/programming-terms/day-8/">Day 8</a></td>
+<td>数据库事务、隔离级别、锁与 MVCC</td>
 </tr>
 </tbody></table>
-<h3 id="二、HTTP-Method（HTTP-请求方法）"><a href="#二、HTTP-Method（HTTP-请求方法）" class="headerlink" title="二、HTTP Method（HTTP 请求方法）"></a>二、HTTP Method（HTTP 请求方法）</h3><p><strong>正式解释：</strong></p>
-<p>HTTP Method 用来表示客户端希望对目标资源执行的操作。</p>
-<p><strong>通俗理解：</strong></p>
-<p>增删改查(只是改有部分修改和全部之分)</p>
-<p>后端最常见的方法：</p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>常见语义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>GET</code></td>
-<td>查询资源</td>
-</tr>
-<tr>
-<td><code>POST</code></td>
-<td>创建资源</td>
-</tr>
-<tr>
-<td><code>PUT</code></td>
-<td>整体更新资源</td>
-</tr>
-<tr>
-<td><code>PATCH</code></td>
-<td>部分更新资源</td>
-</tr>
-<tr>
-<td><code>DELETE</code></td>
-<td>删除资源</td>
-</tr>
-</tbody></table>
-<h3 id="三、HTTP-Header（HTTP-头字段）"><a href="#三、HTTP-Header（HTTP-头字段）" class="headerlink" title="三、HTTP Header（HTTP 头字段）"></a>三、HTTP Header（HTTP 头字段）</h3><p><strong>正式解释：</strong></p>
-<p>HTTP Header 用来携带请求或响应的附加信息和元数据。</p>
-<p><strong>通俗理解：</strong></p>
-<p>请求头（Request Header）—— 客户端发给服务器，带上自己的身份和具体要求<br>响应头（Response Header）—— 服务器回给客户端，带上内容格式和后续指示（比如怎么缓存、存什么 Cookie）</p>
-<p>常见 Header：</p>
-<figure class="highlight http"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">http</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Authorization</span><span class="punctuation">: </span>Bearer eyJ...</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/json</span><br><span class="line"><span class="attribute">Accept</span><span class="punctuation">: </span>application/json</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li><code>Authorization</code> 常用于传递登录凭证。</li>
-<li><code>Content-Type</code> 说明消息体使用什么格式。</li>
-<li><code>Accept</code> 说明客户端希望接收什么格式的数据。</li>
+<p>部分 Day 涉及多个主题，因此会出现在不同入口中。</p>
+<h2 id="建议学习路径" data-section-label="SECTION" data-chapter="02"><a href="#建议学习路径" class="headerlink" title="建议学习路径"></a>建议学习路径</h2><ul>
+<li><strong>第一次学习：</strong> 按 Day 1 → Day 8 顺序阅读，每次掌握 5 个术语。</li>
+<li><strong>排查接口问题：</strong> Day 1 → Day 2 → Day 3 → Day 4，顺着请求、参数、身份与连接逐层定位。</li>
+<li><strong>复习数据库：</strong> Day 5 → Day 6 → Day 7 → Day 8，从数据结构走到查询和事务。</li>
+<li><strong>快速查词：</strong> 使用站内搜索输入术语（如 JWT、Covering Index 或 MVCC），直接打开对应短篇。</li>
 </ul>
-<p>可以先记住：Header 保存附加信息，主要业务数据通常放在 Body 中。</p>
-<h3 id="四、HTTP-Body（HTTP-消息体）"><a href="#四、HTTP-Body（HTTP-消息体）" class="headerlink" title="四、HTTP Body（HTTP 消息体）"></a>四、HTTP Body（HTTP 消息体）</h3><p><strong>正式解释：</strong></p>
-<p>HTTP Body 用来携带请求或响应中的主要数据内容。</p>
-<p><strong>通俗理解：</strong></p>
-<p>Body 就像包裹里真正装着的东西，可以是用户提交的 JSON、表单，也可以是服务器返回的文字、图片或文件。</p>
-<p>例如，注册用户时发送 JSON 数据：</p>
-<figure class="highlight http"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">http</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/users</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/json</span><br><span class="line"></span><br><span class="line"><span class="language-json"><span class="punctuation">{</span></span></span><br><span class="line"><span class="language-json">  <span class="attr">"username"</span><span class="punctuation">:</span> <span class="string">"fliex"</span><span class="punctuation">,</span></span></span><br><span class="line"><span class="language-json">  <span class="attr">"password"</span><span class="punctuation">:</span> <span class="string">"123456"</span></span></span><br><span class="line"><span class="language-json"><span class="punctuation">}</span></span></span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong>项目例子：</strong></p>
-<figure class="highlight go"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">go</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> req RegisterRequest</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> err := c.ShouldBindJSON(&amp;req); err != <span class="literal">nil</span> {</span><br><span class="line">	<span class="comment">// 返回 400 Bad Request</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>ShouldBindJSON</code> 处理的核心过程是：</p>
-<blockquote>
-<p>HTTP Body → 解析 JSON → 写入 Go struct</p>
-</blockquote>
-<h3 id="五、HTTP-Status-Code（HTTP-状态码）"><a href="#五、HTTP-Status-Code（HTTP-状态码）" class="headerlink" title="五、HTTP Status Code（HTTP 状态码）"></a>五、HTTP Status Code（HTTP 状态码）</h3><p><strong>正式解释：</strong></p>
-<p>HTTP Status Code 是服务器在响应中返回的三位数字，用来表示请求的处理结果。</p>
-<p><strong>通俗理解：</strong></p>
-<p>状态码用于告诉客户端请求的处理结果。</p>
-<p>后端开发中常见的状态码：</p>
-<table>
-<thead>
-<tr>
-<th>状态码</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>200 OK</code></td>
-<td>请求成功</td>
-</tr>
-<tr>
-<td><code>201 Created</code></td>
-<td>资源创建成功</td>
-</tr>
-<tr>
-<td><code>400 Bad Request</code></td>
-<td>请求内容存在问题</td>
-</tr>
-<tr>
-<td><code>401 Unauthorized</code></td>
-<td>尚未完成身份认证</td>
-</tr>
-<tr>
-<td><code>403 Forbidden</code></td>
-<td>已认证，但没有操作权限</td>
-</tr>
-<tr>
-<td><code>404 Not Found</code></td>
-<td>请求的资源不存在</td>
-</tr>
-<tr>
-<td><code>409 Conflict</code></td>
-<td>当前请求与资源状态发生冲突</td>
-</tr>
-<tr>
-<td><code>500 Internal Server Error</code></td>
-<td>服务器内部发生错误</td>
-</tr>
-</tbody></table>
-<p><strong>项目例子：</strong></p>
-<figure class="highlight go"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">go</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c.JSON(http.StatusNotFound, gin.H{</span><br><span class="line">	<span class="string">"message"</span>: <span class="string">"course not found"</span>,</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="Day-3｜请求参数与身份状态" data-section-label="SECTION" data-chapter="03"><a href="#Day-3｜请求参数与身份状态" class="headerlink" title="Day 3｜请求参数与身份状态"></a>Day 3｜请求参数与身份状态</h2><blockquote>
-<p>Query Parameter → Path Parameter → Cookie → Session → JWT</p>
-</blockquote>
-<p>今天的 5 个术语，可以放进下面这张关系图中：</p>
-<figure class="highlight text"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">text</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HTTP 请求</span><br><span class="line">│</span><br><span class="line">├─ 请求参数</span><br><span class="line">│  ├─ Path Parameter  → 找到具体资源</span><br><span class="line">│  └─ Query Parameter → 控制查询方式</span><br><span class="line">│</span><br><span class="line">└─ 身份与会话状态</span><br><span class="line">   ├─ Cookie + Session</span><br><span class="line">   └─ JWT</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="一、Query-Parameter（查询参数）"><a href="#一、Query-Parameter（查询参数）" class="headerlink" title="一、Query Parameter（查询参数）"></a>一、Query Parameter（查询参数）</h3><p><strong>正式解释：</strong></p>
-<p>Query Parameter 是 URL 查询字符串中的键值参数，通常位于 <code>?</code> 之后，用于向服务器补充筛选、排序、分页等请求条件。</p>
-<p><strong>通俗理解：</strong></p>
-<p>? 后面的每一个字(或直到锚点 # 出现之前)，都是用 &amp; 串起来的“键值对数据”，全部属于查询参数</p>
-<p><strong>项目例子：</strong></p>
-<p>例如：<code>https://api.example.com/courses?page=2&amp;sort=price#reviews</code></p>
-<ul>
-<li><code>page=2</code> 和 <code>sort=price</code> 是 Query Parameter，使用 <code>&amp;</code> 连接。</li>
-<li><code>#reviews</code> 是 Fragment（片段标识符），用于定位页面中的某个位置，不属于 Query Parameter。</li>
-<li>浏览器向服务器发送请求时，通常只会发送 <code>#</code> 前面的内容，不会把 <code>#reviews</code> 发送给后端。</li>
-</ul>
-<h3 id="二、Path-Parameter（路径参数）"><a href="#二、Path-Parameter（路径参数）" class="headerlink" title="二、Path Parameter（路径参数）"></a>二、Path Parameter（路径参数）</h3><p><strong>正式解释：</strong></p>
-<p>Path Parameter 是嵌入 URL 路径中的动态参数，通常用于标识某个具体资源或路由层级。</p>
-<p><strong>通俗理解：</strong></p>
-<p>用来精准定位“具体是哪一个东西”</p>
-<p><strong>项目例子：</strong></p>
-<p>例如，在 Gin 中先定义带有 <code>:id</code> 的路由：</p>
-<figure class="highlight go"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">go</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r.GET(<span class="string">"/courses/:id"</span>, getCourse)</span><br></pre></td></tr></tbody></table></figure>
-
-<p>客户端请求编号为 <code>1001</code> 的课程：</p>
-<figure class="highlight http"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">http</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /courses/1001</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li><code>:id</code> 表示路由中的 Path Parameter。</li>
-<li>请求 <code>/courses/1001</code> 时，<code>c.Param("id")</code> 得到的值是 <code>1001</code>。</li>
-<li><code>/courses/1002</code> 会匹配同一条路由，但读取到的 <code>id</code> 是 <code>1002</code>。</li>
-</ul>
-<blockquote>
-<p><strong>Tips：Path Parameter 和 Query Parameter 的区别</strong></p>
-<ul>
-<li><strong>Path Parameter</strong> 通常用来定位一个具体资源。例如，<code>/users/10086</code> 表示访问 ID 为 <code>10086</code> 的用户，参数是路由结构的一部分；如果请求缺少这个 ID，<code>/users/:id</code> 通常无法匹配，并返回 <code>404 Not Found</code>。</li>
-<li><strong>Query Parameter</strong> 通常用来筛选、排序或分页。例如，<code>/users?id=10086</code> 表示先访问用户集合，再筛选出 <code>id=10086</code> 的用户；如果省略查询参数，请求 <code>/users</code> 通常会执行默认行为，例如返回用户列表。</li>
-</ul>
-<p>简单记忆：<strong>Path 确定“访问哪个资源”，Query 补充“用什么条件查询”。</strong></p>
-</blockquote>
-<h3 id="三、Cookie"><a href="#三、Cookie" class="headerlink" title="三、Cookie"></a>三、Cookie</h3><p><strong>正式解释：</strong></p>
-<p>Cookie 是由服务器设置或客户端创建、保存在用户代理中的小段数据；在满足域名、路径、有效期和安全策略等条件时，会随 HTTP 请求发送给服务器。</p>
-<p><strong>通俗理解：</strong></p>
-<p>Cookie 就像网站交给浏览器的一张小纸条。它可以记录登录身份的编号，也可以保存主题、语言等偏好；浏览器之后访问网站时，会按规则把这张纸条一起带上。</p>
-<h3 id="四、Session（会话）"><a href="#四、Session（会话）" class="headerlink" title="四、Session（会话）"></a>四、Session（会话）</h3><p><strong>正式解释：</strong></p>
-<p>Session 是在多次请求之间保存和识别用户状态的一种会话机制。服务器通常保存会话数据，并通过 Session ID 将请求与对应的会话关联起来。</p>
-<p><strong>通俗理解：</strong></p>
-<p>Session 是服务器为这张“电子通行证”在后台建的一份“私人档案袋”（或储物柜），用来真正存放你这段时间内的所有详细数据和操作记录</p>
-<blockquote>
-<p><strong>Tips：Cookie 和 Session 的核心区别</strong></p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>对比维度</th>
-<th>Cookie</th>
-<th>Session</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>存放位置</strong></td>
-<td>保存在用户的浏览器中（客户端）</td>
-<td>会话数据通常保存在服务器中（服务端）</td>
-</tr>
-<tr>
-<td><strong>安全性</strong></td>
-<td>用户可以查看或修改，后端不能直接信任其内容</td>
-<td>核心数据不直接暴露给用户，但仍需保护 Session ID 和服务端存储</td>
-</tr>
-<tr>
-<td><strong>存放内容</strong></td>
-<td>少量数据，例如 Session ID、偏好设置</td>
-<td>与会话相关的用户状态或业务数据</td>
-</tr>
-<tr>
-<td><strong>存储容量</strong></td>
-<td>较小，单个 Cookie 通常约为 4 KB，具体限制因浏览器而异</td>
-<td>取决于服务器的存储方式和项目配置</td>
-</tr>
-</tbody></table>
-<p>简单记忆：<strong>Cookie 通常保存“通行证编号”，Session 保存这个编号对应的“后台档案”。</strong></p>
-<h3 id="五、JWT（JSON-Web-Token）"><a href="#五、JWT（JSON-Web-Token）" class="headerlink" title="五、JWT（JSON Web Token）"></a>五、JWT（JSON Web Token）</h3><p><strong>正式解释：</strong></p>
-<p>JWT 是一种紧凑、URL 安全的令牌格式，用于在不同系统之间传递声明信息。JWT 通常由 Header、Payload 和 Signature 三部分组成，可通过签名验证内容是否被篡改，但默认不会加密 Payload。</p>
-<p><strong>通俗理解：</strong></p>
-<p>JWT 的本质是一张“带防伪签名的电子凭证”，不是默认加密的令牌。Header 和 Payload 中的内容通常可以被读取，所以密码、银行卡等隐私不能写进去；Signature 负责帮助服务器判断内容有没有被篡改。服务器可以不保存 Session，但是否记录登录状态或令牌黑名单，仍然由项目设计决定。</p>
-<h2 id="Day-4｜安全、连接与实时通信" data-section-label="SECTION" data-chapter="04"><a href="#Day-4｜安全、连接与实时通信" class="headerlink" title="Day 4｜安全、连接与实时通信"></a>Day 4｜安全、连接与实时通信</h2><blockquote>
-<p>HTTPS 依靠 TLS 保护通信｜Keep-Alive 复用连接｜CORS 控制跨域｜WebSocket 支持双向通信</p>
-</blockquote>
-<p>今天的 5 个术语，可以放进下面这张关系图中：</p>
-<figure class="highlight text"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">text</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">浏览器与服务器通信</span><br><span class="line">│</span><br><span class="line">├─ HTTPS + TLS → 加密并保护 HTTP 通信</span><br><span class="line">├─ Keep-Alive  → 复用连接，减少重复建连</span><br><span class="line">├─ CORS       → 控制浏览器是否允许跨域访问</span><br><span class="line">└─ WebSocket  → 建立双向实时通信通道</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="一、HTTPS（超文本传输安全协议）"><a href="#一、HTTPS（超文本传输安全协议）" class="headerlink" title="一、HTTPS（超文本传输安全协议）"></a>一、HTTPS（超文本传输安全协议）</h3><p><strong>正式解释：</strong></p>
-<p>HTTPS 是运行在 TLS 安全通道之上的 HTTP，用于保护客户端与服务器之间传输的数据。</p>
-<p><strong>通俗理解：</strong></p>
-<p>给 HTTP 套上一层 TLS 安全外壳。传输中的 HTTP 内容会被加密并检查有没有遭到篡改，所以通信更安全。</p>
-<p><strong>项目例子：</strong></p>
-<p>当客户端访问 <code>https://api.example.com/courses</code> 时，请求内容会通过 TLS 加密后再传输。HTTPS 的默认端口通常是 <code>443</code>。</p>
-<h3 id="二、TLS（传输层安全协议）"><a href="#二、TLS（传输层安全协议）" class="headerlink" title="二、TLS（传输层安全协议）"></a>二、TLS（传输层安全协议）</h3><p><strong>正式解释：</strong></p>
-<p>TLS 是一种用于保护网络通信的加密协议，可以提供身份认证、数据机密性和数据完整性。</p>
-<p><strong>通俗理解：</strong></p>
-<p>TLS 是一套完整的安全协议——它不仅提供加密手段防偷看，还顺便把**身份验证（防冒充）和完整性校验（防篡改）**全给办了</p>
-<p><strong>项目例子：</strong></p>
-<p>浏览器访问 HTTPS 网站时，会在发送 HTTP 数据前与服务器进行 TLS 握手，并验证服务器证书。握手成功后，双方使用协商出的密钥加密后续通信。</p>
-<h3 id="三、Keep-Alive（持久连接）"><a href="#三、Keep-Alive（持久连接）" class="headerlink" title="三、Keep-Alive（持久连接）"></a>三、Keep-Alive（持久连接）</h3><p><strong>正式解释：</strong></p>
-<p>Keep-Alive 是复用底层网络连接处理多个请求与响应的机制，可以减少重复建立连接带来的开销。</p>
-<p><strong>通俗理解：</strong></p>
-<p>打通电话后先别挂，有事接着说，省得每次都重新拨号</p>
-<blockquote>
-<p><strong>Tips：Keep-Alive 能保持多久？</strong></p>
-<p>Keep-Alive 连接能空闲多久，通常由 Web 服务器或 Nginx、CDN 等网络代理的超时配置决定，也可能受到客户端超时设置的影响。</p>
-</blockquote>
-<h3 id="四、CORS（跨源资源共享）"><a href="#四、CORS（跨源资源共享）" class="headerlink" title="四、CORS（跨源资源共享）"></a>四、CORS（跨源资源共享）</h3><p><strong>正式解释：</strong></p>
-<p>CORS 是一种基于 HTTP Header 的浏览器安全机制，服务器通过响应头声明哪些源可以跨域访问自己的资源。</p>
-<p><strong>通俗理解：</strong></p>
-<p>浏览器为了防坏人，默认不让你跨门串户；但如果对方主人贴了通行许可，浏览器就放行。</p>
-<p><strong>项目例子：</strong></p>
-<p>当前端运行在 <code>http://localhost:3000</code>，后端运行在 <code>http://localhost:8080</code> 时，两者属于不同的源。后端允许该前端访问时，可以返回：</p>
-<figure class="highlight http"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">http</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Access-Control-Allow-Origin</span><span class="punctuation">: </span>http://localhost:3000</span><br><span class="line"><span class="attribute">Access-Control-Allow-Methods</span><span class="punctuation">: </span>GET, POST, PUT, DELETE</span><br><span class="line"><span class="attribute">Access-Control-Allow-Headers</span><span class="punctuation">: </span>Content-Type, Authorization</span><br></pre></td></tr></tbody></table></figure>
-
-<p>对于某些跨域请求，浏览器会先发送 <code>OPTIONS</code> 预检请求，确认服务器允许后再发送正式请求。</p>
-<h3 id="五、WebSocket（全双工通信协议）"><a href="#五、WebSocket（全双工通信协议）" class="headerlink" title="五、WebSocket（全双工通信协议）"></a>五、WebSocket（全双工通信协议）</h3><p><strong>正式解释：</strong></p>
-<p>WebSocket 是一种在单个长连接上进行全双工通信的应用层协议，客户端和服务器都可以主动向对方发送数据。</p>
-<p><strong>通俗理解：</strong></p>
-<p>传统 HTTP 更像一问一答：客户端先问，服务器再回答。WebSocket 更像实时通话，连接建立后，客户端和服务器谁有消息都可以主动发送。</p>
-<p><strong>项目例子：</strong></p>
-<p>聊天、实时通知和在线状态等功能可以使用 WebSocket。连接通常先通过 HTTP 请求完成协议升级：</p>
-<figure class="highlight http"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">http</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/ws</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>api.example.com</span><br><span class="line"><span class="attribute">Upgrade</span><span class="punctuation">: </span>websocket</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>Upgrade</span><br></pre></td></tr></tbody></table></figure>
-
-<p>升级成功后，客户端与服务器可以在同一条连接上持续双向发送消息，不需要为每条消息重新发送一次普通 HTTP 请求。</p>
-<blockquote>
-<p><strong>Tips：HTTP 请求—响应与 WebSocket 的核心区别</strong></p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th><strong>维度</strong></th>
-<th><strong>HTTP 请求—响应（通常由客户端发起）</strong></th>
-<th><strong>WebSocket（全双工）</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>通信模式</strong></td>
-<td><strong>一问一答</strong>：客户端先发起请求，服务器再针对该请求返回响应。</td>
-<td><strong>随时双向互通</strong>：长连接建立后，客户端和服务器都能主动发送数据。</td>
-</tr>
-<tr>
-<td><strong>生活比喻</strong></td>
-<td>像在<strong>餐厅按铃叫服务员</strong>，按一次处理一次。</td>
-<td>像<strong>两个人实时语音通话</strong>，双方随时都可以开口。</td>
-</tr>
-<tr>
-<td><strong>实时方案</strong></td>
-<td>通常使用轮询、长轮询或 SSE 等方式获取最新消息。</td>
-<td>服务端有新消息时可以直接推送，适合聊天、通知等实时场景。</td>
-</tr>
-<tr>
-<td><strong>网络开销</strong></td>
-<td>每次请求和响应通常都需要携带 HTTP Header。</td>
-<td>握手完成后使用较轻量的数据帧传输，但实际开销取决于帧长度、掩码和扩展。</td>
-</tr>
-</tbody></table>
-<h2 id="Day-5｜数据库基础结构" data-section-label="SECTION" data-chapter="05"><a href="#Day-5｜数据库基础结构" class="headerlink" title="Day 5｜数据库基础结构"></a>Day 5｜数据库基础结构</h2><figure class="highlight text"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">text</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Table（表）</span><br><span class="line">│</span><br><span class="line">├─ Row（行）             → 保存一条数据</span><br><span class="line">├─ Primary Key（主键）   → 唯一标识一行</span><br><span class="line">├─ Foreign Key（外键）   → 关联另一张表</span><br><span class="line">└─ Constraint（约束）    → 限制数据必须符合规则</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="一、Table（表）"><a href="#一、Table（表）" class="headerlink" title="一、Table（表）"></a>一、Table（表）</h3><p><strong>正式解释：</strong></p>
-<p>Table 是关系型数据库中用于组织和存储同一类数据的结构，由列和行组成。每一列定义数据的字段，每一行保存一条具体记录。</p>
-<p><strong>通俗理解：</strong></p>
-<p>Table 就是把现实中某一类事物抽象出的“全部属性模版”及其“所有具体数据”给打包封装在一起的容器</p>
-<h3 id="二、Row（行）"><a href="#二、Row（行）" class="headerlink" title="二、Row（行）"></a>二、Row（行）</h3><p><strong>正式解释：</strong></p>
-<p>Row 是表中的一条数据记录，由该表各列对应的值组成。</p>
-<p><strong>通俗理解：</strong></p>
-<p>在“结构”上必须是完整的一行数据（表有几列，这一行就必须对应几列），但在“内容”上允许某些非必填项留白（NULL）</p>
-<h3 id="三、Primary-Key（主键）"><a href="#三、Primary-Key（主键）" class="headerlink" title="三、Primary Key（主键）"></a>三、Primary Key（主键）</h3><p><strong>正式解释：</strong></p>
-<p>Primary Key 是用于唯一标识表中每一行数据的列或列组合。主键值不能重复，也不能为 <code>NULL</code>。</p>
-<p><strong>通俗理解：</strong></p>
-<p>唯一标识(身份证号码)</p>
-<h3 id="四、Foreign-Key（外键）"><a href="#四、Foreign-Key（外键）" class="headerlink" title="四、Foreign Key（外键）"></a>四、Foreign Key（外键）</h3><p><strong>正式解释：</strong></p>
-<p>Foreign Key 是表中的一个列或列组合，用来引用另一张表中的主键或唯一键，从而建立表之间的关联并维护引用完整性。</p>
-<p><strong>通俗理解：</strong></p>
-<p>单子上不抄对方容易变的详细信息（如住址），只留一个对方的“唯一编号”（外键）；发货时顺着编号一查，永远能拿到他最新的实时数据</p>
-<p><strong>项目例子：</strong></p>
-<p>如果每门课程都属于一名教师，可以让 <code>teacher_id</code> 引用 <code>users</code> 表的主键：</p>
-<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">teacher_id <span class="type">BIGINT</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line"><span class="keyword">CONSTRAINT</span> fk_courses_teacher</span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (teacher_id) <span class="keyword">REFERENCES</span> users(id)</span><br></pre></td></tr></tbody></table></figure>
-
-<p>这样，课程中的 <code>teacher_id</code> 必须对应 <code>users</code> 表中真实存在的用户。</p>
-<blockquote>
-<p><strong>Tips：主键和外键的区别</strong></p>
-<p>主键负责唯一标识“自己表中的这一行”，外键负责指向“另一张表中的某一行”。主键不能重复，外键可以重复，例如同一名教师可以拥有多门课程。</p>
-</blockquote>
-<h3 id="五、Constraint（约束）"><a href="#五、Constraint（约束）" class="headerlink" title="五、Constraint（约束）"></a>五、Constraint（约束）</h3><p><strong>正式解释：</strong></p>
-<p>Constraint 是数据库为表中数据规定的校验规则，用于阻止不符合要求的数据被写入，从而保证数据的正确性和一致性。</p>
-<p><strong>通俗理解：</strong></p>
-<p>限制条件，比如不能为空、不能重复、必须满足指定条件等等。</p>
-<p><strong>项目例子：</strong></p>
-<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">email <span class="type">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT NULL</span> <span class="keyword">UNIQUE</span>,</span><br><span class="line">price <span class="type">DECIMAL</span>(<span class="number">10</span>, <span class="number">2</span>) <span class="keyword">NOT NULL</span> <span class="keyword">CHECK</span> (price <span class="operator">&gt;=</span> <span class="number">0</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li><code>NOT NULL</code>：值不能为空。</li>
-<li><code>UNIQUE</code>：值不能重复。</li>
-<li><code>CHECK</code>：值必须满足指定条件。</li>
-<li><code>PRIMARY KEY</code> 和 <code>FOREIGN KEY</code> 也属于约束。</li>
-</ul>
-<h2 id="Day-6｜数据库字段与唯一性" data-section-label="SECTION" data-chapter="06"><a href="#Day-6｜数据库字段与唯一性" class="headerlink" title="Day 6｜数据库字段与唯一性"></a>Day 6｜数据库字段与唯一性</h2><figure class="highlight text"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">text</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Schema（模式）</span><br><span class="line">└─ Table（表）</span><br><span class="line">   ├─ Data Type（数据类型） → 规定列能存什么数据</span><br><span class="line">   ├─ NULL（空值）          → 表示值缺失或未知</span><br><span class="line">   ├─ Unique Index（唯一索引）→ 保证索引值不重复</span><br><span class="line">   └─ Composite Key（复合键） → 使用多个列共同标识数据</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="一、Schema（模式）"><a href="#一、Schema（模式）" class="headerlink" title="一、Schema（模式）"></a>一、Schema（模式）</h3><p><strong>正式解释：</strong></p>
-<p>Schema 是数据库中用于组织表、视图、索引等对象的逻辑命名空间，可以帮助划分和管理不同业务的数据结构。</p>
-<p><strong>通俗理解：</strong></p>
-<p>数据库中的建表规划图,但是还没有写如任何数据,只有建几个表格,表格保留哪些字段,每个字段都有什么数据类型,字段是否为空,字段是否唯一,字段是否为索引等等</p>
-<blockquote>
-<p>PostgreSQL 可以在一个数据库中创建多个 Schema；在 MySQL 中，Schema 基本可以理解为 Database 的同义词。</p>
-</blockquote>
-<h3 id="二、Data-Type（数据类型）"><a href="#二、Data-Type（数据类型）" class="headerlink" title="二、Data Type（数据类型）"></a>二、Data Type（数据类型）</h3><p><strong>正式解释：</strong></p>
-<p>Data Type 用来规定一列能够保存的数据形式、取值范围以及可以执行的操作。</p>
-<h3 id="三、NULL（空值）"><a href="#三、NULL（空值）" class="headerlink" title="三、NULL（空值）"></a>三、NULL（空值）</h3><p><strong>正式解释：</strong></p>
-<p>NULL 表示某个字段的值缺失、未知或暂时不适用。它不等于数字 <code>0</code>、空字符串 <code>''</code>，也不等于另一个 NULL。</p>
-<blockquote>
-<p><strong>Tips：判断 NULL</strong></p>
-<p>判断 NULL 要使用 <code>IS NULL</code> 或 <code>IS NOT NULL</code>，不能使用 <code>= NULL</code> 或 <code>!= NULL</code>。</p>
-</blockquote>
-<h3 id="四、Unique-Index（唯一索引）"><a href="#四、Unique-Index（唯一索引）" class="headerlink" title="四、Unique Index（唯一索引）"></a>四、Unique Index（唯一索引）</h3><p><strong>正式解释：</strong></p>
-<p>Unique Index 是不允许索引键值重复的索引，既可以加快查询，也可以由数据库保证指定列或列组合的唯一性。</p>
-<h3 id="五、Composite-Key（复合键）"><a href="#五、Composite-Key（复合键）" class="headerlink" title="五、Composite Key（复合键）"></a>五、Composite Key（复合键）</h3><p><strong>正式解释：</strong></p>
-<p>Composite Key 是由两个或多个列共同组成的键。只有把这些列组合起来，才能唯一标识一行数据。</p>
-<p><strong>通俗理解：</strong></p>
-<p>选课系统（学生ID + 课程ID）把 (学生ID + 课程ID) 捆绑在一起，就能唯一确定“某位同学选了某门具体课程”的这一条选课记录，还能顺便防止同一个学生把同一门课重复选两次</p>
-<p><strong>项目例子：</strong></p>
-<p>在选课关系表中，同一个用户不能重复选择同一门课程：</p>
-<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> enrollments (</span><br><span class="line">    user_id <span class="type">BIGINT</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">    course_id <span class="type">BIGINT</span> <span class="keyword">NOT NULL</span>,</span><br><span class="line">    <span class="keyword">PRIMARY KEY</span> (user_id, course_id)</span><br><span class="line">);</span><br></pre></td></tr></tbody></table></figure>
-
-<p>这里单独使用 <code>user_id</code> 或 <code>course_id</code> 都会重复，但二者组合后可以唯一标识一条选课记录。</p>
-<h2 id="Day-7｜数据库索引与查询计划" data-section-label="SECTION" data-chapter="07"><a href="#Day-7｜数据库索引与查询计划" class="headerlink" title="Day 7｜数据库索引与查询计划"></a>Day 7｜数据库索引与查询计划</h2><figure class="highlight text"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">text</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SQL 查询</span><br><span class="line">│</span><br><span class="line">└─ Query Plan（查询计划）</span><br><span class="line">   ├─ 使用 Index（索引）</span><br><span class="line">   │  ├─ 常见结构：B+ Tree</span><br><span class="line">   │  └─ 覆盖全部所需字段：Covering Index</span><br><span class="line">   │</span><br><span class="line">   └─ 不使用索引：Full Table Scan</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="一、Index（索引）"><a href="#一、Index（索引）" class="headerlink" title="一、Index（索引）"></a>一、Index（索引）</h3><p><strong>正式解释：</strong></p>
-<p>Index 是数据库为了加快数据查找而维护的辅助数据结构，保存索引键与对应数据位置之间的关系。</p>
-<h3 id="二、B-Tree（B-树）"><a href="#二、B-Tree（B-树）" class="headerlink" title="二、B+ Tree（B+ 树）"></a>二、B+ Tree（B+ 树）</h3><p><strong>正式解释：</strong></p>
-<p>B+ Tree 是一种多路平衡树。它的非叶子节点主要保存索引键和子节点指针，叶子节点按顺序保存索引记录，适合数据库的等值查询和范围查询。</p>
-<p><strong>项目例子：</strong></p>
-<p>为课程创建时间建立常见的 B+ Tree 索引后，可以高效查询某个时间范围的数据：</p>
-<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX idx_courses_created_at <span class="keyword">ON</span> courses (created_at);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> id, title</span><br><span class="line"><span class="keyword">FROM</span> courses</span><br><span class="line"><span class="keyword">WHERE</span> created_at <span class="operator">&gt;=</span> <span class="string">'2026-09-01 00:00:00'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> created_at;</span><br></pre></td></tr></tbody></table></figure>
-
-<p>B+ Tree 的叶子节点有序，因此特别适合范围查询和排序。</p>
-<h3 id="三、Full-Table-Scan（全表扫描）"><a href="#三、Full-Table-Scan（全表扫描）" class="headerlink" title="三、Full Table Scan（全表扫描）"></a>三、Full Table Scan（全表扫描）</h3><p><strong>正式解释：</strong></p>
-<p>Full Table Scan 是数据库依次读取表中大量或全部数据行，再判断哪些行满足查询条件的访问方式。</p>
-<p><strong>通俗理解：</strong></p>
-<p>在没有导航目录时(除了全部查找没有更快的方法了),需要查找指定的数据,对所有的数据进行全部查找</p>
-<p><strong>项目例子：</strong></p>
-<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> courses</span><br><span class="line"><span class="keyword">WHERE</span> description <span class="keyword">LIKE</span> <span class="string">'%Go%'</span>;</span><br></pre></td></tr></tbody></table></figure>
-
-<p>普通 B+ Tree 索引通常无法直接处理以 <code>%</code> 开头的模糊匹配，这类查询可能出现全表扫描。在 MySQL 的执行计划中，常见表现是 <code>type = ALL</code>。</p>
-<blockquote>
-<p><strong>Tips：全表扫描不一定是错误</strong></p>
-<p>当表很小，或者查询本来就要读取大部分数据时，数据库主动选择全表扫描可能比频繁访问索引更合适。</p>
-</blockquote>
-<h3 id="四、Query-Plan（查询计划）"><a href="#四、Query-Plan（查询计划）" class="headerlink" title="四、Query Plan（查询计划）"></a>四、Query Plan（查询计划）</h3><p><strong>正式解释：</strong></p>
-<p>Query Plan 是数据库优化器为执行一条 SQL 选择的具体方案，包括表的访问方式、使用的索引、连接顺序以及预计读取的数据量等信息。</p>
-<p><strong>通俗理解：</strong></p>
-<p>高级的筛选器，可以有效提高查询效率</p>
-<p><strong>项目例子：</strong></p>
-<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN</span><br><span class="line"><span class="keyword">SELECT</span> id, title</span><br><span class="line"><span class="keyword">FROM</span> courses</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">=</span> <span class="string">'published'</span>;</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="五、Covering-Index（覆盖索引）"><a href="#五、Covering-Index（覆盖索引）" class="headerlink" title="五、Covering Index（覆盖索引）"></a>五、Covering Index（覆盖索引）</h3><p><strong>正式解释：</strong></p>
-<p>Covering Index 是能够直接提供某条查询所需全部字段的索引。数据库只读取索引就能返回结果，不需要再访问原始数据行。</p>
-<p><strong>通俗理解：</strong></p>
-<p>要看的数据都在【索引目录】里面，不用再跑去翻【底层的原始数据表/原始档案】（不用回表）</p>
-<p><strong>项目例子：</strong></p>
-<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX idx_courses_status_title</span><br><span class="line"><span class="keyword">ON</span> courses (status, title);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> title</span><br><span class="line"><span class="keyword">FROM</span> courses</span><br><span class="line"><span class="keyword">WHERE</span> status <span class="operator">=</span> <span class="string">'published'</span>;</span><br></pre></td></tr></tbody></table></figure>
-
-<p>这条查询只使用了索引中的 <code>status</code> 和 <code>title</code>，因此该索引可以成为这条查询的覆盖索引。在 MySQL 执行计划的 <code>Extra</code> 中，通常可以看到 <code>Using index</code>。</p>
-<blockquote>
-<p><strong>Tips：覆盖索引不是一种新的索引结构</strong></p>
-<p>“覆盖”是索引相对于某一条查询的效果。同一个索引可能覆盖查询 A，却无法覆盖需要更多字段的查询 B。</p>
-</blockquote>
-<h2 id="Day-8｜数据库事务与并发控制" data-section-label="SECTION" data-chapter="08"><a href="#Day-8｜数据库事务与并发控制" class="headerlink" title="Day 8｜数据库事务与并发控制"></a>Day 8｜数据库事务与并发控制</h2><figure class="highlight text"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">text</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Transaction（事务）</span><br><span class="line">├─ 可靠性目标：ACID</span><br><span class="line">│  └─ Isolation（隔离性）由 Isolation Level 定义强弱</span><br><span class="line">└─ 并发控制</span><br><span class="line">   ├─ Lock（锁）   → 协调对数据的并发访问</span><br><span class="line">   └─ MVCC         → 通过多版本减少读写冲突</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="一、Transaction（事务）"><a href="#一、Transaction（事务）" class="headerlink" title="一、Transaction（事务）"></a>一、Transaction（事务）</h3><p><strong>正式解释：</strong></p>
-<p>Transaction 是数据库中的一组操作，它们被当作一个不可分割的工作单元执行：要么全部提交成功，要么在失败时全部回滚。</p>
-<p><strong>项目例子：</strong></p>
-<p>转账时，扣款和收款必须放在同一个事务中：</p>
-<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">START</span> TRANSACTION;</span><br><span class="line"></span><br><span class="line"><span class="keyword">UPDATE</span> accounts <span class="keyword">SET</span> balance <span class="operator">=</span> balance <span class="operator">-</span> <span class="number">100</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> accounts <span class="keyword">SET</span> balance <span class="operator">=</span> balance <span class="operator">+</span> <span class="number">100</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></tbody></table></figure>
-
-<p>如果第二条更新失败，应执行 <code>ROLLBACK</code>，避免只扣款却没有收款。</p>
-<h3 id="二、ACID（事务的四个基本特性）"><a href="#二、ACID（事务的四个基本特性）" class="headerlink" title="二、ACID（事务的四个基本特性）"></a>二、ACID（事务的四个基本特性）</h3><p><strong>正式解释：</strong></p>
-<p>ACID 是衡量事务可靠性的四个基本特性：Atomicity（原子性）、Consistency（一致性）、Isolation（隔离性）和 Durability（持久性）。</p>
-<p><strong>通俗理解：</strong></p>
-<p>原子性 —— “同生共死” 一致性 —— “守恒原则” 隔离性 —— “互不干扰” 持久性 —— “落子无悔”</p>
-<p><strong>项目例子：</strong></p>
-<ul>
-<li>原子性：扣款和收款要么都成功，要么都失败。</li>
-<li>一致性：事务前后都要满足余额、约束等业务与数据库规则。</li>
-<li>隔离性：并发转账时，各事务不能随意看到对方尚未提交的数据。</li>
-<li>持久性：提交成功后，即使数据库重启，结果也不能丢失。</li>
-</ul>
-<h3 id="三、Isolation-Level（隔离级别）"><a href="#三、Isolation-Level（隔离级别）" class="headerlink" title="三、Isolation Level（隔离级别）"></a>三、Isolation Level（隔离级别）</h3><p><strong>正式解释：</strong></p>
-<p>Isolation Level 用来规定并发事务之间能够看到哪些数据变化。SQL 标准从弱到强定义了 <code>READ UNCOMMITTED</code>、<code>READ COMMITTED</code>、<code>REPEATABLE READ</code> 和 <code>SERIALIZABLE</code> 四个级别。</p>
-<p><strong>通俗理解：</strong></p>
-<p><strong>项目例子：</strong></p>
-<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> TRANSACTION ISOLATION LEVEL READ COMMITTED;</span><br><span class="line"><span class="keyword">START</span> TRANSACTION;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> balance <span class="keyword">FROM</span> accounts <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></tbody></table></figure>
-
-<p>隔离级别越强，并发事务之间的干扰通常越少，但等待和并发控制成本可能越高。不同数据库对各级别的具体实现并不完全相同。</p>
-<h3 id="四、Lock（锁）"><a href="#四、Lock（锁）" class="headerlink" title="四、Lock（锁）"></a>四、Lock（锁）</h3><p><strong>正式解释：</strong></p>
-<p>Lock 是数据库协调并发访问的机制。当事务修改或锁定数据时，数据库可以阻止其他冲突操作同时进行，从而避免数据被并发破坏。</p>
-<!-- 在这里写下你自己的通俗理解。 -->
-
-<p><strong>项目例子：</strong></p>
-<figure class="highlight sql"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">sql</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">START</span> TRANSACTION;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> balance</span><br><span class="line"><span class="keyword">FROM</span> accounts</span><br><span class="line"><span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">UPDATE</span> accounts <span class="keyword">SET</span> balance <span class="operator">=</span> balance <span class="operator">-</span> <span class="number">100</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>FOR UPDATE</code> 会对目标数据加排他性质的锁。其他事务若要修改同一数据，通常需要等待当前事务提交或回滚。</p>
-<h3 id="五、MVCC（多版本并发控制）"><a href="#五、MVCC（多版本并发控制）" class="headerlink" title="五、MVCC（多版本并发控制）"></a>五、MVCC（多版本并发控制）</h3><p><strong>正式解释：</strong></p>
-<p>MVCC（Multi-Version Concurrency Control）是数据库通过保存数据的多个版本，让事务按照自己的可见性规则读取合适版本的并发控制机制。它可以减少普通读取与写入之间的相互阻塞。</p>
-<!-- 在这里写下你自己的通俗理解。 -->
-
-<p><strong>项目例子：</strong></p>
-<p>事务 A 正在修改账户余额但尚未提交时，事务 B 的普通查询可以根据数据库的隔离规则读取一个已提交的旧版本，而不一定要等待事务 A 完成。</p>
-<blockquote>
-<p><strong>Tips：Lock 和 MVCC 不是二选一</strong></p>
-<p>数据库通常会同时使用锁和 MVCC。MVCC 主要改善普通读写并发，写写冲突、显式锁定读取等场景仍然需要锁来协调。</p>
-</blockquote>
+<h2 id="按-Day-复习" data-section-label="SECTION" data-chapter="03"><a href="#按-Day-复习" class="headerlink" title="按 Day 复习"></a>按 Day 复习</h2><h2 id="Day-1｜HTTP-与网络基础" data-section-label="SECTION" data-chapter="04"><a href="#Day-1｜HTTP-与网络基础" class="headerlink" title="Day 1｜HTTP 与网络基础"></a>Day 1｜HTTP 与网络基础</h2><p>IP Address（IP 地址） / Port（端口） / DNS（域名系统） / TCP（传输控制协议） / HTTP（超文本传输协议）</p>
+<p>一次请求如何从域名到达 Gin 服务？IP、端口、DNS、TCP、HTTP 各负责哪一步？</p>
+<p><a href="/programming-terms/day-1/">阅读这一节 →</a></p>
+<h2 id="Day-2｜HTTP-请求结构" data-section-label="SECTION" data-chapter="05"><a href="#Day-2｜HTTP-请求结构" class="headerlink" title="Day 2｜HTTP 请求结构"></a>Day 2｜HTTP 请求结构</h2><p>URL（统一资源定位符） / HTTP Method（HTTP 请求方法） / HTTP Header（HTTP 头字段） / HTTP Body（HTTP 消息体） / HTTP Status Code（HTTP 状态码）</p>
+<p>URL、Method、Header、Body、Status Code 分别描述请求或响应的什么信息？</p>
+<p><a href="/programming-terms/day-2/">阅读这一节 →</a></p>
+<h2 id="Day-3｜请求参数与身份状态" data-section-label="SECTION" data-chapter="06"><a href="#Day-3｜请求参数与身份状态" class="headerlink" title="Day 3｜请求参数与身份状态"></a>Day 3｜请求参数与身份状态</h2><p>Query Parameter（查询参数） / Path Parameter（路径参数） / Cookie / Session（会话） / JWT（JSON Web Token）</p>
+<p>查询参数和路径参数如何选择？Cookie、Session、JWT 如何表达身份状态？</p>
+<p><a href="/programming-terms/day-3/">阅读这一节 →</a></p>
+<h2 id="Day-4｜安全、连接与实时通信" data-section-label="SECTION" data-chapter="07"><a href="#Day-4｜安全、连接与实时通信" class="headerlink" title="Day 4｜安全、连接与实时通信"></a>Day 4｜安全、连接与实时通信</h2><p>HTTPS（超文本传输安全协议） / TLS（传输层安全协议） / Keep-Alive（持久连接） / CORS（跨源资源共享） / WebSocket（全双工通信协议）</p>
+<p>HTTPS 与 TLS 如何配合？Keep-Alive、CORS、WebSocket 分别解决什么问题？</p>
+<p><a href="/programming-terms/day-4/">阅读这一节 →</a></p>
+<h2 id="Day-5｜数据库基础结构" data-section-label="SECTION" data-chapter="08"><a href="#Day-5｜数据库基础结构" class="headerlink" title="Day 5｜数据库基础结构"></a>Day 5｜数据库基础结构</h2><p>Table（表） / Row（行） / Primary Key（主键） / Foreign Key（外键） / Constraint（约束）</p>
+<p>表、行、主键、外键和约束如何共同保证数据结构与关系？</p>
+<p><a href="/programming-terms/day-5/">阅读这一节 →</a></p>
+<h2 id="Day-6｜数据库字段与唯一性" data-section-label="SECTION" data-chapter="09"><a href="#Day-6｜数据库字段与唯一性" class="headerlink" title="Day 6｜数据库字段与唯一性"></a>Day 6｜数据库字段与唯一性</h2><p>Schema（模式） / Data Type（数据类型） / NULL（空值） / Unique Index（唯一索引） / Composite Key（复合键）</p>
+<p>Schema、数据类型、NULL、唯一索引和复合键各影响什么设计决策？</p>
+<p><a href="/programming-terms/day-6/">阅读这一节 →</a></p>
+<h2 id="Day-7｜数据库索引与查询计划" data-section-label="SECTION" data-chapter="10"><a href="#Day-7｜数据库索引与查询计划" class="headerlink" title="Day 7｜数据库索引与查询计划"></a>Day 7｜数据库索引与查询计划</h2><p>Index（索引） / B+ Tree（B+ 树） / Full Table Scan（全表扫描） / Query Plan（查询计划） / Covering Index（覆盖索引）</p>
+<p>什么时候会全表扫描？如何用查询计划判断索引和覆盖索引是否有效？</p>
+<p><a href="/programming-terms/day-7/">阅读这一节 →</a></p>
+<h2 id="Day-8｜数据库事务与并发控制" data-section-label="SECTION" data-chapter="11"><a href="#Day-8｜数据库事务与并发控制" class="headerlink" title="Day 8｜数据库事务与并发控制"></a>Day 8｜数据库事务与并发控制</h2><p>Transaction（事务） / ACID（事务的四个基本特性） / Isolation Level（隔离级别） / Lock（锁） / MVCC（多版本并发控制）</p>
+<p>事务与 ACID 有什么关系？隔离级别、锁和 MVCC 如何协调并发访问？</p>
+<p><a href="/programming-terms/day-8/">阅读这一节 →</a></p>
 </article>
       <section class="article-comments"><header><span>DISCUSSION</span><h2>评论</h2></header><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></section>
     </section></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
@@ -1239,4 +794,4 @@
       window.location.href = responseURL
     }
   })
-})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button" type="button" aria-label="关闭搜索"><i class="fas fa-times" aria-hidden="true"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><label class="sr-only" for="global-search-input">搜索文章</label><input placeholder="Search..." type="text" id="global-search-input"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script defer="" src="/js/search/local-search.js?v=5.6.1"></script></div></div></body></html>
+})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
