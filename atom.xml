@@ -89,8 +89,8 @@
     </author>
     <category term="Go" scheme="https://novafliex.github.io/categories/Go/"/>
     <category term="Go" scheme="https://novafliex.github.io/tags/Go/"/>
-    <category term="MySQL" scheme="https://novafliex.github.io/tags/MySQL/"/>
     <category term="Gin" scheme="https://novafliex.github.io/tags/Gin/"/>
+    <category term="MySQL" scheme="https://novafliex.github.io/tags/MySQL/"/>
     <category term="CRUD" scheme="https://novafliex.github.io/tags/CRUD/"/>
     <id>https://novafliex.github.io/2026/07/15/Go%20Gin%20MySQL%20CRUD%20%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</id>
     <link href="https://novafliex.github.io/2026/07/15/Go%20Gin%20MySQL%20CRUD%20%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/"/>

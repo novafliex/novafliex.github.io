@@ -7,7 +7,7 @@
   const storedFailures = read(failureKey, [])
   const failures = new Set(Array.isArray(storedFailures) ? storedFailures : [])
   let player = null, loading = null, failed = false, message = '暂无音乐', configured = false
-  let wantsPlay = false, restoreTime = 0, skipTimer = 0, saveAt = 0
+  let wantsPlay = false, restoreTime = 0, skipTimer = 0, saveAt = 0, selectionVersion = 0
   let audioContext = null, analyser = null, audioSource = null
   const settings = read('fliex-music-settings-v1', {})
   let mode = ['list', 'single', 'shuffle'].includes(settings.mode) ? settings.mode : 'list'
@@ -19,7 +19,7 @@
     let host = document.getElementById('fliex-shared-player')
     if (!host) {
       host = document.createElement('div'); host.id = 'fliex-shared-player'; host.hidden = true
-      const audio = document.createElement('audio'); audio.preload = 'metadata'; audio.volume = volume
+      const audio = document.createElement('audio'); audio.preload = 'none'; audio.volume = volume
       host.appendChild(audio); document.body.appendChild(host)
     }
     return host.querySelector('audio')
@@ -30,16 +30,27 @@
       title: failed ? message : song?.name || message,
       artist: failed ? '点击重试' : song?.artist || '等待添加歌曲',
       song, tracks: player?.list.audios.slice() || [], mode, volume, index: player?.list.index || 0,
-      playing: Boolean(player && !player.audio.paused), currentTime: player?.audio.currentTime || 0,
-      duration: Number.isFinite(player?.audio.duration) ? player.audio.duration : 0 }
+      playing: Boolean(player && !player.audio.paused), currentTime: restoreTime || player?.audio.currentTime || 0,
+      duration: Number.isFinite(player?.audio.duration) ? player.audio.duration : Number(song?.duration) || 0 }
   }
   const save = () => {
     const song = player?.list.audios[player.list.index]
-    if (song) write(selectionKey, { key: song.id, time: player.audio.currentTime || 0 })
+    if (song) write(selectionKey, { key: song.id, time: restoreTime || player.audio.currentTime || 0 })
+  }
+  const ensureCurrentSource = () => {
+    const song = player?.list.audios[player.list.index], audio = player?.audio
+    if (!song || !audio) return false
+    if (audio.dataset.trackId !== song.id) {
+      audio.dataset.trackId = song.id
+      audio.src = song.url
+    }
+    return true
   }
   const play = async () => {
     if (!player?.list.audios.length) return
     wantsPlay = true
+    const version = selectionVersion
+    if (!ensureCurrentSource()) return
     try {
       const AudioContext = window.AudioContext || window.webkitAudioContext
       if (AudioContext && !audioSource) {
@@ -50,8 +61,10 @@
       }
       if (audioContext?.state === 'suspended') await audioContext.resume()
     } catch (error) { console.warn('[Fliex Music] 波形分析不可用', error) }
-    try { await player.audio.play(); failed = false; emit() }
+    if (version !== selectionVersion || !wantsPlay) return
+    try { await player.audio.play(); if (version !== selectionVersion) return; failed = false; emit() }
     catch (error) {
+      if (version !== selectionVersion) return
       if (error.name === 'AbortError') return
       if (error.name === 'NotAllowedError') { wantsPlay = false; failed = true; message = '请再次点击播放'; emit() }
       // Unsupported sources are handled by the media error event below.
@@ -62,29 +75,42 @@
     const audio = ensureAudio()
     const list = {
       audios: songs.filter(song => !failures.has(song.id)), index: 0,
-      switch(index) {
-        save(); clearTimeout(skipTimer)
+      switch(index, savePrevious = true) {
+        if (!list.audios.length) return
+        if (savePrevious) save()
+        selectionVersion++; clearTimeout(skipTimer)
+        audio.pause()
+        if (audio.hasAttribute('src')) { audio.removeAttribute('src'); delete audio.dataset.trackId; audio.load() }
         list.index = ((index % list.audios.length) + list.audios.length) % list.audios.length
         restoreTime = 0; failed = false
         try { document.dispatchEvent(new Event('fliex:track')) } catch (_) {}
-        audio.src = list.audios[list.index].url
+        save()
         emit()
       },
       remove(index) {
+        save()
         list.audios.splice(index, 1)
-        if (list.audios.length) list.switch(Math.min(index, list.audios.length - 1))
+        if (list.audios.length) list.switch(Math.min(index, list.audios.length - 1), false)
         else { audio.pause(); audio.removeAttribute('src'); audio.load(); wantsPlay = false; failed = true; message = '当前没有可播放的歌曲'; emit() }
       }
     }
-    player = { audio, list, play, pause() { wantsPlay = false; clearTimeout(skipTimer); audio.pause() }, seek(time) { if (Number.isFinite(audio.duration)) audio.currentTime = Math.max(0, Math.min(time, audio.duration)) } }
+    player = { audio, list, play, pause() { wantsPlay = false; selectionVersion++; clearTimeout(skipTimer); audio.pause() }, seek(time) {
+      if (!Number.isFinite(time)) return
+      const duration = Number.isFinite(audio.duration) ? audio.duration : Number(list.audios[list.index]?.duration)
+      const target = Math.max(0, Number.isFinite(duration) ? Math.min(time, duration) : time)
+      if (audio.dataset.trackId && audio.readyState >= 1) { restoreTime = 0; audio.currentTime = target }
+      else restoreTime = target
+      save()
+    } }
     if (!list.audios.length) { failed = true; message = '当前没有可播放的歌曲'; emit(); return }
     const selected = read(selectionKey, {})
     const index = list.audios.findIndex(song => song.id === selected.key)
-    list.switch(index >= 0 ? index : 0)
+    list.switch(index >= 0 ? index : 0, false)
     restoreTime = index >= 0 ? Math.max(0, Number(selected.time) || 0) : 0
     audio.addEventListener('loadedmetadata', () => {
+      if (audio.dataset.trackId !== list.audios[list.index]?.id) return
       if (Number.isFinite(audio.duration) && list.audios[list.index]) list.audios[list.index].duration = audio.duration
-      if (restoreTime) player.seek(Math.min(restoreTime, Math.max(0, audio.duration - 1)))
+      if (restoreTime && Number.isFinite(audio.duration)) audio.currentTime = Math.min(restoreTime, Math.max(0, audio.duration - 1))
       restoreTime = 0; emit()
     })
     audio.addEventListener('play', () => { failed = false; save(); emit() })
@@ -97,6 +123,7 @@
       else next()
     })
     audio.addEventListener('error', () => {
+      if (!audio.hasAttribute('src') || audio.dataset.trackId !== list.audios[list.index]?.id) return
       console.error('[Fliex Music] 音频加载失败', { id: list.audios[list.index]?.id, src: audio.currentSrc || audio.src, code: audio.error?.code, message: audio.error?.message })
       if (!wantsPlay) { failed = true; message = '音源暂时不可用'; emit(); return }
       const song = list.audios[list.index]
@@ -138,7 +165,15 @@
     failures.clear(); write(failureKey, [])
     return load()
   }
-  const select = async index => { const ap = player || await load(); if (!ap?.list.audios.length) return; ap.list.switch(index); await play() }
+  const select = async index => {
+    const ap = player || await load()
+    if (!ap?.list.audios.length) return
+    ap.list.switch(index); wantsPlay = true
+    const version = selectionVersion
+    // Coalesce rapid navigation before binding a source; only the final choice loads.
+    await new Promise(resolve => setTimeout(resolve, 100))
+    if (version === selectionVersion && wantsPlay) await play()
+  }
   const next = () => {
     const n = player?.list.audios.length || 0
     if (!n) return

@@ -50,7 +50,23 @@
       syncDOM(content, output)
     }
     const refresh = async () => { const version = ++generation; try { const data = await window.NovaListeningDB.all(); if (!alive || version !== generation) return; rows = data; window.novaListeningTracker?.acknowledge?.(data); render() } catch (error) { if (alive) statusText('本地档案不可用：' + error.message) } }
-    const show = value => { panel.hidden = !value; root.classList.toggle('is-archive',value); entry.setAttribute('aria-expanded',String(value)); if (value) { window.novaListeningTracker?.tick(); window.novaListeningTracker?.persist(); refresh(); panel.querySelector('[data-close]').focus(); history.replaceState(null,'', '#listening-archive') } else { history.replaceState(null,'',location.pathname+location.search); entry.focus() } }
+    const show = value => {
+      panel.hidden = !value
+      root.classList.toggle('is-archive',value)
+      entry.setAttribute('aria-expanded',String(value))
+      if (value) {
+        panel.querySelector('[data-close]').focus()
+        try {
+          window.novaListeningTracker?.tick()
+          Promise.resolve(window.novaListeningTracker?.persist()).catch(error => statusText('本地档案写入失败：' + error.message))
+        } catch (error) { statusText('本地档案写入失败：' + error.message) }
+        refresh()
+        history.replaceState(null,'', '#listening-archive')
+      } else {
+        history.replaceState(null,'',location.pathname+location.search)
+        entry.focus()
+      }
+    }
     const ask = (title,copy,actions,action) => { pendingAction = action; panel.querySelector('[data-dialog-title]').textContent = title; panel.querySelector('[data-dialog-copy]').textContent = copy; panel.querySelector('[data-dialog-actions]').innerHTML = actions.map(([value,label]) => `<button value="${value}">${label}</button>`).join('') + '<button value="cancel">Cancel</button>'; dialog.returnValue = 'cancel'; dialog.showModal() }
     on(entry,'click',() => show(panel.hidden)); on(panel.querySelector('[data-close]'),'click',() => show(false))
     on(content,'click',async event => {
@@ -90,5 +106,7 @@
   }
   window.NovaListeningUI = { init }
   document.addEventListener('pjax:complete',init)
-  if (document.readyState !== 'complete') document.addEventListener('DOMContentLoaded',init,{once:true}); else init()
+  document.addEventListener('pjax:error',init)
+  window.addEventListener('pageshow',init)
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded',init,{once:true}); else init()
 })()
