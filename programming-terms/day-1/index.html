@@ -1,4 +1,15 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编程术语 · Day 1｜HTTP 与网络基础 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="Day 1｜HTTP 与网络基础：通过正式解释、通俗理解和项目示例复习IP Address（IP 地址）、Port（端口）、DNS（域名系统）、TCP（传输控制协议）、HTTP（超文本传输协议）。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><style id="nova-background-critical">/* Critical first-paint rules are inlined before every external stylesheet. */
+html,html body{background-color:#0d1b29!important;background-image:none!important}
+html body{isolation:isolate}
+#web_bg{display:block!important;position:fixed;inset:0;width:100%;height:100%;z-index:-999;background:#0d1b29 url('/img/background_sea.png') center/cover no-repeat!important;pointer-events:none;animation:none!important;transition:none!important}
+#web_bg::before,#web_bg::after{content:none!important}
+#body-wrap{background:transparent!important}
+#page-header,#footer{background:transparent!important;background-image:none!important}
+#page-header::before,#footer::before{background:transparent!important}
+.nova-page-loading,#loading-box .loading-bg{background:#0d1b29!important}
+/* Keep the existing mobile crop without making another image layer. */
+@media(max-width:900px){body:has(.nova-notes-shell) #web_bg{background-position:64% center!important}}
+</style><link rel="preload" as="image" href="/img/background_sea.png" fetchpriority="high"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编程术语 · Day 1｜HTTP 与网络基础 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="Day 1｜HTTP 与网络基础：通过正式解释、通俗理解和项目示例复习IP Address（IP 地址）、Port（端口）、DNS（域名系统）、TCP（传输控制协议）、HTTP（超文本传输协议）。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编程术语 · Day 1｜HTTP 与网络基础">
 <meta property="og:url" content="https://novafliex.github.io/programming-terms/day-1/">
@@ -11,7 +22,7 @@
 <meta property="article:author" content="Fliex">
 <meta property="article:tag" content="编程术语">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://novafliex.github.io/img/covers/tech-go.webp"><link rel="shortcut icon" href="/img/favicon-small.ico"><link rel="canonical" href="https://novafliex.github.io/programming-terms/day-1/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+<meta name="twitter:image" content="https://novafliex.github.io/img/covers/tech-go.webp"><link rel="shortcut icon" href="/img/favicon-wave-teal.png"><link rel="canonical" href="https://novafliex.github.io/programming-terms/day-1/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -186,8 +197,15 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261005-current-cleanup"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"编程术语 · Day 1｜HTTP 与网络基础","url":"https://novafliex.github.io/programming-terms/day-1/","image":"https://novafliex.github.io/img/covers/tech-go.webp","datePublished":"2026-08-22T01:00:00.000Z","dateModified":"2026-10-05T16:00:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"Day 1｜HTTP 与网络基础：通过正式解释、通俗理解和项目示例复习IP Address（IP 地址）、Port（端口）、DNS（域名系统）、TCP（传输控制协议）、HTTP（超文本传输协议）。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/programming-terms/day-1/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><!-- hexo injector body_begin start -->
+}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261006-stable-background-v1"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
+<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261006-stable-background-v1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"编程术语 · Day 1｜HTTP 与网络基础","url":"https://novafliex.github.io/programming-terms/day-1/","image":"https://novafliex.github.io/img/covers/tech-go.webp","datePublished":"2026-08-22T01:00:00.000Z","dateModified":"2026-10-05T16:00:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"Day 1｜HTTP 与网络基础：通过正式解释、通俗理解和项目示例复习IP Address（IP 地址）、Port（端口）、DNS（域名系统）、TCP（传输控制协议）、HTTP（超文本传输协议）。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/programming-terms/day-1/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -216,7 +234,6 @@
     }, 1200)
   })()
 </script><!-- hexo injector body_begin end --><div class="post" id="body-wrap"><main class="article-reading-shell" id="content-inner">
-    <div class="article-page-bg" aria-hidden="true"><img src="/img/background_sea.png" alt="" width="1683" height="935" decoding="async"></div>
     <div class="article-reading-dimmer" aria-hidden="true"></div>
     <div class="article-sea-snow" aria-hidden="true" data-article-snow-root=""><canvas class="coast-snow" data-coast-snow=""></canvas></div>
     <aside class="coast-sidebar" aria-label="Fliex 与导航">
@@ -235,22 +252,20 @@
       </div>
     </aside>
     <aside class="article-toc-sidebar" aria-label="文章目录">
-      <header><span>目录</span></header>
-      <nav class="article-toc-list"><a class="article-toc-link article-toc-link--h2" href="#Day-1｜HTTP-与网络基础" data-article-toc="Day-1｜HTTP-与网络基础" data-article-chapter="01"><span>01</span>Day 1｜HTTP 与网络基础</a><a class="article-toc-link article-toc-link--h3" href="#一、IP-Address（IP-地址）" data-article-toc="一、IP-Address（IP-地址）" data-article-chapter="01"><span>·</span>一、IP Address（IP 地址）</a><a class="article-toc-link article-toc-link--h3" href="#二、Port（端口）" data-article-toc="二、Port（端口）" data-article-chapter="01"><span>·</span>二、Port（端口）</a><a class="article-toc-link article-toc-link--h3" href="#三、DNS（域名系统）" data-article-toc="三、DNS（域名系统）" data-article-chapter="01"><span>·</span>三、DNS（域名系统）</a><a class="article-toc-link article-toc-link--h3" href="#四、TCP（传输控制协议）" data-article-toc="四、TCP（传输控制协议）" data-article-chapter="01"><span>·</span>四、TCP（传输控制协议）</a><a class="article-toc-link article-toc-link--h3" href="#五、HTTP（超文本传输协议）" data-article-toc="五、HTTP（超文本传输协议）" data-article-chapter="01"><span>·</span>五、HTTP（超文本传输协议）</a><a class="article-toc-link article-toc-link--h2" href="#复习提示" data-article-toc="复习提示" data-article-chapter="02"><span>02</span>复习提示</a></nav>
+      <div class="article-progress" role="progressbar" aria-label="文章阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-article-progress="">0%</span></div><header><span>ON THIS PAGE</span></header>
+      <nav class="article-toc-list"><a class="article-toc-link article-toc-link--h2" href="#Day-1｜HTTP-与网络基础" data-article-toc="Day-1｜HTTP-与网络基础" data-article-chapter="01"><span>01</span>HTTP 与网络基础</a><a class="article-toc-link article-toc-link--h3" href="#一、IP-Address（IP-地址）" data-article-toc="一、IP-Address（IP-地址）" data-article-chapter="01"><span>·</span>IP Address（IP 地址）</a><a class="article-toc-link article-toc-link--h3" href="#二、Port（端口）" data-article-toc="二、Port（端口）" data-article-chapter="01"><span>·</span>Port（端口）</a><a class="article-toc-link article-toc-link--h3" href="#三、DNS（域名系统）" data-article-toc="三、DNS（域名系统）" data-article-chapter="01"><span>·</span>DNS（域名系统）</a><a class="article-toc-link article-toc-link--h3" href="#四、TCP（传输控制协议）" data-article-toc="四、TCP（传输控制协议）" data-article-chapter="01"><span>·</span>TCP（传输控制协议）</a><a class="article-toc-link article-toc-link--h3" href="#五、HTTP（超文本传输协议）" data-article-toc="五、HTTP（超文本传输协议）" data-article-chapter="01"><span>·</span>HTTP（超文本传输协议）</a><a class="article-toc-link article-toc-link--h2" href="#复习提示" data-article-toc="复习提示" data-article-chapter="02"><span>02</span>复习提示</a><a class="article-toc-link article-toc-link--h2" href="#article-discussion" data-article-toc="article-discussion" data-article-chapter="discussion"><span>·</span>讨论与留言</a></nav>
     </aside>
     <button class="article-mobile-toc-trigger" type="button" data-article-mobile-toc="" aria-expanded="false"><i aria-hidden="true"></i><span>INDEX</span></button>
     <section class="article-workspace">
       <header class="article-header">
-        <nav class="article-breadcrumb" aria-label="面包屑"><a href="/">Home</a><span>›</span><a href="/notes/">Notes</a><span>›</span><span>编程术语</span></nav>
-        <h1>编程术语 · Day 1｜HTTP 与网络基础</h1>
+        <nav class="article-breadcrumb" aria-label="面包屑"><a href="/">Home</a><span>/</span><a href="/notes/">Notes</a><span>/</span><span>编程术语</span></nav>
+        <h1>编程术语 · Day 1<span class="article-subtitle">HTTP 与网络基础</span></h1>
         <div class="article-meta"><time datetime="2026-08-22">◷ &nbsp;2026.08.22</time><span>▱ &nbsp;编程术语</span><span>◷ &nbsp;约 4 分钟阅读</span><span class="article-tag">编程术语</span></div>
         <p>Day 1｜HTTP 与网络基础：通过正式解释、通俗理解和项目示例复习IP Address（IP 地址）、Port（端口）、DNS（域名系统）、TCP（传输控制协议）、HTTP（超文本传输协议）。</p>
       </header>
-      <article class="article-prose" id="article-container"><p><a href="/programming-terms/">知识总览</a> · <a href="/programming-terms/day-2/">下一节：Day 2</a></p>
-<h2 id="Day-1｜HTTP-与网络基础" data-section-label="SECTION" data-chapter="01"><a href="#Day-1｜HTTP-与网络基础" class="headerlink" title="Day 1｜HTTP 与网络基础"></a>Day 1｜HTTP 与网络基础</h2><p>今天认识的 5 个术语，可以组成一条完整的网络请求链：</p>
-<blockquote>
-<p>域名 → DNS → IP → 端口 → TCP → HTTP → Gin 服务</p>
-</blockquote>
+      <article class="article-prose" id="article-container">
+<h2 id="Day-1｜HTTP-与网络基础" data-section-label="SECTION" data-chapter="01"><a href="#Day-1｜HTTP-与网络基础" class="headerlink" title="Day 1｜HTTP 与网络基础"></a>HTTP 与网络基础</h2><p>今天认识的 5 个术语，可以组成一条完整的网络请求链：</p>
+<div class="article-knowledge-chain" aria-label="网络请求链"><div><small>01</small><strong>域名</strong><span>example.com</span></div><div><small>02</small><strong>DNS</strong><span>解析域名</span></div><div><small>03</small><strong>IP</strong><span>203.0.113.10</span></div><div><small>04</small><strong>端口</strong><span>8080</span></div><div><small>05</small><strong>TCP</strong><span>建立连接</span></div><div><small>06</small><strong>HTTP</strong><span>发送请求</span></div></div>
 <p>假设浏览器访问 <code>http://api.example.com:8080/users</code>，背后的过程可以简单理解为：</p>
 <ol>
 <li>DNS 将 <code>api.example.com</code> 解析为服务器 IP <code>203.0.113.10</code>。</li>
@@ -259,27 +274,27 @@
 <li>客户端发送 HTTP 请求。</li>
 <li>请求进入 Gin Handler，处理完成后返回 HTTP 响应。</li>
 </ol>
-<h3 id="一、IP-Address（IP-地址）"><a href="#一、IP-Address（IP-地址）" class="headerlink" title="一、IP Address（IP 地址）"></a>一、IP Address（IP 地址）</h3><p><strong>正式解释：</strong></p>
+<h3 id="一、IP-Address（IP-地址）"><a href="#一、IP-Address（IP-地址）" class="headerlink" title="一、IP Address（IP 地址）"></a>IP Address（IP 地址）</h3><p><strong>正式解释：</strong></p>
 <p>IP 地址用于标识网络中的主机或网络接口。</p>
 <p><strong>通俗理解：</strong></p>
 <p>IP 地址负责告诉请求：“应该去找哪台机器？”</p>
 <p>例如，<code>127.0.0.1</code> 表示当前这台计算机，也就是本机。</p>
-<h3 id="二、Port（端口）"><a href="#二、Port（端口）" class="headerlink" title="二、Port（端口）"></a>二、Port（端口）</h3><p><strong>正式解释：</strong></p>
+<h3 id="二、Port（端口）"><a href="#二、Port（端口）" class="headerlink" title="二、Port（端口）"></a>Port（端口）</h3><p><strong>正式解释：</strong></p>
 <p>端口是传输层协议用来区分一台主机上不同网络服务的编号。</p>
 <p><strong>通俗理解：</strong></p>
 <p>IP 负责找到哪台机器，端口负责找到这台机器上的哪个程序。</p>
 <p><strong>项目例子：</strong></p>
 <p><code>r.Run(":8080")</code> 表示 Gin 服务监听 <code>8080</code> 端口，等待客户端连接。</p>
-<h3 id="三、DNS（域名系统）"><a href="#三、DNS（域名系统）" class="headerlink" title="三、DNS（域名系统）"></a>三、DNS（域名系统）</h3><p><strong>正式解释：</strong></p>
+<h3 id="三、DNS（域名系统）"><a href="#三、DNS（域名系统）" class="headerlink" title="三、DNS（域名系统）"></a>DNS（域名系统）</h3><p><strong>正式解释：</strong></p>
 <p>DNS 是一个分布式命名系统，最常见的作用是把域名解析为 IP 地址。</p>
 <p><strong>通俗理解：</strong></p>
 <p>人更容易记住域名，但计算机通信需要找到对应的 IP 地址。因此，DNS 就像网络中的通讯录：<code>api.example.com → 203.0.113.10</code>。</p>
-<h3 id="四、TCP（传输控制协议）"><a href="#四、TCP（传输控制协议）" class="headerlink" title="四、TCP（传输控制协议）"></a>四、TCP（传输控制协议）</h3><p><strong>正式解释：</strong></p>
+<h3 id="四、TCP（传输控制协议）"><a href="#四、TCP（传输控制协议）" class="headerlink" title="四、TCP（传输控制协议）"></a>TCP（传输控制协议）</h3><p><strong>正式解释：</strong></p>
 <p>TCP 是一种面向连接、可靠并且保证数据顺序的传输层协议。</p>
 <p><strong>通俗理解：</strong></p>
 <p>找到 IP 和端口以后，客户端还需要和服务器建立连接。TCP 负责尽量保证数据能够送达，并且顺序正确。</p>
 <p>HTTP/1.1 和 HTTP/2 通常运行在 TCP 之上。</p>
-<h3 id="五、HTTP（超文本传输协议）"><a href="#五、HTTP（超文本传输协议）" class="headerlink" title="五、HTTP（超文本传输协议）"></a>五、HTTP（超文本传输协议）</h3><p><strong>正式解释：</strong></p>
+<h3 id="五、HTTP（超文本传输协议）"><a href="#五、HTTP（超文本传输协议）" class="headerlink" title="五、HTTP（超文本传输协议）"></a>HTTP（超文本传输协议）</h3><p><strong>正式解释：</strong></p>
 <p>HTTP 是一种应用层协议，用来规定客户端和服务器之间请求与响应的格式及通信方式。</p>
 <p><strong>通俗理解：</strong></p>
 <p>HTTP 规定了客户端应该怎样提问，服务器应该怎样回答。</p>
@@ -294,7 +309,8 @@
 <p>试着不看正文，用自己的项目举一个例子，再回到对应术语核对。</p>
 <p><a href="/programming-terms/">知识总览</a> · <a href="/programming-terms/day-2/">下一节：Day 2</a></p>
 </article>
-      <section class="article-comments"><header><span>DISCUSSION</span><h2>评论</h2></header><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></section>
+      <footer class="article-epilogue"><p>感谢你的阅读。<br>— Fliex</p><div class="article-end-tags"><span class="article-tag">编程术语</span></div></footer>
+      <section class="article-comments" id="article-discussion"><header><span>DISCUSSION</span><h2>留下点什么</h2><p>如果这篇文章对你有帮助，或者有不同的想法，欢迎在下面留言交流。</p></header><div id="post-comment"><div class="comment-head"></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></section>
     </section></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
   const parseViewBox = viewBox => {
     if (!viewBox) return null
@@ -660,7 +676,7 @@
 })()</script><script>(() => {
   let initFn = window.walineFn || null
   const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
-  const option = null
+  const option = {"login":"force","meta":[],"requiredMeta":[],"locale":{"placeholder":"写点什么，留在这里…","login":"登录后留言","submit":"发布评论"}}
 
   const destroyWaline = ele => ele.destroy()
 
@@ -712,12 +728,12 @@
   } else {
     window.loadOtherComment = loadWaline
   }
-})()</script><link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261005-nav-about-v25">
-<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261005-nav-about-v25">
-<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261005-nav-about-v25">
-<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261005-nav-about-v25">
-<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261005-nav-about-v25"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261005-nav-about-v25"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+})()</script>
+
+
+
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261006-stable-background-v1"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261006-stable-background-v1"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261006-stable-background-v1"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({

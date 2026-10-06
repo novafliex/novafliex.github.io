@@ -1,4 +1,15 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Go 基础：测试函数 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="简洁梳理 Go 测试文件、测试函数、testing.T、断言、辅助函数、表驱动测试和常用执行命令。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><style id="nova-background-critical">/* Critical first-paint rules are inlined before every external stylesheet. */
+html,html body{background-color:#0d1b29!important;background-image:none!important}
+html body{isolation:isolate}
+#web_bg{display:block!important;position:fixed;inset:0;width:100%;height:100%;z-index:-999;background:#0d1b29 url('/img/background_sea.png') center/cover no-repeat!important;pointer-events:none;animation:none!important;transition:none!important}
+#web_bg::before,#web_bg::after{content:none!important}
+#body-wrap{background:transparent!important}
+#page-header,#footer{background:transparent!important;background-image:none!important}
+#page-header::before,#footer::before{background:transparent!important}
+.nova-page-loading,#loading-box .loading-bg{background:#0d1b29!important}
+/* Keep the existing mobile crop without making another image layer. */
+@media(max-width:900px){body:has(.nova-notes-shell) #web_bg{background-position:64% center!important}}
+</style><link rel="preload" as="image" href="/img/background_sea.png" fetchpriority="high"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Go 基础：测试函数 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="简洁梳理 Go 测试文件、测试函数、testing.T、断言、辅助函数、表驱动测试和常用执行命令。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go 基础：测试函数">
 <meta property="og:url" content="https://novafliex.github.io/2026/08/09/Go%E5%9F%BA%E7%A1%80-%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0/">
@@ -13,7 +24,7 @@
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="测试">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://novafliex.github.io/img/leetcode.webp"><link rel="shortcut icon" href="/img/favicon-small.ico"><link rel="canonical" href="https://novafliex.github.io/2026/08/09/Go%E5%9F%BA%E7%A1%80-%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+<meta name="twitter:image" content="https://novafliex.github.io/img/leetcode.webp"><link rel="shortcut icon" href="/img/favicon-wave-teal.png"><link rel="canonical" href="https://novafliex.github.io/2026/08/09/Go%E5%9F%BA%E7%A1%80-%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -188,8 +199,15 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261005-current-cleanup"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Go 基础：测试函数","url":"https://novafliex.github.io/2026/08/09/Go%E5%9F%BA%E7%A1%80-%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0/","image":"https://novafliex.github.io/img/leetcode.webp","datePublished":"2026-08-09T12:10:00.000Z","dateModified":"2026-08-09T12:10:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"简洁梳理 Go 测试文件、测试函数、testing.T、断言、辅助函数、表驱动测试和常用执行命令。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/2026/08/09/Go%E5%9F%BA%E7%A1%80-%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><!-- hexo injector body_begin start -->
+}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261006-stable-background-v1"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
+<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261006-stable-background-v1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Go 基础：测试函数","url":"https://novafliex.github.io/2026/08/09/Go%E5%9F%BA%E7%A1%80-%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0/","image":"https://novafliex.github.io/img/leetcode.webp","datePublished":"2026-08-09T12:10:00.000Z","dateModified":"2026-08-09T12:10:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"简洁梳理 Go 测试文件、测试函数、testing.T、断言、辅助函数、表驱动测试和常用执行命令。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/2026/08/09/Go%E5%9F%BA%E7%A1%80-%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -218,7 +236,6 @@
     }, 1200)
   })()
 </script><!-- hexo injector body_begin end --><div class="post" id="body-wrap"><main class="article-reading-shell" id="content-inner">
-    <div class="article-page-bg" aria-hidden="true"><img src="/img/background_sea.png" alt="" width="1683" height="935" decoding="async"></div>
     <div class="article-reading-dimmer" aria-hidden="true"></div>
     <div class="article-sea-snow" aria-hidden="true" data-article-snow-root=""><canvas class="coast-snow" data-coast-snow=""></canvas></div>
     <aside class="coast-sidebar" aria-label="Fliex 与导航">
@@ -237,13 +254,13 @@
       </div>
     </aside>
     <aside class="article-toc-sidebar" aria-label="文章目录">
-      <header><span>目录</span></header>
-      <nav class="article-toc-list"><a class="article-toc-link article-toc-link--h2" href="#先理解测试在做什么" data-article-toc="先理解测试在做什么" data-article-chapter="01"><span>01</span>先理解测试在做什么</a><a class="article-toc-link article-toc-link--h2" href="#一、测试文件与测试函数" data-article-toc="一、测试文件与测试函数" data-article-chapter="02"><span>02</span>一、测试文件与测试函数</a><a class="article-toc-link article-toc-link--h3" href="#测试函数的规则" data-article-toc="测试函数的规则" data-article-chapter="02"><span>·</span>测试函数的规则</a><a class="article-toc-link article-toc-link--h2" href="#二、testing-T-是什么" data-article-toc="二、testing-T-是什么" data-article-chapter="03"><span>03</span>二、testing.T 是什么</a><a class="article-toc-link article-toc-link--h3" href="#Error-和-Fatal-的区别" data-article-toc="Error-和-Fatal-的区别" data-article-chapter="03"><span>·</span>Error和Fatal 的区别</a><a class="article-toc-link article-toc-link--h2" href="#三、断言：比较实际值与预期值" data-article-toc="三、断言：比较实际值与预期值" data-article-chapter="04"><span>04</span>三、断言：比较实际值与预期值</a><a class="article-toc-link article-toc-link--h2" href="#四、测试辅助函数" data-article-toc="四、测试辅助函数" data-article-chapter="05"><span>05</span>四、测试辅助函数</a><a class="article-toc-link article-toc-link--h2" href="#五、表驱动测试：一次覆盖多组输入" data-article-toc="五、表驱动测试：一次覆盖多组输入" data-article-chapter="06"><span>06</span>五、表驱动测试：一次覆盖多组输入</a><a class="article-toc-link article-toc-link--h2" href="#六、运行测试" data-article-toc="六、运行测试" data-article-chapter="07"><span>07</span>六、运行测试</a><a class="article-toc-link article-toc-link--h2" href="#七、快速复盘" data-article-toc="七、快速复盘" data-article-chapter="08"><span>08</span>七、快速复盘</a><a class="article-toc-link article-toc-link--h2" href="#参考资料" data-article-toc="参考资料" data-article-chapter="09"><span>09</span>参考资料</a></nav>
+      <div class="article-progress" role="progressbar" aria-label="文章阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-article-progress="">0%</span></div><header><span>ON THIS PAGE</span></header>
+      <nav class="article-toc-list"><a class="article-toc-link article-toc-link--h2" href="#先理解测试在做什么" data-article-toc="先理解测试在做什么" data-article-chapter="01"><span>01</span>先理解测试在做什么</a><a class="article-toc-link article-toc-link--h2" href="#一、测试文件与测试函数" data-article-toc="一、测试文件与测试函数" data-article-chapter="02"><span>02</span>测试文件与测试函数</a><a class="article-toc-link article-toc-link--h3" href="#测试函数的规则" data-article-toc="测试函数的规则" data-article-chapter="02"><span>·</span>测试函数的规则</a><a class="article-toc-link article-toc-link--h2" href="#二、testing-T-是什么" data-article-toc="二、testing-T-是什么" data-article-chapter="03"><span>03</span>testing.T 是什么</a><a class="article-toc-link article-toc-link--h3" href="#Error-和-Fatal-的区别" data-article-toc="Error-和-Fatal-的区别" data-article-chapter="03"><span>·</span>Error和Fatal 的区别</a><a class="article-toc-link article-toc-link--h2" href="#三、断言：比较实际值与预期值" data-article-toc="三、断言：比较实际值与预期值" data-article-chapter="04"><span>04</span>断言：比较实际值与预期值</a><a class="article-toc-link article-toc-link--h2" href="#四、测试辅助函数" data-article-toc="四、测试辅助函数" data-article-chapter="05"><span>05</span>测试辅助函数</a><a class="article-toc-link article-toc-link--h2" href="#五、表驱动测试：一次覆盖多组输入" data-article-toc="五、表驱动测试：一次覆盖多组输入" data-article-chapter="06"><span>06</span>表驱动测试：一次覆盖多组输入</a><a class="article-toc-link article-toc-link--h2" href="#六、运行测试" data-article-toc="六、运行测试" data-article-chapter="07"><span>07</span>运行测试</a><a class="article-toc-link article-toc-link--h2" href="#七、快速复盘" data-article-toc="七、快速复盘" data-article-chapter="08"><span>08</span>快速复盘</a><a class="article-toc-link article-toc-link--h2" href="#参考资料" data-article-toc="参考资料" data-article-chapter="09"><span>09</span>参考资料</a><a class="article-toc-link article-toc-link--h2" href="#article-discussion" data-article-toc="article-discussion" data-article-chapter="discussion"><span>·</span>讨论与留言</a></nav>
     </aside>
     <button class="article-mobile-toc-trigger" type="button" data-article-mobile-toc="" aria-expanded="false"><i aria-hidden="true"></i><span>INDEX</span></button>
     <section class="article-workspace">
       <header class="article-header">
-        <nav class="article-breadcrumb" aria-label="面包屑"><a href="/">Home</a><span>›</span><a href="/notes/">Notes</a><span>›</span><span>Go</span></nav>
+        <nav class="article-breadcrumb" aria-label="面包屑"><a href="/">Home</a><span>/</span><a href="/notes/">Notes</a><span>/</span><span>Go</span></nav>
         <h1>Go 基础：测试函数</h1>
         <div class="article-meta"><time datetime="2026-08-09">◷ &nbsp;2026.08.09</time><span>▱ &nbsp;Go</span><span>◷ &nbsp;约 9 分钟阅读</span><span class="article-tag">Go</span><span class="article-tag">基础</span><span class="article-tag">测试</span></div>
         <p>简洁梳理 Go 测试文件、测试函数、testing.T、断言、辅助函数、表驱动测试和常用执行命令。</p>
@@ -278,7 +295,7 @@
 <td>编译并执行测试</td>
 </tr>
 </tbody></table>
-<h2 id="一、测试文件与测试函数" data-section-label="SECTION" data-chapter="02"><a href="#一、测试文件与测试函数" class="headerlink" title="一、测试文件与测试函数"></a>一、测试文件与测试函数</h2><p>测试文件必须以 <code>_test.go</code> 结尾，通常和被测试代码放在同一个包中：</p>
+<h2 id="一、测试文件与测试函数" data-section-label="SECTION" data-chapter="02"><a href="#一、测试文件与测试函数" class="headerlink" title="一、测试文件与测试函数"></a>测试文件与测试函数</h2><p>测试文件必须以 <code>_test.go</code> 结尾，通常和被测试代码放在同一个包中：</p>
 <figure class="highlight text"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">text</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">account.go</span><br><span class="line">account_test.go</span><br></pre></td></tr></tbody></table></figure>
 
 <p>运行 <code>go test</code> 时，Go 会自动编译并执行这些测试文件；正常构建程序时，它们不会被编译进最终程序。</p>
@@ -320,7 +337,7 @@
 <figure class="highlight go"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">go</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestCreateAccount</span><span class="params">(t *testing.T)</span></span> {</span><br><span class="line">	<span class="comment">// 正确</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>测试函数不通过 <code>return</code> 返回测试结果，而是通过 <code>testing.T</code> 标记成功或失败。</p>
-<h2 id="二、testing-T-是什么" data-section-label="SECTION" data-chapter="03"><a href="#二、testing-T-是什么" class="headerlink" title="二、testing.T 是什么"></a>二、<code>testing.T</code> 是什么</h2><p><code>t *testing.T</code> 代表当前测试，负责记录日志、标记失败和控制测试流程。</p>
+<h2 id="二、testing-T-是什么" data-section-label="SECTION" data-chapter="03"><a href="#二、testing-T-是什么" class="headerlink" title="二、testing.T 是什么"></a><code>testing.T</code> 是什么</h2><p><code>t *testing.T</code> 代表当前测试，负责记录日志、标记失败和控制测试流程。</p>
 <p>常用方法：</p>
 <table>
 <thead>
@@ -359,7 +376,7 @@
 <div class="note warning disabled"><p><strong>选择原则：</strong> 后续检查仍有意义时用 <code>Error</code>；前置条件已经失败、继续执行可能产生误导时用 <code>Fatal</code>。</p>
 </div>
 
-<h2 id="三、断言：比较实际值与预期值" data-section-label="SECTION" data-chapter="04"><a href="#三、断言：比较实际值与预期值" class="headerlink" title="三、断言：比较实际值与预期值"></a>三、断言：比较实际值与预期值</h2><p>只使用标准库时，断言本质上就是普通的 <code>if</code> 判断：</p>
+<h2 id="三、断言：比较实际值与预期值" data-section-label="SECTION" data-chapter="04"><a href="#三、断言：比较实际值与预期值" class="headerlink" title="三、断言：比较实际值与预期值"></a>断言：比较实际值与预期值</h2><p>只使用标准库时，断言本质上就是普通的 <code>if</code> 判断：</p>
 <figure class="highlight go"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">go</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> got != want {</span><br><span class="line">	t.Errorf(<span class="string">"got %d; want %d"</span>, got, want)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>项目中也可以使用第三方库 <code>testify/require</code> 简化判断：</p>
@@ -400,7 +417,7 @@
 <div class="note warning disabled"><p><code>require</code> 不是 Go 标准库。它来自 <code>testify</code>，并且断言失败后会立即结束当前测试，效果更接近 <code>t.Fatal()</code>。</p>
 </div>
 
-<h2 id="四、测试辅助函数" data-section-label="SECTION" data-chapter="05"><a href="#四、测试辅助函数" class="headerlink" title="四、测试辅助函数"></a>四、测试辅助函数</h2><p>测试函数本身没有返回值，但普通的辅助函数可以返回数据。</p>
+<h2 id="四、测试辅助函数" data-section-label="SECTION" data-chapter="05"><a href="#四、测试辅助函数" class="headerlink" title="四、测试辅助函数"></a>测试辅助函数</h2><p>测试函数本身没有返回值，但普通的辅助函数可以返回数据。</p>
 <figure class="highlight go"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">go</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createTestAccount</span><span class="params">(t *testing.T)</span></span> Account {</span><br><span class="line">	t.Helper()</span><br><span class="line"></span><br><span class="line">	account, err := CreateAccount(<span class="string">"Nova"</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> {</span><br><span class="line">		t.Fatal(err)</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> account</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>然后在测试中复用：</p>
@@ -409,7 +426,7 @@
 <div class="note success disabled"><p>辅助函数开头调用 <code>t.Helper()</code> 后，测试失败时，Go 会尽量把错误位置指向调用它的测试代码，而不是辅助函数内部，定位问题更方便。</p>
 </div>
 
-<h2 id="五、表驱动测试：一次覆盖多组输入" data-section-label="SECTION" data-chapter="06"><a href="#五、表驱动测试：一次覆盖多组输入" class="headerlink" title="五、表驱动测试：一次覆盖多组输入"></a>五、表驱动测试：一次覆盖多组输入</h2><p>同一个函数需要测试多组输入时，不必重复写多个测试函数。Go 中常用“表驱动测试”：</p>
+<h2 id="五、表驱动测试：一次覆盖多组输入" data-section-label="SECTION" data-chapter="06"><a href="#五、表驱动测试：一次覆盖多组输入" class="headerlink" title="五、表驱动测试：一次覆盖多组输入"></a>表驱动测试：一次覆盖多组输入</h2><p>同一个函数需要测试多组输入时，不必重复写多个测试函数。Go 中常用“表驱动测试”：</p>
 <figure class="highlight go"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">go</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestAdd</span><span class="params">(t *testing.T)</span></span> {</span><br><span class="line">	tests := []<span class="keyword">struct</span> {</span><br><span class="line">		name <span class="type">string</span></span><br><span class="line">		a    <span class="type">int</span></span><br><span class="line">		b    <span class="type">int</span></span><br><span class="line">		want <span class="type">int</span></span><br><span class="line">	}{</span><br><span class="line">		{name: <span class="string">"positive"</span>, a: <span class="number">1</span>, b: <span class="number">2</span>, want: <span class="number">3</span>},</span><br><span class="line">		{name: <span class="string">"zero"</span>, a: <span class="number">0</span>, b: <span class="number">0</span>, want: <span class="number">0</span>},</span><br><span class="line">		{name: <span class="string">"negative"</span>, a: <span class="number">-1</span>, b: <span class="number">-2</span>, want: <span class="number">-3</span>},</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, tt := <span class="keyword">range</span> tests {</span><br><span class="line">		t.Run(tt.name, <span class="function"><span class="keyword">func</span><span class="params">(t *testing.T)</span></span> {</span><br><span class="line">			got := Add(tt.a, tt.b)</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> got != tt.want {</span><br><span class="line">				t.Errorf(<span class="string">"Add(%d, %d) = %d; want %d"</span>, tt.a, tt.b, got, tt.want)</span><br><span class="line">			}</span><br><span class="line">		})</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>表驱动测试的三个重点：</p>
@@ -418,7 +435,7 @@
 <li><code>t.Run()</code> 为每组数据创建一个子测试。</li>
 <li>新增场景时，只需要增加一组测试数据。</li>
 </ul>
-<h2 id="六、运行测试" data-section-label="SECTION" data-chapter="07"><a href="#六、运行测试" class="headerlink" title="六、运行测试"></a>六、运行测试</h2><table>
+<h2 id="六、运行测试" data-section-label="SECTION" data-chapter="07"><a href="#六、运行测试" class="headerlink" title="六、运行测试"></a>运行测试</h2><table>
 <thead>
 <tr>
 <th>命令</th>
@@ -447,7 +464,7 @@
 </tr>
 </tbody></table>
 <p>执行结束后，<code>PASS</code> 表示测试通过；<code>FAIL</code> 表示至少有一个测试失败。</p>
-<h2 id="七、快速复盘" data-section-label="SECTION" data-chapter="08"><a href="#七、快速复盘" class="headerlink" title="七、快速复盘"></a>七、快速复盘</h2><figure class="highlight text"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">text</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">xxx_test.go</span><br><span class="line">      ↓</span><br><span class="line">TestXxx(t *testing.T)</span><br><span class="line">      ↓</span><br><span class="line">准备输入 → 调用函数 → 比较 got 和 want</span><br><span class="line">      ↓</span><br><span class="line">PASS / FAIL</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="七、快速复盘" data-section-label="SECTION" data-chapter="08"><a href="#七、快速复盘" class="headerlink" title="七、快速复盘"></a>快速复盘</h2><figure class="highlight text"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">text</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">xxx_test.go</span><br><span class="line">      ↓</span><br><span class="line">TestXxx(t *testing.T)</span><br><span class="line">      ↓</span><br><span class="line">准备输入 → 调用函数 → 比较 got 和 want</span><br><span class="line">      ↓</span><br><span class="line">PASS / FAIL</span><br></pre></td></tr></tbody></table></figure>
 
 <table>
 <thead>
@@ -486,7 +503,8 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/stretchr/testify">testify</a></li>
 </ul>
 </article>
-      <section class="article-comments"><header><span>DISCUSSION</span><h2>评论</h2></header><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></section>
+      <footer class="article-epilogue"><p>感谢你的阅读。<br>— Fliex</p><div class="article-end-tags"><span class="article-tag">Go</span><span class="article-tag">基础</span><span class="article-tag">测试</span></div></footer>
+      <section class="article-comments" id="article-discussion"><header><span>DISCUSSION</span><h2>留下点什么</h2><p>如果这篇文章对你有帮助，或者有不同的想法，欢迎在下面留言交流。</p></header><div id="post-comment"><div class="comment-head"></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></section>
     </section></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
   const parseViewBox = viewBox => {
     if (!viewBox) return null
@@ -852,7 +870,7 @@
 })()</script><script>(() => {
   let initFn = window.walineFn || null
   const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
-  const option = null
+  const option = {"login":"force","meta":[],"requiredMeta":[],"locale":{"placeholder":"写点什么，留在这里…","login":"登录后留言","submit":"发布评论"}}
 
   const destroyWaline = ele => ele.destroy()
 
@@ -904,12 +922,12 @@
   } else {
     window.loadOtherComment = loadWaline
   }
-})()</script><link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261005-nav-about-v25">
-<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261005-nav-about-v25">
-<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261005-nav-about-v25">
-<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261005-nav-about-v25">
-<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261005-nav-about-v25"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261005-nav-about-v25"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+})()</script>
+
+
+
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261006-stable-background-v1"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261006-stable-background-v1"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261006-stable-background-v1"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({

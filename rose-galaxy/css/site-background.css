@@ -1,0 +1,11 @@
+/* Critical first-paint rules are inlined before every external stylesheet. */
+html,html body{background-color:#0d1b29!important;background-image:none!important}
+html body{isolation:isolate}
+#web_bg{display:block!important;position:fixed;inset:0;width:100%;height:100%;z-index:-999;background:#0d1b29 url('/img/background_sea.png') center/cover no-repeat!important;pointer-events:none;animation:none!important;transition:none!important}
+#web_bg::before,#web_bg::after{content:none!important}
+#body-wrap{background:transparent!important}
+#page-header,#footer{background:transparent!important;background-image:none!important}
+#page-header::before,#footer::before{background:transparent!important}
+.nova-page-loading,#loading-box .loading-bg{background:#0d1b29!important}
+/* Keep the existing mobile crop without making another image layer. */
+@media(max-width:900px){body:has(.nova-notes-shell) #web_bg{background-position:64% center!important}}

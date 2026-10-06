@@ -1,4 +1,15 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编程术语 · Day 4｜安全、连接与实时通信 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="Day 4｜安全、连接与实时通信：通过正式解释、通俗理解和项目示例复习HTTPS（超文本传输安全协议）、TLS（传输层安全协议）、Keep-Alive（持久连接）、CORS（跨源资源共享）、WebSocket（全双工通信协议）。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><style id="nova-background-critical">/* Critical first-paint rules are inlined before every external stylesheet. */
+html,html body{background-color:#0d1b29!important;background-image:none!important}
+html body{isolation:isolate}
+#web_bg{display:block!important;position:fixed;inset:0;width:100%;height:100%;z-index:-999;background:#0d1b29 url('/img/background_sea.png') center/cover no-repeat!important;pointer-events:none;animation:none!important;transition:none!important}
+#web_bg::before,#web_bg::after{content:none!important}
+#body-wrap{background:transparent!important}
+#page-header,#footer{background:transparent!important;background-image:none!important}
+#page-header::before,#footer::before{background:transparent!important}
+.nova-page-loading,#loading-box .loading-bg{background:#0d1b29!important}
+/* Keep the existing mobile crop without making another image layer. */
+@media(max-width:900px){body:has(.nova-notes-shell) #web_bg{background-position:64% center!important}}
+</style><link rel="preload" as="image" href="/img/background_sea.png" fetchpriority="high"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编程术语 · Day 4｜安全、连接与实时通信 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="Day 4｜安全、连接与实时通信：通过正式解释、通俗理解和项目示例复习HTTPS（超文本传输安全协议）、TLS（传输层安全协议）、Keep-Alive（持久连接）、CORS（跨源资源共享）、WebSocket（全双工通信协议）。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编程术语 · Day 4｜安全、连接与实时通信">
 <meta property="og:url" content="https://novafliex.github.io/programming-terms/day-4/">
@@ -11,7 +22,7 @@
 <meta property="article:author" content="Fliex">
 <meta property="article:tag" content="编程术语">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://novafliex.github.io/img/covers/tech-go.webp"><link rel="shortcut icon" href="/img/favicon-small.ico"><link rel="canonical" href="https://novafliex.github.io/programming-terms/day-4/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+<meta name="twitter:image" content="https://novafliex.github.io/img/covers/tech-go.webp"><link rel="shortcut icon" href="/img/favicon-wave-teal.png"><link rel="canonical" href="https://novafliex.github.io/programming-terms/day-4/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -186,8 +197,15 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261005-current-cleanup"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"编程术语 · Day 4｜安全、连接与实时通信","url":"https://novafliex.github.io/programming-terms/day-4/","image":"https://novafliex.github.io/img/covers/tech-go.webp","datePublished":"2026-08-22T01:00:00.000Z","dateModified":"2026-10-05T16:00:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"Day 4｜安全、连接与实时通信：通过正式解释、通俗理解和项目示例复习HTTPS（超文本传输安全协议）、TLS（传输层安全协议）、Keep-Alive（持久连接）、CORS（跨源资源共享）、WebSocket（全双工通信协议）。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/programming-terms/day-4/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><!-- hexo injector body_begin start -->
+}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261006-stable-background-v1"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
+<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261006-stable-background-v1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"编程术语 · Day 4｜安全、连接与实时通信","url":"https://novafliex.github.io/programming-terms/day-4/","image":"https://novafliex.github.io/img/covers/tech-go.webp","datePublished":"2026-08-22T01:00:00.000Z","dateModified":"2026-10-05T16:00:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"Day 4｜安全、连接与实时通信：通过正式解释、通俗理解和项目示例复习HTTPS（超文本传输安全协议）、TLS（传输层安全协议）、Keep-Alive（持久连接）、CORS（跨源资源共享）、WebSocket（全双工通信协议）。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/programming-terms/day-4/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -216,7 +234,6 @@
     }, 1200)
   })()
 </script><!-- hexo injector body_begin end --><div class="post" id="body-wrap"><main class="article-reading-shell" id="content-inner">
-    <div class="article-page-bg" aria-hidden="true"><img src="/img/background_sea.png" alt="" width="1683" height="935" decoding="async"></div>
     <div class="article-reading-dimmer" aria-hidden="true"></div>
     <div class="article-sea-snow" aria-hidden="true" data-article-snow-root=""><canvas class="coast-snow" data-coast-snow=""></canvas></div>
     <aside class="coast-sidebar" aria-label="Fliex 与导航">
@@ -235,37 +252,37 @@
       </div>
     </aside>
     <aside class="article-toc-sidebar" aria-label="文章目录">
-      <header><span>目录</span></header>
-      <nav class="article-toc-list"><a class="article-toc-link article-toc-link--h2" href="#Day-4｜安全、连接与实时通信" data-article-toc="Day-4｜安全、连接与实时通信" data-article-chapter="01"><span>01</span>Day 4｜安全、连接与实时通信</a><a class="article-toc-link article-toc-link--h3" href="#一、HTTPS（超文本传输安全协议）" data-article-toc="一、HTTPS（超文本传输安全协议）" data-article-chapter="01"><span>·</span>一、HTTPS（超文本传输安全协议）</a><a class="article-toc-link article-toc-link--h3" href="#二、TLS（传输层安全协议）" data-article-toc="二、TLS（传输层安全协议）" data-article-chapter="01"><span>·</span>二、TLS（传输层安全协议）</a><a class="article-toc-link article-toc-link--h3" href="#三、Keep-Alive（持久连接）" data-article-toc="三、Keep-Alive（持久连接）" data-article-chapter="01"><span>·</span>三、Keep-Alive（持久连接）</a><a class="article-toc-link article-toc-link--h3" href="#四、CORS（跨源资源共享）" data-article-toc="四、CORS（跨源资源共享）" data-article-chapter="01"><span>·</span>四、CORS（跨源资源共享）</a><a class="article-toc-link article-toc-link--h3" href="#五、WebSocket（全双工通信协议）" data-article-toc="五、WebSocket（全双工通信协议）" data-article-chapter="01"><span>·</span>五、WebSocket（全双工通信协议）</a><a class="article-toc-link article-toc-link--h2" href="#复习提示" data-article-toc="复习提示" data-article-chapter="02"><span>02</span>复习提示</a></nav>
+      <div class="article-progress" role="progressbar" aria-label="文章阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-article-progress="">0%</span></div><header><span>ON THIS PAGE</span></header>
+      <nav class="article-toc-list"><a class="article-toc-link article-toc-link--h2" href="#Day-4｜安全、连接与实时通信" data-article-toc="Day-4｜安全、连接与实时通信" data-article-chapter="01"><span>01</span>安全、连接与实时通信</a><a class="article-toc-link article-toc-link--h3" href="#一、HTTPS（超文本传输安全协议）" data-article-toc="一、HTTPS（超文本传输安全协议）" data-article-chapter="01"><span>·</span>HTTPS（超文本传输安全协议）</a><a class="article-toc-link article-toc-link--h3" href="#二、TLS（传输层安全协议）" data-article-toc="二、TLS（传输层安全协议）" data-article-chapter="01"><span>·</span>TLS（传输层安全协议）</a><a class="article-toc-link article-toc-link--h3" href="#三、Keep-Alive（持久连接）" data-article-toc="三、Keep-Alive（持久连接）" data-article-chapter="01"><span>·</span>Keep-Alive（持久连接）</a><a class="article-toc-link article-toc-link--h3" href="#四、CORS（跨源资源共享）" data-article-toc="四、CORS（跨源资源共享）" data-article-chapter="01"><span>·</span>CORS（跨源资源共享）</a><a class="article-toc-link article-toc-link--h3" href="#五、WebSocket（全双工通信协议）" data-article-toc="五、WebSocket（全双工通信协议）" data-article-chapter="01"><span>·</span>WebSocket（全双工通信协议）</a><a class="article-toc-link article-toc-link--h2" href="#复习提示" data-article-toc="复习提示" data-article-chapter="02"><span>02</span>复习提示</a><a class="article-toc-link article-toc-link--h2" href="#article-discussion" data-article-toc="article-discussion" data-article-chapter="discussion"><span>·</span>讨论与留言</a></nav>
     </aside>
     <button class="article-mobile-toc-trigger" type="button" data-article-mobile-toc="" aria-expanded="false"><i aria-hidden="true"></i><span>INDEX</span></button>
     <section class="article-workspace">
       <header class="article-header">
-        <nav class="article-breadcrumb" aria-label="面包屑"><a href="/">Home</a><span>›</span><a href="/notes/">Notes</a><span>›</span><span>编程术语</span></nav>
-        <h1>编程术语 · Day 4｜安全、连接与实时通信</h1>
+        <nav class="article-breadcrumb" aria-label="面包屑"><a href="/">Home</a><span>/</span><a href="/notes/">Notes</a><span>/</span><span>编程术语</span></nav>
+        <h1>编程术语 · Day 4<span class="article-subtitle">安全、连接与实时通信</span></h1>
         <div class="article-meta"><time datetime="2026-08-22">◷ &nbsp;2026.08.22</time><span>▱ &nbsp;编程术语</span><span>◷ &nbsp;约 6 分钟阅读</span><span class="article-tag">编程术语</span></div>
         <p>Day 4｜安全、连接与实时通信：通过正式解释、通俗理解和项目示例复习HTTPS（超文本传输安全协议）、TLS（传输层安全协议）、Keep-Alive（持久连接）、CORS（跨源资源共享）、WebSocket（全双工通信协议）。</p>
       </header>
-      <article class="article-prose" id="article-container"><p><a href="/programming-terms/">知识总览</a> · <a href="/programming-terms/day-3/">上一节：Day 3</a> · <a href="/programming-terms/day-5/">下一节：Day 5</a></p>
-<h2 id="Day-4｜安全、连接与实时通信" data-section-label="SECTION" data-chapter="01"><a href="#Day-4｜安全、连接与实时通信" class="headerlink" title="Day 4｜安全、连接与实时通信"></a>Day 4｜安全、连接与实时通信</h2><blockquote>
+      <article class="article-prose" id="article-container">
+<h2 id="Day-4｜安全、连接与实时通信" data-section-label="SECTION" data-chapter="01"><a href="#Day-4｜安全、连接与实时通信" class="headerlink" title="Day 4｜安全、连接与实时通信"></a>安全、连接与实时通信</h2><blockquote>
 <p>HTTPS 依靠 TLS 保护通信｜Keep-Alive 复用连接｜CORS 控制跨域｜WebSocket 支持双向通信</p>
 </blockquote>
 <p>今天的 5 个术语，可以放进下面这张关系图中：</p>
 <figure class="highlight text"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">text</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">浏览器与服务器通信</span><br><span class="line">│</span><br><span class="line">├─ HTTPS + TLS → 加密并保护 HTTP 通信</span><br><span class="line">├─ Keep-Alive  → 复用连接，减少重复建连</span><br><span class="line">├─ CORS       → 控制浏览器是否允许跨域访问</span><br><span class="line">└─ WebSocket  → 建立双向实时通信通道</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="一、HTTPS（超文本传输安全协议）"><a href="#一、HTTPS（超文本传输安全协议）" class="headerlink" title="一、HTTPS（超文本传输安全协议）"></a>一、HTTPS（超文本传输安全协议）</h3><p><strong>正式解释：</strong></p>
+<h3 id="一、HTTPS（超文本传输安全协议）"><a href="#一、HTTPS（超文本传输安全协议）" class="headerlink" title="一、HTTPS（超文本传输安全协议）"></a>HTTPS（超文本传输安全协议）</h3><p><strong>正式解释：</strong></p>
 <p>HTTPS 是运行在 TLS 安全通道之上的 HTTP，用于保护客户端与服务器之间传输的数据。</p>
 <p><strong>通俗理解：</strong></p>
 <p>给 HTTP 套上一层 TLS 安全外壳。传输中的 HTTP 内容会被加密并检查有没有遭到篡改，所以通信更安全。</p>
 <p><strong>项目例子：</strong></p>
 <p>当客户端访问 <code>https://api.example.com/courses</code> 时，请求内容会通过 TLS 加密后再传输。HTTPS 的默认端口通常是 <code>443</code>。</p>
-<h3 id="二、TLS（传输层安全协议）"><a href="#二、TLS（传输层安全协议）" class="headerlink" title="二、TLS（传输层安全协议）"></a>二、TLS（传输层安全协议）</h3><p><strong>正式解释：</strong></p>
+<h3 id="二、TLS（传输层安全协议）"><a href="#二、TLS（传输层安全协议）" class="headerlink" title="二、TLS（传输层安全协议）"></a>TLS（传输层安全协议）</h3><p><strong>正式解释：</strong></p>
 <p>TLS 是一种用于保护网络通信的加密协议，可以提供身份认证、数据机密性和数据完整性。</p>
 <p><strong>通俗理解：</strong></p>
 <p>TLS 是一套完整的安全协议——它不仅提供加密手段防偷看，还顺便把**身份验证（防冒充）和完整性校验（防篡改）**全给办了</p>
 <p><strong>项目例子：</strong></p>
 <p>浏览器访问 HTTPS 网站时，会在发送 HTTP 数据前与服务器进行 TLS 握手，并验证服务器证书。握手成功后，双方使用协商出的密钥加密后续通信。</p>
-<h3 id="三、Keep-Alive（持久连接）"><a href="#三、Keep-Alive（持久连接）" class="headerlink" title="三、Keep-Alive（持久连接）"></a>三、Keep-Alive（持久连接）</h3><p><strong>正式解释：</strong></p>
+<h3 id="三、Keep-Alive（持久连接）"><a href="#三、Keep-Alive（持久连接）" class="headerlink" title="三、Keep-Alive（持久连接）"></a>Keep-Alive（持久连接）</h3><p><strong>正式解释：</strong></p>
 <p>Keep-Alive 是复用底层网络连接处理多个请求与响应的机制，可以减少重复建立连接带来的开销。</p>
 <p><strong>通俗理解：</strong></p>
 <p>打通电话后先别挂，有事接着说，省得每次都重新拨号</p>
@@ -273,7 +290,7 @@
 <p><strong>Tips：Keep-Alive 能保持多久？</strong></p>
 <p>Keep-Alive 连接能空闲多久，通常由 Web 服务器或 Nginx、CDN 等网络代理的超时配置决定，也可能受到客户端超时设置的影响。</p>
 </blockquote>
-<h3 id="四、CORS（跨源资源共享）"><a href="#四、CORS（跨源资源共享）" class="headerlink" title="四、CORS（跨源资源共享）"></a>四、CORS（跨源资源共享）</h3><p><strong>正式解释：</strong></p>
+<h3 id="四、CORS（跨源资源共享）"><a href="#四、CORS（跨源资源共享）" class="headerlink" title="四、CORS（跨源资源共享）"></a>CORS（跨源资源共享）</h3><p><strong>正式解释：</strong></p>
 <p>CORS 是一种基于 HTTP Header 的浏览器安全机制，服务器通过响应头声明哪些源可以跨域访问自己的资源。</p>
 <p><strong>通俗理解：</strong></p>
 <p>浏览器为了防坏人，默认不让你跨门串户；但如果对方主人贴了通行许可，浏览器就放行。</p>
@@ -282,7 +299,7 @@
 <figure class="highlight http"><div class="highlight-tools"><span class="article-code-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="code-lang">http</span><button type="button" class="article-code-copy" aria-label="复制代码">Copy</button></div><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Access-Control-Allow-Origin</span><span class="punctuation">: </span>http://localhost:3000</span><br><span class="line"><span class="attribute">Access-Control-Allow-Methods</span><span class="punctuation">: </span>GET, POST, PUT, DELETE</span><br><span class="line"><span class="attribute">Access-Control-Allow-Headers</span><span class="punctuation">: </span>Content-Type, Authorization</span><br></pre></td></tr></tbody></table></figure>
 
 <p>对于某些跨域请求，浏览器会先发送 <code>OPTIONS</code> 预检请求，确认服务器允许后再发送正式请求。</p>
-<h3 id="五、WebSocket（全双工通信协议）"><a href="#五、WebSocket（全双工通信协议）" class="headerlink" title="五、WebSocket（全双工通信协议）"></a>五、WebSocket（全双工通信协议）</h3><p><strong>正式解释：</strong></p>
+<h3 id="五、WebSocket（全双工通信协议）"><a href="#五、WebSocket（全双工通信协议）" class="headerlink" title="五、WebSocket（全双工通信协议）"></a>WebSocket（全双工通信协议）</h3><p><strong>正式解释：</strong></p>
 <p>WebSocket 是一种在单个长连接上进行全双工通信的应用层协议，客户端和服务器都可以主动向对方发送数据。</p>
 <p><strong>通俗理解：</strong></p>
 <p>传统 HTTP 更像一问一答：客户端先问，服务器再回答。WebSocket 更像实时通话，连接建立后，客户端和服务器谁有消息都可以主动发送。</p>
@@ -327,7 +344,8 @@
 <p>试着不看正文，用自己的项目举一个例子，再回到对应术语核对。</p>
 <p><a href="/programming-terms/">知识总览</a> · <a href="/programming-terms/day-3/">上一节：Day 3</a> · <a href="/programming-terms/day-5/">下一节：Day 5</a></p>
 </article>
-      <section class="article-comments"><header><span>DISCUSSION</span><h2>评论</h2></header><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></section>
+      <footer class="article-epilogue"><p>感谢你的阅读。<br>— Fliex</p><div class="article-end-tags"><span class="article-tag">编程术语</span></div></footer>
+      <section class="article-comments" id="article-discussion"><header><span>DISCUSSION</span><h2>留下点什么</h2><p>如果这篇文章对你有帮助，或者有不同的想法，欢迎在下面留言交流。</p></header><div id="post-comment"><div class="comment-head"></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></section>
     </section></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
   const parseViewBox = viewBox => {
     if (!viewBox) return null
@@ -693,7 +711,7 @@
 })()</script><script>(() => {
   let initFn = window.walineFn || null
   const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
-  const option = null
+  const option = {"login":"force","meta":[],"requiredMeta":[],"locale":{"placeholder":"写点什么，留在这里…","login":"登录后留言","submit":"发布评论"}}
 
   const destroyWaline = ele => ele.destroy()
 
@@ -745,12 +763,12 @@
   } else {
     window.loadOtherComment = loadWaline
   }
-})()</script><link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261005-nav-about-v25">
-<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261005-nav-about-v25">
-<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261005-nav-about-v25">
-<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261005-nav-about-v25">
-<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261005-nav-about-v25"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261005-nav-about-v25"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+})()</script>
+
+
+
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261006-stable-background-v1"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261006-stable-background-v1"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261006-stable-background-v1"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({

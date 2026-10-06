@@ -1,4 +1,15 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编程术语 · Day 2｜HTTP 请求结构 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="Day 2｜HTTP 请求结构：通过正式解释、通俗理解和项目示例复习URL（统一资源定位符）、HTTP Method（HTTP 请求方法）、HTTP Header（HTTP 头字段）、HTTP Body（HTTP 消息体）、HTTP Status Code（HTTP 状态码）。">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><style id="nova-background-critical">/* Critical first-paint rules are inlined before every external stylesheet. */
+html,html body{background-color:#0d1b29!important;background-image:none!important}
+html body{isolation:isolate}
+#web_bg{display:block!important;position:fixed;inset:0;width:100%;height:100%;z-index:-999;background:#0d1b29 url('/img/background_sea.png') center/cover no-repeat!important;pointer-events:none;animation:none!important;transition:none!important}
+#web_bg::before,#web_bg::after{content:none!important}
+#body-wrap{background:transparent!important}
+#page-header,#footer{background:transparent!important;background-image:none!important}
+#page-header::before,#footer::before{background:transparent!important}
+.nova-page-loading,#loading-box .loading-bg{background:#0d1b29!important}
+/* Keep the existing mobile crop without making another image layer. */
+@media(max-width:900px){body:has(.nova-notes-shell) #web_bg{background-position:64% center!important}}
+</style><link rel="preload" as="image" href="/img/background_sea.png" fetchpriority="high"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编程术语 · Day 2｜HTTP 请求结构 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="Day 2｜HTTP 请求结构：通过正式解释、通俗理解和项目示例复习URL（统一资源定位符）、HTTP Method（HTTP 请求方法）、HTTP Header（HTTP 头字段）、HTTP Body（HTTP 消息体）、HTTP Status Code（HTTP 状态码）。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编程术语 · Day 2｜HTTP 请求结构">
 <meta property="og:url" content="https://novafliex.github.io/programming-terms/day-2/">
@@ -11,7 +22,7 @@
 <meta property="article:author" content="Fliex">
 <meta property="article:tag" content="编程术语">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://novafliex.github.io/img/covers/tech-go.webp"><link rel="shortcut icon" href="/img/favicon-small.ico"><link rel="canonical" href="https://novafliex.github.io/programming-terms/day-2/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+<meta name="twitter:image" content="https://novafliex.github.io/img/covers/tech-go.webp"><link rel="shortcut icon" href="/img/favicon-wave-teal.png"><link rel="canonical" href="https://novafliex.github.io/programming-terms/day-2/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
     (() => {
       
     const saveToLocal = {
@@ -186,8 +197,15 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261005-current-cleanup"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"编程术语 · Day 2｜HTTP 请求结构","url":"https://novafliex.github.io/programming-terms/day-2/","image":"https://novafliex.github.io/img/covers/tech-go.webp","datePublished":"2026-08-22T01:00:00.000Z","dateModified":"2026-10-05T16:00:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"Day 2｜HTTP 请求结构：通过正式解释、通俗理解和项目示例复习URL（统一资源定位符）、HTTP Method（HTTP 请求方法）、HTTP Header（HTTP 头字段）、HTTP Body（HTTP 消息体）、HTTP Status Code（HTTP 状态码）。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/programming-terms/day-2/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><!-- hexo injector body_begin start -->
+}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261006-stable-background-v1"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
+<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261006-stable-background-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261006-stable-background-v1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"编程术语 · Day 2｜HTTP 请求结构","url":"https://novafliex.github.io/programming-terms/day-2/","image":"https://novafliex.github.io/img/covers/tech-go.webp","datePublished":"2026-08-22T01:00:00.000Z","dateModified":"2026-10-05T16:00:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"Day 2｜HTTP 请求结构：通过正式解释、通俗理解和项目示例复习URL（统一资源定位符）、HTTP Method（HTTP 请求方法）、HTTP Header（HTTP 头字段）、HTTP Body（HTTP 消息体）、HTTP Status Code（HTTP 状态码）。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/programming-terms/day-2/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -216,7 +234,6 @@
     }, 1200)
   })()
 </script><!-- hexo injector body_begin end --><div class="post" id="body-wrap"><main class="article-reading-shell" id="content-inner">
-    <div class="article-page-bg" aria-hidden="true"><img src="/img/background_sea.png" alt="" width="1683" height="935" decoding="async"></div>
     <div class="article-reading-dimmer" aria-hidden="true"></div>
     <div class="article-sea-snow" aria-hidden="true" data-article-snow-root=""><canvas class="coast-snow" data-coast-snow=""></canvas></div>
     <aside class="coast-sidebar" aria-label="Fliex 与导航">
@@ -235,23 +252,23 @@
       </div>
     </aside>
     <aside class="article-toc-sidebar" aria-label="文章目录">
-      <header><span>目录</span></header>
-      <nav class="article-toc-list"><a class="article-toc-link article-toc-link--h2" href="#Day-2｜HTTP-请求结构" data-article-toc="Day-2｜HTTP-请求结构" data-article-chapter="01"><span>01</span>Day 2｜HTTP 请求结构</a><a class="article-toc-link article-toc-link--h3" href="#一、URL（统一资源定位符）" data-article-toc="一、URL（统一资源定位符）" data-article-chapter="01"><span>·</span>一、URL（统一资源定位符）</a><a class="article-toc-link article-toc-link--h3" href="#二、HTTP-Method（HTTP-请求方法）" data-article-toc="二、HTTP-Method（HTTP-请求方法）" data-article-chapter="01"><span>·</span>二、HTTP Method（HTTP 请求方法）</a><a class="article-toc-link article-toc-link--h3" href="#三、HTTP-Header（HTTP-头字段）" data-article-toc="三、HTTP-Header（HTTP-头字段）" data-article-chapter="01"><span>·</span>三、HTTP Header（HTTP 头字段）</a><a class="article-toc-link article-toc-link--h3" href="#四、HTTP-Body（HTTP-消息体）" data-article-toc="四、HTTP-Body（HTTP-消息体）" data-article-chapter="01"><span>·</span>四、HTTP Body（HTTP 消息体）</a><a class="article-toc-link article-toc-link--h3" href="#五、HTTP-Status-Code（HTTP-状态码）" data-article-toc="五、HTTP-Status-Code（HTTP-状态码）" data-article-chapter="01"><span>·</span>五、HTTP Status Code（HTTP 状态码）</a><a class="article-toc-link article-toc-link--h2" href="#复习提示" data-article-toc="复习提示" data-article-chapter="02"><span>02</span>复习提示</a></nav>
+      <div class="article-progress" role="progressbar" aria-label="文章阅读进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-article-progress="">0%</span></div><header><span>ON THIS PAGE</span></header>
+      <nav class="article-toc-list"><a class="article-toc-link article-toc-link--h2" href="#Day-2｜HTTP-请求结构" data-article-toc="Day-2｜HTTP-请求结构" data-article-chapter="01"><span>01</span>HTTP 请求结构</a><a class="article-toc-link article-toc-link--h3" href="#一、URL（统一资源定位符）" data-article-toc="一、URL（统一资源定位符）" data-article-chapter="01"><span>·</span>URL（统一资源定位符）</a><a class="article-toc-link article-toc-link--h3" href="#二、HTTP-Method（HTTP-请求方法）" data-article-toc="二、HTTP-Method（HTTP-请求方法）" data-article-chapter="01"><span>·</span>HTTP Method（HTTP 请求方法）</a><a class="article-toc-link article-toc-link--h3" href="#三、HTTP-Header（HTTP-头字段）" data-article-toc="三、HTTP-Header（HTTP-头字段）" data-article-chapter="01"><span>·</span>HTTP Header（HTTP 头字段）</a><a class="article-toc-link article-toc-link--h3" href="#四、HTTP-Body（HTTP-消息体）" data-article-toc="四、HTTP-Body（HTTP-消息体）" data-article-chapter="01"><span>·</span>HTTP Body（HTTP 消息体）</a><a class="article-toc-link article-toc-link--h3" href="#五、HTTP-Status-Code（HTTP-状态码）" data-article-toc="五、HTTP-Status-Code（HTTP-状态码）" data-article-chapter="01"><span>·</span>HTTP Status Code（HTTP 状态码）</a><a class="article-toc-link article-toc-link--h2" href="#复习提示" data-article-toc="复习提示" data-article-chapter="02"><span>02</span>复习提示</a><a class="article-toc-link article-toc-link--h2" href="#article-discussion" data-article-toc="article-discussion" data-article-chapter="discussion"><span>·</span>讨论与留言</a></nav>
     </aside>
     <button class="article-mobile-toc-trigger" type="button" data-article-mobile-toc="" aria-expanded="false"><i aria-hidden="true"></i><span>INDEX</span></button>
     <section class="article-workspace">
       <header class="article-header">
-        <nav class="article-breadcrumb" aria-label="面包屑"><a href="/">Home</a><span>›</span><a href="/notes/">Notes</a><span>›</span><span>编程术语</span></nav>
-        <h1>编程术语 · Day 2｜HTTP 请求结构</h1>
+        <nav class="article-breadcrumb" aria-label="面包屑"><a href="/">Home</a><span>/</span><a href="/notes/">Notes</a><span>/</span><span>编程术语</span></nav>
+        <h1>编程术语 · Day 2<span class="article-subtitle">HTTP 请求结构</span></h1>
         <div class="article-meta"><time datetime="2026-08-22">◷ &nbsp;2026.08.22</time><span>▱ &nbsp;编程术语</span><span>◷ &nbsp;约 5 分钟阅读</span><span class="article-tag">编程术语</span></div>
         <p>Day 2｜HTTP 请求结构：通过正式解释、通俗理解和项目示例复习URL（统一资源定位符）、HTTP Method（HTTP 请求方法）、HTTP Header（HTTP 头字段）、HTTP Body（HTTP 消息体）、HTTP Status Code（HTTP 状态码）。</p>
       </header>
-      <article class="article-prose" id="article-container"><p><a href="/programming-terms/">知识总览</a> · <a href="/programming-terms/day-1/">上一节：Day 1</a> · <a href="/programming-terms/day-3/">下一节：Day 3</a></p>
-<h2 id="Day-2｜HTTP-请求结构" data-section-label="SECTION" data-chapter="01"><a href="#Day-2｜HTTP-请求结构" class="headerlink" title="Day 2｜HTTP 请求结构"></a>Day 2｜HTTP 请求结构</h2><p>今天认识的 5 个术语，可以组成一次完整的 HTTP 请求与响应：</p>
+      <article class="article-prose" id="article-container">
+<h2 id="Day-2｜HTTP-请求结构" data-section-label="SECTION" data-chapter="01"><a href="#Day-2｜HTTP-请求结构" class="headerlink" title="Day 2｜HTTP 请求结构"></a>HTTP 请求结构</h2><p>今天认识的 5 个术语，可以组成一次完整的 HTTP 请求与响应：</p>
 <blockquote>
 <p>URL 表示访问哪个资源 → Method 表示希望执行什么操作 → Header 携带认证方式、数据格式等附加信息 → Body 携带主要业务数据 → Status Code 表示服务器最终的处理结果</p>
 </blockquote>
-<h3 id="一、URL（统一资源定位符）"><a href="#一、URL（统一资源定位符）" class="headerlink" title="一、URL（统一资源定位符）"></a>一、URL（统一资源定位符）</h3><p><strong>正式解释：</strong></p>
+<h3 id="一、URL（统一资源定位符）"><a href="#一、URL（统一资源定位符）" class="headerlink" title="一、URL（统一资源定位符）"></a>URL（统一资源定位符）</h3><p><strong>正式解释：</strong></p>
 <p>URL 用于描述网络资源的位置，以及访问这个资源所使用的方式。</p>
 <p><strong>通俗理解：</strong></p>
 <p>在互联网上找到特定网页、图片或数据的具体“网络地址” ,当前页面的 URL = 你当前在浏览器地址栏里看到的那一整串网址</p>
@@ -290,7 +307,7 @@
 <td>补充请求参数</td>
 </tr>
 </tbody></table>
-<h3 id="二、HTTP-Method（HTTP-请求方法）"><a href="#二、HTTP-Method（HTTP-请求方法）" class="headerlink" title="二、HTTP Method（HTTP 请求方法）"></a>二、HTTP Method（HTTP 请求方法）</h3><p><strong>正式解释：</strong></p>
+<h3 id="二、HTTP-Method（HTTP-请求方法）"><a href="#二、HTTP-Method（HTTP-请求方法）" class="headerlink" title="二、HTTP Method（HTTP 请求方法）"></a>HTTP Method（HTTP 请求方法）</h3><p><strong>正式解释：</strong></p>
 <p>HTTP Method 用来表示客户端希望对目标资源执行的操作。</p>
 <p><strong>通俗理解：</strong></p>
 <p>增删改查(只是改有部分修改和全部之分)</p>
@@ -323,7 +340,7 @@
 <td>删除资源</td>
 </tr>
 </tbody></table>
-<h3 id="三、HTTP-Header（HTTP-头字段）"><a href="#三、HTTP-Header（HTTP-头字段）" class="headerlink" title="三、HTTP Header（HTTP 头字段）"></a>三、HTTP Header（HTTP 头字段）</h3><p><strong>正式解释：</strong></p>
+<h3 id="三、HTTP-Header（HTTP-头字段）"><a href="#三、HTTP-Header（HTTP-头字段）" class="headerlink" title="三、HTTP Header（HTTP 头字段）"></a>HTTP Header（HTTP 头字段）</h3><p><strong>正式解释：</strong></p>
 <p>HTTP Header 用来携带请求或响应的附加信息和元数据。</p>
 <p><strong>通俗理解：</strong></p>
 <p>请求头（Request Header）—— 客户端发给服务器，带上自己的身份和具体要求<br>响应头（Response Header）—— 服务器回给客户端，带上内容格式和后续指示（比如怎么缓存、存什么 Cookie）</p>
@@ -336,7 +353,7 @@
 <li><code>Accept</code> 说明客户端希望接收什么格式的数据。</li>
 </ul>
 <p>可以先记住：Header 保存附加信息，主要业务数据通常放在 Body 中。</p>
-<h3 id="四、HTTP-Body（HTTP-消息体）"><a href="#四、HTTP-Body（HTTP-消息体）" class="headerlink" title="四、HTTP Body（HTTP 消息体）"></a>四、HTTP Body（HTTP 消息体）</h3><p><strong>正式解释：</strong></p>
+<h3 id="四、HTTP-Body（HTTP-消息体）"><a href="#四、HTTP-Body（HTTP-消息体）" class="headerlink" title="四、HTTP Body（HTTP 消息体）"></a>HTTP Body（HTTP 消息体）</h3><p><strong>正式解释：</strong></p>
 <p>HTTP Body 用来携带请求或响应中的主要数据内容。</p>
 <p><strong>通俗理解：</strong></p>
 <p>Body 就像包裹里真正装着的东西，可以是用户提交的 JSON、表单，也可以是服务器返回的文字、图片或文件。</p>
@@ -350,7 +367,7 @@
 <blockquote>
 <p>HTTP Body → 解析 JSON → 写入 Go struct</p>
 </blockquote>
-<h3 id="五、HTTP-Status-Code（HTTP-状态码）"><a href="#五、HTTP-Status-Code（HTTP-状态码）" class="headerlink" title="五、HTTP Status Code（HTTP 状态码）"></a>五、HTTP Status Code（HTTP 状态码）</h3><p><strong>正式解释：</strong></p>
+<h3 id="五、HTTP-Status-Code（HTTP-状态码）"><a href="#五、HTTP-Status-Code（HTTP-状态码）" class="headerlink" title="五、HTTP Status Code（HTTP 状态码）"></a>HTTP Status Code（HTTP 状态码）</h3><p><strong>正式解释：</strong></p>
 <p>HTTP Status Code 是服务器在响应中返回的三位数字，用来表示请求的处理结果。</p>
 <p><strong>通俗理解：</strong></p>
 <p>状态码用于告诉客户端请求的处理结果。</p>
@@ -402,7 +419,8 @@
 <p>试着不看正文，用自己的项目举一个例子，再回到对应术语核对。</p>
 <p><a href="/programming-terms/">知识总览</a> · <a href="/programming-terms/day-1/">上一节：Day 1</a> · <a href="/programming-terms/day-3/">下一节：Day 3</a></p>
 </article>
-      <section class="article-comments"><header><span>DISCUSSION</span><h2>评论</h2></header><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></section>
+      <footer class="article-epilogue"><p>感谢你的阅读。<br>— Fliex</p><div class="article-end-tags"><span class="article-tag">编程术语</span></div></footer>
+      <section class="article-comments" id="article-discussion"><header><span>DISCUSSION</span><h2>留下点什么</h2><p>如果这篇文章对你有帮助，或者有不同的想法，欢迎在下面留言交流。</p></header><div id="post-comment"><div class="comment-head"></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></section>
     </section></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
   const parseViewBox = viewBox => {
     if (!viewBox) return null
@@ -768,7 +786,7 @@
 })()</script><script>(() => {
   let initFn = window.walineFn || null
   const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
-  const option = null
+  const option = {"login":"force","meta":[],"requiredMeta":[],"locale":{"placeholder":"写点什么，留在这里…","login":"登录后留言","submit":"发布评论"}}
 
   const destroyWaline = ele => ele.destroy()
 
@@ -820,12 +838,12 @@
   } else {
     window.loadOtherComment = loadWaline
   }
-})()</script><link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261005-nav-about-v25">
-<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261005-nav-about-v25">
-<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261005-nav-about-v25">
-<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261005-nav-about-v25">
-<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261005-nav-about-v25"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261005-nav-about-v25"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261005-current-pages-v13"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+})()</script>
+
+
+
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261006-stable-background-v1"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261006-stable-background-v1"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261006-stable-background-v1"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({

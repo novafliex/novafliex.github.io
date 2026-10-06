@@ -11,6 +11,8 @@
     'nova-home-active',
     'nova-music-route',
     'nova-about-route',
+    'nova-notes-route',
+    'article-sea-route',
   ]
   let initialFinishTimer = 0
   let initialFallbackTimer = 0
@@ -164,11 +166,11 @@
 
   function beginNavigation() {
     cleanupSearch()
-    document.body.classList.remove(...ROUTE_CLASSES)
     finishInitialLoading()
   }
 
   function finishNavigation() {
+    syncRouteState()
     finishInitialLoading()
   }
 
@@ -222,6 +224,8 @@
     const routeMarkers = [
       ['.nova-music-page', ['nova-music-route']],
       ['.nova-about-shell', ['nova-about-route']],
+      ['.nova-notes-shell', ['nova-notes-route']],
+      ['.article-reading-shell', ['article-sea-route']],
       ['.coast-home[data-nova-home]', ['nova-home-active']],
       ['.nova-about-page', ['nova-about-route']],
     ]

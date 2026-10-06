@@ -1,6 +1,6 @@
 /* The desktop proportions follow the 1683 × 935 reference. */
-.nova-home-active{background:#233749;overflow-x:hidden}
-.nova-home-active #web_bg,.nova-home-active #page-header,.nova-home-active #rightside,.nova-home-active #footer{display:none!important}
+.nova-home-active{overflow-x:hidden}
+.nova-home-active #page-header,.nova-home-active #rightside,.nova-home-active #footer{display:none!important}
 .coast-home,.coast-home *{box-sizing:border-box}
 .coast-home{position:relative;isolation:isolate;min-height:650px;height:100svh;overflow:hidden;color:var(--coast-ink);font:400 14px/1.5 var(--coast-font)}
 .coast-home a{color:inherit;text-decoration:none}

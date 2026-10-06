@@ -1,6 +1,6 @@
 /* Music is a quiet layer in the homepage's snow coast scene. */
-body.nova-music-route{background:#233749;overflow-x:hidden;color:var(--coast-ink)}
-body.nova-music-route :is(#page-header,#web_bg,#rightside,#footer){display:none!important}
+body.nova-music-route{overflow-x:hidden;color:var(--coast-ink)}
+body.nova-music-route :is(#page-header,#rightside,#footer){display:none!important}
 body.nova-music-route #content-inner{width:100%;max-width:none;padding:0;margin:0}
 .coast-home.coast-music-shell{height:auto;min-height:100svh;overflow:clip}
 .coast-music-shell :is(.coast-background,.coast-shade,.coast-snow){position:fixed}

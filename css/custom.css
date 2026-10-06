@@ -96,7 +96,7 @@ body.nova-loading-active {
   justify-content:center;
   visibility:hidden;
   opacity:0;
-  background:linear-gradient(rgba(27,49,67,.55),rgba(27,49,67,.55)),url('/img/background_sea.png') center/cover no-repeat;
+  background:#0d1b29;
   transform:scale(1.01);
   transition:opacity 180ms ease,visibility 0s linear 180ms,transform 180ms ease;
   pointer-events:none;
@@ -1388,6 +1388,6 @@ html[data-theme="light"] #body-wrap.post #pagination .pagination-related {
 }
 
 /* The fallback page shares the sea palette as well. */
-body:has(#error-wrap){background:#233749 url(/img/background_sea.png) center/cover fixed;color:#e7eef3}
+body:has(#error-wrap){background:#0d1b29;color:#e7eef3}
 #error-wrap .error-content{border:1px solid rgba(216,229,238,.18);background:rgba(25,45,62,.55);color:#e7eef3;backdrop-filter:blur(16px)}
 #error-wrap .error-info :is(.error_title,.error_subtitle){color:#e7eef3}

@@ -23,6 +23,15 @@
       frame = 0
       let active = headings[0]
       headings.forEach(heading => { if (heading.getBoundingClientRect().top <= 150) active = heading })
+      const workspace = root.querySelector('.article-workspace')
+      const top = workspace.getBoundingClientRect().top + window.scrollY
+      const distance = Math.max(1, workspace.offsetHeight - window.innerHeight)
+      const percent = Math.max(0, Math.min(100, Math.round((window.scrollY - top) / distance * 100)))
+      const progress = root.querySelector('.article-progress')
+      progress?.setAttribute('aria-valuenow', String(percent))
+      const label = root.querySelector('[data-article-progress]'); if (label) label.textContent = percent + '%'
+      root.querySelector('.article-toc-sidebar')?.style.setProperty('--article-progress', percent + '%')
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) active = headings.at(-1)
       let chapter = ''
       links.forEach(link => { if (link.dataset.articleToc === active?.id) chapter = link.dataset.articleChapter })
       links.forEach(link => {
@@ -30,6 +39,7 @@
         link.classList.toggle('is-active', current)
         if (current) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current')
         link.classList.toggle('is-expanded', link.dataset.articleChapter === chapter)
+        link.classList.toggle('is-active-chapter', link.classList.contains('article-toc-link--h2') && link.dataset.articleChapter === chapter)
       })
     }
     on(window, 'scroll', () => { if (!frame) frame = requestAnimationFrame(update) })
@@ -50,6 +60,10 @@
       root.querySelector('[data-music-progress]').style.width = value + '%'
       root.querySelector('.coast-progress').setAttribute('aria-valuenow', String(Math.round(value)))
       root.querySelector('[data-music-retry]').hidden = !state.failed
+      const musicPending = root.querySelector('[data-music-loading]')
+      if (musicPending) musicPending.hidden = state.ready || state.failed || state.configured
+      const musicInfo = root.querySelector('.coast-music-info')
+      if (musicInfo) musicInfo.hidden = !state.ready
     }
     on(document, 'fliex:music', renderMusic)
     root.querySelectorAll('[data-music-toggle]').forEach(el => on(el, 'click', () => window.__fliexMusic?.toggle()))
