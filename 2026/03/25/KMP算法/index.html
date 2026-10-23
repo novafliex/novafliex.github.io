@@ -198,14 +198,14 @@ html body{isolation:isolate}
   isToc: true,
   pageType: 'post'
 }</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261006-stable-background-v1"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261006-stable-background-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261006-stable-background-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261006-stable-background-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261006-stable-background-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261006-stable-background-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261006-stable-background-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261006-stable-background-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261006-stable-background-v1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"KMP 字符串匹配","url":"https://novafliex.github.io/2026/03/25/KMP%E7%AE%97%E6%B3%95/","image":"https://novafliex.github.io/img/leetcode.webp","datePublished":"2026-03-25T06:04:00.000Z","dateModified":"2026-03-25T06:04:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"梳理 KMP 字符串匹配中 next 数组的含义、下标规则和构造思路。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/2026/03/25/KMP%E7%AE%97%E6%B3%95/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
+<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261023-home-modes-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261023-home-modes-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261023-home-modes-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261023-home-modes-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261023-home-modes-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261023-home-modes-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261023-home-modes-v1">
+<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261023-home-modes-v1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"KMP 字符串匹配","url":"https://novafliex.github.io/2026/03/25/KMP%E7%AE%97%E6%B3%95/","image":"https://novafliex.github.io/img/leetcode.webp","datePublished":"2026-03-25T06:04:00.000Z","dateModified":"2026-03-25T06:04:00.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"梳理 KMP 字符串匹配中 next 数组的含义、下标规则和构造思路。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/2026/03/25/KMP%E7%AE%97%E6%B3%95/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -784,8 +784,8 @@ html body{isolation:isolate}
 
 
 
-<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261006-stable-background-v1"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261006-stable-background-v1"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261006-stable-background-v1"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261023-home-modes-v1"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261023-home-modes-v1"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261006-stable-background-v1"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({

@@ -13,6 +13,23 @@
       target.addEventListener(name, fn)
       listeners.push(() => target.removeEventListener(name, fn))
     }
+    const modeToggle = root.querySelector('[data-home-mode-toggle]')
+    if (modeToggle) {
+      const applyMode = mode => {
+        root.dataset.homeMode = mode
+        modeToggle.setAttribute('aria-label', mode === 'quiet' ? '切换到开发者模式' : '切换到纯净模式')
+        modeToggle.setAttribute('aria-pressed', String(mode === 'quiet'))
+      }
+      let mode = 'developer'
+      try { if (localStorage.getItem('fliex-home-mode') === 'quiet') mode = 'quiet' } catch {}
+      applyMode(mode)
+      on(modeToggle, 'click', () => {
+        const next = root.dataset.homeMode === 'quiet' ? 'developer' : 'quiet'
+        root.dataset.modeAnimated = 'true'
+        applyMode(next)
+        try { localStorage.setItem('fliex-home-mode', next) } catch {}
+      })
+    }
     const stopSnow = window.__fliexSnow.mount(root)
     on(root.querySelector('[data-coast-search]'), 'click', () => window.__fliexOpenSearch?.())
     on(root.querySelector('[data-coast-theme]'), 'click', () => {
