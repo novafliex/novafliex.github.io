@@ -1,0 +1,217 @@
+/* ============================================================
+   NovaFliex home V4 — editorial archive over /img/background.png
+   Reference canvas: 1606 × 979. Single-screen hero, no scroll.
+   Sidebar + toolbar + snow come from the shared coast shell
+   (styled in coast-home.css), so every route wears one set.
+   --au tracks the cover-scaled background (1605/980 = 1.6378) so
+   type grows exactly with the photo collage at any desktop ratio.
+   ============================================================ */
+
+.archive-home {
+  --au: min(1vw, 1.6378vh);
+  --arc-bg: #131211;
+  --arc-ink: #e2ddd6;
+  --arc-ink-soft: #c8c4bc;
+  --arc-muted: #99948d;
+  --arc-display: "Cormorant Garamond", Newsreader, "Noto Serif SC", "Songti SC", Georgia, serif;
+  --arc-body: Inter, -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  --arc-mono: "JetBrains Mono", "SF Mono", SFMono-Regular, Consolas, monospace;
+  position: relative;
+  display: block;
+  height: 100svh;
+  overflow: clip;
+  /* Keep the page shell transparent: the fixed #web_bg behind it paints the collage. */
+  background: transparent;
+  color: var(--arc-ink);
+  font-family: var(--arc-body);
+}
+
+/* Route-scoped background swap: the collage replaces the sea photo.
+   Higher specificity beats the #web_bg rule inside site-background.css. */
+html body.nova-home-active { background-color: var(--arc-bg) !important; }
+body.nova-home-active #web_bg {
+  background: #131211 url('/img/background.png') center / cover no-repeat !important;
+}
+body.nova-home-active { overflow: hidden; }
+
+/* The stage is exactly one screen; keep the viewport chrome monochrome
+   for viewports that still expose a scrollbar. */
+html:has(body.nova-home-active) { scrollbar-color: rgba(223, 219, 213, 0.28) transparent; }
+html:has(body.nova-home-active)::-webkit-scrollbar { width: 9px; height: 9px; }
+html:has(body.nova-home-active)::-webkit-scrollbar-track { background: transparent; }
+html:has(body.nova-home-active)::-webkit-scrollbar-thumb { background: rgba(223, 219, 213, 0.22); border-radius: 0; }
+html:has(body.nova-home-active)::-webkit-scrollbar-thumb:hover { background: rgba(223, 219, 213, 0.4); }
+html:has(body.nova-home-active)::-webkit-scrollbar-corner { background: transparent; }
+
+/* Snow must sit above the fixed #web_bg but below the hero text. */
+.archive-home .coast-snow { z-index: 0; }
+.archive-home .archive-stage { position: relative; z-index: 1; }
+
+/* ---------- stage ---------- */
+
+.archive-stage {
+  height: 100svh;
+  min-height: 620px;
+  overflow: clip;
+  /* Decorative text stage: clicks must fall through to the shared
+     sidebar and toolbar siblings. */
+  pointer-events: none;
+}
+
+/* ---------- hero column ---------- */
+
+.archive-hero {
+  position: absolute;
+  inset: 0;
+  /* Purely decorative text: never intercept clicks meant for the nav
+     or the tools underneath. */
+  pointer-events: none;
+}
+
+.archive-eyebrow {
+  position: absolute;
+  top: 12.65%;
+  left: 19.65%;
+  margin: 0;
+  font-family: var(--arc-mono);
+  font-size: calc(var(--au) * 0.7);
+  letter-spacing: calc(var(--au) * 0.24);
+  color: #8c887f;
+}
+
+.archive-title {
+  position: absolute;
+  top: 21.1%;
+  left: 19.65%;
+  margin: 0;
+  font-family: var(--arc-display);
+  font-size: calc(var(--au) * 6.23);
+  font-weight: 300;
+  line-height: 0.89;
+  letter-spacing: 0;
+  color: var(--arc-ink);
+}
+
+.archive-title-line { display: block; }
+.archive-title-italic { font-style: italic; padding-right: 0.14em; }
+
+.archive-subtitle {
+  position: absolute;
+  top: 52.9%;
+  left: 19.75%;
+  margin: 0;
+  font-family: var(--arc-display);
+  font-size: calc(var(--au) * 1.25);
+  font-weight: 400;
+  letter-spacing: calc(var(--au) * 0.25);
+  line-height: 1.4;
+  color: var(--arc-ink-soft);
+}
+
+.archive-intro {
+  position: absolute;
+  top: 60.45%;
+  left: 19.8%;
+  margin: 0;
+  font-family: var(--arc-body);
+  font-size: calc(var(--au) * 0.94);
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  color: var(--arc-muted);
+}
+
+.archive-hero-rule {
+  position: absolute;
+  top: 70.35%;
+  left: 19.85%;
+  width: calc(var(--au) * 1.38);
+  height: 1px;
+  background: rgba(223, 219, 213, 0.42);
+}
+
+/* ---------- entrance ---------- */
+
+@keyframes arc-rise {
+  from { opacity: 0; transform: translateY(0.6em); }
+  to { opacity: 1; transform: none; }
+}
+
+.archive-eyebrow,
+.archive-title-line,
+.archive-subtitle,
+.archive-intro,
+.archive-hero-rule {
+  animation: arc-rise 0.7s ease-out both;
+}
+
+.archive-eyebrow { animation-delay: 0.08s; }
+.archive-title-line:nth-child(1) { animation-delay: 0.16s; }
+.archive-title-line:nth-child(2) { animation-delay: 0.24s; }
+.archive-title-line:nth-child(3) { animation-delay: 0.32s; }
+.archive-subtitle { animation-delay: 0.44s; }
+.archive-intro { animation-delay: 0.52s; }
+.archive-hero-rule { animation-delay: 0.58s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .archive-home *,
+  .archive-home *::before,
+  .archive-home *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- mobile: collage backdrop + scrim, text on top ---------- */
+
+@media (max-width: 900px) {
+  .archive-home {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+  }
+
+  body.nova-home-active { overflow: auto; }
+
+  .archive-stage {
+    height: auto;
+    min-height: 100svh;
+    padding-bottom: 7rem;
+    overflow: visible;
+    background: linear-gradient(102deg, rgba(19, 18, 17, 0.95) 0%, rgba(19, 18, 17, 0.86) 46%, rgba(19, 18, 17, 0.46) 78%, rgba(19, 18, 17, 0.28) 100%);
+  }
+
+  .archive-hero {
+    position: static;
+    /* The coast mobile sidebar (brand + nav row) is absolutely positioned
+       from 74px down to ~195px; clear it before the headline starts. */
+    padding: 13.5rem 1.5rem 0;
+  }
+
+  .archive-eyebrow,
+  .archive-title,
+  .archive-subtitle,
+  .archive-intro,
+  .archive-hero-rule { position: static; }
+
+  .archive-eyebrow { font-size: 0.68rem; letter-spacing: 0.2em; }
+
+  .archive-title {
+    margin-top: 1.5rem;
+    font-size: clamp(60px, 15.5vw, 92px);
+  }
+
+  .archive-subtitle {
+    margin-top: 2.1rem;
+    font-size: 1.02rem;
+    letter-spacing: 0.28em;
+  }
+
+  .archive-intro {
+    margin-top: 1.3rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .archive-hero-rule { margin-top: 1.8rem; width: 1.4rem; }
+}

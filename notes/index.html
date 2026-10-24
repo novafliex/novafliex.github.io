@@ -1,15 +1,25 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><style id="nova-background-critical">/* Critical first-paint rules are inlined before every external stylesheet. */
-html,html body{background-color:#0d1b29!important;background-image:none!important}
+html,html body{background-color:#070707!important;background-image:none!important}
 html body{isolation:isolate}
-#web_bg{display:block!important;position:fixed;inset:0;width:100%;height:100%;z-index:-999;background:#0d1b29 url('/img/background_sea.png') center/cover no-repeat!important;pointer-events:none;animation:none!important;transition:none!important}
+#web_bg{display:block!important;position:fixed!important;inset:0!important;width:100%!important;height:100%!important;z-index:-999;background:#070707!important;pointer-events:none;animation:none!important;transition:none!important}
 #web_bg::before,#web_bg::after{content:none!important}
 #body-wrap{background:transparent!important}
 #page-header,#footer{background:transparent!important;background-image:none!important}
 #page-header::before,#footer::before{background:transparent!important}
-.nova-page-loading,#loading-box .loading-bg{background:#0d1b29!important}
+.nova-page-loading,#loading-box .loading-bg{background:#070707!important}
 /* Keep the existing mobile crop without making another image layer. */
 @media(max-width:900px){body:has(.nova-notes-shell) #web_bg{background-position:64% center!important}}
-</style><link rel="preload" as="image" href="/img/background_sea.png" fetchpriority="high"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>笔记 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="Fliex 的技术速查、算法与编程术语笔记。">
+/* Notes and Projects share the designated technical background. */
+body.nova-notes-index-route #web_bg{display:block!important;background:#070707 url('/img/note.png') center/cover no-repeat!important}
+body.nova-projects-route #web_bg{display:block!important;background:#070707 url('/img/project.png') center/cover no-repeat!important}
+/* Articles keep a flat reading surface. */
+body.article-sea-route #web_bg{display:none!important}
+body.nova-notes-index-route,
+body.nova-projects-route{background-color:#070707!important;background-image:none!important}
+body.article-sea-route{background-color:var(--ar-bg,#17191c)!important;background-image:none!important}
+html:has(body.article-sea-route){background-color:#17191c!important}
+html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!important}
+</style><link rel="preload" as="image" href="/img/note.png" fetchpriority="high"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>笔记 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="Fliex 的技术速查、算法与编程术语笔记。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="笔记">
 <meta property="og:url" content="https://novafliex.github.io/notes/">
@@ -196,15 +206,16 @@ html body{isolation:isolate}
   isHighlightShrink: false,
   isToc: false,
   pageType: 'page'
-}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261006-stable-background-v1"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261023-home-modes-v1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://novafliex.github.io/notes/#webpage","name":"NOTES","url":"https://novafliex.github.io/notes/","description":"Fliex 的技术速查、算法与编程术语笔记。","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="nova-notes-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
+}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261024-unified-v11"><link rel="stylesheet" href="/css/custom.css?v=20261024-unified-v11"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
+<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/archive-home.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261024-unified-shell-v19"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://novafliex.github.io/notes/#webpage","name":"Notes.","url":"https://novafliex.github.io/notes/","description":"Fliex 的技术速查、算法与编程术语笔记。","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="nova-notes-route nova-notes-index-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -233,7 +244,6 @@ html body{isolation:isolate}
     }, 1200)
   })()
 </script><!-- hexo injector body_begin end --><div class="page type-notes" id="body-wrap"><main class="nova-notes-shell" id="content-inner" data-nova-home="">
-    <div class="coast-shade" aria-hidden="true"></div>
     <canvas class="coast-snow" data-coast-snow="" aria-hidden="true"></canvas>
     <aside class="coast-sidebar" aria-label="Fliex 与导航">
       <header class="coast-brand"><div class="coast-brand-name"><a href="/" aria-label="Fliex 首页">Fliex</a></div><p>记录一些<br>真正值得留下来的东西。</p></header>
@@ -242,7 +252,6 @@ html body{isolation:isolate}
       </nav>
       <div class="coast-sidebar-bottom">
         <section class="coast-mini-player" aria-label="音乐控制器">
-          <div class="coast-music-art"><img src="/img/background_sea.png" width="1683" height="935" alt="风雪海岸" decoding="async"><button type="button" data-music-toggle="" aria-label="播放音乐"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7z"></path></svg></button></div>
           <span class="music-loading" data-music-loading="" role="status" aria-label="音乐加载中"><span class="music-loading-wave" aria-hidden="true">∿∿∿</span></span><a class="coast-music-info" href="/music/" hidden=""><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 10v4M6 6v12M10 2v20M14 5v14M18 8v8M22 11v2"></path></svg><span><span data-music-artist=""></span><span data-music-title=""></span></span></a>
           <div class="coast-progress" role="progressbar" aria-label="歌曲播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-music-progress=""></span></div>
           <button class="coast-music-retry" type="button" data-music-retry="" hidden="">重试</button>
@@ -257,161 +266,196 @@ html body{isolation:isolate}
       <button class="coast-snow-toggle" type="button" data-coast-snow-toggle="" role="switch" aria-checked="false" aria-label="风雪动画">SNOW · OFF</button>
       
     </div>
-    
     <article class="nova-notes-content nova-notes-index">
-      <header class="nova-notes-head">
-        <p><span>02</span><i aria-hidden="true"></i> PERSONAL INDEX</p>
-        <h1>NOTES</h1>
-        <h2>Knowledge Archive</h2>
-        <div><span>32 ENTRIES</span><span aria-hidden="true">·</span><span>4 COLLECTIONS</span></div>
-      </header>
-      <div class="nova-notes-groups"><section class="nova-notes-group" id="notes-algorithms">
-      <header><span>01</span><div><h2>算法模板</h2><p>ALGORITHM PATTERNS · 15</p></div></header>
-      <section class="nova-notes-topic" id="notes-arrays"><header><h3>数组</h3><span>5 篇</span></header><div class="nova-note-rows"><a class="nova-note-row" href="/2026/01/15/LeetCode-%E4%B8%AD%E5%BF%83%E6%89%A9%E6%95%A3/" id="notes-month-2026-01">
-      <time datetime="2026-01-15">2026.01.15</time>
-      <span class="nova-note-copy"><strong>LeetCode-中心扩散</strong><span class="nova-note-tags"><i>数组</i></span></span>
+    <header class="nova-notes-head">
+      <h1>Notes.</h1>
+      <p class="nova-notes-intro">A quiet archive of technical notes — algorithms, Go, and programming fundamentals.</p>
+      <p class="nova-notes-meta"><span>32 ENTRIES</span><span aria-hidden="true">·</span><span>2025—2026</span></p>
+    </header>
+    <div class="nova-notes-tools">
+      <div class="nova-notes-search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <input type="search" id="nova-notes-search" data-notes-search="" placeholder="Search notes…" autocomplete="off" spellcheck="false" aria-label="搜索笔记">
+        <button type="button" class="nova-notes-clear" data-notes-clear="" aria-label="清空搜索" hidden="">×</button>
+      </div>
+      <div class="nova-notes-filters" role="group" aria-label="按分类筛选笔记" data-notes-filters="">
+        <button type="button" data-filter="all" aria-pressed="true">All<span>32</span></button>
+        <button type="button" data-filter="LeetCode" aria-pressed="false">LeetCode<span>13</span></button><button type="button" data-filter="编程术语" aria-pressed="false">编程术语<span>9</span></button><button type="button" data-filter="Go" aria-pressed="false">Go<span>7</span></button><button type="button" data-filter="模板" aria-pressed="false">模板<span>2</span></button><button type="button" data-filter="文学随笔" aria-pressed="false">文学随笔<span>1</span></button>
+      </div>
+      <p class="nova-notes-count" role="status" aria-live="polite" data-notes-count="">32 NOTES</p>
+    </div>
+    <div class="nova-notes-list" id="nova-notes-list" data-notes-list="">
+      <section class="nova-notes-year" data-notes-year="2026">
+      <header><h2>2026</h2><span>29 NOTES</span></header>
+      <div class="nova-note-rows"><a class="nova-note-row" data-category="编程术语" data-search="编程术语 编程术语 编程术语 编程术语知识总览：按网络、http、身份认证、数据库与并发组织 8 个 day、40 个术语，提供独立短篇、学习路径与复习入口。" href="/programming-terms/" id="notes-month-2026-08">
+      <time datetime="2026-08-22">2026.08.22</time>
+      <span class="nova-note-copy"><strong>编程术语</strong><span class="nova-note-desc">编程术语知识总览：按网络、HTTP、身份认证、数据库与并发组织 8 个 Day、40 个术语，提供独立短篇、学习路径与复习入口。</span></span>
+      <span class="nova-note-tags"><i>编程术语</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/01/06/LeetCode-%E5%89%8D%E7%BC%80%E5%92%8C/">
-      <time datetime="2026-01-06">2026.01.06</time>
-      <span class="nova-note-copy"><strong>LeetCode-前缀和</strong><span class="nova-note-tags"><i>数组</i></span></span>
+    </a><a class="nova-note-row" data-category="编程术语" data-search="编程术语 · day 1｜http 与网络基础 编程术语 编程术语 day 1｜http 与网络基础：通过正式解释、通俗理解和项目示例复习ip address（ip 地址）、port（端口）、dns（域名系统）、tcp（传输控制协议）、http（超文本传输协议）。" href="/programming-terms/day-1/">
+      <time datetime="2026-08-22">2026.08.22</time>
+      <span class="nova-note-copy"><strong>编程术语 · Day 1｜HTTP 与网络基础</strong><span class="nova-note-desc">Day 1｜HTTP 与网络基础：通过正式解释、通俗理解和项目示例复习IP Address（IP 地址）、Port（端口）、DNS（域名系统）、TCP（传输控制协议）、HTTP…</span></span>
+      <span class="nova-note-tags"><i>编程术语</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/01/04/LeetCode-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
-      <time datetime="2026-01-04">2026.01.04</time>
-      <span class="nova-note-copy"><strong>LeetCode-滑动窗口</strong><span class="nova-note-tags"><i>数组</i></span></span>
+    </a><a class="nova-note-row" data-category="编程术语" data-search="编程术语 · day 2｜http 请求结构 编程术语 编程术语 day 2｜http 请求结构：通过正式解释、通俗理解和项目示例复习url（统一资源定位符）、http method（http 请求方法）、http header（http 头字段）、http body（http 消息体）、http status code（http 状态码）。" href="/programming-terms/day-2/">
+      <time datetime="2026-08-22">2026.08.22</time>
+      <span class="nova-note-copy"><strong>编程术语 · Day 2｜HTTP 请求结构</strong><span class="nova-note-desc">Day 2｜HTTP 请求结构：通过正式解释、通俗理解和项目示例复习URL（统一资源定位符）、HTTP Method（HTTP 请求方法）、HTTP Header（HTTP 头…</span></span>
+      <span class="nova-note-tags"><i>编程术语</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/01/02/LeetCode-%E5%B7%A6%E5%8F%B3%E5%8F%8C%E6%8C%87%E9%92%88/">
-      <time datetime="2026-01-02">2026.01.02</time>
-      <span class="nova-note-copy"><strong>LeetCode-左右双指针</strong><span class="nova-note-tags"><i>数组</i></span></span>
+    </a><a class="nova-note-row" data-category="编程术语" data-search="编程术语 · day 3｜请求参数与身份状态 编程术语 编程术语 day 3｜请求参数与身份状态：通过正式解释、通俗理解和项目示例复习query parameter（查询参数）、path parameter（路径参数）、cookie、session（会话）、jwt（json web token）。" href="/programming-terms/day-3/">
+      <time datetime="2026-08-22">2026.08.22</time>
+      <span class="nova-note-copy"><strong>编程术语 · Day 3｜请求参数与身份状态</strong><span class="nova-note-desc">Day 3｜请求参数与身份状态：通过正式解释、通俗理解和项目示例复习Query Parameter（查询参数）、Path Parameter（路径参数）、Cookie、Sess…</span></span>
+      <span class="nova-note-tags"><i>编程术语</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/01/01/LeetCode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88(%E6%95%B0%E7%BB%84)/">
-      <time datetime="2026-01-01">2026.01.01</time>
-      <span class="nova-note-copy"><strong>LeetCode-快慢指针（数组）</strong><span class="nova-note-tags"><i>数组</i></span></span>
+    </a><a class="nova-note-row" data-category="编程术语" data-search="编程术语 · day 4｜安全、连接与实时通信 编程术语 编程术语 day 4｜安全、连接与实时通信：通过正式解释、通俗理解和项目示例复习https（超文本传输安全协议）、tls（传输层安全协议）、keep-alive（持久连接）、cors（跨源资源共享）、websocket（全双工通信协议）。" href="/programming-terms/day-4/">
+      <time datetime="2026-08-22">2026.08.22</time>
+      <span class="nova-note-copy"><strong>编程术语 · Day 4｜安全、连接与实时通信</strong><span class="nova-note-desc">Day 4｜安全、连接与实时通信：通过正式解释、通俗理解和项目示例复习HTTPS（超文本传输安全协议）、TLS（传输层安全协议）、Keep-Alive（持久连接）、CORS（跨…</span></span>
+      <span class="nova-note-tags"><i>编程术语</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a></div></section><section class="nova-notes-topic" id="notes-linked-lists"><header><h3>链表</h3><span>6 篇</span></header><div class="nova-note-rows"><a class="nova-note-row" href="/2026/03/28/%E9%93%BE%E8%A1%A8%E6%A8%A1%E6%9D%BF%E9%80%9F%E8%A7%88/" id="notes-month-2026-03">
-      <time datetime="2026-03-28">2026.03.28</time>
-      <span class="nova-note-copy"><strong>链表模板速览</strong><span class="nova-note-tags"><i>链表</i></span></span>
+    </a><a class="nova-note-row" data-category="编程术语" data-search="编程术语 · day 5｜数据库基础结构 编程术语 编程术语 day 5｜数据库基础结构：通过正式解释、通俗理解和项目示例复习table（表）、row（行）、primary key（主键）、foreign key（外键）、constraint（约束）。" href="/programming-terms/day-5/">
+      <time datetime="2026-08-22">2026.08.22</time>
+      <span class="nova-note-copy"><strong>编程术语 · Day 5｜数据库基础结构</strong><span class="nova-note-desc">Day 5｜数据库基础结构：通过正式解释、通俗理解和项目示例复习Table（表）、Row（行）、Primary Key（主键）、Foreign Key（外键）、Constrai…</span></span>
+      <span class="nova-note-tags"><i>编程术语</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/01/12/LeetCode-%E5%8F%8C%E6%8C%87%E9%92%88%E5%90%88%E5%B9%B6-%E5%BD%92%E5%B9%B6%E6%B3%95/">
-      <time datetime="2026-01-12">2026.01.12</time>
-      <span class="nova-note-copy"><strong>LeetCode-双指针合并（归并法）</strong><span class="nova-note-tags"><i>链表</i></span></span>
+    </a><a class="nova-note-row" data-category="编程术语" data-search="编程术语 · day 6｜数据库字段与唯一性 编程术语 编程术语 day 6｜数据库字段与唯一性：通过正式解释、通俗理解和项目示例复习模式、字段类型、空值语义、唯一索引与复合键。" href="/programming-terms/day-6/">
+      <time datetime="2026-08-22">2026.08.22</time>
+      <span class="nova-note-copy"><strong>编程术语 · Day 6｜数据库字段与唯一性</strong><span class="nova-note-desc">Day 6｜数据库字段与唯一性：通过正式解释、通俗理解和项目示例复习模式、字段类型、空值语义、唯一索引与复合键。</span></span>
+      <span class="nova-note-tags"><i>编程术语</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/01/11/LeetCode-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">
-      <time datetime="2026-01-11">2026.01.11</time>
-      <span class="nova-note-copy"><strong>LeetCode-反转链表</strong><span class="nova-note-tags"><i>链表</i></span></span>
+    </a><a class="nova-note-row" data-category="编程术语" data-search="编程术语 · day 7｜数据库索引与查询计划 编程术语 编程术语 day 7｜数据库索引与查询计划：通过正式解释、通俗理解和项目示例复习index（索引）、b+ tree（b+ 树）、full table scan（全表扫描）、query plan（查询计划）、covering index（覆盖索引）。" href="/programming-terms/day-7/">
+      <time datetime="2026-08-22">2026.08.22</time>
+      <span class="nova-note-copy"><strong>编程术语 · Day 7｜数据库索引与查询计划</strong><span class="nova-note-desc">Day 7｜数据库索引与查询计划：通过正式解释、通俗理解和项目示例复习Index（索引）、B+ Tree（B+ 树）、Full Table Scan（全表扫描）、Query P…</span></span>
+      <span class="nova-note-tags"><i>编程术语</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/01/10/LeetCode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88(%E9%93%BE%E8%A1%A8)/">
-      <time datetime="2026-01-10">2026.01.10</time>
-      <span class="nova-note-copy"><strong>LeetCode-快慢指针（链表）</strong><span class="nova-note-tags"><i>链表</i></span></span>
+    </a><a class="nova-note-row" data-category="编程术语" data-search="编程术语 · day 8｜数据库事务与并发控制 编程术语 编程术语 day 8｜数据库事务与并发控制：通过正式解释、通俗理解和项目示例复习transaction（事务）、acid（事务的四个基本特性）、isolation level（隔离级别）、lock（锁）、mvcc（多版本并发控制）。" href="/programming-terms/day-8/">
+      <time datetime="2026-08-22">2026.08.22</time>
+      <span class="nova-note-copy"><strong>编程术语 · Day 8｜数据库事务与并发控制</strong><span class="nova-note-desc">Day 8｜数据库事务与并发控制：通过正式解释、通俗理解和项目示例复习Transaction（事务）、ACID（事务的四个基本特性）、Isolation Level（隔离级别）…</span></span>
+      <span class="nova-note-tags"><i>编程术语</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2025/12/25/LeetCode-%E5%8F%8C%E9%93%BE%E8%A1%A8%E6%B3%95/" id="notes-month-2025-12">
-      <time datetime="2025-12-25">2025.12.25</time>
-      <span class="nova-note-copy"><strong>LeetCode-双链表法</strong><span class="nova-note-tags"><i>链表</i></span></span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2025/12/20/LeetCode-%E9%93%BE%E8%A1%A8%E8%BF%87%E6%BB%A4%EF%BC%88dummy-prev-curr%EF%BC%89/">
-      <time datetime="2025-12-20">2025.12.20</time>
-      <span class="nova-note-copy"><strong>LeetCode-链表过滤（Dummy + Prev + Curr）</strong><span class="nova-note-tags"><i>链表</i></span></span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a></div></section><section class="nova-notes-topic" id="notes-stacks-queues"><header><h3>栈与队列</h3><span>2 篇</span></header><div class="nova-note-rows"><a class="nova-note-row" href="/2026/02/01/LeetCode-%E6%8B%AC%E5%8F%B7%E6%A0%88/" id="notes-month-2026-02">
-      <time datetime="2026-02-01">2026.02.01</time>
-      <span class="nova-note-copy"><strong>LeetCode-括号栈</strong><span class="nova-note-tags"><i>栈</i></span></span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/01/07/LeetCode-%E5%8D%95%E8%B0%83%E6%A0%88/">
-      <time datetime="2026-01-07">2026.01.07</time>
-      <span class="nova-note-copy"><strong>LeetCode-单调栈</strong><span class="nova-note-tags"><i>数组</i></span></span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a></div></section><section class="nova-notes-topic" id="notes-trees-graphs"><header><h3>树与图</h3><span>1 篇</span></header><div class="nova-note-rows"><a class="nova-note-row" href="/2026/01/16/LeetCode-BFS/">
-      <time datetime="2026-01-16">2026.01.16</time>
-      <span class="nova-note-copy"><strong>LeetCode-BFS</strong><span class="nova-note-tags"><i>栈&amp;队列</i></span></span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a></div></section><section class="nova-notes-topic" id="notes-strings"><header><h3>字符串</h3><span>1 篇</span></header><div class="nova-note-rows"><a class="nova-note-row" href="/2026/03/25/KMP%E7%AE%97%E6%B3%95/">
-      <time datetime="2026-03-25">2026.03.25</time>
-      <span class="nova-note-copy"><strong>KMP 字符串匹配</strong><span class="nova-note-tags"><i>字符串</i></span></span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a></div></section>
-    </section><section class="nova-notes-group" id="notes-go">
-      <header><span>02</span><div><h2>Go 学习与实践</h2><p>GO LEARNING &amp; PRACTICE · 7</p></div></header>
-      <div class="nova-note-rows"><a class="nova-note-row" href="/2026/08/09/Go%E5%9F%BA%E7%A1%80-%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0/" id="notes-month-2026-08">
+    </a><a class="nova-note-row" data-category="Go" data-search="go 基础：测试函数 go go 基础 测试 简洁梳理 go 测试文件、测试函数、testing.t、断言、辅助函数、表驱动测试和常用执行命令。" href="/2026/08/09/Go%E5%9F%BA%E7%A1%80-%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0/">
       <time datetime="2026-08-09">2026.08.09</time>
-      <span class="nova-note-copy"><strong>Go 基础：测试函数</strong><span class="nova-note-tags"><i>Go</i><i>基础</i><i>测试</i></span></span>
+      <span class="nova-note-copy"><strong>Go 基础：测试函数</strong><span class="nova-note-desc">简洁梳理 Go 测试文件、测试函数、testing.T、断言、辅助函数、表驱动测试和常用执行命令。</span></span>
+      <span class="nova-note-tags"><i>Go</i><i>基础</i><i>测试</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/08/08/Go%E8%BF%9B%E9%98%B6-sqlc%E4%BB%8ESQL%E5%88%B0%E7%B1%BB%E5%9E%8B%E5%AE%89%E5%85%A8%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/">
+    </a><a class="nova-note-row" data-category="Go" data-search="go 进阶：sqlc 从 sql 到类型安全代码生成 go go mysql sqlc postgresql 从重复 crud 和类型错位问题出发，理解 sqlc 如何把 postgresql、mysql 查询生成为类型安全的 go 数据访问代码。" href="/2026/08/08/Go%E8%BF%9B%E9%98%B6-sqlc%E4%BB%8ESQL%E5%88%B0%E7%B1%BB%E5%9E%8B%E5%AE%89%E5%85%A8%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/">
       <time datetime="2026-08-08">2026.08.08</time>
-      <span class="nova-note-copy"><strong>Go 进阶：sqlc 从 SQL 到类型安全代码生成</strong><span class="nova-note-tags"><i>Go</i><i>MySQL</i><i>sqlc</i></span></span>
+      <span class="nova-note-copy"><strong>Go 进阶：sqlc 从 SQL 到类型安全代码生成</strong><span class="nova-note-desc">从重复 CRUD 和类型错位问题出发，理解 sqlc 如何把 PostgreSQL、MySQL 查询生成为类型安全的 Go 数据访问代码。</span></span>
+      <span class="nova-note-tags"><i>Go</i><i>MySQL</i><i>sqlc</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/08/06/Go-Goroutine-Channel-Select/">
+    </a><a class="nova-note-row" data-category="Go" data-search="go 进阶：goroutine、channel 与 select go go 并发 通俗梳理 goroutine、channel 和 select 之间的关系，以及无缓冲与有缓冲 channel 的区别。" href="/2026/08/06/Go-Goroutine-Channel-Select/">
       <time datetime="2026-08-06">2026.08.06</time>
-      <span class="nova-note-copy"><strong>Go 进阶：Goroutine、Channel 与 Select</strong><span class="nova-note-tags"><i>Go</i><i>并发</i></span></span>
+      <span class="nova-note-copy"><strong>Go 进阶：Goroutine、Channel 与 Select</strong><span class="nova-note-desc">通俗梳理 Goroutine、Channel 和 Select 之间的关系，以及无缓冲与有缓冲 Channel 的区别。</span></span>
+      <span class="nova-note-tags"><i>Go</i><i>并发</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/07/19/Go%20Mysql%20%E6%95%B0%E6%8D%AE%E5%BA%93%E9%93%BE%E6%8E%A5%E6%A8%A1%E6%9D%BF/" id="notes-month-2026-07">
+    </a><a class="nova-note-row" data-category="Go" data-search="go 实战：mysql 数据库连接 go go mysql 在 go 项目中使用 database/sql 配合 mysql 驱动创建数据库连接池，并整理数据库启动流程、常用操作和项目结构。" href="/2026/07/19/Go%20Mysql%20%E6%95%B0%E6%8D%AE%E5%BA%93%E9%93%BE%E6%8E%A5%E6%A8%A1%E6%9D%BF/" id="notes-month-2026-07">
       <time datetime="2026-07-19">2026.07.19</time>
-      <span class="nova-note-copy"><strong>Go 实战：MySQL 数据库连接</strong><span class="nova-note-tags"><i>Go</i><i>MySQL</i></span></span>
+      <span class="nova-note-copy"><strong>Go 实战：MySQL 数据库连接</strong><span class="nova-note-desc">在 Go 项目中使用 database/sql 配合 MySQL 驱动创建数据库连接池，并整理数据库启动流程、常用操作和项目结构。</span></span>
+      <span class="nova-note-tags"><i>Go</i><i>MySQL</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/07/15/Go%20Gin%20MySQL%20CRUD%20%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">
+    </a><a class="nova-note-row" data-category="Go" data-search="go 实战：gin + mysql crud go go gin mysql crud 系统整理 go gin 与 mysql 中增删改查的路由、sql、错误处理、参数校验和通用接口写法。" href="/2026/07/15/Go%20Gin%20MySQL%20CRUD%20%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">
       <time datetime="2026-07-15">2026.07.15</time>
-      <span class="nova-note-copy"><strong>Go 实战：Gin + MySQL CRUD</strong><span class="nova-note-tags"><i>Go</i><i>Gin</i><i>MySQL</i></span></span>
+      <span class="nova-note-copy"><strong>Go 实战：Gin + MySQL CRUD</strong><span class="nova-note-desc">系统整理 Go Gin 与 MySQL 中增删改查的路由、SQL、错误处理、参数校验和通用接口写法。</span></span>
+      <span class="nova-note-tags"><i>Go</i><i>Gin</i><i>MySQL</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/03/09/go%E8%AF%AD%E6%B3%95-%E7%AE%80%E6%B4%81/">
+    </a><a class="nova-note-row" data-category="模板" data-search="链表模板速览 模板 链表 汇总链表基础结构、反转、合并、判环、删除和双指针等常用模板。" href="/2026/03/28/%E9%93%BE%E8%A1%A8%E6%A8%A1%E6%9D%BF%E9%80%9F%E8%A7%88/" id="notes-month-2026-03">
+      <time datetime="2026-03-28">2026.03.28</time>
+      <span class="nova-note-copy"><strong>链表模板速览</strong><span class="nova-note-desc">汇总链表基础结构、反转、合并、判环、删除和双指针等常用模板。</span></span>
+      <span class="nova-note-tags"><i>模板</i><i>链表</i></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
+    </a><a class="nova-note-row" data-category="模板" data-search="kmp 字符串匹配 模板 字符串 梳理 kmp 字符串匹配中 next 数组的含义、下标规则和构造思路。" href="/2026/03/25/KMP%E7%AE%97%E6%B3%95/">
+      <time datetime="2026-03-25">2026.03.25</time>
+      <span class="nova-note-copy"><strong>KMP 字符串匹配</strong><span class="nova-note-desc">梳理 KMP 字符串匹配中 next 数组的含义、下标规则和构造思路。</span></span>
+      <span class="nova-note-tags"><i>模板</i><i>字符串</i></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
+    </a><a class="nova-note-row" data-category="Go" data-search="go 基础：语法速查 go go 基础 精简整理 go 变量、流程控制、函数、并发与 waitgroup 等核心语法和常用模板。" href="/2026/03/09/go%E8%AF%AD%E6%B3%95-%E7%AE%80%E6%B4%81/">
       <time datetime="2026-03-09">2026.03.09</time>
-      <span class="nova-note-copy"><strong>Go 基础：语法速查</strong><span class="nova-note-tags"><i>Go</i><i>基础</i></span></span>
+      <span class="nova-note-copy"><strong>Go 基础：语法速查</strong><span class="nova-note-desc">精简整理 Go 变量、流程控制、函数、并发与 WaitGroup 等核心语法和常用模板。</span></span>
+      <span class="nova-note-tags"><i>Go</i><i>基础</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/2026/03/08/go%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/">
+    </a><a class="nova-note-row" data-category="Go" data-search="go 基础：语法总览 go go 基础 系统梳理 go 的变量、常量、数据类型、结构体、切片、映射、函数、接口与类型断言。" href="/2026/03/08/go%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/">
       <time datetime="2026-03-08">2026.03.08</time>
-      <span class="nova-note-copy"><strong>Go 基础：语法总览</strong><span class="nova-note-tags"><i>Go</i><i>基础</i></span></span>
+      <span class="nova-note-copy"><strong>Go 基础：语法总览</strong><span class="nova-note-desc">系统梳理 Go 的变量、常量、数据类型、结构体、切片、映射、函数、接口与类型断言。</span></span>
+      <span class="nova-note-tags"><i>Go</i><i>基础</i></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
+    </a><a class="nova-note-row" data-category="LeetCode" data-search="leetcode-括号栈 leetcode 栈 使用栈匹配左右括号，整理合法性判断、出栈条件和空栈边界。" href="/2026/02/01/LeetCode-%E6%8B%AC%E5%8F%B7%E6%A0%88/" id="notes-month-2026-02">
+      <time datetime="2026-02-01">2026.02.01</time>
+      <span class="nova-note-copy"><strong>LeetCode-括号栈</strong><span class="nova-note-desc">使用栈匹配左右括号，整理合法性判断、出栈条件和空栈边界。</span></span>
+      <span class="nova-note-tags"><i>LeetCode</i><i>栈</i></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
+    </a><a class="nova-note-row" data-category="LeetCode" data-search="leetcode-bfs leetcode 栈&amp;队列 说明 bfs 如何借助队列按层遍历，并整理层序搜索的通用初始化和处理模板。" href="/2026/01/16/LeetCode-BFS/" id="notes-month-2026-01">
+      <time datetime="2026-01-16">2026.01.16</time>
+      <span class="nova-note-copy"><strong>LeetCode-BFS</strong><span class="nova-note-desc">说明 BFS 如何借助队列按层遍历，并整理层序搜索的通用初始化和处理模板。</span></span>
+      <span class="nova-note-tags"><i>LeetCode</i><i>栈&amp;队列</i></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
+    </a><a class="nova-note-row" data-category="LeetCode" data-search="leetcode-中心扩散 leetcode 数组 使用奇偶两类中心向两侧扩展，整理回文子串问题的中心扩散通用模板。" href="/2026/01/15/LeetCode-%E4%B8%AD%E5%BF%83%E6%89%A9%E6%95%A3/">
+      <time datetime="2026-01-15">2026.01.15</time>
+      <span class="nova-note-copy"><strong>LeetCode-中心扩散</strong><span class="nova-note-desc">使用奇偶两类中心向两侧扩展，整理回文子串问题的中心扩散通用模板。</span></span>
+      <span class="nova-note-tags"><i>LeetCode</i><i>数组</i></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
+    </a><a class="nova-note-row" data-category="LeetCode" data-search="leetcode-双指针合并（归并法） leetcode 链表 使用哨兵节点和双指针按顺序合并两个有序链表，并说明剩余节点的处理。" href="/2026/01/12/LeetCode-%E5%8F%8C%E6%8C%87%E9%92%88%E5%90%88%E5%B9%B6-%E5%BD%92%E5%B9%B6%E6%B3%95/">
+      <time datetime="2026-01-12">2026.01.12</time>
+      <span class="nova-note-copy"><strong>LeetCode-双指针合并（归并法）</strong><span class="nova-note-desc">使用哨兵节点和双指针按顺序合并两个有序链表，并说明剩余节点的处理。</span></span>
+      <span class="nova-note-tags"><i>LeetCode</i><i>链表</i></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
+    </a><a class="nova-note-row" data-category="LeetCode" data-search="leetcode-反转链表 leetcode 链表 使用 prev、curr 和 next 三个指针安全改变链表指向，完成整链反转。" href="/2026/01/11/LeetCode-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">
+      <time datetime="2026-01-11">2026.01.11</time>
+      <span class="nova-note-copy"><strong>LeetCode-反转链表</strong><span class="nova-note-desc">使用 prev、curr 和 next 三个指针安全改变链表指向，完成整链反转。</span></span>
+      <span class="nova-note-tags"><i>LeetCode</i><i>链表</i></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
+    </a><a class="nova-note-row" data-category="LeetCode" data-search="leetcode-快慢指针（链表） leetcode 链表 整理链表判环、寻找中点和倒数节点时的倍速与定距双指针模板。" href="/2026/01/10/LeetCode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88(%E9%93%BE%E8%A1%A8)/">
+      <time datetime="2026-01-10">2026.01.10</time>
+      <span class="nova-note-copy"><strong>LeetCode-快慢指针（链表）</strong><span class="nova-note-desc">整理链表判环、寻找中点和倒数节点时的倍速与定距双指针模板。</span></span>
+      <span class="nova-note-tags"><i>LeetCode</i><i>链表</i></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
+    </a><a class="nova-note-row" data-category="LeetCode" data-search="leetcode-单调栈 leetcode 数组 整理寻找左右第一个更大或更小元素时的单调栈判断与结算模板。" href="/2026/01/07/LeetCode-%E5%8D%95%E8%B0%83%E6%A0%88/">
+      <time datetime="2026-01-07">2026.01.07</time>
+      <span class="nova-note-copy"><strong>LeetCode-单调栈</strong><span class="nova-note-desc">整理寻找左右第一个更大或更小元素时的单调栈判断与结算模板。</span></span>
+      <span class="nova-note-tags"><i>LeetCode</i><i>数组</i></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
+    </a><a class="nova-note-row" data-category="LeetCode" data-search="leetcode-前缀和 leetcode 数组 通过预处理前缀累计值，把连续区间求和转化为两次前缀值相减。" href="/2026/01/06/LeetCode-%E5%89%8D%E7%BC%80%E5%92%8C/">
+      <time datetime="2026-01-06">2026.01.06</time>
+      <span class="nova-note-copy"><strong>LeetCode-前缀和</strong><span class="nova-note-desc">通过预处理前缀累计值，把连续区间求和转化为两次前缀值相减。</span></span>
+      <span class="nova-note-tags"><i>LeetCode</i><i>数组</i></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
+    </a><a class="nova-note-row" data-category="LeetCode" data-search="leetcode-滑动窗口 leetcode 数组 使用左右边界维护连续区间，整理定长与变长滑动窗口的通用写法。" href="/2026/01/04/LeetCode-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+      <time datetime="2026-01-04">2026.01.04</time>
+      <span class="nova-note-copy"><strong>LeetCode-滑动窗口</strong><span class="nova-note-desc">使用左右边界维护连续区间，整理定长与变长滑动窗口的通用写法。</span></span>
+      <span class="nova-note-tags"><i>LeetCode</i><i>数组</i></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
+    </a><a class="nova-note-row" data-category="LeetCode" data-search="leetcode-左右双指针 leetcode 数组 针对有序数组和两端收缩问题，整理左右指针的移动条件与边界判断。" href="/2026/01/02/LeetCode-%E5%B7%A6%E5%8F%B3%E5%8F%8C%E6%8C%87%E9%92%88/">
+      <time datetime="2026-01-02">2026.01.02</time>
+      <span class="nova-note-copy"><strong>LeetCode-左右双指针</strong><span class="nova-note-desc">针对有序数组和两端收缩问题，整理左右指针的移动条件与边界判断。</span></span>
+      <span class="nova-note-tags"><i>LeetCode</i><i>数组</i></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
+    </a><a class="nova-note-row" data-category="LeetCode" data-search="leetcode-快慢指针（数组） leetcode 数组 使用快指针扫描、慢指针维护保留区间，原地完成数组筛选与去重。" href="/2026/01/01/LeetCode-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88(%E6%95%B0%E7%BB%84)/">
+      <time datetime="2026-01-01">2026.01.01</time>
+      <span class="nova-note-copy"><strong>LeetCode-快慢指针（数组）</strong><span class="nova-note-desc">使用快指针扫描、慢指针维护保留区间，原地完成数组筛选与去重。</span></span>
+      <span class="nova-note-tags"><i>LeetCode</i><i>数组</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
     </a></div>
-    </section><section class="nova-notes-group" id="notes-terms">
-      <header><span>03</span><div><h2>编程基础</h2><p>COMPUTER NOTES · 9</p></div></header>
-      <div class="nova-note-rows"><a class="nova-note-row" href="/programming-terms/day-1/">
-      <time datetime="2026-08-22">2026.08.22</time>
-      <span class="nova-note-copy"><strong>编程术语 · Day 1｜HTTP 与网络基础</strong><span class="nova-note-tags"><i>编程术语</i></span></span>
+    </section><section class="nova-notes-year" data-notes-year="2025">
+      <header><h2>2025</h2><span>3 NOTES</span></header>
+      <div class="nova-note-rows"><a class="nova-note-row" data-category="LeetCode" data-search="leetcode-双链表法 leetcode 链表 使用多条逻辑链表对节点分类、保持相对顺序并最终重新拼接。" href="/2025/12/25/LeetCode-%E5%8F%8C%E9%93%BE%E8%A1%A8%E6%B3%95/" id="notes-month-2025-12">
+      <time datetime="2025-12-25">2025.12.25</time>
+      <span class="nova-note-copy"><strong>LeetCode-双链表法</strong><span class="nova-note-desc">使用多条逻辑链表对节点分类、保持相对顺序并最终重新拼接。</span></span>
+      <span class="nova-note-tags"><i>LeetCode</i><i>链表</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/programming-terms/day-2/">
-      <time datetime="2026-08-22">2026.08.22</time>
-      <span class="nova-note-copy"><strong>编程术语 · Day 2｜HTTP 请求结构</strong><span class="nova-note-tags"><i>编程术语</i></span></span>
+    </a><a class="nova-note-row" data-category="LeetCode" data-search="leetcode-链表过滤（dummy + prev + curr） leetcode 链表 借助 dummy、prev 和 curr 安全跳过目标节点，覆盖删除头节点等边界情况。" href="/2025/12/20/LeetCode-%E9%93%BE%E8%A1%A8%E8%BF%87%E6%BB%A4%EF%BC%88dummy-prev-curr%EF%BC%89/">
+      <time datetime="2025-12-20">2025.12.20</time>
+      <span class="nova-note-copy"><strong>LeetCode-链表过滤（Dummy + Prev + Curr）</strong><span class="nova-note-desc">借助 dummy、prev 和 curr 安全跳过目标节点，覆盖删除头节点等边界情况。</span></span>
+      <span class="nova-note-tags"><i>LeetCode</i><i>链表</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/programming-terms/day-3/">
-      <time datetime="2026-08-22">2026.08.22</time>
-      <span class="nova-note-copy"><strong>编程术语 · Day 3｜请求参数与身份状态</strong><span class="nova-note-tags"><i>编程术语</i></span></span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/programming-terms/day-4/">
-      <time datetime="2026-08-22">2026.08.22</time>
-      <span class="nova-note-copy"><strong>编程术语 · Day 4｜安全、连接与实时通信</strong><span class="nova-note-tags"><i>编程术语</i></span></span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/programming-terms/day-5/">
-      <time datetime="2026-08-22">2026.08.22</time>
-      <span class="nova-note-copy"><strong>编程术语 · Day 5｜数据库基础结构</strong><span class="nova-note-tags"><i>编程术语</i></span></span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/programming-terms/day-6/">
-      <time datetime="2026-08-22">2026.08.22</time>
-      <span class="nova-note-copy"><strong>编程术语 · Day 6｜数据库字段与唯一性</strong><span class="nova-note-tags"><i>编程术语</i></span></span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/programming-terms/day-7/">
-      <time datetime="2026-08-22">2026.08.22</time>
-      <span class="nova-note-copy"><strong>编程术语 · Day 7｜数据库索引与查询计划</strong><span class="nova-note-tags"><i>编程术语</i></span></span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/programming-terms/">
-      <time datetime="2026-08-22">2026.08.22</time>
-      <span class="nova-note-copy"><strong>编程术语</strong><span class="nova-note-tags"><i>编程术语</i></span></span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a><a class="nova-note-row" href="/programming-terms/day-8/">
-      <time datetime="2026-08-22">2026.08.22</time>
-      <span class="nova-note-copy"><strong>编程术语 · Day 8｜数据库事务与并发控制</strong><span class="nova-note-tags"><i>编程术语</i></span></span>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
-    </a></div>
-    </section><section class="nova-notes-group" id="notes-essays">
-      <header><span>04</span><div><h2>随笔与阅读</h2><p>ESSAYS &amp; READING · 1</p></div></header>
-      <div class="nova-note-rows"><a class="nova-note-row" href="/2025/10/18/%E6%95%85%E9%83%BD%E7%9A%84%E7%A7%8B/" id="notes-month-2025-10">
+    </a><a class="nova-note-row" data-category="文学随笔" data-search="故都的秋 文学随笔 散文 郁达夫 那年北国的秋天，风冷、叶黄、天高。郁达夫写下了故都的秋，也写下了一段关于孤独的诗意。" href="/2025/10/18/%E6%95%85%E9%83%BD%E7%9A%84%E7%A7%8B/" id="notes-month-2025-10">
       <time datetime="2025-10-18">2025.10.18</time>
-      <span class="nova-note-copy"><strong>故都的秋</strong><span class="nova-note-tags"><i>散文</i><i>郁达夫</i></span></span>
+      <span class="nova-note-copy"><strong>故都的秋</strong><span class="nova-note-desc">那年北国的秋天，风冷、叶黄、天高。郁达夫写下了故都的秋，也写下了一段关于孤独的诗意。</span></span>
+      <span class="nova-note-tags"><i>文学随笔</i><i>散文</i><i>郁达夫</i></span>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5"></path></svg>
     </a></div>
-    </section></div>
-    </article>
-    <nav class="nova-notes-timeline" aria-label="笔记时间线">
-      <span class="nova-notes-year">2026</span>
-      <div><a href="/notes/#notes-month-2026-08" class="is-current" aria-label="2026-08 的笔记"><i></i><span>AUG</span></a><a href="/notes/#notes-month-2026-07" aria-label="2026-07 的笔记"><i></i><span>JUL</span></a><a href="/notes/#notes-month-2026-03" aria-label="2026-03 的笔记"><i></i><span>MAR</span></a><a href="/notes/#notes-month-2026-02" aria-label="2026-02 的笔记"><i></i><span>FEB</span></a><a href="/notes/#notes-month-2026-01" aria-label="2026-01 的笔记"><i></i><span>JAN</span></a><a href="/notes/#notes-month-2025-12" aria-label="2025-12 的笔记"><i></i><span>DEC</span></a><a href="/notes/#notes-month-2025-10" aria-label="2025-10 的笔记"><i></i><span>OCT</span></a></div>
-      <a class="nova-notes-all" href="/notes/" aria-label="查看全部笔记">…</a>
-    </nav></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
+    </section>
+      <p class="nova-notes-empty" data-notes-empty="" hidden="">没有匹配的笔记，换个关键词或分类试试。</p>
+    </div>
+    <button class="nova-notes-more" type="button" data-notes-more="" aria-controls="nova-notes-list" hidden="">LOAD MORE</button>
+  </article></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
   const parseViewBox = viewBox => {
     if (!viewBox) return null
     const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
@@ -777,8 +821,9 @@ html body{isolation:isolate}
 
 
 
-<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261023-home-modes-v1"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/nova-home.js?v=20261023-home-modes-v1"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261006-stable-background-v1"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261024-unified-shell-v19"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/nova-home.js?v=20261024-unified-shell-v19"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/notes-page.js?v=20261024-unified-shell-v19"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261024-unified-v11"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({

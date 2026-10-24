@@ -12,6 +12,8 @@
     'nova-music-route',
     'nova-about-route',
     'nova-notes-route',
+    'nova-notes-index-route',
+    'nova-projects-route',
     'article-sea-route',
   ]
   let initialFinishTimer = 0
@@ -224,9 +226,12 @@
     const routeMarkers = [
       ['.nova-music-page', ['nova-music-route']],
       ['.nova-about-shell', ['nova-about-route']],
+      ['.nova-notes-index', ['nova-notes-route', 'nova-notes-index-route']],
+      ['.nova-projects-content', ['nova-notes-route', 'nova-projects-route']],
       ['.nova-notes-shell', ['nova-notes-route']],
       ['.article-reading-shell', ['article-sea-route']],
       ['.coast-home[data-nova-home]', ['nova-home-active']],
+      ['.archive-home[data-nova-home]', ['nova-home-active']],
       ['.nova-about-page', ['nova-about-route']],
     ]
     const match = routeMarkers.find(([selector]) => document.querySelector(selector))

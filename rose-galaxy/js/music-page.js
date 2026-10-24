@@ -13,8 +13,10 @@
     const $ = selector => root.querySelector(selector)
     const on = (node, event, handler) => { node.addEventListener(event, handler); off.push(() => node.removeEventListener(event, handler)) }
     let tab = 'all', rendered = '', lyricSong = '', displayedTitle = '', lines = [], active = -1, frame = 0, destroyed = false, scrubbing = false
-    const rows = $('.sea-playlist-rows'), lyrics = $('.sea-lyrics-lines'), wave = $('.sea-waveform'), ctx = wave.getContext('2d')
+    let followPausedUntil = 0
+    const rows = $('.sea-playlist-rows'), lyrics = $('.sea-lyrics-lines'), lyricBox = $('.sea-lyrics'), wave = $('.sea-waveform'), ctx = wave.getContext('2d')
     const escape = text => String(text || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
+    const pad2 = value => String(value).padStart(2, '0')
     const syncTitle = title => {
       if (title === displayedTitle) return
       displayedTitle = title
@@ -32,13 +34,28 @@
       if (!state.ready) { rows.innerHTML = state.failed || state.configured ? '' : loadingMarkup; return }
       if (tab === 'notes') { rows.innerHTML = '<p class="sea-playlist-empty">暂无音乐随笔</p>'; return }
       const items = songs.map((song, index) => ({ song, index })).filter(({song}) => tab !== 'favorites' || favorites.has(song.id))
-      rows.innerHTML = items.length ? items.map(({ song, index }) => `<div class="sea-track ${index === state.index ? 'is-current' : ''}"><button data-song-index="${index}" aria-label="播放 ${escape(song.name)}" aria-current="${index === state.index}"><span class="sea-track-number">${String(index + 1).padStart(2, '0')}</span><img src="${escape(song.cover || '/img/background_sea.png')}" alt=""><span><span class="sea-track-name">${escape(song.name)}</span><span class="sea-track-artist">${escape(song.artist)}</span></span><span class="sea-track-time">${song.duration > 0 ? time(song.duration) : ''}</span></button><button class="sea-track-more" data-favorite-id="${escape(song.id)}" aria-label="${favorites.has(song.id) ? '取消收藏' : '收藏'} ${escape(song.name)}">${favorites.has(song.id) ? '♥' : '···'}</button></div>`).join('') : '<p class="sea-playlist-empty">' + (tab === 'favorites' ? '还没有收藏的歌曲' : '暂无可播放歌曲') + '</p>'
+      rows.innerHTML = items.length ? items.map(({ song, index }) => `<div class="sea-track ${index === state.index ? 'is-current' : ''}"><button data-song-index="${index}" aria-label="播放 ${escape(song.name)}" aria-current="${index === state.index}"><span class="sea-track-number">${pad2(index + 1)}</span><span class="sea-track-main"><span class="sea-track-name">${escape(song.name)}</span><span class="sea-track-artist">${escape(song.artist)}</span></span><span class="sea-track-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button><button class="sea-track-more" data-favorite-id="${escape(song.id)}" aria-label="${favorites.has(song.id) ? '取消收藏' : '收藏'} ${escape(song.name)}">${favorites.has(song.id) ? '♥' : '···'}</button></div>`).join('') : '<p class="sea-playlist-empty">' + (tab === 'favorites' ? '还没有收藏的歌曲' : '暂无可播放歌曲') + '</p>'
+    }
+    const syncTerminal = state => {
+      const index = state.ready ? pad2(state.index + 1) : '--'
+      const total = state.ready ? String(state.tracks.length) : '--'
+      const trackNode = $('[data-musicx-track]'), totalNode = $('[data-musicx-total]')
+      if (trackNode.textContent !== index) trackNode.textContent = index
+      if (totalNode.textContent !== total) totalNode.textContent = total
+      const nowNode = $('[data-musicx-index]')
+      if (nowNode.textContent !== index) nowNode.textContent = index
+      const listIndex = $('[data-musicx-list-index]'), listTotal = $('[data-musicx-list-total]')
+      if (listIndex.textContent !== index) listIndex.textContent = index
+      if (listTotal.textContent !== total) listTotal.textContent = total
+      const signal = state.failed ? 'error' : !state.configured ? 'booting' : state.playing ? 'connected' : 'standby'
+      const signalNode = $('[data-musicx-signal]')
+      if (signalNode.textContent !== signal) signalNode.textContent = signal
     }
     const loadLyrics = async song => {
       if (!song) { lyricSong = ''; lines = []; lyrics.innerHTML = ''; return }
       const key = song?.id || ''
       if (key === lyricSong) return
-      lyricSong = key; lines = []; active = -1
+      lyricSong = key; lines = []; active = -1; followPausedUntil = 0
       if (song.instrumental) { lyrics.innerHTML = '<p class="sea-lyrics-empty">纯音乐 · 请欣赏</p>'; return }
       lyrics.innerHTML = loadingMarkup
       try {
@@ -60,8 +77,8 @@
       root.classList.toggle('is-loading', !state.ready && !state.failed && !state.configured)
       const pending = $('[data-player-loading]'); if (pending) pending.hidden = state.ready || state.failed || state.configured
       syncTitle(song?.name || '')
-      $('.nova-music-current-artist').textContent = [song?.artist, song?.album].filter(Boolean).join('  |  ')
-      if (song) { const cover = song.cover || '/img/background_sea.png'; if ($('.nova-music-current-cover').getAttribute('src') !== cover) $('.nova-music-current-cover').src = cover }
+      $('.nova-music-current-artist').textContent = song?.artist || ''
+      if (song) { const cover = song.cover || '/img/musicback.png'; const coverNode = $('.nova-music-current-cover'); if (coverNode.getAttribute('src') !== cover) coverNode.src = cover }
       $('.nova-music-toggle').setAttribute('aria-label', state.playing ? '暂停' : '播放')
       const duration = state.duration || song?.duration || 0, progress = duration ? state.currentTime / duration * 1000 : 0
       const input = $('.nova-music-progress-input')
@@ -77,7 +94,7 @@
       $('[data-music-repeat]').classList.toggle('is-single', state.mode === 'single')
       $('[data-music-volume]').value = state.volume
       $('[data-music-favorite]').setAttribute('aria-pressed', favorites.has(song?.id)); $('[data-music-favorite]').textContent = favorites.has(song?.id) ? '♥' : '♡'
-      renderRows(state); loadLyrics(song)
+      renderRows(state); syncTerminal(state); loadLyrics(song)
       let next = -1; lines.forEach((line, index) => { if (line.time <= state.currentTime) next = index })
       if (next !== active) {
         active = next
@@ -93,7 +110,8 @@
           p.classList.toggle('is-distant', hasActive && !current && !near)
         })
         const p = hasActive ? lyrics.children[active] : null
-        if (p) {
+        // A reader browsing manually keeps control until the pause window expires.
+        if (p && Date.now() >= followPausedUntil) {
           const container = $('.sea-lyrics')
           container.scrollTo({top:container.scrollTop + p.getBoundingClientRect().top - container.getBoundingClientRect().top - container.clientHeight / 2 + p.clientHeight / 2,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'})
         }
@@ -121,7 +139,19 @@
     on(rows, 'click', event => { const button = event.target.closest('[data-song-index],[data-favorite-id]'); if (!button) return; if (button.dataset.favoriteId) toggleFavorite(button.dataset.favoriteId); else api.select(Number(button.dataset.songIndex)) })
     root.querySelectorAll('[data-music-tab]').forEach(button => on(button,'click',() => { tab = button.dataset.musicTab; root.querySelectorAll('[data-music-tab]').forEach(b=>b.setAttribute('aria-selected',b===button)); render() }))
     on($('.nova-music-retry'), 'click', () => api.retry())
-    on(lyrics, 'click', event => { if (event.target.closest('[data-lyrics-retry]')) { lyricSong = ''; loadLyrics(api.snapshot().song) } })
+    on(lyrics, 'click', event => {
+      if (event.target.closest('[data-lyrics-retry]')) { lyricSong = ''; loadLyrics(api.snapshot().song); return }
+      const line = event.target.closest('.lyric-line')
+      if (!line) return
+      const index = [...lyrics.children].indexOf(line)
+      if (index >= 0 && Number.isFinite(lines[index]?.time)) api.seek(lines[index].time)
+    })
+    const pauseFollow = () => { followPausedUntil = Date.now() + 3500 }
+    on(lyricBox, 'wheel', pauseFollow, { passive: true })
+    on(lyricBox, 'touchmove', pauseFollow, { passive: true })
+    on(lyricBox, 'pointerdown', event => { if (event.pointerType === 'mouse' && event.button === 0) pauseFollow() })
+    const playlistHead = $('.musicx-playlist-head')
+    if (playlistHead) on(playlistHead, 'click', () => { if (matchMedia('(max-width: 900px)').matches) { const list = $('.sea-playlist'); const open = list.classList.toggle('is-open'); playlistHead.setAttribute('aria-expanded', String(open)) } })
     on(document, 'fliex:music', render)
     const draw = () => {
       frame = 0; if (destroyed || document.hidden || !api.snapshot().playing) return
@@ -129,14 +159,14 @@
       const analyser = api.analyser, bins = new Uint8Array(analyser?.frequencyBinCount || 64)
       if (analyser) analyser.getByteFrequencyData(bins)
       if (typeof ctx.beginPath !== 'function') { frame = requestAnimationFrame(draw); return }
-      ctx.strokeStyle = 'rgba(180,210,232,.62)'; ctx.lineWidth = 1; ctx.beginPath()
+      ctx.strokeStyle = 'rgba(210,210,210,.5)'; ctx.lineWidth = 1; ctx.beginPath()
       for (let i=0;i<160;i++) { const value = bins[Math.floor(i/160*bins.length)] || 0; const x = i / 159 * wave.width; const y = 36 + Math.sin(i * .45) * (1 + value / 255 * 15); if (i === 0) ctx.moveTo(x,y); else ctx.lineTo(x,y) }
       ctx.stroke()
       frame = requestAnimationFrame(draw)
     }
     const startWave = () => { if (frame) cancelAnimationFrame(frame); frame=0; if (api.snapshot().playing && !document.hidden) draw() }
     on(document,'fliex:music',()=>{if (!frame) startWave()}); on(document,'visibilitychange',startWave)
-    if (typeof ctx.beginPath === 'function') { ctx.strokeStyle='rgba(129,153,171,.34)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(0,36); ctx.lineTo(wave.width,36); ctx.stroke() }
+    if (typeof ctx.beginPath === 'function') { ctx.strokeStyle='rgba(129,129,129,.3)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(0,36); ctx.lineTo(wave.width,36); ctx.stroke() }
     render(); api.load().then(render)
     cleanup = () => { destroyed=true; cancelAnimationFrame(frame); off.forEach(remove=>remove()); mounted=null }
   }

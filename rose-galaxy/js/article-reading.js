@@ -9,11 +9,16 @@
     root.dataset.ready = 'true'
     const listeners = []
     const on = (target, event, fn) => { if (!target) return; target.addEventListener(event, fn); listeners.push(() => target.removeEventListener(event, fn)) }
+    const stopSnow = window.__fliexSnow?.mount(root) || (() => {})
+    on(root.querySelector('[data-coast-search]'), 'click', () => window.__fliexOpenSearch?.())
     root.querySelectorAll('.article-code-copy').forEach(button => on(button, 'click', async () => {
       try {
         await navigator.clipboard.writeText(button.closest('figure').querySelector('.code pre')?.textContent || '')
         button.textContent = 'Copied'
       } catch { button.textContent = 'Retry' }
+      window.clearTimeout(button.dataset.copyTimer ? Number(button.dataset.copyTimer) : 0)
+      const timer = window.setTimeout(() => { button.textContent = 'Copy' }, 1800)
+      button.dataset.copyTimer = String(timer)
     }))
     const links = [...root.querySelectorAll('[data-article-toc]')]
     const headings = links.map(link => document.getElementById(link.dataset.articleToc)).filter(Boolean)
@@ -46,13 +51,27 @@
     on(window, 'resize', () => { if (!frame) frame = requestAnimationFrame(update) })
     on(mobile, 'click', () => { mobile.setAttribute('aria-expanded', String(root.classList.toggle('is-toc-open'))) })
     links.forEach(link => on(link, 'click', () => { root.classList.remove('is-toc-open'); mobile.setAttribute('aria-expanded', 'false') }))
+    // Mobile toc sheet: tapping the dimmed stage or pressing Escape folds it away.
+    on(root, 'click', event => {
+      if (!root.classList.contains('is-toc-open')) return
+      if (event.target.closest('.article-toc-sidebar, .article-mobile-toc-trigger')) return
+      root.classList.remove('is-toc-open')
+      mobile.setAttribute('aria-expanded', 'false')
+    })
+    on(document, 'keydown', event => {
+      if (event.key !== 'Escape' || !root.classList.contains('is-toc-open')) return
+      root.classList.remove('is-toc-open')
+      mobile.setAttribute('aria-expanded', 'false')
+      mobile.focus()
+    })
     const renderMusic = () => {
       const state = window.__fliexMusic?.snapshot()
       if (!state) return
-      root.querySelectorAll('[data-music-title]').forEach(el => { el.textContent = state.title })
-      root.querySelectorAll('[data-music-artist]').forEach(el => { el.textContent = state.artist })
+      root.querySelectorAll('[data-music-title]').forEach(el => { el.textContent = state.song?.name || '' })
+      root.querySelectorAll('[data-music-artist]').forEach(el => { el.textContent = state.song?.artist || '' })
+      root.querySelectorAll('[data-music-summary]').forEach(el => { el.textContent = state.playing ? 'MUSIC / PLAYING' : state.ready || state.configured ? 'MUSIC / PAUSED' : 'MUSIC' })
       root.querySelectorAll('[data-music-toggle]').forEach(el => {
-        el.disabled = !state.ready
+        el.disabled = false
         el.setAttribute('aria-label', state.playing ? '暂停音乐' : '播放音乐')
         el.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path ' + (state.playing ? 'd="M8 4v16M16 4v16"' : 'd="m9 5 11 7-11 7z"') + '/></svg>'
       })
@@ -76,7 +95,7 @@
       } else document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark')
     })
     update(); renderMusic(); window.__fliexMusic?.load()
-    cleanup = () => { listeners.splice(0).forEach(off => off()); cancelAnimationFrame(frame); frame = 0; delete root.dataset.ready }
+    cleanup = () => { stopSnow(); listeners.splice(0).forEach(off => off()); cancelAnimationFrame(frame); frame = 0; delete root.dataset.ready }
   }
   window.__fliexArticleReading = { init }
   document.addEventListener('pjax:send', () => cleanup())

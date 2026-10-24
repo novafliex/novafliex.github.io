@@ -1,15 +1,25 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><style id="nova-background-critical">/* Critical first-paint rules are inlined before every external stylesheet. */
-html,html body{background-color:#0d1b29!important;background-image:none!important}
+html,html body{background-color:#070707!important;background-image:none!important}
 html body{isolation:isolate}
-#web_bg{display:block!important;position:fixed;inset:0;width:100%;height:100%;z-index:-999;background:#0d1b29 url('/img/background_sea.png') center/cover no-repeat!important;pointer-events:none;animation:none!important;transition:none!important}
+#web_bg{display:block!important;position:fixed!important;inset:0!important;width:100%!important;height:100%!important;z-index:-999;background:#070707!important;pointer-events:none;animation:none!important;transition:none!important}
 #web_bg::before,#web_bg::after{content:none!important}
 #body-wrap{background:transparent!important}
 #page-header,#footer{background:transparent!important;background-image:none!important}
 #page-header::before,#footer::before{background:transparent!important}
-.nova-page-loading,#loading-box .loading-bg{background:#0d1b29!important}
+.nova-page-loading,#loading-box .loading-bg{background:#070707!important}
 /* Keep the existing mobile crop without making another image layer. */
 @media(max-width:900px){body:has(.nova-notes-shell) #web_bg{background-position:64% center!important}}
-</style><link rel="preload" as="image" href="/img/background_sea.png" fetchpriority="high"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="记录 Go 后端学习、数据结构与算法、LeetCode 练习及个人技术成长过程的博客。">
+/* Notes and Projects share the designated technical background. */
+body.nova-notes-index-route #web_bg{display:block!important;background:#070707 url('/img/note.png') center/cover no-repeat!important}
+body.nova-projects-route #web_bg{display:block!important;background:#070707 url('/img/project.png') center/cover no-repeat!important}
+/* Articles keep a flat reading surface. */
+body.article-sea-route #web_bg{display:none!important}
+body.nova-notes-index-route,
+body.nova-projects-route{background-color:#070707!important;background-image:none!important}
+body.article-sea-route{background-color:var(--ar-bg,#17191c)!important;background-image:none!important}
+html:has(body.article-sea-route){background-color:#17191c!important}
+html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!important}
+</style><link rel="preload" as="image" href="/img/background.png" fetchpriority="high"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="记录 Go 后端学习、数据结构与算法、LeetCode 练习及个人技术成长过程的博客。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Fliex">
 <meta property="og:url" content="https://novafliex.github.io/">
@@ -194,15 +204,16 @@ html body{isolation:isolate}
   isHighlightShrink: false,
   isToc: false,
   pageType: 'home'
-}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261006-stable-background-v1"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<link rel="preload" as="font" href="/rose-galaxy/fonts/newsreader-400.ttf" type="font/ttf" crossorigin=""><link rel="preload" as="font" href="/rose-galaxy/fonts/inter-latin.woff2" type="font/woff2" crossorigin=""><link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261023-home-modes-v1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://novafliex.github.io/#website","name":"Fliex","url":"https://novafliex.github.io/","description":"记录 Go 后端学习、数据结构与算法、LeetCode 练习及个人技术成长过程的博客。","inLanguage":"zh-CN","creator":{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io/"}}</script></head><body class="nova-home-active"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
+}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261024-unified-v11"><link rel="stylesheet" href="/css/custom.css?v=20261024-unified-v11"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
+<link rel="preload" as="font" href="/rose-galaxy/fonts/cormorant-garamond-latin.woff2" type="font/woff2" crossorigin=""><link rel="preload" as="font" href="/rose-galaxy/fonts/cormorant-garamond-italic-latin.woff2" type="font/woff2" crossorigin=""><link rel="preload" as="font" href="/rose-galaxy/fonts/inter-latin.woff2" type="font/woff2" crossorigin=""><link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/archive-home.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261024-unified-shell-v19"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://novafliex.github.io/#website","name":"Fliex","url":"https://novafliex.github.io/","description":"记录 Go 后端学习、数据结构与算法、LeetCode 练习及个人技术成长过程的博客。","inLanguage":"zh-CN","creator":{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io/"}}</script></head><body class="nova-home-active"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -230,18 +241,19 @@ html body{isolation:isolate}
       document.body.classList.add('nova-loading-active')
     }, 1200)
   })()
-</script><!-- hexo injector body_begin end --><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Fliex</span></a></span><div id="menus"><div id="search-button"><button class="site-page social-icon search search-nav-link" type="button" aria-label="打开搜索"><svg class="search-nav-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span> 搜索</span></button></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/projects/"><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/notes/"><span> 笔记</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><span> 关于</span></a></div></div></div></nav></header><main class="coast-home" data-nova-home="" id="hero" data-home-mode="developer">
-    <script>(()=>{try{const root=document.currentScript?.parentElement||document.querySelector('#hero[data-home-mode]');if(root)root.dataset.homeMode=localStorage.getItem('fliex-home-mode')==='quiet'?'quiet':'developer'}catch{}})()</script>
-    <div class="coast-shade" aria-hidden="true"></div>
-    <canvas class="coast-snow" data-coast-snow="" aria-hidden="true"></canvas>
-    <aside class="coast-sidebar" aria-label="Fliex 与导航">
-      <header class="coast-brand"><h1><a href="/" aria-label="Fliex 首页">Fliex</a></h1><p>记录一些<br>真正值得留下来的东西。</p></header>
+</script><!-- hexo injector body_begin end --><div class="page" id="body-wrap"><main class="archive-home" data-nova-home="" id="hero"><div class="coast-toolbar" role="group" aria-label="搜索、音乐和风雪">
+      <button class="coast-search" type="button" data-coast-search="" aria-label="搜索，Ctrl 或 Command K"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="7.5"></circle><path d="m16 16 5 5"></path></svg></button><span class="coast-toolbar-rule" aria-hidden="true"></span>
+      <a class="coast-now-playing" href="/music/"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 10v4M6 6v12M10 2v20M14 5v14M18 8v8M22 11v2"></path></svg><span data-music-summary="" aria-live="polite">Music</span></a>
+      <button class="coast-top-play" type="button" data-music-toggle="" aria-label="播放音乐"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7z"></path></svg></button><span class="coast-toolbar-rule" aria-hidden="true"></span>
+      <button class="coast-snow-toggle" type="button" data-coast-snow-toggle="" role="switch" aria-checked="false" aria-label="风雪动画">SNOW · OFF</button>
+      
+    </div><aside class="coast-sidebar" aria-label="Fliex 与导航">
+      <header class="coast-brand"><div class="coast-brand-name"><a href="/" aria-label="Fliex 首页">Fliex</a></div><p>记录一些<br>真正值得留下来的东西。</p></header>
       <nav class="coast-nav" aria-label="主导航">
         <a href="/projects/"><i aria-hidden="true"></i><b>Projects</b></a><a href="/notes/"><i aria-hidden="true"></i><b>Notes</b></a><a href="/music/"><i aria-hidden="true"></i><b>Music</b></a><a href="/about/"><i aria-hidden="true"></i><b>About</b></a>
       </nav>
       <div class="coast-sidebar-bottom">
         <section class="coast-mini-player" aria-label="音乐控制器">
-          <div class="coast-music-art"><img src="/img/background_sea.png" width="1683" height="935" alt="风雪海岸" decoding="async" loading="lazy"><button type="button" data-music-toggle="" aria-label="播放音乐"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7z"></path></svg></button></div>
           <span class="music-loading" data-music-loading="" role="status" aria-label="音乐加载中"><span class="music-loading-wave" aria-hidden="true">∿∿∿</span></span><a class="coast-music-info" href="/music/" hidden=""><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 10v4M6 6v12M10 2v20M14 5v14M18 8v8M22 11v2"></path></svg><span><span data-music-artist=""></span><span data-music-title=""></span></span></a>
           <div class="coast-progress" role="progressbar" aria-label="歌曲播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-music-progress=""></span></div>
           <button class="coast-music-retry" type="button" data-music-retry="" hidden="">重试</button>
@@ -249,21 +261,17 @@ html body{isolation:isolate}
         <div class="coast-social"><a href="https://github.com/novafliex" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" stroke="none" d="M12 1a11 11 0 0 0-3.48 21.44c.55.1.75-.24.75-.53v-2.1c-3.06.67-3.71-1.3-3.71-1.3-.5-1.27-1.22-1.61-1.22-1.61-1-.68.08-.67.08-.67 1.1.08 1.68 1.13 1.68 1.13.98 1.68 2.57 1.2 3.2.92.1-.72.39-1.2.7-1.48-2.44-.28-5-1.22-5-5.44 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.4.1-2.91 0 0 .93-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.42 3.02-1.13 3.02-1.13.6 1.51.22 2.63.1 2.91.7.77 1.13 1.75 1.13 2.95 0 4.23-2.56 5.16-5 5.44.39.34.74 1 .74 2.04v3.07c0 .3.2.64.76.53A11 11 0 0 0 12 1z"></path></svg></a><a href="mailto:257399435@qq.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="1"></rect><path d="m2 5 10 8L22 5M2 19l7-7m13 7-7-7"></path></svg></a><button type="button" data-coast-theme="" aria-label="切换阅读页明暗主题"><span class="coast-theme-icons" aria-hidden="true"><svg class="coast-theme-icon coast-theme-icon--moon" viewBox="0 0 24 24" focusable="false"><path d="M21 14A9 9 0 0 1 10 3a9 9 0 1 0 11 11z"></path></svg><svg class="coast-theme-icon coast-theme-icon--sun" viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"></path></svg></span></button></div>
       </div>
     </aside>
-    <div class="coast-toolbar" role="group" aria-label="搜索、音乐和风雪">
-      <button class="coast-search" type="button" data-coast-search="" aria-label="搜索，Ctrl 或 Command K"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="7.5"></circle><path d="m16 16 5 5"></path></svg></button><span class="coast-toolbar-rule" aria-hidden="true"></span>
-      <a class="coast-now-playing" href="/music/"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 10v4M6 6v12M10 2v20M14 5v14M18 8v8M22 11v2"></path></svg><span data-music-summary="" aria-live="polite">Music</span></a>
-      <button class="coast-top-play" type="button" data-music-toggle="" aria-label="播放音乐"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7z"></path></svg></button><span class="coast-toolbar-rule" aria-hidden="true"></span>
-      <button class="coast-snow-toggle" type="button" data-coast-snow-toggle="" role="switch" aria-checked="false" aria-label="风雪动画">SNOW · OFF</button>
-      <button class="coast-mode-toggle" type="button" data-home-mode-toggle="" aria-label="切换首页模式" aria-controls="coast-intro nova-notes coast-featured"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 14A9 9 0 0 1 10 3a9 9 0 1 0 11 11z"></path></svg><span class="mode-to-quiet">纯净模式</span><span class="mode-to-developer">开发者模式</span></button>
-    </div>
-    <section class="coast-intro" id="coast-intro" aria-labelledby="coast-intro-title"><p class="coast-eyebrow">PERSONAL SPACE / FLIEX</p><h2 id="coast-intro-title"><span>Building things,</span> quietly.</h2><p class="coast-direction">Go Backend / Engineering / Personal Projects</p><p class="coast-intro-copy">用代码构建真实的产品，也记录一路上的思考与实践。</p><div class="coast-intro-links"><a href="/projects/">Explore Projects →</a><a href="/notes/">Read Notes →</a></div></section>
-    <section class="coast-recent" id="nova-notes" aria-label="最近发布的三篇内容">
-      <h2 class="coast-section-label">Latest Writing</h2>
-      <a class="coast-entry" data-coast-entry="" href="/programming-terms/day-1/"><time datetime="2026-08-22" title="2026-08-22">08.22</time><span>编程术语 · Day 1｜HTTP 与网络基础<small class="coast-entry-meta is-redundant">编程术语<span>Day 1｜HTTP 与网络基础：通过正式解释、通俗理解和项目示例复习IP Address（IP 地址）、Port（端口）、DNS（域名系统）、TCP（传输控制协议）、HTTP（超文本传输协议）。</span></small></span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17m-6-6 6 6-6 6"></path></svg></a><a class="coast-entry" data-coast-entry="" href="/programming-terms/day-2/"><time datetime="2026-08-22" title="2026-08-22">08.22</time><span>编程术语 · Day 2｜HTTP 请求结构<small class="coast-entry-meta is-redundant">编程术语<span>Day 2｜HTTP 请求结构：通过正式解释、通俗理解和项目示例复习URL（统一资源定位符）、HTTP Method（HTTP 请求方法）、HTTP Header（HTTP 头字段）、HTTP Body（HTTP 消息体）、HTTP Status Code（HTTP 状态码）。</span></small></span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17m-6-6 6 6-6 6"></path></svg></a><a class="coast-entry" data-coast-entry="" href="/programming-terms/day-3/"><time datetime="2026-08-22" title="2026-08-22">08.22</time><span>编程术语 · Day 3｜请求参数与身份状态<small class="coast-entry-meta is-redundant">编程术语<span>Day 3｜请求参数与身份状态：通过正式解释、通俗理解和项目示例复习Query Parameter（查询参数）、Path Parameter（路径参数）、Cookie、Session（会话）、JWT（JSON Web Token）。</span></small></span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17m-6-6 6 6-6 6"></path></svg></a>
-      <section class="coast-featured" id="coast-featured" aria-labelledby="coast-featured-label"><h2 class="coast-section-label" id="coast-featured-label">Featured Project</h2><a class="coast-project-link" href="/projects/#project-2-name"><h3>go-review <span aria-hidden="true">↗</span></h3><p>Go 后端复习与实践：Gin / RESTful API、MySQL、JWT 鉴权，以及并发与网络编程示例。</p><small>Go / Gin / MySQL / JWT</small></a></section>
+  <canvas class="coast-snow" data-coast-snow="" aria-hidden="true"></canvas>
+  <div class="archive-stage">
+    <section class="archive-hero">
+      <p class="archive-eyebrow">// PERSONAL ARCHIVE</p>
+      <h1 class="archive-title"><span class="archive-title-line">Things</span><span class="archive-title-line">Worth</span><em class="archive-title-line archive-title-italic">Keeping.</em></h1>
+      <p class="archive-subtitle">记录一些真正值得留下来的东西。</p>
+      <p class="archive-intro">About code, music,<br>notes and memory.<br>And the life in between.</p>
+      <span class="archive-hero-rule" aria-hidden="true"></span>
     </section>
-    <nav class="coast-timeline" aria-label="按月份浏览笔记"><span class="coast-year">2026</span><div class="coast-months"><a href="/notes/#notes-month-2026-08" class="is-selected" aria-label="2026-08 的内容"><i aria-hidden="true"></i><span>AUG</span></a><a href="/notes/#notes-month-2026-07" aria-label="2026-07 的内容"><i aria-hidden="true"></i><span>JUL</span></a><a href="/notes/#notes-month-2026-03" aria-label="2026-03 的内容"><i aria-hidden="true"></i><span>MAR</span></a><a href="/notes/#notes-month-2026-02" aria-label="2026-02 的内容"><i aria-hidden="true"></i><span>FEB</span></a></div><a class="coast-more" href="/notes/" aria-label="查看全部笔记">…</a></nav>
-  </main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
+  </div>
+</main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
   const parseViewBox = viewBox => {
     if (!viewBox) return null
     const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
@@ -628,8 +636,9 @@ html body{isolation:isolate}
 })()</script>
 
 
-<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261023-home-modes-v1"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/nova-home.js?v=20261023-home-modes-v1"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261006-stable-background-v1"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261024-unified-shell-v19"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/nova-home.js?v=20261024-unified-shell-v19"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261024-unified-v11"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({

@@ -3,7 +3,14 @@
   if (window.__novaHomeBootstrap) { window.__novaHomeBootstrap.init(); return }
   let cleanup = () => {}
   const destroy = () => { cleanup(); cleanup = () => {} }
+  // PJAX preserves body: update the class used by the homepage-only collage.
+  // CSS owns backgrounds; other routes keep their own monochrome stages.
+  const applyRouteBackground = () => {
+    const isHome = Boolean(document.querySelector('main.archive-home'))
+    document.body.classList.toggle('nova-home-active', isHome)
+  }
   const init = () => {
+    applyRouteBackground()
     const root = document.querySelector('[data-nova-home]')
     if (!root || root.dataset.ready) return
     destroy()
@@ -44,7 +51,7 @@
       if (!state) return
       root.querySelectorAll('[data-music-title]').forEach(el => { el.textContent = state.song?.name || '' })
       root.querySelectorAll('[data-music-artist]').forEach(el => { el.textContent = state.song?.artist || '' })
-      root.querySelectorAll('[data-music-summary]').forEach(el => { el.textContent = state.playing ? state.artist + ' — ' + state.title : state.ready ? 'Music / Ready' : 'Music' })
+      root.querySelectorAll('[data-music-summary]').forEach(el => { el.textContent = state.playing ? 'MUSIC / PLAYING' : state.ready || state.configured ? 'MUSIC / PAUSED' : 'MUSIC' })
       root.querySelectorAll('[data-music-toggle]').forEach(el => {
         el.disabled = false
         el.title = ''

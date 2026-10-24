@@ -1,15 +1,25 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><style id="nova-background-critical">/* Critical first-paint rules are inlined before every external stylesheet. */
-html,html body{background-color:#0d1b29!important;background-image:none!important}
+html,html body{background-color:#070707!important;background-image:none!important}
 html body{isolation:isolate}
-#web_bg{display:block!important;position:fixed;inset:0;width:100%;height:100%;z-index:-999;background:#0d1b29 url('/img/background_sea.png') center/cover no-repeat!important;pointer-events:none;animation:none!important;transition:none!important}
+#web_bg{display:block!important;position:fixed!important;inset:0!important;width:100%!important;height:100%!important;z-index:-999;background:#070707!important;pointer-events:none;animation:none!important;transition:none!important}
 #web_bg::before,#web_bg::after{content:none!important}
 #body-wrap{background:transparent!important}
 #page-header,#footer{background:transparent!important;background-image:none!important}
 #page-header::before,#footer::before{background:transparent!important}
-.nova-page-loading,#loading-box .loading-bg{background:#0d1b29!important}
+.nova-page-loading,#loading-box .loading-bg{background:#070707!important}
 /* Keep the existing mobile crop without making another image layer. */
 @media(max-width:900px){body:has(.nova-notes-shell) #web_bg{background-position:64% center!important}}
-</style><link rel="preload" as="image" href="/img/background_sea.png" fetchpriority="high"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>项目 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="Fliex 的项目作品集，记录项目实现与设计决策。">
+/* Notes and Projects share the designated technical background. */
+body.nova-notes-index-route #web_bg{display:block!important;background:#070707 url('/img/note.png') center/cover no-repeat!important}
+body.nova-projects-route #web_bg{display:block!important;background:#070707 url('/img/project.png') center/cover no-repeat!important}
+/* Articles keep a flat reading surface. */
+body.article-sea-route #web_bg{display:none!important}
+body.nova-notes-index-route,
+body.nova-projects-route{background-color:#070707!important;background-image:none!important}
+body.article-sea-route{background-color:var(--ar-bg,#17191c)!important;background-image:none!important}
+html:has(body.article-sea-route){background-color:#17191c!important}
+html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!important}
+</style><link rel="preload" as="image" href="/img/project.png" fetchpriority="high"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>项目 | Fliex</title><meta name="author" content="Fliex"><meta name="copyright" content="Fliex"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#233749"><meta name="description" content="Fliex 的项目作品集，记录项目实现与设计决策。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="项目">
 <meta property="og:url" content="https://novafliex.github.io/projects/">
@@ -196,15 +206,16 @@ html body{isolation:isolate}
   isHighlightShrink: false,
   isToc: false,
   pageType: 'page'
-}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261003-coast-v1"><link rel="stylesheet" href="/css/custom.css?v=20261006-stable-background-v1"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261023-home-modes-v1">
-<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261023-home-modes-v1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://novafliex.github.io/projects/#webpage","name":"Projects","url":"https://novafliex.github.io/projects/","description":"Fliex 的项目作品集，记录项目实现与设计决策。","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="nova-notes-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
+}</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261024-unified-v11"><link rel="stylesheet" href="/css/custom.css?v=20261024-unified-v11"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
+<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/archive-home.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261024-unified-shell-v19">
+<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261024-unified-shell-v19"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://novafliex.github.io/projects/#webpage","name":"Projects","url":"https://novafliex.github.io/projects/","description":"Fliex 的项目作品集，记录项目实现与设计决策。","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="nova-notes-route nova-projects-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -233,7 +244,6 @@ html body{isolation:isolate}
     }, 1200)
   })()
 </script><!-- hexo injector body_begin end --><div class="page type-projects" id="body-wrap"><main class="nova-notes-shell" id="content-inner" data-nova-home="">
-    <div class="coast-shade" aria-hidden="true"></div>
     <canvas class="coast-snow" data-coast-snow="" aria-hidden="true"></canvas>
     <aside class="coast-sidebar" aria-label="Fliex 与导航">
       <header class="coast-brand"><div class="coast-brand-name"><a href="/" aria-label="Fliex 首页">Fliex</a></div><p>记录一些<br>真正值得留下来的东西。</p></header>
@@ -242,7 +252,6 @@ html body{isolation:isolate}
       </nav>
       <div class="coast-sidebar-bottom">
         <section class="coast-mini-player" aria-label="音乐控制器">
-          <div class="coast-music-art"><img src="/img/background_sea.png" width="1683" height="935" alt="风雪海岸" decoding="async"><button type="button" data-music-toggle="" aria-label="播放音乐"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7z"></path></svg></button></div>
           <span class="music-loading" data-music-loading="" role="status" aria-label="音乐加载中"><span class="music-loading-wave" aria-hidden="true">∿∿∿</span></span><a class="coast-music-info" href="/music/" hidden=""><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 10v4M6 6v12M10 2v20M14 5v14M18 8v8M22 11v2"></path></svg><span><span data-music-artist=""></span><span data-music-title=""></span></span></a>
           <div class="coast-progress" role="progressbar" aria-label="歌曲播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-music-progress=""></span></div>
           <button class="coast-music-retry" type="button" data-music-retry="" hidden="">重试</button>
@@ -257,54 +266,53 @@ html body{isolation:isolate}
       <button class="coast-snow-toggle" type="button" data-coast-snow-toggle="" role="switch" aria-checked="false" aria-label="风雪动画">SNOW · OFF</button>
       
     </div>
-    
-      <article class="nova-notes-content nova-projects-content">
-        <header class="nova-notes-head nova-projects-head">
-          <p><i aria-hidden="true"></i></p>
-          <h1>Projects</h1>
-          <h2>Code, notes, and things still taking shape.</h2>
-        </header>
-        <div class="nova-projects-layout">
-          <div><section class="nova-project-overview" aria-labelledby="project-0-name">
-    <header class="nova-project-overview-head"><span>01</span><p>Featured Project</p><a href="https://github.com/novafliex/problem-solutions" target="_blank" rel="noopener noreferrer" aria-label="View problem-solutions on GitHub">↗</a></header>
-    <div class="nova-project-overview-main">
-      <figure class="nova-project-cover"><img src="/img/background_sea.png" width="1683" height="935" alt="冷雾中的雪海" decoding="async"></figure>
-      <div class="nova-project-overview-copy">
-        <section><h2>What &amp; Why</h2><p>A collection of problem-solving notes, solutions, code explanations, and the reasoning behind them.</p><p>Built to deepen understanding and make learning stick.</p></section>
-        <section class="nova-project-stack"><h2>Core Stack</h2><dl><div><dt>Language</dt><dd><span>C</span></dd></div><div><dt>Core</dt><dd><span>Algorithms</span></dd></div><div><dt>Focus</dt><dd><span>Problem Solving</span></dd></div><div><dt>Also</dt><dd><span>Learning</span><span>Notes &amp; Reasoning</span></dd></div></dl></section>
-        <section class="nova-project-highlights"><h2>Key Highlights</h2><ul><li>Clean solution breakdowns with clear explanations.</li><li>Reasoning-first approach to build deeper understanding.</li><li>Structured notes for long-term learning.</li></ul></section>
-      </div>
-    </div>
-    <footer class="nova-project-overview-foot"><div><h2 id="project-0-name">problem-solutions</h2><p>Notes on problem solving, solutions, code, and the reasoning behind them.</p><div class="nova-project-tags"><span>C</span><span>Algorithms</span><span>Problem Solving</span><span>Learning</span></div></div><a href="https://github.com/novafliex/problem-solutions" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49v-1.88c-2.78.62-3.37-1.21-3.37-1.21-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.54 1.06 1.54 1.06.9 1.58 2.35 1.12 2.92.86.1-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.28 9.28 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.95-2.35 4.82-4.58 5.07.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z" fill="currentColor" stroke="none"></path></svg>View on GitHub <span aria-hidden="true">↗</span></a></footer>
-  </section><section class="nova-project-overview" aria-labelledby="project-1-name">
-    <header class="nova-project-overview-head"><span>02</span><p>Featured Project</p><a href="https://github.com/novafliex/fun-web-pages" target="_blank" rel="noopener noreferrer" aria-label="View fun-web-pages on GitHub">↗</a></header>
-    <div class="nova-project-overview-main">
-      <figure class="nova-project-cover"><img src="/img/background_sea.png" width="1683" height="935" alt="冷雾中的雪海" decoding="async"></figure>
-      <div class="nova-project-overview-copy">
-        <section><h2>What &amp; Why</h2><p>收集有趣的 Web 页面练习，包含动态背景、交互效果和前端小组件。现有 Rose Galaxy 页面包含银河风格背景、图片展示和音乐播放器。</p></section>
-        <section class="nova-project-stack"><h2>Core Stack</h2><dl><div><dt>Markup</dt><dd><span>HTML</span></dd></div><div><dt>Style</dt><dd><span>CSS</span></dd></div><div><dt>Interaction</dt><dd><span>JavaScript</span></dd></div><div><dt>Focus</dt><dd><span>Dynamic Backgrounds</span><span>UI Experiments</span></dd></div></dl></section>
-        <section class="nova-project-highlights"><h2>Key Highlights</h2><ul><li>Rose Galaxy 银河风格个人展示页，结合动态背景、图片和音乐。</li><li>独立目录 每个页面包含自己的入口与所需资源。</li><li>静态预览 直接打开页面，或通过本地静态服务查看。</li></ul></section>
-      </div>
-    </div>
-    <footer class="nova-project-overview-foot"><div><h2 id="project-1-name">fun-web-pages</h2><p>用 HTML、CSS 和 JavaScript 实现创意页面与交互。</p><div class="nova-project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Interaction</span></div></div><a href="https://github.com/novafliex/fun-web-pages" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49v-1.88c-2.78.62-3.37-1.21-3.37-1.21-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.54 1.06 1.54 1.06.9 1.58 2.35 1.12 2.92.86.1-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.28 9.28 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.95-2.35 4.82-4.58 5.07.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z" fill="currentColor" stroke="none"></path></svg>View on GitHub <span aria-hidden="true">↗</span></a></footer>
-  </section><section class="nova-project-overview" aria-labelledby="project-2-name">
-    <header class="nova-project-overview-head"><span>03</span><p>Featured Project</p><a href="https://github.com/novafliex/go-review" target="_blank" rel="noopener noreferrer" aria-label="View go-review on GitHub">↗</a></header>
-    <div class="nova-project-overview-main">
-      <figure class="nova-project-cover"><img src="/img/background_sea.png" width="1683" height="935" alt="冷雾中的雪海" decoding="async"></figure>
-      <div class="nova-project-overview-copy">
-        <section><h2>What &amp; Why</h2><p>记录日常 Go 复习中的示例、练习和笔记，覆盖基础语法、Gin 与 RESTful API、MySQL、bcrypt 与 JWT 鉴权，以及并发和网络编程。</p></section>
-        <section class="nova-project-stack"><h2>Core Stack</h2><dl><div><dt>Language</dt><dd><span>Go</span></dd></div><div><dt>Backend</dt><dd><span>Gin</span><span>RESTful API</span></dd></div><div><dt>Database</dt><dd><span>MySQL</span></dd></div><div><dt>Auth</dt><dd><span>bcrypt</span><span>JWT</span></dd></div></dl></section>
-        <section class="nova-project-highlights"><h2>Key Highlights</h2><ul><li>后端练习 HTTP、Gin、CRUD、数据库连接和鉴权。</li><li>并发与网络 goroutine、channel、并发模式及 TCP / WebSocket 示例。</li><li>独立练习 按日期分组，共用根目录 go.mod；包含测试与 Mock 事务模板。</li></ul></section>
-      </div>
-    </div>
-    <footer class="nova-project-overview-foot"><div><h2 id="project-2-name">go-review</h2><p>按日期整理的 Go 复习代码、练习与后端实践。</p><div class="nova-project-tags"><span>Go</span><span>Gin</span><span>MySQL</span><span>JWT</span></div></div><a href="https://github.com/novafliex/go-review" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49v-1.88c-2.78.62-3.37-1.21-3.37-1.21-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.54 1.06 1.54 1.06.9 1.58 2.35 1.12 2.92.86.1-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.28 9.28 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.95-2.35 4.82-4.58 5.07.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z" fill="currentColor" stroke="none"></path></svg>View on GitHub <span aria-hidden="true">↗</span></a></footer>
-  </section></div>
-          <aside class="nova-project-placeholders" aria-label="未来项目">
-            <section><span>04</span><div><h2>In Progress</h2><p>Currently being refined.</p></div></section>
-            <section><span>05</span><div><h2>More Soon</h2><p>Still exploring.</p></div></section>
-          </aside>
-        </div>
-      </article></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
+    <article class="nova-notes-content nova-projects-content">
+    <header class="nova-notes-head nova-projects-head"><p>SELECTED WORK</p><h1>Projects</h1><h2>Code, notes, and things taking shape.</h2></header>
+    <div class="nova-projects-layout" data-projects-switcher=""><div class="nova-project-panels"><section class="nova-project-overview" id="project-panel-2" role="tabpanel" aria-labelledby="project-tab-2" tabindex="0" data-project-panel="">
+      <p class="nova-project-kind"><span>01</span> / Go Backend</p>
+      <h2 id="project-2-name">go-review</h2>
+      <p class="nova-project-description">Go 后端复习与实践：Gin / RESTful API、MySQL、JWT 鉴权，以及并发与网络编程示例。</p>
+      <ul class="nova-project-tags" aria-label="主要技术"><li>Go</li><li>Gin</li><li>MySQL</li><li>JWT</li></ul>
+      <ul class="nova-project-highlights" aria-label="项目亮点"><li><strong>后端练习</strong><span>HTTP、Gin、CRUD、数据库连接和鉴权。</span></li><li><strong>并发与网络</strong><span>goroutine、channel、并发模式及 TCP / WebSocket 示例。</span></li></ul>
+      <footer class="nova-project-actions">
+        
+        <a href="https://github.com/novafliex/go-review" target="_blank" rel="noopener noreferrer" aria-label="在 GitHub 查看 go-review">GitHub <span aria-hidden="true">↗</span></a>
+        
+        
+      </footer>
+    </section><section class="nova-project-overview" id="project-panel-0" role="tabpanel" aria-labelledby="project-tab-0" tabindex="0" data-project-panel="" hidden="">
+      <p class="nova-project-kind"><span>02</span> / Algorithms</p>
+      <h2 id="project-0-name">problem-solutions</h2>
+      <p class="nova-project-description">A collection of problem-solving notes, solutions, code explanations, and the reasoning behind them.</p>
+      <ul class="nova-project-tags" aria-label="主要技术"><li>C</li><li>Algorithms</li><li>Problem Solving</li><li>Learning</li></ul>
+      <ul class="nova-project-highlights" aria-label="项目亮点"><li><strong>Clean solution breakdowns</strong><span>with clear explanations.</span></li><li><strong>Reasoning-first approach</strong><span>to build deeper understanding.</span></li></ul>
+      <footer class="nova-project-actions">
+        
+        <a href="https://github.com/novafliex/problem-solutions" target="_blank" rel="noopener noreferrer" aria-label="在 GitHub 查看 problem-solutions">GitHub <span aria-hidden="true">↗</span></a>
+        
+        
+      </footer>
+    </section><section class="nova-project-overview" id="project-panel-1" role="tabpanel" aria-labelledby="project-tab-1" tabindex="0" data-project-panel="" data-project-preview="1" hidden="">
+      <p class="nova-project-kind"><span>03</span> / Web Experiments</p>
+      <h2 id="project-1-name">fun-web-pages</h2>
+      <p class="nova-project-description">收集有趣的 Web 页面练习，包含动态背景、交互效果和前端小组件。现有 Rose Galaxy 页面包含银河风格背景、图片展示和音乐播放器。</p>
+      <ul class="nova-project-tags" aria-label="主要技术"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Interaction</li></ul>
+      <ul class="nova-project-highlights" aria-label="项目亮点"><li><strong>Rose Galaxy</strong><span>银河风格个人展示页，结合动态背景、图片和音乐。</span></li><li><strong>独立目录</strong><span>每个页面包含自己的入口与所需资源。</span></li></ul>
+      <footer class="nova-project-actions">
+        <button type="button" class="project-preview-open" data-open-preview="1">在线预览 <span aria-hidden="true">↗</span></button>
+        <a href="https://github.com/novafliex/fun-web-pages" target="_blank" rel="noopener noreferrer" aria-label="在 GitHub 查看 fun-web-pages">GitHub <span aria-hidden="true">↗</span></a>
+        
+        
+      </footer>
+    </section></div><div class="nova-project-list" role="tablist" aria-label="选择项目" aria-orientation="vertical"><button type="button" class="nova-project-tab" role="tab" id="project-tab-2" aria-controls="project-panel-2" aria-selected="true" tabindex="0" data-project-tab="">
+    <span class="nova-project-number" aria-hidden="true">01</span><span class="nova-project-tab-copy"><strong>go-review</strong><small>Go Backend</small></span>
+  </button><button type="button" class="nova-project-tab" role="tab" id="project-tab-0" aria-controls="project-panel-0" aria-selected="false" tabindex="-1" data-project-tab="">
+    <span class="nova-project-number" aria-hidden="true">02</span><span class="nova-project-tab-copy"><strong>problem-solutions</strong><small>Algorithms</small></span>
+  </button><button type="button" class="nova-project-tab" role="tab" id="project-tab-1" aria-controls="project-panel-1" aria-selected="false" tabindex="-1" data-project-tab="">
+    <span class="nova-project-number" aria-hidden="true">03</span><span class="nova-project-tab-copy"><strong>fun-web-pages</strong><small>Web Experiments</small></span>
+  </button></div></div>
+    <script type="application/json" data-project-preview-config="">{"1":{"name":"fun-web-pages","works":[{"id":"rose-galaxy","name":"Rose Galaxy","description":"独立 Web 页面，包含 Canvas 动态背景、作品展示与音乐交互。","demoUrl":"https://novafliex.github.io/fun-web-pages/Rose%20Galaxy/","previewBridge":true,"githubUrl":"https://github.com/novafliex/fun-web-pages/tree/main/Rose%20Galaxy","expectedTitle":"Nova Fliex","expectedSelectors":["#hero-title","#hero-galaxy-canvas"],"requiredAssets":["css/global.css","js/galaxy-canvas.js","js/fliex-preview-bridge.js","img/background.jpg"]}]}}</script>
+  </article></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
   const parseViewBox = viewBox => {
     if (!viewBox) return null
     const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
@@ -670,8 +678,11 @@ html body{isolation:isolate}
 
 
 
-<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261023-home-modes-v1"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/nova-home.js?v=20261023-home-modes-v1"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261003-coast-v1"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261005"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261005-playback-heartbeat-v2"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261005-archive"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261006-stable-background-v1"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+<link rel="stylesheet" href="/rose-galaxy/css/project-preview.css?v=20261024-unified-shell-v19">
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261024-unified-shell-v19"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/nova-home.js?v=20261024-unified-shell-v19"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/projects-page.js?v=20261024-unified-shell-v19"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/project-preview.js?v=20261024-unified-shell-v19"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261024-unified-v11"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({
