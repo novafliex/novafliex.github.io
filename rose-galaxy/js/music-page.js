@@ -12,19 +12,35 @@
     const api = window.__fliexMusic, off = [], favorites = new Set(read('fliex-music-favorites-v1'))
     const $ = selector => root.querySelector(selector)
     const on = (node, event, handler) => { node.addEventListener(event, handler); off.push(() => node.removeEventListener(event, handler)) }
-    let tab = 'all', rendered = '', lyricSong = '', displayedTitle = '', lines = [], active = -1, frame = 0, destroyed = false, scrubbing = false
+    let tab = 'all', rendered = '', lyricSong = '', displayedTitle = '', displayedArtist = '', lines = [], active = -1, frame = 0, destroyed = false, scrubbing = false
     let followPausedUntil = 0
     const rows = $('.sea-playlist-rows'), lyrics = $('.sea-lyrics-lines'), lyricBox = $('.sea-lyrics'), wave = $('.sea-waveform'), ctx = wave.getContext('2d')
+    const titleNode = $('.nova-music-current-title'), titleInner = titleNode.firstElementChild, artistNode = $('.nova-music-current-artist'), artistInner = artistNode.firstElementChild
     const escape = text => String(text || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
     const pad2 = value => String(value).padStart(2, '0')
-    const syncTitle = title => {
-      if (title === displayedTitle) return
-      displayedTitle = title
-      const node = $('.nova-music-current-title'), viewport = node.parentElement
-      node.textContent = title
-      node.classList.remove('is-marquee'); node.style.removeProperty('--music-title-shift')
-      const overflow = Math.ceil(node.scrollWidth - viewport.clientWidth)
-      if (overflow > 2) { node.style.setProperty('--music-title-shift', `-${overflow}px`); node.classList.add('is-marquee') }
+    // The clip window is the outer span; only the inner span translates, so the text actually slides out of hiding.
+    // Idempotent on purpose: the ResizeObserver re-runs this on every heading resize, and re-toggling the class
+    // would restart the marquee animation from the beginning each time.
+    const applyMarquee = (node, inner) => {
+      if (!inner.textContent) {
+        if (inner.classList.contains('is-marquee')) { inner.classList.remove('is-marquee'); inner.style.removeProperty('--music-title-shift') }
+        return
+      }
+      inner.classList.add('is-marquee')
+      const overflow = Math.ceil(inner.scrollWidth - node.clientWidth)
+      if (overflow > 2) {
+        const shift = `-${overflow}px`
+        if (inner.style.getPropertyValue('--music-title-shift') !== shift) inner.style.setProperty('--music-title-shift', shift)
+      } else {
+        inner.classList.remove('is-marquee')
+        inner.style.removeProperty('--music-title-shift')
+      }
+    }
+    const syncHeading = (node, inner, text, cached) => {
+      if (text === cached) return cached
+      inner.textContent = text
+      applyMarquee(node, inner)
+      return text
     }
     const renderRows = state => {
       const songs = state.tracks
@@ -76,9 +92,11 @@
       root.classList.toggle('is-playing', state.playing)
       root.classList.toggle('is-loading', !state.ready && !state.failed && !state.configured)
       const pending = $('[data-player-loading]'); if (pending) pending.hidden = state.ready || state.failed || state.configured
-      syncTitle(song?.name || '')
-      $('.nova-music-current-artist').textContent = song?.artist || ''
-      if (song) { const cover = song.cover || '/img/musicback.png'; const coverNode = $('.nova-music-current-cover'); if (coverNode.getAttribute('src') !== cover) coverNode.src = cover }
+      displayedArtist = syncHeading(artistNode, artistInner, song?.artist || '', displayedArtist)
+      displayedTitle = syncHeading(titleNode, titleInner, song?.name || '', displayedTitle)
+      // The first sync measures while flex siblings are still settling; one pass after layout gives the real overflow.
+      requestAnimationFrame(() => { if (!destroyed) { applyMarquee(titleNode, titleInner); applyMarquee(artistNode, artistInner) } })
+      if (song) { const cover = song.cover || '/img/musicback.webp'; const coverNode = $('.nova-music-current-cover'); if (coverNode.getAttribute('src') !== cover) coverNode.src = cover }
       $('.nova-music-toggle').setAttribute('aria-label', state.playing ? '暂停' : '播放')
       const duration = state.duration || song?.duration || 0, progress = duration ? state.currentTime / duration * 1000 : 0
       const input = $('.nova-music-progress-input')
@@ -153,6 +171,12 @@
     const playlistHead = $('.musicx-playlist-head')
     if (playlistHead) on(playlistHead, 'click', () => { if (matchMedia('(max-width: 900px)').matches) { const list = $('.sea-playlist'); const open = list.classList.toggle('is-open'); playlistHead.setAttribute('aria-expanded', String(open)) } })
     on(document, 'fliex:music', render)
+    // Font swaps and viewport changes move the overflow target; re-measure whenever a heading box resizes.
+    let headingObserver = null
+    if (typeof ResizeObserver === 'function') {
+      headingObserver = new ResizeObserver(() => { if (!destroyed) { applyMarquee(titleNode, titleInner); applyMarquee(artistNode, artistInner) } })
+      ;[titleNode, titleInner, artistNode, artistInner].forEach(el => headingObserver.observe(el))
+    }
     const draw = () => {
       frame = 0; if (destroyed || document.hidden || !api.snapshot().playing) return
       ctx.clearRect(0,0,wave.width,wave.height)
@@ -168,7 +192,7 @@
     on(document,'fliex:music',()=>{if (!frame) startWave()}); on(document,'visibilitychange',startWave)
     if (typeof ctx.beginPath === 'function') { ctx.strokeStyle='rgba(129,129,129,.3)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(0,36); ctx.lineTo(wave.width,36); ctx.stroke() }
     render(); api.load().then(render)
-    cleanup = () => { destroyed=true; cancelAnimationFrame(frame); off.forEach(remove=>remove()); mounted=null }
+    cleanup = () => { destroyed=true; cancelAnimationFrame(frame); headingObserver?.disconnect(); off.forEach(remove=>remove()); mounted=null }
   }
   window.__novaMusicBootstrap={init,destroy:()=>cleanup()}
   document.addEventListener('pjax:send',()=>cleanup()); document.addEventListener('pjax:complete',init)

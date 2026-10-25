@@ -26,7 +26,7 @@ body.nova-music-route .coast-lightning{display:none!important}
 
 /* ---- stage ------------------------------------------------ */
 .nova-music-page{position:absolute;inset:0;z-index:2;animation:musicx-fade-in .6s ease both}
-.nova-music-page .musicx-bg{position:absolute;inset:0;background:#070707 url("/img/musicback.png") center/cover no-repeat;pointer-events:none}
+.nova-music-page .musicx-bg{position:absolute;inset:0;background:#070707 url("/img/musicback.webp") center/cover no-repeat;pointer-events:none}
 /* Gently settle the baked sphere so it recedes behind the player zone. */
 .nova-music-page .musicx-bg::after{content:"";position:absolute;left:4%;right:31%;top:36%;bottom:0;background:radial-gradient(ellipse 40% 52% at 40% 63%,rgba(6,6,6,.4),rgba(6,6,6,.14) 62%,rgba(6,6,6,0) 78%);pointer-events:none}
 .nova-music-page>*{transition:opacity var(--music-transition)}
@@ -83,7 +83,7 @@ body.nova-music-route .coast-lightning{display:none!important}
 .nova-music-page .sea-track-number{color:rgba(255,255,255,.35);font:400 11px/1 var(--coast-mono);font-variant-numeric:tabular-nums}
 .nova-music-page .sea-track-main{min-width:0}
 .nova-music-page .sea-track-name{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:rgba(255,255,255,.84);font:400 17px/1.35 var(--coast-display)}
-.nova-music-page .sea-track-artist{display:block;margin-top:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:rgba(255,255,255,.3);font:400 11px/1 var(--coast-display)}
+.nova-music-page .sea-track-artist{display:block;margin-top:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:rgba(255,255,255,.3);font:400 11px/1.5 var(--coast-display)}
 .nova-music-page .sea-track.is-current .sea-track-number{color:rgba(255,255,255,.6)}
 .nova-music-page .sea-track.is-current .sea-track-name{color:rgba(255,255,255,.95)}
 .nova-music-page .sea-track.is-current .sea-track-artist{color:rgba(255,255,255,.5)}
@@ -105,10 +105,11 @@ body.nova-music-route .coast-lightning{display:none!important}
 .nova-music-page .sea-player{position:absolute;left:53%;top:71.2vh;width:19.5%;z-index:3;box-sizing:border-box;padding:14px 16px 12px;border:0;border-top:1px solid rgba(255,255,255,.14);border-radius:0;background:rgba(8,10,14,.2);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);box-shadow:none}
 .nova-music-page .musicx-now-label{margin:0 0 14px;color:rgba(255,255,255,.5);font:400 11px/1 var(--coast-mono);letter-spacing:.16em}
 .nova-music-page .musicx-now-heading{display:flex;align-items:baseline;gap:12px;min-width:0;margin-bottom:18px}
-.nova-music-page .nova-music-current-title{color:rgba(255,255,255,.96);font:500 26px/1.2 var(--coast-display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.nova-music-page .nova-music-current-title.is-marquee{animation:sea-title-marquee 14s ease-in-out 2s infinite}
+.nova-music-page .nova-music-current-title{color:rgba(255,255,255,.96);font:500 26px/1.2 var(--coast-display);white-space:nowrap;overflow:hidden}
+.nova-music-page .nova-music-current-artist{color:rgba(255,255,255,.4);font:400 13px/1.5 var(--coast-display);white-space:nowrap;overflow:hidden;flex:0 1 auto}
+.nova-music-page .music-marquee-inner{display:inline-block;white-space:nowrap}
+.nova-music-page .music-marquee-inner.is-marquee{padding-right:16px;animation:sea-title-marquee 14s ease-in-out 2s infinite;will-change:transform}
 @keyframes sea-title-marquee{0%,14%{transform:translateX(0)}68%,82%{transform:translateX(var(--music-title-shift))}100%{transform:translateX(0)}}
-.nova-music-page .nova-music-current-artist{color:rgba(255,255,255,.4);font:400 13px/1 var(--coast-display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto}
 .nova-music-page .musicx-now-heading button{flex:0 0 auto;padding:0 2px;border:0;background:none;color:rgba(255,255,255,.42);font:400 12px/1 var(--coast-mono);transition:color var(--music-transition)}
 .nova-music-page .musicx-now-heading button:hover{color:rgba(255,255,255,.85)}
 .nova-music-page .sea-song-detail{margin:0 0 10px;color:var(--music-text-muted);font:400 10.5px/1.7 var(--coast-mono);letter-spacing:.04em}
@@ -230,6 +231,6 @@ body.nova-music-route .coast-lightning{display:none!important}
 /* ---- reduced motion ----------------------------------------- */
 @media(prefers-reduced-motion:reduce){
   .nova-music-page,.nova-music-page *{animation:none!important;transition:none!important}
-  .nova-music-page .nova-music-current-title.is-marquee{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+  .nova-music-page .music-marquee-inner{max-width:100%;overflow:hidden;text-overflow:ellipsis;padding-right:0}
   .nova-music-page .musicx-cursor{opacity:1}
 }

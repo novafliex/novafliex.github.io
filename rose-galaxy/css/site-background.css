@@ -10,8 +10,8 @@ html body{isolation:isolate}
 /* Keep the existing mobile crop without making another image layer. */
 @media(max-width:900px){body:has(.nova-notes-shell) #web_bg{background-position:64% center!important}}
 /* Notes and Projects share the designated technical background. */
-body.nova-notes-index-route #web_bg{display:block!important;background:#070707 url('/img/note.png') center/cover no-repeat!important}
-body.nova-projects-route #web_bg{display:block!important;background:#070707 url('/img/project.png') center/cover no-repeat!important}
+body.nova-notes-index-route #web_bg{display:block!important;background:#070707 url('/img/note.webp') center/cover no-repeat!important}
+body.nova-projects-route #web_bg{display:block!important;background:#070707 url('/img/project.webp') center/cover no-repeat!important}
 /* Articles keep a flat reading surface. */
 body.article-sea-route #web_bg{display:none!important}
 body.nova-notes-index-route,

@@ -31,12 +31,12 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../fonts/newsreader-400.ttf) format('truetype');
+  src: url(../fonts/newsreader-400.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Newsreader';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(../fonts/newsreader-500.ttf) format('truetype');
+  src: url(../fonts/newsreader-500.woff2) format('woff2');
 }

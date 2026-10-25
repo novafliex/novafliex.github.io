@@ -1,5 +1,5 @@
 /* ============================================================
-   NovaFliex home V4 — editorial archive over /img/background.png
+   NovaFliex home V4 — editorial archive over /img/background.webp
    Reference canvas: 1606 × 979. Single-screen hero, no scroll.
    Sidebar + toolbar + snow come from the shared coast shell
    (styled in coast-home.css), so every route wears one set.
@@ -30,7 +30,7 @@
    Higher specificity beats the #web_bg rule inside site-background.css. */
 html body.nova-home-active { background-color: var(--arc-bg) !important; }
 body.nova-home-active #web_bg {
-  background: #131211 url('/img/background.png') center / cover no-repeat !important;
+  background: #131211 url('/img/background.webp') center / cover no-repeat !important;
 }
 body.nova-home-active { overflow: hidden; }
 
