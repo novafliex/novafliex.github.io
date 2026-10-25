@@ -1,57 +1,57 @@
 /* Loaded on Projects only; the frame never shares this stylesheet with the work. */
-.nova-project-overview[data-project-preview]{position:relative}
-.project-preview-hint{position:absolute;right:24px;top:26px;color:#b9cddc;font:10px/1.5 var(--coast-font);opacity:0;transition:opacity .25s}
-.nova-project-overview[data-project-preview]:is(:hover,:focus,:focus-within) .project-preview-hint{opacity:1}
+/* Monochrome shell: the work itself is the visual subject, the preview stays out of its way. */
 .nova-notes-shell .project-preview-open{display:inline-flex;align-items:center;gap:12px;min-height:32px;padding:0;color:#d5e1e9;font-size:12px}
-.project-preview-dialog{position:fixed;inset:12px;width:calc(100vw - 24px);max-width:1800px;height:calc(100svh - 24px);max-height:none;margin:auto;padding:0;overflow:hidden;border:1px solid rgba(192,215,231,.28);border-radius:9px;background:#152634;color:#d3e0e9;font:13px/1.5 var(--coast-font,system-ui,sans-serif);box-sizing:border-box}
-.project-preview-dialog *, .project-preview-dialog *::before,.project-preview-dialog *::after{box-sizing:border-box}
-.project-preview-dialog[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
-.project-preview-dialog::backdrop{background:rgba(7,17,26,.78);backdrop-filter:blur(3px)}
-.project-preview-dialog button,.project-preview-dialog a,.project-preview-dialog select{color:inherit;background:transparent;font:inherit}
-.project-preview-dialog button,.project-preview-dialog select{border:1px solid rgba(189,213,230,.21);border-radius:4px;cursor:pointer}
-.project-preview-dialog button,.project-preview-dialog a{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:34px;padding:5px 9px;text-decoration:none;white-space:nowrap}
-.project-preview-dialog :is(button,a,select):hover{color:#f0f5f8;border-color:rgba(207,228,241,.48)}
-.project-preview-dialog :is(button,a,select):focus-visible{outline:2px solid #bbd5e7;outline-offset:3px}
-.project-preview-toolbar{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;padding:12px 16px;border-bottom:1px solid rgba(192,215,231,.16)}
-.project-preview-heading{min-width:190px;margin-right:auto}
-.project-preview-heading h2{margin:0;font:400 20px/1.2 var(--coast-display,Georgia,serif);letter-spacing:.01em}
-.project-preview-heading p{margin:4px 0 0;color:#9fb5c6;font-size:10px}
-.project-preview-work{display:flex;gap:8px;align-items:center;margin-top:8px;color:#bacdda;font-size:11px}
-.project-preview-work select{max-width:220px;min-height:30px;padding:3px 7px;background:#152634}
-.project-preview-work[hidden]{display:none}
-.project-preview-devices,.project-preview-tools{display:flex;align-items:center;flex-wrap:wrap;gap:7px}
-.project-preview-devices button{font-size:11px}
-.project-preview-devices button[aria-pressed=true]{background:rgba(193,216,232,.09);border-color:rgba(193,216,232,.43)}
-.project-preview-tools{font-size:11px}
-.project-preview-dialog [data-preview-close]{color:#e0ebf2;border-color:rgba(204,224,238,.36)}
-.project-preview-stage{position:relative;display:flex;min-width:0;min-height:0;overflow:auto;padding:12px;background:#101e29;overscroll-behavior:contain}
-.project-preview-viewport{flex:none;width:100%;min-width:1024px;height:100%;margin-inline:auto;background:#0c1821;border:1px solid rgba(185,211,229,.18)}
-.project-preview-viewport[data-device=tablet]{width:768px;min-width:768px}
-.project-preview-viewport[data-device=mobile]{width:390px;min-width:390px}
-.project-preview-viewport iframe{display:block;width:100%;height:100%;border:0;background:#101922;color-scheme:normal}
-.project-preview-notice{position:absolute;z-index:2;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center;background:rgba(16,30,41,.96);color:#c7d8e4}
+
+.project-preview-dialog{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;border-radius:0;overflow:hidden;background:#080808;color:#eee;font:13px/1.5 var(--coast-font,system-ui,sans-serif);box-sizing:border-box}
+.project-preview-dialog *,.project-preview-dialog *::before,.project-preview-dialog *::after{box-sizing:border-box}
+.project-preview-dialog[open]{display:grid;grid-template-rows:auto minmax(0,1fr)}
+.project-preview-dialog::backdrop{background:#000}
+.project-preview-dialog :is(button,a){display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0;color:#9a9a9a;background:transparent;border:0;border-radius:5px;text-decoration:none;white-space:nowrap;cursor:pointer;transition:color .15s ease,background-color .15s ease}
+.project-preview-dialog :is(button,a):hover{color:#eee;background:rgba(255,255,255,.06)}
+.project-preview-dialog :is(button,a):focus-visible{outline:1px solid rgba(255,255,255,.45);outline-offset:0}
+.project-preview-dialog .pp-stroke{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.project-preview-dialog [data-icon=github]{width:15px;height:15px}
+.project-preview-dialog [hidden]{display:none!important}
+
+.project-preview-toolbar{display:flex;align-items:center;gap:8px;min-height:52px;max-height:56px;padding:0 12px 0 8px;background:#101010;border-bottom:1px solid rgba(255,255,255,.08)}
+.project-preview-heading{display:flex;align-items:center;gap:4px;min-width:0;margin-right:auto}
+.project-preview-back{width:34px;height:34px;flex:none}
+.project-preview-title{min-width:0}
+.project-preview-kicker{margin:0;color:#666;font:10px/1 var(--coast-mono,ui-monospace,monospace);letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.project-preview-heading h2{margin:3px 0 0;font:500 14px/1.2 var(--coast-font,system-ui,sans-serif);color:#eee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.project-preview-status{min-width:0;max-width:34em;margin:0;color:#5c5c5c;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:right}
+.project-preview-sep{flex:none;width:1px;height:16px;background:rgba(255,255,255,.08)}
+.project-preview-devices,.project-preview-tools{display:flex;align-items:center;gap:2px;flex:none}
+.project-preview-dialog .project-preview-devices button,.project-preview-dialog .project-preview-tools :is(button,a){width:32px;height:32px}
+.project-preview-devices button[aria-pressed=true]{color:#eee;background:rgba(255,255,255,.09)}
+
+/* Stage: desktop fills the area edge to edge; devices only hint a width, never a bezel. */
+.project-preview-stage{position:relative;display:flex;justify-content:center;min-width:0;min-height:0;overflow:hidden;background:#080808}
+.project-preview-viewport{flex:none;width:100%;height:100%;background:#080808;transition:width .2s ease}
+.project-preview-viewport[data-device=tablet]{width:min(820px,100%);border-inline:1px solid rgba(255,255,255,.07)}
+.project-preview-viewport[data-device=mobile]{width:min(390px,100%);border-inline:1px solid rgba(255,255,255,.07)}
+.project-preview-viewport iframe{display:block;width:100%;height:100%;border:0;background:#080808;color-scheme:normal}
+
+/* Minimal loading / failure note: a small pulse, no spinners, no chrome. */
+.project-preview-notice{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;padding:32px;text-align:center;background:#080808;color:#eee}
 .project-preview-notice[hidden]{display:none}
-.project-preview-notice h3{max-width:38em;margin:0 0 10px;font-size:17px;font-weight:400}
-.project-preview-notice p{max-width:48em;margin:0;color:#a8bfce;font-size:12px;line-height:1.8}
-.project-preview-notice>div{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:22px}
-.project-preview-notice>div[hidden],.project-preview-dialog [hidden]{display:none!important}
-.project-preview-status{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:36px;padding:5px 14px;border-top:1px solid rgba(192,215,231,.14);color:#9db4c5;font-size:10px}
-.project-preview-status button{flex-shrink:0;min-height:28px;padding:3px 8px;border-color:transparent;font-size:10px}
-.project-preview-dialog.is-expanded,.project-preview-dialog:fullscreen{inset:0;width:100vw;max-width:none;height:100svh;margin:0;border-radius:0}
-@media(max-width:1000px){.project-preview-toolbar{gap:10px 16px}.project-preview-heading{flex:1}.project-preview-tools{width:100%}}
-@media(max-width:600px){
- .project-preview-hint{position:static;order:-1;align-self:flex-end;opacity:1;margin-bottom:10px}
- .project-preview-dialog{inset:0;width:100vw;height:100svh;max-width:none;border-radius:0}
- .project-preview-toolbar{padding:12px;gap:10px}
- .project-preview-heading{flex-basis:100%;padding-right:72px}
- .project-preview-heading h2{font-size:18px}
- .project-preview-devices{width:100%;gap:8px}
- .project-preview-tools{gap:6px}
- .project-preview-dialog button,.project-preview-dialog a{min-height:36px}
- .project-preview-toolbar [data-preview-close]{position:absolute;right:12px;top:12px}
- .project-preview-stage{padding:8px}
- .project-preview-status{align-items:flex-start;gap:6px;padding:6px 10px;line-height:1.7}
- .project-preview-open{min-height:44px!important}
+.project-preview-kicker-line{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 14px;color:#666;font:10px/1 var(--coast-mono,ui-monospace,monospace);letter-spacing:.18em}
+.project-preview-dot{width:4px;height:4px;border-radius:50%;background:currentColor;animation:project-preview-pulse 1.2s ease-in-out infinite}
+.project-preview-notice:not([data-state=loading]) .project-preview-dot{animation:none}
+.project-preview-notice h3{max-width:36em;margin:0;font:400 18px/1.5 var(--coast-font,system-ui,sans-serif);color:#eee}
+.project-preview-notice p[data-preview-detail]{max-width:46em;margin:10px 0 0;color:#777;font-size:12px;line-height:1.8}
+.project-preview-recovery{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:26px}
+.project-preview-recovery :is(button,a){height:32px;padding:0 16px;font-size:12px;color:#ccc;border:1px solid rgba(255,255,255,.16);border-radius:4px}
+.project-preview-recovery :is(button,a):hover{color:#eee;border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.06)}
+
+.project-preview-dialog.is-expanded,.project-preview-dialog:fullscreen{inset:0;width:100%;height:100%}
+
+@keyframes project-preview-pulse{0%,100%{opacity:.15}50%{opacity:.85}}
+@media(max-width:720px){
+ .project-preview-toolbar{gap:6px;padding:0 8px 0 4px}
+ .project-preview-status,.project-preview-dialog [data-preview-fullscreen]{display:none}
+ .project-preview-dialog .project-preview-devices button,.project-preview-dialog .project-preview-tools :is(button,a){width:30px;height:30px}
+ .project-preview-kicker{max-width:52vw}
 }
-@media(hover:none){.project-preview-hint{opacity:1}}
-@media(prefers-reduced-motion:reduce){.project-preview-hint,.nova-project-overview[data-project-preview]{transition:none}}
+@media(hover:none){.project-preview-open{min-height:44px}}
+@media(prefers-reduced-motion:reduce){.project-preview-viewport{transition:none}.project-preview-dot{animation:none}.project-preview-dialog :is(button,a){transition:none}}
