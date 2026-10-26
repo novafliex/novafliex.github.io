@@ -69,19 +69,6 @@
     </author>
     <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
     <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <id>https://novafliex.github.io/programming-terms/day-6/</id>
-    <link href="https://novafliex.github.io/programming-terms/day-6/"/>
-    <published>2026-08-22T01:00:00.000Z</published>
-    <summary>Day 6｜数据库字段与唯一性：通过正式解释、通俗理解和项目示例复习模式、字段类型、空值语义、唯一索引与复合键。</summary>
-    <title>编程术语 · Day 6｜数据库字段与唯一性</title>
-    <updated>2026-10-05T16:00:00.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
     <id>https://novafliex.github.io/programming-terms/day-4/</id>
     <link href="https://novafliex.github.io/programming-terms/day-4/"/>
     <published>2026-08-22T01:00:00.000Z</published>
@@ -95,11 +82,11 @@
     </author>
     <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
     <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <id>https://novafliex.github.io/programming-terms/day-8/</id>
-    <link href="https://novafliex.github.io/programming-terms/day-8/"/>
+    <id>https://novafliex.github.io/programming-terms/day-6/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-6/"/>
     <published>2026-08-22T01:00:00.000Z</published>
-    <summary>Day 8｜数据库事务与并发控制：通过正式解释、通俗理解和项目示例复习Transaction（事务）、ACID（事务的四个基本特性）、Isolation Level（隔离级别）、Lock（锁）、MVCC（多版本并发控制）。</summary>
-    <title>编程术语 · Day 8｜数据库事务与并发控制</title>
+    <summary>Day 6｜数据库字段与唯一性：通过正式解释、通俗理解和项目示例复习模式、字段类型、空值语义、唯一索引与复合键。</summary>
+    <title>编程术语 · Day 6｜数据库字段与唯一性</title>
     <updated>2026-10-05T16:00:00.000Z</updated>
   </entry>
   <entry>
@@ -113,6 +100,19 @@
     <published>2026-08-22T01:00:00.000Z</published>
     <summary>Day 7｜数据库索引与查询计划：通过正式解释、通俗理解和项目示例复习Index（索引）、B+ Tree（B+ 树）、Full Table Scan（全表扫描）、Query Plan（查询计划）、Covering Index（覆盖索引）。</summary>
     <title>编程术语 · Day 7｜数据库索引与查询计划</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/day-8/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-8/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>Day 8｜数据库事务与并发控制：通过正式解释、通俗理解和项目示例复习Transaction（事务）、ACID（事务的四个基本特性）、Isolation Level（隔离级别）、Lock（锁）、MVCC（多版本并发控制）。</summary>
+    <title>编程术语 · Day 8｜数据库事务与并发控制</title>
     <updated>2026-10-05T16:00:00.000Z</updated>
   </entry>
   <entry>
