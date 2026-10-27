@@ -56,11 +56,11 @@
     </author>
     <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
     <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <id>https://novafliex.github.io/programming-terms/day-5/</id>
-    <link href="https://novafliex.github.io/programming-terms/day-5/"/>
+    <id>https://novafliex.github.io/programming-terms/day-4/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-4/"/>
     <published>2026-08-22T01:00:00.000Z</published>
-    <summary>Day 5｜数据库基础结构：通过正式解释、通俗理解和项目示例复习Table（表）、Row（行）、Primary Key（主键）、Foreign Key（外键）、Constraint（约束）。</summary>
-    <title>编程术语 · Day 5｜数据库基础结构</title>
+    <summary>Day 4｜安全、连接与实时通信：通过正式解释、通俗理解和项目示例复习HTTPS（超文本传输安全协议）、TLS（传输层安全协议）、Keep-Alive（持久连接）、CORS（跨源资源共享）、WebSocket（全双工通信协议）。</summary>
+    <title>编程术语 · Day 4｜安全、连接与实时通信</title>
     <updated>2026-10-05T16:00:00.000Z</updated>
   </entry>
   <entry>
@@ -69,11 +69,11 @@
     </author>
     <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
     <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <id>https://novafliex.github.io/programming-terms/day-4/</id>
-    <link href="https://novafliex.github.io/programming-terms/day-4/"/>
+    <id>https://novafliex.github.io/programming-terms/day-5/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-5/"/>
     <published>2026-08-22T01:00:00.000Z</published>
-    <summary>Day 4｜安全、连接与实时通信：通过正式解释、通俗理解和项目示例复习HTTPS（超文本传输安全协议）、TLS（传输层安全协议）、Keep-Alive（持久连接）、CORS（跨源资源共享）、WebSocket（全双工通信协议）。</summary>
-    <title>编程术语 · Day 4｜安全、连接与实时通信</title>
+    <summary>Day 5｜数据库基础结构：通过正式解释、通俗理解和项目示例复习Table（表）、Row（行）、Primary Key（主键）、Foreign Key（外键）、Constraint（约束）。</summary>
+    <title>编程术语 · Day 5｜数据库基础结构</title>
     <updated>2026-10-05T16:00:00.000Z</updated>
   </entry>
   <entry>
