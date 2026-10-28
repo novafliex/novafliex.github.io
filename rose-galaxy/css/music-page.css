@@ -102,7 +102,7 @@ body.nova-music-route .coast-lightning{display:none!important}
 
 /* ---- now playing + controls -------------------------------- */
 /* An instrument console in the starfield: barely-there tint, one hairline, stars show through. */
-.nova-music-page .sea-player{position:absolute;left:53%;top:71.2vh;width:19.5%;z-index:3;box-sizing:border-box;padding:14px 16px 12px;border:0;border-top:1px solid rgba(255,255,255,.14);border-radius:0;background:rgba(8,10,14,.2);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);box-shadow:none}
+.nova-music-page .sea-player{position:absolute;left:53%;bottom:max(24px,env(safe-area-inset-bottom));max-height:calc(100% - 100px);overflow-y:auto;width:19.5%;z-index:3;box-sizing:border-box;padding:14px 16px 12px;border:0;border-top:1px solid rgba(255,255,255,.14);border-radius:0;background:rgba(8,10,14,.2);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);box-shadow:none}
 .nova-music-page .musicx-now-label{margin:0 0 14px;color:rgba(255,255,255,.5);font:400 11px/1 var(--coast-mono);letter-spacing:.16em}
 .nova-music-page .musicx-now-heading{display:flex;align-items:baseline;gap:12px;min-width:0;margin-bottom:18px}
 .nova-music-page .nova-music-current-title{color:rgba(255,255,255,.96);font:500 26px/1.2 var(--coast-display);white-space:nowrap;overflow:hidden}
@@ -198,7 +198,7 @@ body.nova-music-route .coast-lightning{display:none!important}
   .nova-music-page .sea-lyrics{position:relative;left:auto;top:auto;width:100%;height:46vh;margin:7vh 0 5vh;order:1}
   .nova-music-page .sea-lyrics-lines p{font-size:16px}
   .nova-music-page .sea-lyrics-lines p.is-active{font-size:23px}
-  .nova-music-page .sea-player{position:relative;left:auto;top:auto;width:100%;box-sizing:border-box;padding:14px 16px 12px;order:2}
+  .nova-music-page .sea-player{position:relative;left:auto;top:auto;bottom:auto;max-height:none;overflow:visible;width:100%;box-sizing:border-box;padding:14px 16px 12px;order:2}
   .nova-music-page .nova-music-controls .nova-music-previous,.nova-music-page .nova-music-controls .nova-music-next{width:36px;height:36px}
   .nova-music-page .nova-music-current-title{font-size:22px}
   .nova-music-page .musicx-playlist-head{cursor:pointer}
@@ -217,7 +217,7 @@ body.nova-music-route .coast-lightning{display:none!important}
 
 /* ---- short viewports: keep the whole player on screen -------- */
 @media(max-height:780px) and (min-width:901px){
-  .nova-music-page .sea-player{padding:12px 18px 10px;top:71.2vh}
+  .nova-music-page .sea-player{padding:12px 18px 10px}
   .nova-music-page .musicx-now-label{margin-bottom:8px}
   .nova-music-page .musicx-now-heading{margin-bottom:10px}
   .nova-music-page .nova-music-current-title{font-size:23px}
