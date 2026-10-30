@@ -48,7 +48,6 @@
       if (signature === rendered) return
       rendered = signature
       if (!state.ready) { rows.innerHTML = state.failed || state.configured ? '' : loadingMarkup; return }
-      if (tab === 'notes') { rows.innerHTML = '<p class="sea-playlist-empty">暂无音乐随笔</p>'; return }
       const items = songs.map((song, index) => ({ song, index })).filter(({song}) => tab !== 'favorites' || favorites.has(song.id))
       rows.innerHTML = items.length ? items.map(({ song, index }) => `<div class="sea-track ${index === state.index ? 'is-current' : ''}"><button data-song-index="${index}" aria-label="播放 ${escape(song.name)}" aria-current="${index === state.index}"><span class="sea-track-number">${pad2(index + 1)}</span><span class="sea-track-main"><span class="sea-track-name">${escape(song.name)}</span><span class="sea-track-artist">${escape(song.artist)}</span></span><span class="sea-track-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button><button class="sea-track-more" data-favorite-id="${escape(song.id)}" aria-label="${favorites.has(song.id) ? '取消收藏' : '收藏'} ${escape(song.name)}">${favorites.has(song.id) ? '♥' : '···'}</button></div>`).join('') : '<p class="sea-playlist-empty">' + (tab === 'favorites' ? '还没有收藏的歌曲' : '暂无可播放歌曲') + '</p>'
     }
@@ -155,7 +154,21 @@
     on($('[data-music-favorite]'), 'click', () => toggleFavorite(api.snapshot().song?.id))
     on($('[data-music-more]'), 'click', event => { const detail = $('.sea-song-detail'); detail.hidden = !detail.hidden; event.currentTarget.setAttribute('aria-expanded', !detail.hidden); const s=api.snapshot().song; detail.textContent = s ? [s.name,s.artist,s.album,'本地音源'].filter(Boolean).join(' · ') : '暂无歌曲信息' })
     on(rows, 'click', event => { const button = event.target.closest('[data-song-index],[data-favorite-id]'); if (!button) return; if (button.dataset.favoriteId) toggleFavorite(button.dataset.favoriteId); else api.select(Number(button.dataset.songIndex)) })
-    root.querySelectorAll('[data-music-tab]').forEach(button => on(button,'click',() => { tab = button.dataset.musicTab; root.querySelectorAll('[data-music-tab]').forEach(b=>b.setAttribute('aria-selected',b===button)); render() }))
+    const tabs = [...root.querySelectorAll('[data-music-tab]')]
+    const activateTab = button => {
+      tab = button.dataset.musicTab
+      tabs.forEach(b => { b.setAttribute('aria-selected', String(b === button)); b.tabIndex = b === button ? 0 : -1 })
+      rows.setAttribute('aria-labelledby', button.id)
+      render()
+    }
+    tabs.forEach((button, index) => {
+      on(button, 'click', () => activateTab(button))
+      on(button, 'keydown', event => {
+        const target = { ArrowRight: (index + 1) % tabs.length, ArrowLeft: (index + tabs.length - 1) % tabs.length, Home: 0, End: tabs.length - 1 }[event.key]
+        if (target === undefined) return
+        event.preventDefault(); activateTab(tabs[target]); tabs[target].focus()
+      })
+    })
     on($('.nova-music-retry'), 'click', () => api.retry())
     on(lyrics, 'click', event => {
       if (event.target.closest('[data-lyrics-retry]')) { lyricSong = ''; loadLyrics(api.snapshot().song); return }
@@ -168,8 +181,15 @@
     on(lyricBox, 'wheel', pauseFollow, { passive: true })
     on(lyricBox, 'touchmove', pauseFollow, { passive: true })
     on(lyricBox, 'pointerdown', event => { if (event.pointerType === 'mouse' && event.button === 0) pauseFollow() })
-    const playlistHead = $('.musicx-playlist-head')
-    if (playlistHead) on(playlistHead, 'click', () => { if (matchMedia('(max-width: 900px)').matches) { const list = $('.sea-playlist'); const open = list.classList.toggle('is-open'); playlistHead.setAttribute('aria-expanded', String(open)) } })
+    const playlistToggle = $('[data-playlist-toggle]'), mobileQuery = matchMedia('(max-width: 900px)')
+    const syncPlaylist = () => {
+      const mobile = mobileQuery.matches
+      playlistToggle.hidden = !mobile
+      playlistToggle.setAttribute('aria-expanded', String(!mobile || $('.sea-playlist').classList.contains('is-open')))
+    }
+    on(playlistToggle, 'click', () => { if (mobileQuery.matches) { $('.sea-playlist').classList.toggle('is-open'); syncPlaylist() } })
+    if (mobileQuery.addEventListener) on(mobileQuery, 'change', syncPlaylist)
+    syncPlaylist()
     on(document, 'fliex:music', render)
     // Font swaps and viewport changes move the overflow target; re-measure whenever a heading box resizes.
     let headingObserver = null

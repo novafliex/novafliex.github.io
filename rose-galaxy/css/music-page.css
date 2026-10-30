@@ -67,6 +67,9 @@ body.nova-music-route .coast-lightning{display:none!important}
 .nova-music-page .sea-playlist::before{content:"";position:absolute;inset:-3vh -14px -3vh -4px;background:radial-gradient(ellipse 78% 60% at 50% 32%,rgba(6,6,6,.52),rgba(6,6,6,.22) 55%,rgba(6,6,6,0) 82%);z-index:0;pointer-events:none}
 .nova-music-page .sea-playlist>*{position:relative;z-index:1}
 .nova-music-page .musicx-playlist-head{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:8px}
+.nova-music-page [data-playlist-toggle]{min-width:36px;min-height:36px;margin-left:10px;padding:0;border:0;background:none;color:rgba(255,255,255,.65);font:18px/1 var(--coast-mono);cursor:pointer}
+.nova-music-page [data-playlist-toggle][hidden]{display:none}
+.nova-music-page .sea-playlist.is-open [data-playlist-toggle] span{display:inline-block;transform:rotate(45deg)}
 .nova-music-page .musicx-playlist-head h2{margin:0;color:rgba(255,255,255,.88);font:400 16px/1 var(--coast-display);letter-spacing:.06em}
 .nova-music-page .musicx-playlist-count{color:var(--music-text-muted);font:400 11px/1 var(--coast-mono);letter-spacing:.1em;font-style:normal}
 .nova-music-page .musicx-playlist-count b{font-weight:400;color:rgba(255,255,255,.62)}
@@ -201,13 +204,11 @@ body.nova-music-route .coast-lightning{display:none!important}
   .nova-music-page .sea-player{position:relative;left:auto;top:auto;bottom:auto;max-height:none;overflow:visible;width:100%;box-sizing:border-box;padding:14px 16px 12px;order:2}
   .nova-music-page .nova-music-controls .nova-music-previous,.nova-music-page .nova-music-controls .nova-music-next{width:36px;height:36px}
   .nova-music-page .nova-music-current-title{font-size:22px}
-  .nova-music-page .musicx-playlist-head{cursor:pointer}
+  .nova-music-page .musicx-playlist-head h2{margin-right:auto}
   .nova-music-page .sea-playlist{position:relative;left:auto;top:auto;width:100%;height:auto;margin-top:34px;order:3}
   .nova-music-page .sea-playlist .sea-playlist-tabs,.nova-music-page .sea-playlist .sea-playlist-rows{display:none}
   .nova-music-page .sea-playlist.is-open .sea-playlist-tabs,.nova-music-page .sea-playlist.is-open .sea-playlist-rows{display:flex}
   .nova-music-page .sea-playlist.is-open .sea-playlist-rows{display:block;max-height:46vh}
-  .nova-music-page .musicx-playlist-head::after{content:"+";color:rgba(255,255,255,.4);font:400 15px/1 var(--coast-mono);margin-left:8px}
-  .nova-music-page .sea-playlist.is-open .musicx-playlist-head::after{content:"–"}
   .nova-music-page .musicx-archive-entry{position:relative;left:auto;top:auto;width:auto;max-width:100%;margin-top:38px;order:4}
 }
 @media(max-width:560px){

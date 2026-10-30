@@ -205,15 +205,15 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
   isToc: false,
   pageType: 'page'
 }</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261024-unified-v11"><link rel="stylesheet" href="/css/custom.css?v=20261024-unified-v11"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/archive-home.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261024-unified-shell-v21"><meta name="description" content="收藏适合夜晚聆听的旋律、歌单札记与个人音乐记忆。"><meta property="og:description" content="收藏适合夜晚聆听的旋律、歌单札记与个人音乐记忆。"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://novafliex.github.io/music/#webpage","name":"Music","url":"https://novafliex.github.io/music/","description":"收藏适合夜晚聆听的旋律、歌单札记与个人音乐记忆。","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="nova-music-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
+<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/archive-home.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261030-music-keyboard-v24"><meta name="description" content="收藏适合夜晚聆听的旋律、歌单札记与个人音乐记忆。"><meta property="og:description" content="收藏适合夜晚聆听的旋律、歌单札记与个人音乐记忆。"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://novafliex.github.io/music/#webpage","name":"Music","url":"https://novafliex.github.io/music/","description":"收藏适合夜晚聆听的旋律、歌单札记与个人音乐记忆。","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="nova-music-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -297,9 +297,9 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
     <p class="nova-music-count"></p><button class="nova-music-retry" hidden="">重试</button>
   </section>
   <section class="sea-playlist" aria-label="播放列表">
-    <header class="musicx-playlist-head"><h2>播放列表</h2><span class="musicx-playlist-count"><b data-musicx-list-index="">--</b> / <i data-musicx-list-total="">--</i></span></header>
-    <div class="sea-playlist-tabs" role="tablist"><button role="tab" aria-selected="true" data-music-tab="all">全部</button><button role="tab" aria-selected="false" data-music-tab="notes">音乐随笔</button><button role="tab" aria-selected="false" data-music-tab="favorites">我喜欢的</button></div>
-    <div class="sea-playlist-rows" role="region" aria-label="歌曲列表" tabindex="0"></div>
+    <header class="musicx-playlist-head"><h2>播放列表</h2><button type="button" data-playlist-toggle="" aria-label="展开或收起播放列表" aria-expanded="false" aria-controls="music-playlist-tabs music-playlist-panel" hidden=""><span aria-hidden="true">＋</span></button><span class="musicx-playlist-count"><b data-musicx-list-index="">--</b> / <i data-musicx-list-total="">--</i></span></header>
+    <div class="sea-playlist-tabs" id="music-playlist-tabs" role="tablist" aria-label="歌曲筛选"><button role="tab" id="music-tab-all" aria-controls="music-playlist-panel" aria-selected="true" tabindex="0" data-music-tab="all">全部</button><button role="tab" id="music-tab-favorites" aria-controls="music-playlist-panel" aria-selected="false" tabindex="-1" data-music-tab="favorites">我喜欢的</button></div>
+    <div class="sea-playlist-rows" id="music-playlist-panel" role="tabpanel" aria-labelledby="music-tab-all" tabindex="0"></div>
   </section>
   <button type="button" class="musicx-archive-entry" data-listening-entry="" aria-expanded="false" aria-label="打开听歌档案 Listening Archive">
     <span class="musicx-archive-film" aria-hidden="true"><img class="musicx-archive-photo" src="/img/music-archive-film.jpg" width="800" height="533" alt="" loading="lazy" decoding="async"></span>
@@ -307,7 +307,7 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
     <span class="musicx-archive-arrow" aria-hidden="true">→</span>
   </button>
 </section>
-</main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="/rose-galaxy/vendor/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
+</main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=20261030-theme-compat-v1"></script><script defer="" src="/rose-galaxy/vendor/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
   const parseViewBox = viewBox => {
     if (!viewBox) return null
     const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
@@ -674,11 +674,11 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
 
 
 
-<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261024-unified-shell-v21"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/nova-home.js?v=20261024-unified-shell-v21"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/music-page.js?v=20261024-unified-shell-v21"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/listening-stats.js?v=20261024-unified-shell-v21"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/listening-ui.js?v=20261024-unified-shell-v21"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261024-unified-v11"></script><script src="/rose-galaxy/vendor/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261030-music-keyboard-v24"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/nova-home.js?v=20261030-music-keyboard-v24"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/music-page.js?v=20261030-music-keyboard-v24"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/listening-stats.js?v=20261030-music-keyboard-v24"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/listening-ui.js?v=20261030-music-keyboard-v24"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261024-unified-v11"></script><script src="/rose-galaxy/vendor/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({

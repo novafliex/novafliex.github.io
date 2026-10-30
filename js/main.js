@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Fliex theme shell compatibility
+  if (document.querySelector('.archive-home,.nova-notes-shell,.coast-music-shell,.nova-about-shell,.article-reading-shell')) return
   let headerContentWidth, $nav
   let mobileSidebarOpen = false
 
@@ -7,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let scrollPercentElement = null
 
   const adjustMenu = init => {
+    if (!document.getElementById('nav')) return
     let hideMenuIndex = false
 
     if (init) {
@@ -448,6 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * 滾動處理
    */
   const scrollFn = () => {
+    if (!document.getElementById('rightside')) return
     const $rightside = document.getElementById('rightside')
     let initTop = 0
     const $header = document.getElementById('page-header')
@@ -735,7 +739,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  document.getElementById('rightside').addEventListener('click', e => {
+  document.getElementById('rightside')?.addEventListener('click', e => {
     const $target = e.target.closest('[id]')
     if ($target && rightSideFn[$target.id]) {
       rightSideFn[$target.id](e.currentTarget, $target)
@@ -976,6 +980,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const refreshFn = () => {
+    if (document.querySelector('.archive-home,.nova-notes-shell,.coast-music-shell,.nova-about-shell,.article-reading-shell')) return
     initAdjust()
     goUpElement = document.getElementById('go-up')
     scrollPercentElement = goUpElement?.querySelector('.scroll-percent')

@@ -17,76 +17,11 @@
     </author>
     <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
     <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <id>https://novafliex.github.io/programming-terms/day-2/</id>
-    <link href="https://novafliex.github.io/programming-terms/day-2/"/>
-    <published>2026-08-22T01:00:00.000Z</published>
-    <summary>Day 2｜HTTP 请求结构：通过正式解释、通俗理解和项目示例复习URL（统一资源定位符）、HTTP Method（HTTP 请求方法）、HTTP Header（HTTP 头字段）、HTTP Body（HTTP 消息体）、HTTP Status Code（HTTP 状态码）。</summary>
-    <title>编程术语 · Day 2｜HTTP 请求结构</title>
-    <updated>2026-10-05T16:00:00.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <id>https://novafliex.github.io/programming-terms/day-3/</id>
-    <link href="https://novafliex.github.io/programming-terms/day-3/"/>
-    <published>2026-08-22T01:00:00.000Z</published>
-    <summary>Day 3｜请求参数与身份状态：通过正式解释、通俗理解和项目示例复习Query Parameter（查询参数）、Path Parameter（路径参数）、Cookie、Session（会话）、JWT（JSON Web Token）。</summary>
-    <title>编程术语 · Day 3｜请求参数与身份状态</title>
-    <updated>2026-10-05T16:00:00.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
     <id>https://novafliex.github.io/programming-terms/day-1/</id>
     <link href="https://novafliex.github.io/programming-terms/day-1/"/>
     <published>2026-08-22T01:00:00.000Z</published>
     <summary>Day 1｜HTTP 与网络基础：通过正式解释、通俗理解和项目示例复习IP Address（IP 地址）、Port（端口）、DNS（域名系统）、TCP（传输控制协议）、HTTP（超文本传输协议）。</summary>
     <title>编程术语 · Day 1｜HTTP 与网络基础</title>
-    <updated>2026-10-05T16:00:00.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <id>https://novafliex.github.io/programming-terms/day-6/</id>
-    <link href="https://novafliex.github.io/programming-terms/day-6/"/>
-    <published>2026-08-22T01:00:00.000Z</published>
-    <summary>Day 6｜数据库字段与唯一性：通过正式解释、通俗理解和项目示例复习模式、字段类型、空值语义、唯一索引与复合键。</summary>
-    <title>编程术语 · Day 6｜数据库字段与唯一性</title>
-    <updated>2026-10-05T16:00:00.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <id>https://novafliex.github.io/programming-terms/</id>
-    <link href="https://novafliex.github.io/programming-terms/"/>
-    <published>2026-08-22T01:00:00.000Z</published>
-    <summary>编程术语知识总览：按网络、HTTP、身份认证、数据库与并发组织 8 个 Day、40 个术语，提供独立短篇、学习路径与复习入口。</summary>
-    <title>编程术语</title>
-    <updated>2026-10-05T16:00:00.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Fliex</name>
-    </author>
-    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
-    <id>https://novafliex.github.io/programming-terms/day-7/</id>
-    <link href="https://novafliex.github.io/programming-terms/day-7/"/>
-    <published>2026-08-22T01:00:00.000Z</published>
-    <summary>Day 7｜数据库索引与查询计划：通过正式解释、通俗理解和项目示例复习Index（索引）、B+ Tree（B+ 树）、Full Table Scan（全表扫描）、Query Plan（查询计划）、Covering Index（覆盖索引）。</summary>
-    <title>编程术语 · Day 7｜数据库索引与查询计划</title>
     <updated>2026-10-05T16:00:00.000Z</updated>
   </entry>
   <entry>
@@ -108,6 +43,19 @@
     </author>
     <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
     <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/day-3/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-3/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>Day 3｜请求参数与身份状态：通过正式解释、通俗理解和项目示例复习Query Parameter（查询参数）、Path Parameter（路径参数）、Cookie、Session（会话）、JWT（JSON Web Token）。</summary>
+    <title>编程术语 · Day 3｜请求参数与身份状态</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
     <id>https://novafliex.github.io/programming-terms/day-5/</id>
     <link href="https://novafliex.github.io/programming-terms/day-5/"/>
     <published>2026-08-22T01:00:00.000Z</published>
@@ -121,11 +69,63 @@
     </author>
     <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
     <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/day-2/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-2/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>Day 2｜HTTP 请求结构：通过正式解释、通俗理解和项目示例复习URL（统一资源定位符）、HTTP Method（HTTP 请求方法）、HTTP Header（HTTP 头字段）、HTTP Body（HTTP 消息体）、HTTP Status Code（HTTP 状态码）。</summary>
+    <title>编程术语 · Day 2｜HTTP 请求结构</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/day-6/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-6/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>Day 6｜数据库字段与唯一性：通过正式解释、通俗理解和项目示例复习模式、字段类型、空值语义、唯一索引与复合键。</summary>
+    <title>编程术语 · Day 6｜数据库字段与唯一性</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/day-7/</id>
+    <link href="https://novafliex.github.io/programming-terms/day-7/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>Day 7｜数据库索引与查询计划：通过正式解释、通俗理解和项目示例复习Index（索引）、B+ Tree（B+ 树）、Full Table Scan（全表扫描）、Query Plan（查询计划）、Covering Index（覆盖索引）。</summary>
+    <title>编程术语 · Day 7｜数据库索引与查询计划</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
     <id>https://novafliex.github.io/programming-terms/day-8/</id>
     <link href="https://novafliex.github.io/programming-terms/day-8/"/>
     <published>2026-08-22T01:00:00.000Z</published>
     <summary>Day 8｜数据库事务与并发控制：通过正式解释、通俗理解和项目示例复习Transaction（事务）、ACID（事务的四个基本特性）、Isolation Level（隔离级别）、Lock（锁）、MVCC（多版本并发控制）。</summary>
     <title>编程术语 · Day 8｜数据库事务与并发控制</title>
+    <updated>2026-10-05T16:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Fliex</name>
+    </author>
+    <category term="编程术语" scheme="https://novafliex.github.io/categories/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <category term="编程术语" scheme="https://novafliex.github.io/tags/%E7%BC%96%E7%A8%8B%E6%9C%AF%E8%AF%AD/"/>
+    <id>https://novafliex.github.io/programming-terms/</id>
+    <link href="https://novafliex.github.io/programming-terms/"/>
+    <published>2026-08-22T01:00:00.000Z</published>
+    <summary>编程术语知识总览：按网络、HTTP、身份认证、数据库与并发组织 8 个 Day、40 个术语，提供独立短篇、学习路径与复习入口。</summary>
+    <title>编程术语</title>
     <updated>2026-10-05T16:00:00.000Z</updated>
   </entry>
   <entry>

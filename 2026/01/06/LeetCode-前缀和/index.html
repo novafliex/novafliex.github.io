@@ -208,15 +208,15 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
   isToc: true,
   pageType: 'post'
 }</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261024-unified-v11"><link rel="stylesheet" href="/css/custom.css?v=20261024-unified-v11"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/archive-home.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261024-unified-shell-v21">
-<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261024-unified-shell-v21"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"LeetCode-前缀和","url":"https://novafliex.github.io/2026/01/06/LeetCode-%E5%89%8D%E7%BC%80%E5%92%8C/","image":"https://novafliex.github.io/img/leetcode.webp","datePublished":"2026-01-06T08:24:33.000Z","dateModified":"2026-01-06T08:24:33.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"通过预处理前缀累计值，把连续区间求和转化为两次前缀值相减。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/2026/01/06/LeetCode-%E5%89%8D%E7%BC%80%E5%92%8C/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
+<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/archive-home.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261030-music-keyboard-v24">
+<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261030-music-keyboard-v24"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"LeetCode-前缀和","url":"https://novafliex.github.io/2026/01/06/LeetCode-%E5%89%8D%E7%BC%80%E5%92%8C/","image":"https://novafliex.github.io/img/leetcode.webp","datePublished":"2026-01-06T08:24:33.000Z","dateModified":"2026-01-06T08:24:33.000Z","author":[{"@type":"Person","name":"Fliex","url":"https://novafliex.github.io"}],"description":"通过预处理前缀累计值，把连续区间求和转化为两次前缀值相减。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://novafliex.github.io/2026/01/06/LeetCode-%E5%89%8D%E7%BC%80%E5%92%8C/"},"isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="article-sea-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -367,7 +367,7 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
 </article>
       <footer class="article-epilogue"><p>感谢你的阅读。<br>— Fliex</p><div class="article-end-tags"><span class="article-tag">数组</span></div></footer>
       <section class="article-comments" id="article-discussion"><header><span>DISCUSSION</span><h2>留下点什么</h2><p>如果这篇文章对你有帮助，或者有不同的想法，欢迎在下面留言交流。</p></header><div id="post-comment"><div class="comment-head"></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></section>
-    </section></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><script defer="" src="/rose-galaxy/vendor/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
+    </section></main></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=20261030-theme-compat-v1"></script><script defer="" src="/rose-galaxy/vendor/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
   const parseViewBox = viewBox => {
     if (!viewBox) return null
     const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
@@ -788,8 +788,8 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
 
 
 
-<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261024-unified-shell-v21"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261024-unified-shell-v21"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261024-unified-v11"></script><script src="/rose-galaxy/vendor/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261030-music-keyboard-v24"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/article-reading.js?v=20261030-music-keyboard-v24"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261024-unified-v11"></script><script src="/rose-galaxy/vendor/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({
