@@ -1,7 +1,7 @@
 /* Listening Archive — A PERSONAL RECORD OF SOUND.
    1:1 against the 1672×941 reference mockup; shares Music V7 monochrome language. */
 
-.listening-archive{position:absolute;left:17%;right:4%;top:5%;bottom:6%;z-index:8;display:flex;flex-direction:column;box-sizing:border-box;padding:34px 32px 14px;overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:0;background:rgba(7,7,7,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:rgba(255,255,255,.58);scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
+.listening-archive{position:absolute;left:17%;right:4%;top:5%;bottom:6%;z-index:8;display:flex;flex-direction:column;box-sizing:border-box;padding:34px 32px 14px;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;border:1px solid rgba(255,255,255,.16);border-radius:0;background:rgba(7,7,7,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:rgba(255,255,255,.58);scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
 .listening-archive[hidden]{display:none!important}
 .listening-archive :is(h2,h3,h4,p){margin:0}
 .listening-archive button{border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;padding:0}
@@ -23,7 +23,7 @@
 .archive-close:hover{color:rgba(255,255,255,.92);background:rgba(255,255,255,.06)}
 
 /* ---- content column ---------------------------------------- */
-.archive-content{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.archive-content{flex:0 0 auto;min-height:0;display:flex;flex-direction:column}
 
 /* ---- stats -------------------------------------------------- */
 .archive-stats{flex:0 0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));min-height:116px;box-sizing:border-box;border:1px solid rgba(255,255,255,.18)}
@@ -125,7 +125,9 @@
 /* legacy fallback entry (only rendered when the template lacks the entry) */
 .nova-music-page .listening-entry{position:absolute;left:83.5%;bottom:6vh;z-index:3;padding:0;border:0;background:none;color:rgba(255,255,255,.5);font:400 11px/1.6 var(--coast-mono);letter-spacing:.14em;text-align:left;cursor:pointer}
 
-/* ---- short viewports: let the whole panel scroll ------------- */
+/* Keep the full content height so the archive can scroll at every viewport size. */
+
+/* ---- short viewports: expand nested lists --------------------- */
 @media(max-height:760px) and (min-width:901px){
   .listening-archive{overflow-y:auto;overscroll-behavior:contain}
   .archive-table-body{overflow:visible;min-height:0}
