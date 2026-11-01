@@ -14,6 +14,33 @@
   let volume = Number.isFinite(settings.volume) ? Math.max(0, Math.min(1, settings.volume)) : .6
   const saveSettings = () => write('fliex-music-settings-v1', { mode, volume })
   const emit = () => document.dispatchEvent(new CustomEvent('fliex:music'))
+  // The deadline belongs to the shared player, so navigation and track changes keep it.
+  let sleepEndsAt = 0, sleepInterval = 0
+  try { sleepEndsAt = Number(sessionStorage.getItem('fliex-music-sleep-v1')) || 0 } catch (_) {}
+  if (!Number.isFinite(sleepEndsAt) || sleepEndsAt > Date.now() + 720 * 60000) sleepEndsAt = 0
+  const sleepState = () => ({ endsAt: sleepEndsAt, remaining: Math.max(0, Math.ceil((sleepEndsAt - Date.now()) / 1000)) })
+  const sleepTick = () => {
+    const expired = sleepEndsAt > 0 && Date.now() >= sleepEndsAt
+    if (expired) {
+      sleepEndsAt = 0; clearInterval(sleepInterval); sleepInterval = 0
+      try { sessionStorage.removeItem('fliex-music-sleep-v1') } catch (_) {}
+      wantsPlay = false; player?.pause(); emit()
+    }
+    document.dispatchEvent(new CustomEvent('fliex:sleep', { detail: { ...sleepState(), expired } }))
+    return expired
+  }
+  const setSleepTimer = minutes => {
+    if (!Number.isInteger(minutes) || minutes < 0 || minutes > 720) return false
+    clearInterval(sleepInterval); sleepInterval = 0
+    sleepEndsAt = minutes ? Date.now() + minutes * 60000 : 0
+    try { if (sleepEndsAt) sessionStorage.setItem('fliex-music-sleep-v1', String(sleepEndsAt)); else sessionStorage.removeItem('fliex-music-sleep-v1') } catch (_) {}
+    if (sleepEndsAt) sleepInterval = setInterval(sleepTick, 1000)
+    sleepTick(); return true
+  }
+  if (sleepEndsAt > Date.now()) sleepInterval = setInterval(sleepTick, 1000)
+  else sleepEndsAt = 0
+  document.addEventListener('visibilitychange', () => { if (sleepEndsAt) sleepTick() })
+  window.addEventListener('pageshow', () => { if (sleepEndsAt) sleepTick() })
   // Keep the media element outside #body-wrap, which PJAX replaces on navigation.
   const ensureAudio = () => {
     let host = document.getElementById('fliex-shared-player')
@@ -47,6 +74,7 @@
     return true
   }
   const play = async () => {
+    if (sleepEndsAt && sleepTick()) return
     if (!player?.list.audios.length) return
     wantsPlay = true
     const version = selectionVersion
@@ -62,7 +90,7 @@
       if (audioContext?.state === 'suspended') await audioContext.resume()
     } catch (error) { console.warn('[Fliex Music] 波形分析不可用', error) }
     if (version !== selectionVersion || !wantsPlay) return
-    try { await player.audio.play(); if (version !== selectionVersion) return; failed = false; emit() }
+    try { await player.audio.play(); if (version !== selectionVersion) { if (!wantsPlay) player.audio.pause(); return } failed = false; emit() }
     catch (error) {
       if (version !== selectionVersion) return
       if (error.name === 'AbortError') return
@@ -115,9 +143,10 @@
     })
     audio.addEventListener('play', () => { failed = false; save(); emit() })
     audio.addEventListener('pause', () => { save(); emit() })
-    audio.addEventListener('timeupdate', () => { if (Date.now() - saveAt > 5000) { save(); saveAt = Date.now() } emit() })
+    audio.addEventListener('timeupdate', () => { if (sleepEndsAt) sleepTick(); if (Date.now() - saveAt > 5000) { save(); saveAt = Date.now() } emit() })
     audio.addEventListener('durationchange', emit)
     audio.addEventListener('ended', () => {
+      if (sleepEndsAt && sleepTick()) return
       if (!wantsPlay || !list.audios.length) return
       if (mode === 'single') { player.seek(0); play() }
       else next()
@@ -197,7 +226,7 @@
       return stamps.map(stamp => ({ time: Number(stamp[1]) * 60 + Number(stamp[2]), text: words }))
     }).sort((a, b) => a.time - b.time)
   }
-  window.__fliexMusic = { snapshot, load, retry, toggle, play, select, next, previous, seek, setMode, setVolume, parseLyrics, get analyser() { return analyser }, get player() { return player } }
+  window.__fliexMusic = { snapshot, load, retry, toggle, play, select, next, previous, seek, setMode, setVolume, parseLyrics, setSleepTimer, sleepState, get analyser() { return analyser }, get player() { return player } }
   window.addEventListener('pagehide', save)
   const init = () => { ensureAudio(); load() }
   document.addEventListener('pjax:complete', init)

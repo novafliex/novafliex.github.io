@@ -294,6 +294,16 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
       <button data-music-repeat="" aria-label="列表循环"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8a8 8 0 0 0-13-3L4 8m0-4v4h4M4 16a8 8 0 0 0 13 3l3-3m0 4v-4h-4"></path></svg><span class="music-repeat-one" aria-hidden="true">1</span></button>
     </div>
     <label class="sea-volume">VOL <input data-music-volume="" type="range" min="0" max="1" step="0.01" value="0.6" aria-label="音量"></label>
+    <details class="music-sleep">
+      <summary>定时关闭 <span data-sleep-countdown="">未开启</span></summary>
+      <div class="music-sleep-options">
+        <p>倒计时结束后暂停播放</p>
+        <div class="music-sleep-presets"><button type="button" data-sleep-minutes="15">15 分钟</button><button type="button" data-sleep-minutes="30">30 分钟</button><button type="button" data-sleep-minutes="60">60 分钟</button></div>
+        <form data-sleep-form=""><label>自定义 <input type="number" name="minutes" min="1" max="720" step="1" value="45" required="" aria-label="定时关闭分钟数"> 分钟</label><button type="submit">开始</button></form>
+        <button type="button" data-sleep-cancel="" hidden="">取消定时</button>
+        <p data-sleep-status="" role="status"></p>
+      </div>
+    </details>
     <p class="nova-music-count"></p><button class="nova-music-retry" hidden="">重试</button>
   </section>
   <section class="sea-playlist" aria-label="播放列表">

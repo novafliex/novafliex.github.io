@@ -6707,14 +6707,16 @@ body.nova-music-route .coast-lightning{display:none!important}
 /* Only the strip around the centred active line is darkened; the rest keeps raw grain. */
 .nova-music-page .sea-lyrics{--lyric-height:40vh;position:absolute;left:47.5%;top:22vh;width:25%;height:var(--lyric-height);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;background:linear-gradient(180deg,rgba(6,6,6,0) 27%,rgba(6,6,6,.4) 43%,rgba(6,6,6,.4) 61%,rgba(6,6,6,0) 77%);mask-image:linear-gradient(rgba(0,0,0,.3),#000 22%,#000 78%,rgba(0,0,0,.3));-webkit-mask-image:linear-gradient(rgba(0,0,0,.3),#000 22%,#000 78%,rgba(0,0,0,.3))}
 .nova-music-page .sea-lyrics-lines{padding:calc(var(--lyric-height)/2 - 22px) 0}
-.nova-music-page .sea-lyrics-lines p{margin:0 0 23px;color:rgba(255,255,255,.34);font:400 17px/1.6 "Noto Serif SC","Source Han Serif SC","Songti SC","STSong",serif;cursor:pointer;transition:color .4s ease,font-size .4s ease,opacity .4s ease;transform-origin:left center}
-.nova-music-page .sea-lyrics-lines .lyric-line{min-height:28px}
-.nova-music-page .sea-lyrics-lines p:empty{min-height:18px;margin-bottom:14px;cursor:default}
+.nova-music-page .sea-lyrics-lines p{margin:0 0 23px;color:rgba(255,255,255,.34);font:400 17px/1.6 "Noto Serif SC","Source Han Serif SC","Songti SC","STSong",serif;cursor:pointer;transition:color .4s ease,opacity .4s ease;transform-origin:left center}
+.nova-music-page .sea-lyrics-lines .lyric-line{min-height:28px;overflow:hidden;white-space:nowrap}
+.nova-music-page .sea-lyrics-lines p:empty,.nova-music-page .sea-lyrics-lines p:has(>span:empty){min-height:18px;margin-bottom:14px;cursor:default}
 .nova-music-page .sea-lyrics-lines p.is-distant{color:rgba(255,255,255,.26)}
 .nova-music-page .sea-lyrics-lines p.is-near{color:rgba(255,255,255,.48)}
 .nova-music-page .sea-lyrics-lines p.is-active{color:rgba(255,255,255,.9);font-size:clamp(26px,1.9vw,33px);font-weight:500;letter-spacing:.02em;text-shadow:0 1px 16px rgba(0,0,0,.6)}
 .nova-music-page .sea-lyrics-lines .sea-lyrics-empty{font-size:13px;line-height:1.9;color:var(--music-text-muted);cursor:default}
 .nova-music-page .sea-lyrics-lines .sea-lyrics-empty~button[data-lyrics-retry]{margin-top:8px;border:0;background:none;color:var(--music-text-secondary);font:400 11px/1 var(--coast-mono);border-bottom:1px solid var(--music-line);cursor:pointer}
+
+.nova-music-page .lyric-line:not(.is-active) .music-marquee-inner{animation:none}
 
 /* ---- playlist ---------------------------------------------- */
 .nova-music-page .sea-playlist{position:absolute;left:76.5%;top:14.5vh;width:17.5%;height:57vh;display:flex;flex-direction:column;border:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;overflow:visible;padding-left:14px}
@@ -6762,13 +6764,13 @@ body.nova-music-route .coast-lightning{display:none!important}
 /* An instrument console in the starfield: barely-there tint, one hairline, stars show through. */
 .nova-music-page .sea-player{position:absolute;left:53%;bottom:max(24px,env(safe-area-inset-bottom));max-height:calc(100% - 100px);overflow-y:auto;width:19.5%;z-index:3;box-sizing:border-box;padding:14px 16px 12px;border:0;border-top:1px solid rgba(255,255,255,.14);border-radius:0;background:rgba(8,10,14,.2);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);box-shadow:none}
 .nova-music-page .musicx-now-label{margin:0 0 14px;color:rgba(255,255,255,.5);font:400 11px/1 var(--coast-mono);letter-spacing:.16em}
-.nova-music-page .musicx-now-heading{display:flex;align-items:baseline;gap:12px;min-width:0;margin-bottom:18px}
-.nova-music-page .nova-music-current-title{color:rgba(255,255,255,.96);font:500 26px/1.2 var(--coast-display);white-space:nowrap;overflow:hidden}
-.nova-music-page .nova-music-current-artist{color:rgba(255,255,255,.4);font:400 13px/1.5 var(--coast-display);white-space:nowrap;overflow:hidden;flex:0 1 auto}
-.nova-music-page .music-marquee-inner{display:inline-block;white-space:nowrap}
-.nova-music-page .music-marquee-inner.is-marquee{padding-right:16px;animation:sea-title-marquee 14s ease-in-out 2s infinite;will-change:transform}
+.nova-music-page .musicx-now-heading{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;column-gap:12px;row-gap:5px;min-width:0;margin-bottom:18px}
+.nova-music-page .nova-music-current-title{grid-column:1;grid-row:1;min-width:0;color:rgba(255,255,255,.96);font:500 26px/1.2 var(--coast-display);white-space:nowrap;overflow:hidden}
+.nova-music-page .nova-music-current-artist{grid-column:1;grid-row:2;min-width:0;color:rgba(255,255,255,.4);font:400 13px/1.5 var(--coast-display);white-space:nowrap;overflow:hidden;flex:0 1 auto}
+.nova-music-page .music-marquee-inner{display:block;width:max-content;white-space:nowrap}
+.nova-music-page .music-marquee-inner.is-marquee{animation:sea-title-marquee var(--music-marquee-duration,10s) linear infinite;will-change:transform}
 @keyframes sea-title-marquee{0%,14%{transform:translateX(0)}68%,82%{transform:translateX(var(--music-title-shift))}100%{transform:translateX(0)}}
-.nova-music-page .musicx-now-heading button{flex:0 0 auto;padding:0 2px;border:0;background:none;color:rgba(255,255,255,.42);font:400 12px/1 var(--coast-mono);transition:color var(--music-transition)}
+.nova-music-page .musicx-now-heading button{grid-row:1 / 3;padding:0 2px;border:0;background:none;color:rgba(255,255,255,.42);font:400 12px/1 var(--coast-mono);transition:color var(--music-transition)}
 .nova-music-page .musicx-now-heading button:hover{color:rgba(255,255,255,.85)}
 .nova-music-page .sea-song-detail{margin:0 0 10px;color:var(--music-text-muted);font:400 10.5px/1.7 var(--coast-mono);letter-spacing:.04em}
 .nova-music-page .nova-music-progress-input{display:block;width:100%;height:16px;margin:0;appearance:none;-webkit-appearance:none;background:transparent;border:0;cursor:pointer}
@@ -6805,6 +6807,25 @@ body.nova-music-route .coast-lightning{display:none!important}
 .nova-music-page .sea-volume input::-moz-range-thumb{width:7px;height:7px;border:0;border-radius:50%;background:rgba(255,255,255,.75)}
 .nova-music-page .nova-music-count{margin:12px 0 0;color:rgba(255,255,255,.36);font:400 9.5px/1.6 var(--coast-mono);letter-spacing:.1em}
 .nova-music-page .nova-music-retry{margin:8px 0 0;padding:2px 0;border:0;border-bottom:1px solid var(--music-line);background:none;color:var(--music-text-secondary);font:400 11px/1.4 var(--coast-mono);cursor:pointer}
+
+.nova-music-page .sea-track .is-marquee{animation-play-state:paused}
+.nova-music-page .sea-track:is(.is-current,:hover,:focus-within) .is-marquee{animation-play-state:running}
+.nova-music-page .music-sleep{margin-top:12px;color:rgba(255,255,255,.65);font:400 11px/1.5 var(--coast-mono)}
+.nova-music-page .music-sleep summary{display:flex;justify-content:space-between;gap:10px;cursor:pointer;list-style:none;padding:6px 0;border-top:1px solid var(--music-line)}
+.nova-music-page .music-sleep summary::-webkit-details-marker{display:none}
+.nova-music-page .music-sleep summary:focus-visible{outline:1px solid rgba(255,255,255,.45);outline-offset:3px}
+.nova-music-page [data-sleep-countdown]{font-variant-numeric:tabular-nums;color:rgba(255,255,255,.9)}
+.nova-music-page .music-sleep-options{padding:8px 0}
+.nova-music-page .music-sleep-options p{margin:0 0 8px;font-size:10px}
+.nova-music-page .music-sleep-presets{display:flex;flex-wrap:wrap;gap:6px}
+.nova-music-page .music-sleep button{min-height:30px;padding:4px 8px;border:1px solid var(--music-line);background:rgba(0,0,0,.4);color:inherit;font:inherit;cursor:pointer}
+.nova-music-page .music-sleep button:hover{border-color:rgba(255,255,255,.55);color:#fff}
+.nova-music-page [data-sleep-form]{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px}
+.nova-music-page [data-sleep-form] label{display:flex;align-items:center;gap:6px}
+.nova-music-page [data-sleep-form] input{box-sizing:border-box;width:58px;min-height:30px;padding:3px;border:1px solid var(--music-line);border-radius:0;background:#101010;color:#eee;font:inherit}
+.nova-music-page [data-sleep-cancel]{margin-top:8px}
+.nova-music-page [data-sleep-status]{margin-top:8px}
+.nova-music-page .lyric-line{max-width:100%}
 
 /* ---- listening archive entry (compact b&w archive card) ------ */
 /* Docked to the playlist column; the calc keeps a fixed 34px gap below the list. */
@@ -6888,6 +6909,8 @@ body.nova-music-route .coast-lightning{display:none!important}
 @media(prefers-reduced-motion:reduce){
   .nova-music-page,.nova-music-page *{animation:none!important;transition:none!important}
   .nova-music-page .music-marquee-inner{max-width:100%;overflow:hidden;text-overflow:ellipsis;padding-right:0}
+  .nova-music-page .lyric-line{white-space:normal;overflow-wrap:anywhere}
+  .nova-music-page .lyric-line .music-marquee-inner{width:auto;white-space:normal}
   .nova-music-page .musicx-cursor{opacity:1}
 }
 ]]></content>
@@ -7784,6 +7807,33 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
   let volume = Number.isFinite(settings.volume) ? Math.max(0, Math.min(1, settings.volume)) : .6
   const saveSettings = () => write('fliex-music-settings-v1', { mode, volume })
   const emit = () => document.dispatchEvent(new CustomEvent('fliex:music'))
+  // The deadline belongs to the shared player, so navigation and track changes keep it.
+  let sleepEndsAt = 0, sleepInterval = 0
+  try { sleepEndsAt = Number(sessionStorage.getItem('fliex-music-sleep-v1')) || 0 } catch (_) {}
+  if (!Number.isFinite(sleepEndsAt) || sleepEndsAt > Date.now() + 720 * 60000) sleepEndsAt = 0
+  const sleepState = () => ({ endsAt: sleepEndsAt, remaining: Math.max(0, Math.ceil((sleepEndsAt - Date.now()) / 1000)) })
+  const sleepTick = () => {
+    const expired = sleepEndsAt > 0 && Date.now() >= sleepEndsAt
+    if (expired) {
+      sleepEndsAt = 0; clearInterval(sleepInterval); sleepInterval = 0
+      try { sessionStorage.removeItem('fliex-music-sleep-v1') } catch (_) {}
+      wantsPlay = false; player?.pause(); emit()
+    }
+    document.dispatchEvent(new CustomEvent('fliex:sleep', { detail: { ...sleepState(), expired } }))
+    return expired
+  }
+  const setSleepTimer = minutes => {
+    if (!Number.isInteger(minutes) || minutes < 0 || minutes > 720) return false
+    clearInterval(sleepInterval); sleepInterval = 0
+    sleepEndsAt = minutes ? Date.now() + minutes * 60000 : 0
+    try { if (sleepEndsAt) sessionStorage.setItem('fliex-music-sleep-v1', String(sleepEndsAt)); else sessionStorage.removeItem('fliex-music-sleep-v1') } catch (_) {}
+    if (sleepEndsAt) sleepInterval = setInterval(sleepTick, 1000)
+    sleepTick(); return true
+  }
+  if (sleepEndsAt > Date.now()) sleepInterval = setInterval(sleepTick, 1000)
+  else sleepEndsAt = 0
+  document.addEventListener('visibilitychange', () => { if (sleepEndsAt) sleepTick() })
+  window.addEventListener('pageshow', () => { if (sleepEndsAt) sleepTick() })
   // Keep the media element outside #body-wrap, which PJAX replaces on navigation.
   const ensureAudio = () => {
     let host = document.getElementById('fliex-shared-player')
@@ -7817,6 +7867,7 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
     return true
   }
   const play = async () => {
+    if (sleepEndsAt && sleepTick()) return
     if (!player?.list.audios.length) return
     wantsPlay = true
     const version = selectionVersion
@@ -7832,7 +7883,7 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
       if (audioContext?.state === 'suspended') await audioContext.resume()
     } catch (error) { console.warn('[Fliex Music] 波形分析不可用', error) }
     if (version !== selectionVersion || !wantsPlay) return
-    try { await player.audio.play(); if (version !== selectionVersion) return; failed = false; emit() }
+    try { await player.audio.play(); if (version !== selectionVersion) { if (!wantsPlay) player.audio.pause(); return } failed = false; emit() }
     catch (error) {
       if (version !== selectionVersion) return
       if (error.name === 'AbortError') return
@@ -7885,9 +7936,10 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
     })
     audio.addEventListener('play', () => { failed = false; save(); emit() })
     audio.addEventListener('pause', () => { save(); emit() })
-    audio.addEventListener('timeupdate', () => { if (Date.now() - saveAt > 5000) { save(); saveAt = Date.now() } emit() })
+    audio.addEventListener('timeupdate', () => { if (sleepEndsAt) sleepTick(); if (Date.now() - saveAt > 5000) { save(); saveAt = Date.now() } emit() })
     audio.addEventListener('durationchange', emit)
     audio.addEventListener('ended', () => {
+      if (sleepEndsAt && sleepTick()) return
       if (!wantsPlay || !list.audios.length) return
       if (mode === 'single') { player.seek(0); play() }
       else next()
@@ -7967,7 +8019,7 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
       return stamps.map(stamp => ({ time: Number(stamp[1]) * 60 + Number(stamp[2]), text: words }))
     }).sort((a, b) => a.time - b.time)
   }
-  window.__fliexMusic = { snapshot, load, retry, toggle, play, select, next, previous, seek, setMode, setVolume, parseLyrics, get analyser() { return analyser }, get player() { return player } }
+  window.__fliexMusic = { snapshot, load, retry, toggle, play, select, next, previous, seek, setMode, setVolume, parseLyrics, setSleepTimer, sleepState, get analyser() { return analyser }, get player() { return player } }
   window.addEventListener('pagehide', save)
   const init = () => { ensureAudio(); load() }
   document.addEventListener('pjax:complete', init)
@@ -8012,6 +8064,7 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
       if (overflow > 2) {
         const shift = `-${overflow}px`
         if (inner.style.getPropertyValue('--music-title-shift') !== shift) inner.style.setProperty('--music-title-shift', shift)
+        inner.style.setProperty('--music-marquee-duration', Math.max(7, Math.min(30, overflow / 20 * 2 + 3)) + 's')
       } else {
         inner.classList.remove('is-marquee')
         inner.style.removeProperty('--music-title-shift')
@@ -8019,7 +8072,9 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
     }
     const syncHeading = (node, inner, text, cached) => {
       if (text === cached) return cached
+      inner.classList.remove('is-marquee')
       inner.textContent = text
+      node.title = text
       applyMarquee(node, inner)
       return text
     }
@@ -8031,6 +8086,7 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
       if (!state.ready) { rows.innerHTML = state.failed || state.configured ? '' : loadingMarkup; return }
       const items = songs.map((song, index) => ({ song, index })).filter(({song}) => tab !== 'favorites' || favorites.has(song.id))
       rows.innerHTML = items.length ? items.map(({ song, index }) => `${pad2(index + 1)}${escape(song.name)}${escape(song.artist)}${favorites.has(song.id) ? '♥' : '···'}`).join('') : '' + (tab === 'favorites' ? '还没有收藏的歌曲' : '暂无可播放歌曲') + ''
+      rows.querySelectorAll('.sea-track-name,.sea-track-artist').forEach(node => applyMarquee(node, node.firstElementChild))
     }
     const syncTerminal = state => {
       const index = state.ready ? pad2(state.index + 1) : '--'
@@ -8063,7 +8119,8 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
         if (destroyed || lyricSong !== key) return
         lines = api.parseLyrics(text, song.lyricCues)
         const untimed = typeof text === 'string' ? text.split(/\r?\n/).map(line => line.trim()).filter(Boolean) : []
-        lyrics.innerHTML = lines.length ? lines.map(line => '' + escape(line.text) + '').join('') : untimed.map(line => '' + escape(line) + '').join('')
+        const lineMarkup = text => '' + escape(text) + ''
+        lyrics.innerHTML = lines.length ? lines.map(line => lineMarkup(line.text)).join('') : untimed.map(lineMarkup).join('')
         render()
       } catch (error) { if (destroyed || lyricSong !== key) return; console.error('[Fliex Music] 歌词加载失败', error); lyrics.innerHTML = '歌词暂时不可用重试' }
     }
@@ -8103,8 +8160,15 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
           p.classList.toggle('is-active', current)
           p.classList.toggle('is-near', near)
           p.classList.toggle('is-distant', hasActive && !current && !near)
+          p.firstElementChild?.classList.remove('is-marquee')
         })
         const p = hasActive ? lyrics.children[active] : null
+        if (p) {
+          applyMarquee(p, p.firstElementChild)
+          // Read the full current line during its own cue rather than a fixed long cycle.
+          const cueSeconds = (lines[active + 1]?.time || state.duration) - lines[active].time
+          p.firstElementChild.style.setProperty('--music-marquee-duration', Math.max(1.2, Math.min(12, cueSeconds * .9)) + 's')
+        }
         // A reader browsing manually keeps control until the pause window expires.
         if (p && Date.now() >= followPausedUntil) {
           const container = $('.sea-lyrics')
@@ -8148,6 +8212,22 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
       })
     })
     on($('.nova-music-retry'), 'click', () => api.retry())
+    const sleepPanel = $('.music-sleep'), sleepStatus = $('[data-sleep-status]')
+    const syncSleep = event => {
+      const sleep = api.sleepState()
+      $('[data-sleep-countdown]').textContent = sleep.endsAt ? time(sleep.remaining) + ' 后暂停' : '未开启'
+      $('[data-sleep-cancel]').hidden = !sleep.endsAt
+      if (event?.detail?.expired) sleepStatus.textContent = '定时已结束，音乐已暂停'
+    }
+    const startSleep = minutes => {
+      if (!api.setSleepTimer(minutes)) return
+      sleepStatus.textContent = minutes + ' 分钟后自动暂停'
+      sleepPanel.open = false
+    }
+    root.querySelectorAll('[data-sleep-minutes]').forEach(button => on(button, 'click', () => startSleep(Number(button.dataset.sleepMinutes))))
+    on($('[data-sleep-form]'), 'submit', event => { event.preventDefault(); if (event.currentTarget.reportValidity()) startSleep(Number(event.currentTarget.elements.minutes.value)) })
+    on($('[data-sleep-cancel]'), 'click', () => { api.setSleepTimer(0); sleepStatus.textContent = '定时已取消' })
+    on(document, 'fliex:sleep', syncSleep); syncSleep()
     on(lyrics, 'click', event => {
       if (event.target.closest('[data-lyrics-retry]')) { lyricSong = ''; loadLyrics(api.snapshot().song); return }
       const line = event.target.closest('.lyric-line')
@@ -8170,11 +8250,22 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
     syncPlaylist()
     on(document, 'fliex:music', render)
     // Font swaps and viewport changes move the overflow target; re-measure whenever a heading box resizes.
+    const measureText = () => {
+      if (destroyed) return
+      applyMarquee(titleNode, titleInner); applyMarquee(artistNode, artistInner)
+      rows.querySelectorAll('.sea-track-name,.sea-track-artist').forEach(node => applyMarquee(node, node.firstElementChild))
+      const current = lyrics.querySelector('.is-active'); if (current) {
+        applyMarquee(current, current.firstElementChild)
+        const cueSeconds = (lines[active + 1]?.time || api.snapshot().duration) - lines[active].time
+        current.firstElementChild.style.setProperty('--music-marquee-duration', Math.max(1.2, Math.min(12, cueSeconds * .9)) + 's')
+      }
+    }
     let headingObserver = null
     if (typeof ResizeObserver === 'function') {
-      headingObserver = new ResizeObserver(() => { if (!destroyed) { applyMarquee(titleNode, titleInner); applyMarquee(artistNode, artistInner) } })
-      ;[titleNode, titleInner, artistNode, artistInner].forEach(el => headingObserver.observe(el))
+      headingObserver = new ResizeObserver(measureText)
+      ;[titleNode, titleInner, artistNode, artistInner, lyricBox, rows].forEach(el => headingObserver.observe(el))
     }
+    document.fonts?.ready.then(measureText)
     const draw = () => {
       frame = 0; if (destroyed || document.hidden || !api.snapshot().playing) return
       ctx.clearRect(0,0,wave.width,wave.height)

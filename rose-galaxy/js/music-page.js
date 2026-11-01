@@ -31,6 +31,7 @@
       if (overflow > 2) {
         const shift = `-${overflow}px`
         if (inner.style.getPropertyValue('--music-title-shift') !== shift) inner.style.setProperty('--music-title-shift', shift)
+        inner.style.setProperty('--music-marquee-duration', Math.max(7, Math.min(30, overflow / 20 * 2 + 3)) + 's')
       } else {
         inner.classList.remove('is-marquee')
         inner.style.removeProperty('--music-title-shift')
@@ -38,7 +39,9 @@
     }
     const syncHeading = (node, inner, text, cached) => {
       if (text === cached) return cached
+      inner.classList.remove('is-marquee')
       inner.textContent = text
+      node.title = text
       applyMarquee(node, inner)
       return text
     }
@@ -49,7 +52,8 @@
       rendered = signature
       if (!state.ready) { rows.innerHTML = state.failed || state.configured ? '' : loadingMarkup; return }
       const items = songs.map((song, index) => ({ song, index })).filter(({song}) => tab !== 'favorites' || favorites.has(song.id))
-      rows.innerHTML = items.length ? items.map(({ song, index }) => `<div class="sea-track ${index === state.index ? 'is-current' : ''}"><button data-song-index="${index}" aria-label="播放 ${escape(song.name)}" aria-current="${index === state.index}"><span class="sea-track-number">${pad2(index + 1)}</span><span class="sea-track-main"><span class="sea-track-name">${escape(song.name)}</span><span class="sea-track-artist">${escape(song.artist)}</span></span><span class="sea-track-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button><button class="sea-track-more" data-favorite-id="${escape(song.id)}" aria-label="${favorites.has(song.id) ? '取消收藏' : '收藏'} ${escape(song.name)}">${favorites.has(song.id) ? '♥' : '···'}</button></div>`).join('') : '<p class="sea-playlist-empty">' + (tab === 'favorites' ? '还没有收藏的歌曲' : '暂无可播放歌曲') + '</p>'
+      rows.innerHTML = items.length ? items.map(({ song, index }) => `<div class="sea-track ${index === state.index ? 'is-current' : ''}"><button data-song-index="${index}" aria-label="播放 ${escape(song.name)}" aria-current="${index === state.index}"><span class="sea-track-number">${pad2(index + 1)}</span><span class="sea-track-main"><span class="sea-track-name" title="${escape(song.name)}"><span class="music-marquee-inner">${escape(song.name)}</span></span><span class="sea-track-artist" title="${escape(song.artist)}"><span class="music-marquee-inner">${escape(song.artist)}</span></span></span><span class="sea-track-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button><button class="sea-track-more" data-favorite-id="${escape(song.id)}" aria-label="${favorites.has(song.id) ? '取消收藏' : '收藏'} ${escape(song.name)}">${favorites.has(song.id) ? '♥' : '···'}</button></div>`).join('') : '<p class="sea-playlist-empty">' + (tab === 'favorites' ? '还没有收藏的歌曲' : '暂无可播放歌曲') + '</p>'
+      rows.querySelectorAll('.sea-track-name,.sea-track-artist').forEach(node => applyMarquee(node, node.firstElementChild))
     }
     const syncTerminal = state => {
       const index = state.ready ? pad2(state.index + 1) : '--'
@@ -82,7 +86,8 @@
         if (destroyed || lyricSong !== key) return
         lines = api.parseLyrics(text, song.lyricCues)
         const untimed = typeof text === 'string' ? text.split(/\r?\n/).map(line => line.trim()).filter(Boolean) : []
-        lyrics.innerHTML = lines.length ? lines.map(line => '<p class="lyric-line">' + escape(line.text) + '</p>').join('') : untimed.map(line => '<p class="lyric-line">' + escape(line) + '</p>').join('')
+        const lineMarkup = text => '<p class="lyric-line"><span class="music-marquee-inner">' + escape(text) + '</span></p>'
+        lyrics.innerHTML = lines.length ? lines.map(line => lineMarkup(line.text)).join('') : untimed.map(lineMarkup).join('')
         render()
       } catch (error) { if (destroyed || lyricSong !== key) return; console.error('[Fliex Music] 歌词加载失败', error); lyrics.innerHTML = '<p class="sea-lyrics-empty">歌词暂时不可用</p><button type="button" data-lyrics-retry>重试</button>' }
     }
@@ -125,8 +130,15 @@
           p.classList.toggle('is-active', current)
           p.classList.toggle('is-near', near)
           p.classList.toggle('is-distant', hasActive && !current && !near)
+          p.firstElementChild?.classList.remove('is-marquee')
         })
         const p = hasActive ? lyrics.children[active] : null
+        if (p) {
+          applyMarquee(p, p.firstElementChild)
+          // Read the full current line during its own cue rather than a fixed long cycle.
+          const cueSeconds = (lines[active + 1]?.time || state.duration) - lines[active].time
+          p.firstElementChild.style.setProperty('--music-marquee-duration', Math.max(1.2, Math.min(12, cueSeconds * .9)) + 's')
+        }
         // A reader browsing manually keeps control until the pause window expires.
         if (p && Date.now() >= followPausedUntil) {
           const container = $('.sea-lyrics')
@@ -170,6 +182,22 @@
       })
     })
     on($('.nova-music-retry'), 'click', () => api.retry())
+    const sleepPanel = $('.music-sleep'), sleepStatus = $('[data-sleep-status]')
+    const syncSleep = event => {
+      const sleep = api.sleepState()
+      $('[data-sleep-countdown]').textContent = sleep.endsAt ? time(sleep.remaining) + ' 后暂停' : '未开启'
+      $('[data-sleep-cancel]').hidden = !sleep.endsAt
+      if (event?.detail?.expired) sleepStatus.textContent = '定时已结束，音乐已暂停'
+    }
+    const startSleep = minutes => {
+      if (!api.setSleepTimer(minutes)) return
+      sleepStatus.textContent = minutes + ' 分钟后自动暂停'
+      sleepPanel.open = false
+    }
+    root.querySelectorAll('[data-sleep-minutes]').forEach(button => on(button, 'click', () => startSleep(Number(button.dataset.sleepMinutes))))
+    on($('[data-sleep-form]'), 'submit', event => { event.preventDefault(); if (event.currentTarget.reportValidity()) startSleep(Number(event.currentTarget.elements.minutes.value)) })
+    on($('[data-sleep-cancel]'), 'click', () => { api.setSleepTimer(0); sleepStatus.textContent = '定时已取消' })
+    on(document, 'fliex:sleep', syncSleep); syncSleep()
     on(lyrics, 'click', event => {
       if (event.target.closest('[data-lyrics-retry]')) { lyricSong = ''; loadLyrics(api.snapshot().song); return }
       const line = event.target.closest('.lyric-line')
@@ -192,11 +220,22 @@
     syncPlaylist()
     on(document, 'fliex:music', render)
     // Font swaps and viewport changes move the overflow target; re-measure whenever a heading box resizes.
+    const measureText = () => {
+      if (destroyed) return
+      applyMarquee(titleNode, titleInner); applyMarquee(artistNode, artistInner)
+      rows.querySelectorAll('.sea-track-name,.sea-track-artist').forEach(node => applyMarquee(node, node.firstElementChild))
+      const current = lyrics.querySelector('.is-active'); if (current) {
+        applyMarquee(current, current.firstElementChild)
+        const cueSeconds = (lines[active + 1]?.time || api.snapshot().duration) - lines[active].time
+        current.firstElementChild.style.setProperty('--music-marquee-duration', Math.max(1.2, Math.min(12, cueSeconds * .9)) + 's')
+      }
+    }
     let headingObserver = null
     if (typeof ResizeObserver === 'function') {
-      headingObserver = new ResizeObserver(() => { if (!destroyed) { applyMarquee(titleNode, titleInner); applyMarquee(artistNode, artistInner) } })
-      ;[titleNode, titleInner, artistNode, artistInner].forEach(el => headingObserver.observe(el))
+      headingObserver = new ResizeObserver(measureText)
+      ;[titleNode, titleInner, artistNode, artistInner, lyricBox, rows].forEach(el => headingObserver.observe(el))
     }
+    document.fonts?.ready.then(measureText)
     const draw = () => {
       frame = 0; if (destroyed || document.hidden || !api.snapshot().playing) return
       ctx.clearRect(0,0,wave.width,wave.height)
