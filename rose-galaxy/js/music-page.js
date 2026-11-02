@@ -182,21 +182,77 @@
       })
     })
     on($('.nova-music-retry'), 'click', () => api.retry())
-    const sleepPanel = $('.music-sleep'), sleepStatus = $('[data-sleep-status]')
+    const sleepPanel = $('.music-sleep-dialog'), sleepStatus = $('[data-sleep-status]'), sleepOpen = $('[data-sleep-open]'), sleepInput = $('#music-sleep-minutes')
+    const sleepError = $('[data-sleep-error]'), sleepStart = $('[data-sleep-start]')
+    const canSetSleep = typeof api.sleepState === 'function' && typeof api.setSleepTimer === 'function'
+    const canModal = Boolean(sleepPanel) && typeof sleepPanel.showModal === 'function'
+    // jsdom and very old engines have no dialog methods; the attribute keeps the panel operable there.
+    const sleepIsOpen = () => Boolean(sleepPanel) && (sleepPanel.open === true || sleepPanel.hasAttribute('open'))
+    const refreshStartLabel = sleep => {
+      const minutes = Number(sleepInput.value)
+      const valid = Number.isInteger(minutes) && minutes >= 1 && minutes <= 720
+      sleepStart.textContent = sleep.endsAt ? '更新为 ' + (valid ? minutes + ' 分钟' : '新时长') : valid ? '开启 ' + minutes + ' 分钟定时' : '开启定时'
+    }
+    const sleepPreview = () => {
+      const minutes = Number(sleepInput.value)
+      return Number.isInteger(minutes) && minutes >= 1 && minutes <= 720 ? time(minutes * 60) : '--:--'
+    }
+    const refreshPreview = () => {
+      const sleep = canSetSleep ? api.sleepState() : { endsAt: 0 }
+      if (!sleep.endsAt) $('[data-sleep-display]').textContent = sleepPreview()
+      refreshStartLabel(sleep)
+    }
     const syncSleep = event => {
-      const sleep = api.sleepState()
+      const sleep = canSetSleep ? api.sleepState() : { endsAt: 0, remaining: 0 }
       $('[data-sleep-countdown]').textContent = sleep.endsAt ? time(sleep.remaining) + ' 后暂停' : '未开启'
+      sleepOpen.classList.toggle('is-active', Boolean(sleep.endsAt))
+      // Idle shows the duration about to be set, so the panel always answers the click.
+      $('[data-sleep-display]').textContent = sleep.endsAt ? time(sleep.remaining) : sleepPreview()
+      $('[data-sleep-caption]').textContent = sleep.endsAt ? '预计 ' + new Date(sleep.endsAt).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', hour12: false }) + ' 暂停播放' : '选择一段留给音乐的时间'
+      refreshStartLabel(sleep)
       $('[data-sleep-cancel]').hidden = !sleep.endsAt
       if (event?.detail?.expired) sleepStatus.textContent = '定时已结束，音乐已暂停'
     }
-    const startSleep = minutes => {
-      if (!api.setSleepTimer(minutes)) return
-      sleepStatus.textContent = minutes + ' 分钟后自动暂停'
-      sleepPanel.open = false
+    const closeSleep = () => {
+      if (!sleepPanel || !sleepIsOpen()) return
+      if (canModal) sleepPanel.close()
+      else {
+        sleepPanel.removeAttribute('open')
+        sleepOpen.setAttribute('aria-expanded', 'false')
+        if (!destroyed && sleepOpen.isConnected) sleepOpen.focus()
+      }
     }
-    root.querySelectorAll('[data-sleep-minutes]').forEach(button => on(button, 'click', () => startSleep(Number(button.dataset.sleepMinutes))))
-    on($('[data-sleep-form]'), 'submit', event => { event.preventDefault(); if (event.currentTarget.reportValidity()) startSleep(Number(event.currentTarget.elements.minutes.value)) })
-    on($('[data-sleep-cancel]'), 'click', () => { api.setSleepTimer(0); sleepStatus.textContent = '定时已取消' })
+    const syncPresets = () => root.querySelectorAll('[data-sleep-minutes]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.sleepMinutes) === Number(sleepInput.value))))
+    on(sleepOpen, 'click', () => {
+      syncSleep(); sleepError.textContent = canSetSleep ? '' : '播放器已更新，请刷新页面后重试。'
+      sleepStart.disabled = !canSetSleep
+      syncPresets()
+      if (!sleepIsOpen()) {
+        if (canModal) sleepPanel.showModal()
+        else sleepPanel.setAttribute('open', '')
+      }
+      sleepOpen.setAttribute('aria-expanded', 'true')
+      // Land focus on the current choice so the first Tab/Enter acts on the active preset.
+      if (canModal) requestAnimationFrame(() => { if (!destroyed && sleepIsOpen()) (sleepPanel.querySelector('[data-sleep-minutes][aria-pressed="true"]') || sleepInput).focus() })
+    })
+    on($('[data-sleep-close]'), 'click', closeSleep)
+    on(sleepPanel, 'close', () => { sleepOpen.setAttribute('aria-expanded', 'false'); if (!destroyed && sleepOpen.isConnected) sleepOpen.focus() })
+    on(sleepPanel, 'click', event => {
+      if (event.target !== sleepPanel) return
+      const box = sleepPanel.getBoundingClientRect()
+      if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) closeSleep()
+    })
+    const startSleep = minutes => {
+      if (!canSetSleep || !api.setSleepTimer(minutes)) { sleepError.textContent = '请输入 1–720 之间的整数分钟。'; return }
+      sleepStatus.textContent = minutes + ' 分钟后自动暂停'
+      sleepOpen.classList.add('is-flash')
+      setTimeout(() => sleepOpen.classList.remove('is-flash'), 900)
+      closeSleep()
+    }
+    root.querySelectorAll('[data-sleep-minutes]').forEach(button => on(button, 'click', () => { sleepInput.value = button.dataset.sleepMinutes; sleepError.textContent = ''; syncPresets(); refreshPreview() }))
+    on(sleepInput, 'input', () => { sleepError.textContent = ''; syncPresets(); refreshPreview() })
+    on($('[data-sleep-form]'), 'submit', event => { event.preventDefault(); if (event.currentTarget.reportValidity()) startSleep(Number(sleepInput.value)) })
+    on($('[data-sleep-cancel]'), 'click', () => { if (!canSetSleep) return; api.setSleepTimer(0); sleepStatus.textContent = '定时已取消'; closeSleep() })
     on(document, 'fliex:sleep', syncSleep); syncSleep()
     on(lyrics, 'click', event => {
       if (event.target.closest('[data-lyrics-retry]')) { lyricSong = ''; loadLyrics(api.snapshot().song); return }
@@ -251,7 +307,7 @@
     on(document,'fliex:music',()=>{if (!frame) startWave()}); on(document,'visibilitychange',startWave)
     if (typeof ctx.beginPath === 'function') { ctx.strokeStyle='rgba(129,129,129,.3)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(0,36); ctx.lineTo(wave.width,36); ctx.stroke() }
     render(); api.load().then(render)
-    cleanup = () => { destroyed=true; cancelAnimationFrame(frame); headingObserver?.disconnect(); off.forEach(remove=>remove()); mounted=null }
+    cleanup = () => { destroyed=true; closeSleep(); cancelAnimationFrame(frame); headingObserver?.disconnect(); off.forEach(remove=>remove()); mounted=null }
   }
   window.__novaMusicBootstrap={init,destroy:()=>cleanup()}
   document.addEventListener('pjax:send',()=>cleanup()); document.addEventListener('pjax:complete',init)

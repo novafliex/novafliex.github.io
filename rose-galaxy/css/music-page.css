@@ -155,22 +155,95 @@ body.nova-music-route .coast-lightning{display:none!important}
 
 .nova-music-page .sea-track .is-marquee{animation-play-state:paused}
 .nova-music-page .sea-track:is(.is-current,:hover,:focus-within) .is-marquee{animation-play-state:running}
-.nova-music-page .music-sleep{margin-top:12px;color:rgba(255,255,255,.65);font:400 11px/1.5 var(--coast-mono)}
-.nova-music-page .music-sleep summary{display:flex;justify-content:space-between;gap:10px;cursor:pointer;list-style:none;padding:6px 0;border-top:1px solid var(--music-line)}
-.nova-music-page .music-sleep summary::-webkit-details-marker{display:none}
-.nova-music-page .music-sleep summary:focus-visible{outline:1px solid rgba(255,255,255,.45);outline-offset:3px}
-.nova-music-page [data-sleep-countdown]{font-variant-numeric:tabular-nums;color:rgba(255,255,255,.9)}
-.nova-music-page .music-sleep-options{padding:8px 0}
-.nova-music-page .music-sleep-options p{margin:0 0 8px;font-size:10px}
-.nova-music-page .music-sleep-presets{display:flex;flex-wrap:wrap;gap:6px}
-.nova-music-page .music-sleep button{min-height:30px;padding:4px 8px;border:1px solid var(--music-line);background:rgba(0,0,0,.4);color:inherit;font:inherit;cursor:pointer}
-.nova-music-page .music-sleep button:hover{border-color:rgba(255,255,255,.55);color:#fff}
-.nova-music-page [data-sleep-form]{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px}
-.nova-music-page [data-sleep-form] label{display:flex;align-items:center;gap:6px}
-.nova-music-page [data-sleep-form] input{box-sizing:border-box;width:58px;min-height:30px;padding:3px;border:1px solid var(--music-line);border-radius:0;background:#101010;color:#eee;font:inherit}
-.nova-music-page [data-sleep-cancel]{margin-top:8px}
-.nova-music-page [data-sleep-status]{margin-top:8px}
 .nova-music-page .lyric-line{max-width:100%}
+
+/* ---- sleep timer: trigger + modal -------------------------- */
+/* A quiet instrument row under the volume control; the timer itself opens in a centred dialog. */
+.nova-music-page .music-sleep-trigger{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;margin:12px 0 0;padding:8px 0 0;border:0;border-top:1px solid var(--music-line);background:none;color:rgba(255,255,255,.6);font:400 11px/1.4 var(--coast-mono);letter-spacing:.06em;text-align:left;cursor:pointer;transition:color var(--music-transition),border-color var(--music-transition)}
+.nova-music-page .music-sleep-trigger>span:first-child{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.nova-music-page .music-sleep-trigger svg{width:14px;height:14px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:.8}
+.nova-music-page .music-sleep-trigger:hover{border-top-color:rgba(255,255,255,.28);color:rgba(255,255,255,.92)}
+.nova-music-page .music-sleep-trigger.is-active{color:rgba(255,255,255,.9)}
+.nova-music-page .music-sleep-trigger.is-active svg{opacity:1;stroke:rgba(236,224,192,.95);filter:drop-shadow(0 0 5px rgba(236,224,192,.35))}
+.nova-music-page [data-sleep-countdown]{font-variant-numeric:tabular-nums;color:rgba(255,255,255,.42);transition:color var(--music-transition)}
+.nova-music-page .music-sleep-trigger.is-active [data-sleep-countdown]{color:rgba(236,224,192,.9)}
+/* Brief ink-wash pulse confirms a timer was just set, since the dialog closes on submit. */
+.nova-music-page .music-sleep-trigger.is-flash{animation:music-sleep-flash .9s ease both}
+@keyframes music-sleep-flash{0%{border-top-color:rgba(236,224,192,.75)}100%{border-top-color:var(--music-line)}}
+.nova-music-page .music-sleep-feedback{margin:8px 0 0;color:rgba(255,255,255,.5);font:400 10px/1.5 var(--coast-mono);letter-spacing:.04em}
+.nova-music-page .music-sleep-feedback:empty{display:none}
+
+.music-sleep-dialog{position:fixed;inset:0;z-index:60;width:min(392px,calc(100vw - 32px));max-height:calc(100svh - 48px);margin:auto;padding:0;box-sizing:border-box;overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:2px;background:#0a0b0d;color:rgba(255,255,255,.78);font:400 13px/1.6 var(--coast-font,Inter,sans-serif);box-shadow:0 40px 110px -30px rgba(0,0,0,.95),0 0 0 1px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05)}
+.music-sleep-dialog::backdrop{background:rgba(3,4,5,.72);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+.music-sleep-dialog[open]{animation:music-sleep-in .34s cubic-bezier(.22,.61,.36,1) both}
+.music-sleep-dialog[open]::backdrop{animation:music-sleep-veil .34s ease both}
+@keyframes music-sleep-in{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes music-sleep-veil{from{opacity:0}to{opacity:1}}
+/* Hairline star-field texture so the panel belongs to the music canvas. */
+.music-sleep-dialog::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(120% 90% at 84% -10%,rgba(236,224,192,.07),transparent 58%),radial-gradient(90% 70% at 0% 110%,rgba(255,255,255,.035),transparent 62%)}
+.music-sleep-dialog>*{position:relative}
+
+.music-sleep-dialog .music-sleep-header{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 0 22px}
+.music-sleep-dialog .music-sleep-symbol{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.14);border-radius:50%;color:rgba(236,224,192,.86);background:rgba(255,255,255,.025)}
+.music-sleep-dialog .music-sleep-symbol svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.music-sleep-dialog [data-sleep-close]{display:grid;place-items:center;width:30px;height:30px;padding:0;border:0;border-radius:50%;background:none;color:rgba(255,255,255,.38);font:300 19px/1 var(--coast-font,Inter,sans-serif);cursor:pointer;transition:color var(--music-transition),background var(--music-transition)}
+.music-sleep-dialog [data-sleep-close]:hover{color:#fff;background:rgba(255,255,255,.07)}
+
+.music-sleep-dialog .music-sleep-eyebrow{margin:18px 22px 0;color:rgba(255,255,255,.3);font:400 9.5px/1 var(--coast-mono);letter-spacing:.34em;text-transform:uppercase}
+.music-sleep-dialog h2{margin:9px 22px 0;color:rgba(255,255,255,.94);font:400 25px/1.2 var(--coast-display,Georgia,serif);letter-spacing:.02em}
+.music-sleep-dialog #music-sleep-description{margin:6px 22px 0;color:rgba(255,255,255,.42);font-size:11.5px;line-height:1.7}
+
+.music-sleep-dialog .music-sleep-clock{display:flex;flex-direction:column;align-items:center;gap:7px;margin:20px 22px 0;padding:16px 12px 18px;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1)}
+.music-sleep-dialog [data-sleep-display]{color:rgba(255,255,255,.94);font:300 44px/1 var(--coast-mono,JetBrains Mono,monospace);letter-spacing:.05em;font-variant-numeric:tabular-nums;text-shadow:0 0 32px rgba(236,224,192,.16)}
+.music-sleep-dialog [data-sleep-caption]{color:rgba(255,255,255,.34);font:400 10.5px/1.5 var(--coast-mono);letter-spacing:.06em;text-align:center}
+
+.music-sleep-dialog .music-sleep-presets{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:18px 22px 0}
+.music-sleep-dialog .music-sleep-presets button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;padding:7px 2px;border:1px solid rgba(255,255,255,.12);border-radius:1px;background:rgba(255,255,255,.022);color:rgba(255,255,255,.74);font:400 16px/1 var(--coast-mono);font-variant-numeric:tabular-nums;cursor:pointer;transition:border-color var(--music-transition),background var(--music-transition),color var(--music-transition),box-shadow var(--music-transition)}
+.music-sleep-dialog .music-sleep-presets button small{color:rgba(255,255,255,.32);font:400 9.5px/1 var(--coast-mono);letter-spacing:.08em;transition:color var(--music-transition)}
+.music-sleep-dialog .music-sleep-presets button:hover{border-color:rgba(255,255,255,.34);background:rgba(255,255,255,.05);color:#fff}
+.music-sleep-dialog .music-sleep-presets button[aria-pressed=true]{border-color:rgba(236,224,192,.55);background:rgba(236,224,192,.09);color:#f2e8d4;box-shadow:inset 0 0 0 1px rgba(236,224,192,.14)}
+.music-sleep-dialog .music-sleep-presets button[aria-pressed=true] small{color:rgba(236,224,192,.62)}
+
+.music-sleep-dialog [data-sleep-form]{margin:16px 22px 0;padding:0 0 22px}
+.music-sleep-dialog .music-sleep-custom{display:flex;align-items:center;justify-content:space-between;gap:14px;color:rgba(255,255,255,.46);font:400 11px/1.4 var(--coast-mono);letter-spacing:.05em}
+.music-sleep-dialog .music-sleep-custom>span{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.38);font-size:10.5px}
+.music-sleep-dialog .music-sleep-custom input{box-sizing:border-box;width:76px;height:38px;padding:0 10px;border:1px solid rgba(255,255,255,.15);border-radius:1px;background:rgba(0,0,0,.45);color:#f2f2f0;font:400 16px/1 var(--coast-mono);text-align:center;font-variant-numeric:tabular-nums;appearance:textfield;-moz-appearance:textfield}
+.music-sleep-dialog .music-sleep-custom input::-webkit-outer-spin-button,.music-sleep-dialog .music-sleep-custom input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.music-sleep-dialog .music-sleep-custom input:focus{outline:none;border-color:rgba(236,224,192,.55);box-shadow:0 0 0 3px rgba(236,224,192,.08)}
+.music-sleep-dialog .music-sleep-hint{margin:9px 0 0;color:rgba(255,255,255,.26);font:400 9.5px/1.6 var(--coast-mono);letter-spacing:.03em}
+.music-sleep-dialog .music-sleep-error{min-height:15px;margin:5px 0 0;color:#e8a7a0;font:400 10.5px/1.5 var(--coast-mono)}
+.music-sleep-dialog .music-sleep-error:empty{min-height:0;margin-top:0}
+
+.music-sleep-dialog .music-sleep-start{width:100%;min-height:44px;margin:5px 0 0;padding:0 16px;border:1px solid rgba(236,224,192,.42);border-radius:1px;background:linear-gradient(180deg,rgba(236,224,192,.16),rgba(236,224,192,.07));color:#f4ecda;font:400 12px/1 var(--coast-mono);letter-spacing:.08em;cursor:pointer;transition:background var(--music-transition),border-color var(--music-transition),color var(--music-transition)}
+.music-sleep-dialog .music-sleep-start:hover{background:linear-gradient(180deg,rgba(236,224,192,.26),rgba(236,224,192,.12));border-color:rgba(236,224,192,.68);color:#fff}
+.music-sleep-dialog .music-sleep-start:disabled{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:rgba(255,255,255,.3);cursor:default}
+
+.music-sleep-dialog .music-sleep-cancel{display:block;width:100%;margin:10px 0 0;padding:9px 0 2px;border:0;background:none;color:rgba(255,255,255,.34);font:400 10.5px/1.4 var(--coast-mono);letter-spacing:.12em;cursor:pointer;transition:color var(--music-transition)}
+.music-sleep-dialog .music-sleep-cancel:hover{color:rgba(255,255,255,.78)}
+.music-sleep-dialog .music-sleep-cancel[hidden]{display:none}
+
+.music-sleep-dialog :is(button,input):focus-visible{outline:1px solid rgba(236,224,192,.6);outline-offset:3px}
+
+@media(max-width:560px){
+  .music-sleep-dialog{padding:0}
+  .music-sleep-dialog .music-sleep-presets{grid-template-columns:repeat(4,1fr);gap:6px;margin-left:18px;margin-right:18px}
+  .music-sleep-dialog .music-sleep-presets button{min-height:50px;font-size:15px}
+  .music-sleep-dialog .music-sleep-header{padding-left:18px;padding-right:12px}
+  .music-sleep-dialog :is(.music-sleep-eyebrow,h2,#music-sleep-description){margin-left:18px;margin-right:18px}
+  .music-sleep-dialog :is(.music-sleep-clock,[data-sleep-form]){margin-left:18px;margin-right:18px}
+  .music-sleep-dialog [data-sleep-form]{padding-bottom:18px}
+  .music-sleep-dialog [data-sleep-display]{font-size:38px}
+}
+@media(max-height:560px){
+  .music-sleep-dialog{max-height:calc(100svh - 16px);overflow-y:auto}
+  .music-sleep-dialog .music-sleep-clock{margin-top:12px;padding:10px 12px 12px}
+  .music-sleep-dialog [data-sleep-display]{font-size:32px}
+  .music-sleep-dialog .music-sleep-presets{margin-top:12px}
+  .music-sleep-dialog .music-sleep-eyebrow{margin-top:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .music-sleep-dialog[open],.music-sleep-dialog[open]::backdrop{animation:none}
+}
 
 /* ---- listening archive entry (compact b&w archive card) ------ */
 /* Docked to the playlist column; the calc keeps a fixed 34px gap below the list. */
