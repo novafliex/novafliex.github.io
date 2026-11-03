@@ -106,9 +106,8 @@
       const input = $('.nova-music-progress-input')
       if (!scrubbing) { input.value = progress; input.style.setProperty('--music-progress', progress / 10 + '%'); $('.nova-music-current-time').textContent = duration > 0 ? time(state.currentTime) : '' }
       $('.nova-music-duration').textContent = duration > 0 ? time(duration) : ''
-      $('.nova-music-count').textContent = state.ready ? '本地音乐 · ' + state.tracks.length + ' 首 · ' + ({ list: '列表循环', shuffle: '随机播放', single: '单曲循环' }[state.mode] || '列表循环') : ''
       $('.nova-music-retry').hidden = !state.failed
-      $('.nova-music-count').textContent = state.failed ? '音乐暂时不可用' : $('.nova-music-count').textContent
+      if (state.failed) $('[data-player-status]').textContent = '音乐暂时不可用'
       root.querySelectorAll('.nova-music-toggle,.nova-music-previous,.nova-music-next,.nova-music-progress-input').forEach(node => { node.disabled = !state.ready && !node.matches('.nova-music-toggle') })
       $('[data-music-shuffle]').setAttribute('aria-pressed', state.mode === 'shuffle')
       $('[data-music-shuffle]').title = state.mode === 'shuffle' ? '随机播放已开启 · 点击恢复列表循环' : '开启随机播放 · 下一曲随机选择'
@@ -132,19 +131,17 @@
           p.classList.toggle('is-distant', hasActive && !current && !near)
           p.firstElementChild?.classList.remove('is-marquee')
         })
-        const p = hasActive ? lyrics.children[active] : null
-        if (p) {
-          applyMarquee(p, p.firstElementChild)
-          // Read the full current line during its own cue rather than a fixed long cycle.
-          const cueSeconds = (lines[active + 1]?.time || state.duration) - lines[active].time
-          p.firstElementChild.style.setProperty('--music-marquee-duration', Math.max(1.2, Math.min(12, cueSeconds * .9)) + 's')
-        }
         // A reader browsing manually keeps control until the pause window expires.
-        if (p && Date.now() >= followPausedUntil) {
-          const container = $('.sea-lyrics')
-          container.scrollTo({top:container.scrollTop + p.getBoundingClientRect().top - container.getBoundingClientRect().top - container.clientHeight / 2 + p.clientHeight / 2,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'})
-        }
+        if (hasActive) centerActiveLyrics(matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth')
       }
+    }
+    // A reader browsing manually keeps control until the pause window expires.
+    const centerActiveLyrics = behavior => {
+      if (Date.now() < followPausedUntil) return
+      const current = lyrics.querySelector('.lyric-line.is-active')
+      const container = $('.sea-lyrics')
+      if (!current || !container) return
+      container.scrollTo({top:container.scrollTop + current.getBoundingClientRect().top - container.getBoundingClientRect().top - container.clientHeight / 2 + current.getBoundingClientRect().height / 2,behavior})
     }
     const toggleFavorite = id => { if (!id) return; favorites.has(id) ? favorites.delete(id) : favorites.add(id); try { localStorage.setItem('fliex-music-favorites-v1', JSON.stringify([...favorites])) } catch (_) {} render() }
     on($('.nova-music-toggle'), 'click', () => api.toggle())
@@ -182,78 +179,90 @@
       })
     })
     on($('.nova-music-retry'), 'click', () => api.retry())
-    const sleepPanel = $('.music-sleep-dialog'), sleepStatus = $('[data-sleep-status]'), sleepOpen = $('[data-sleep-open]'), sleepInput = $('#music-sleep-minutes')
-    const sleepError = $('[data-sleep-error]'), sleepStart = $('[data-sleep-start]')
+    // Sleep timer: one moon button in the control row opens a compact menu. Every choice maps
+    // onto the shared controller, so the deadline still survives PJAX and track changes.
+    const sleepRoot = $('[data-sleep-root]'), sleepOpen = $('[data-sleep-open]'), sleepMenu = $('[data-sleep-menu]')
+    const sleepStatus = $('[data-player-status]')
+    const sleepChoices = sleepMenu ? [...sleepMenu.querySelectorAll('[data-sleep-choice]')] : []
     const canSetSleep = typeof api.sleepState === 'function' && typeof api.setSleepTimer === 'function'
-    const canModal = Boolean(sleepPanel) && typeof sleepPanel.showModal === 'function'
-    // jsdom and very old engines have no dialog methods; the attribute keeps the panel operable there.
-    const sleepIsOpen = () => Boolean(sleepPanel) && (sleepPanel.open === true || sleepPanel.hasAttribute('open'))
-    const refreshStartLabel = sleep => {
-      const minutes = Number(sleepInput.value)
-      const valid = Number.isInteger(minutes) && minutes >= 1 && minutes <= 720
-      sleepStart.textContent = sleep.endsAt ? '更新为 ' + (valid ? minutes + ' 分钟' : '新时长') : valid ? '开启 ' + minutes + ' 分钟定时' : '开启定时'
+    const canStopTrack = typeof api.setSleepTrack === 'function'
+    const menuOpen = () => Boolean(sleepMenu) && !sleepMenu.hidden
+    // "15/30/60" stay checked while the countdown runs; the deadline drifts, the preset does not.
+    let activePreset = ''
+    const closeSleep = focus => {
+      if (!menuOpen()) return
+      sleepMenu.hidden = true
+      sleepOpen.setAttribute('aria-expanded', 'false')
+      if (focus && !destroyed && sleepOpen.isConnected) sleepOpen.focus()
     }
-    const sleepPreview = () => {
-      const minutes = Number(sleepInput.value)
-      return Number.isInteger(minutes) && minutes >= 1 && minutes <= 720 ? time(minutes * 60) : '--:--'
+    const syncSleep = () => {
+      if (!sleepOpen) return
+      const sleep = canSetSleep ? api.sleepState() : { endsAt: 0, remaining: 0, stopAfterTrack: false }
+      const timerOn = Boolean(sleep.endsAt), trackOn = Boolean(sleep.stopAfterTrack)
+      const sleepOn = timerOn || trackOn
+      if (!sleepOn) activePreset = ''
+      sleepOpen.classList.toggle('is-active', sleepOn)
+      // The countdown lives in the tooltip and the accessible name, keeping the bar compact.
+      sleepOpen.title = timerOn ? '定时关闭 · 剩余 ' + time(sleep.remaining) : trackOn ? '定时关闭 · 本曲结束后暂停' : ''
+      if (!sleepOpen.title) sleepOpen.removeAttribute('title')
+      sleepOpen.setAttribute('aria-label', sleepOpen.title || '定时关闭')
+      const chosen = trackOn ? 'track' : activePreset || 'off'
+      sleepChoices.forEach(button => button.setAttribute('aria-checked', String(sleepOn && button.dataset.sleepChoice === chosen)))
+      const trackChoice = sleepMenu?.querySelector('[data-sleep-choice="track"]')
+      if (trackChoice) trackChoice.disabled = !canStopTrack
     }
-    const refreshPreview = () => {
-      const sleep = canSetSleep ? api.sleepState() : { endsAt: 0 }
-      if (!sleep.endsAt) $('[data-sleep-display]').textContent = sleepPreview()
-      refreshStartLabel(sleep)
-    }
-    const syncSleep = event => {
-      const sleep = canSetSleep ? api.sleepState() : { endsAt: 0, remaining: 0 }
-      $('[data-sleep-countdown]').textContent = sleep.endsAt ? time(sleep.remaining) + ' 后暂停' : '未开启'
-      sleepOpen.classList.toggle('is-active', Boolean(sleep.endsAt))
-      // Idle shows the duration about to be set, so the panel always answers the click.
-      $('[data-sleep-display]').textContent = sleep.endsAt ? time(sleep.remaining) : sleepPreview()
-      $('[data-sleep-caption]').textContent = sleep.endsAt ? '预计 ' + new Date(sleep.endsAt).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', hour12: false }) + ' 暂停播放' : '选择一段留给音乐的时间'
-      refreshStartLabel(sleep)
-      $('[data-sleep-cancel]').hidden = !sleep.endsAt
-      if (event?.detail?.expired) sleepStatus.textContent = '定时已结束，音乐已暂停'
-    }
-    const closeSleep = () => {
-      if (!sleepPanel || !sleepIsOpen()) return
-      if (canModal) sleepPanel.close()
-      else {
-        sleepPanel.removeAttribute('open')
-        sleepOpen.setAttribute('aria-expanded', 'false')
-        if (!destroyed && sleepOpen.isConnected) sleepOpen.focus()
+    const chooseSleep = value => {
+      if (value === 'off') { activePreset = ''; api.setSleepTimer(0); sleepStatus.textContent = '定时已取消' }
+      else if (value === 'track') {
+        if (!canStopTrack || !api.setSleepTrack()) return
+        activePreset = 'track'; sleepStatus.textContent = '本曲结束后自动暂停'
+      } else {
+        const minutes = Number(value)
+        if (!api.setSleepTimer(minutes)) return
+        activePreset = value; sleepStatus.textContent = minutes + ' 分钟后自动暂停'
       }
+      syncSleep()
+      closeSleep(true)
     }
-    const syncPresets = () => root.querySelectorAll('[data-sleep-minutes]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.sleepMinutes) === Number(sleepInput.value))))
-    on(sleepOpen, 'click', () => {
-      syncSleep(); sleepError.textContent = canSetSleep ? '' : '播放器已更新，请刷新页面后重试。'
-      sleepStart.disabled = !canSetSleep
-      syncPresets()
-      if (!sleepIsOpen()) {
-        if (canModal) sleepPanel.showModal()
-        else sleepPanel.setAttribute('open', '')
-      }
+    const openSleep = () => {
+      if (!sleepMenu) return
+      syncSleep()
+      sleepMenu.hidden = false
       sleepOpen.setAttribute('aria-expanded', 'true')
-      // Land focus on the current choice so the first Tab/Enter acts on the active preset.
-      if (canModal) requestAnimationFrame(() => { if (!destroyed && sleepIsOpen()) (sleepPanel.querySelector('[data-sleep-minutes][aria-pressed="true"]') || sleepInput).focus() })
-    })
-    on($('[data-sleep-close]'), 'click', closeSleep)
-    on(sleepPanel, 'close', () => { sleepOpen.setAttribute('aria-expanded', 'false'); if (!destroyed && sleepOpen.isConnected) sleepOpen.focus() })
-    on(sleepPanel, 'click', event => {
-      if (event.target !== sleepPanel) return
-      const box = sleepPanel.getBoundingClientRect()
-      if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) closeSleep()
-    })
-    const startSleep = minutes => {
-      if (!canSetSleep || !api.setSleepTimer(minutes)) { sleepError.textContent = '请输入 1–720 之间的整数分钟。'; return }
-      sleepStatus.textContent = minutes + ' 分钟后自动暂停'
-      sleepOpen.classList.add('is-flash')
-      setTimeout(() => sleepOpen.classList.remove('is-flash'), 900)
-      closeSleep()
+      requestAnimationFrame(() => { if (!destroyed && menuOpen()) (sleepMenu.querySelector('[aria-checked="true"]') || sleepChoices[0])?.focus() })
     }
-    root.querySelectorAll('[data-sleep-minutes]').forEach(button => on(button, 'click', () => { sleepInput.value = button.dataset.sleepMinutes; sleepError.textContent = ''; syncPresets(); refreshPreview() }))
-    on(sleepInput, 'input', () => { sleepError.textContent = ''; syncPresets(); refreshPreview() })
-    on($('[data-sleep-form]'), 'submit', event => { event.preventDefault(); if (event.currentTarget.reportValidity()) startSleep(Number(sleepInput.value)) })
-    on($('[data-sleep-cancel]'), 'click', () => { if (!canSetSleep) return; api.setSleepTimer(0); sleepStatus.textContent = '定时已取消'; closeSleep() })
-    on(document, 'fliex:sleep', syncSleep); syncSleep()
+    on(sleepOpen, 'click', event => {
+      event.stopPropagation()
+      if (menuOpen()) closeSleep(false); else openSleep()
+    })
+    // Keyboard follows the menu-button pattern: arrows move, Escape and Tab dismiss.
+    on(sleepRoot, 'keydown', event => {
+      if (event.key === 'Escape' && menuOpen()) { event.preventDefault(); closeSleep(true); return }
+      if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return
+      if (!menuOpen()) { event.preventDefault(); openSleep() }
+    })
+    on(sleepMenu, 'keydown', event => {
+      if (!sleepMenu || !menuOpen()) return
+      const index = sleepChoices.indexOf(document.activeElement)
+      if (event.key === 'Escape') { event.preventDefault(); closeSleep(true) }
+      else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault()
+        const step = event.key === 'ArrowDown' ? 1 : -1
+        let next = index < 0 ? (step > 0 ? -1 : 0) : index
+        do { next = (next + step + sleepChoices.length) % sleepChoices.length } while (sleepChoices[next].disabled && next !== index)
+        sleepChoices[next]?.focus()
+      } else if (event.key === 'Tab') closeSleep(false)
+    })
+    sleepChoices.forEach(button => on(button, 'click', event => { event.stopPropagation(); chooseSleep(button.dataset.sleepChoice) }))
+    // The menu floats above the whole strip, so clicks inside it must not count as "outside".
+    on(document, 'click', event => { if (menuOpen() && !sleepMenu.contains(event.target) && !sleepRoot.contains(event.target)) closeSleep(false) })
+    on(document, 'fliex:sleep', event => {
+      syncSleep()
+      const detail = event?.detail
+      if (detail?.expired) sleepStatus.textContent = '定时已结束，音乐已暂停'
+      else if (detail?.finished) sleepStatus.textContent = '本曲已结束，音乐已暂停'
+    })
+    syncSleep()
     on(lyrics, 'click', event => {
       if (event.target.closest('[data-lyrics-retry]')) { lyricSong = ''; loadLyrics(api.snapshot().song); return }
       const line = event.target.closest('.lyric-line')
@@ -280,11 +289,8 @@
       if (destroyed) return
       applyMarquee(titleNode, titleInner); applyMarquee(artistNode, artistInner)
       rows.querySelectorAll('.sea-track-name,.sea-track-artist').forEach(node => applyMarquee(node, node.firstElementChild))
-      const current = lyrics.querySelector('.is-active'); if (current) {
-        applyMarquee(current, current.firstElementChild)
-        const cueSeconds = (lines[active + 1]?.time || api.snapshot().duration) - lines[active].time
-        current.firstElementChild.style.setProperty('--music-marquee-duration', Math.max(1.2, Math.min(12, cueSeconds * .9)) + 's')
-      }
+      // Wrapped lyric lines change height with width and fonts, so re-centre from live rects (never index × fixed height).
+      centerActiveLyrics(matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth')
     }
     let headingObserver = null
     if (typeof ResizeObserver === 'function') {

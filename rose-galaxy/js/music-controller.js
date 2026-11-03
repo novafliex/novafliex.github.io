@@ -15,10 +15,16 @@
   const saveSettings = () => write('fliex-music-settings-v1', { mode, volume })
   const emit = () => document.dispatchEvent(new CustomEvent('fliex:music'))
   // The deadline belongs to the shared player, so navigation and track changes keep it.
-  let sleepEndsAt = 0, sleepInterval = 0
+  let sleepEndsAt = 0, sleepInterval = 0, stopAfterTrack = false
+  const stopTrackKey = 'fliex-music-sleep-track-v1'
   try { sleepEndsAt = Number(sessionStorage.getItem('fliex-music-sleep-v1')) || 0 } catch (_) {}
+  try { stopAfterTrack = sessionStorage.getItem(stopTrackKey) === '1' } catch (_) {}
   if (!Number.isFinite(sleepEndsAt) || sleepEndsAt > Date.now() + 720 * 60000) sleepEndsAt = 0
-  const sleepState = () => ({ endsAt: sleepEndsAt, remaining: Math.max(0, Math.ceil((sleepEndsAt - Date.now()) / 1000)) })
+  const sleepState = () => ({ endsAt: sleepEndsAt, remaining: Math.max(0, Math.ceil((sleepEndsAt - Date.now()) / 1000)), stopAfterTrack })
+  const clearStopTrack = () => {
+    stopAfterTrack = false
+    try { sessionStorage.removeItem(stopTrackKey) } catch (_) {}
+  }
   const sleepTick = () => {
     const expired = sleepEndsAt > 0 && Date.now() >= sleepEndsAt
     if (expired) {
@@ -32,10 +38,21 @@
   const setSleepTimer = minutes => {
     if (!Number.isInteger(minutes) || minutes < 0 || minutes > 720) return false
     clearInterval(sleepInterval); sleepInterval = 0
+    clearStopTrack()
     sleepEndsAt = minutes ? Date.now() + minutes * 60000 : 0
     try { if (sleepEndsAt) sessionStorage.setItem('fliex-music-sleep-v1', String(sleepEndsAt)); else sessionStorage.removeItem('fliex-music-sleep-v1') } catch (_) {}
     if (sleepEndsAt) sleepInterval = setInterval(sleepTick, 1000)
     sleepTick(); return true
+  }
+  // "End of this track" reuses the same pause path as the timed deadline.
+  const setSleepTrack = () => {
+    clearInterval(sleepInterval); sleepInterval = 0
+    sleepEndsAt = 0
+    try { sessionStorage.removeItem('fliex-music-sleep-v1') } catch (_) {}
+    stopAfterTrack = true
+    try { sessionStorage.setItem(stopTrackKey, '1') } catch (_) {}
+    document.dispatchEvent(new CustomEvent('fliex:sleep', { detail: sleepState() }))
+    return true
   }
   if (sleepEndsAt > Date.now()) sleepInterval = setInterval(sleepTick, 1000)
   else sleepEndsAt = 0
@@ -147,6 +164,12 @@
     audio.addEventListener('durationchange', emit)
     audio.addEventListener('ended', () => {
       if (sleepEndsAt && sleepTick()) return
+      // "End of this track" is one-shot: it stops here instead of advancing the queue.
+      if (stopAfterTrack) {
+        clearStopTrack(); wantsPlay = false; audio.pause()
+        document.dispatchEvent(new CustomEvent('fliex:sleep', { detail: { ...sleepState(), finished: true } }))
+        emit(); return
+      }
       if (!wantsPlay || !list.audios.length) return
       if (mode === 'single') { player.seek(0); play() }
       else next()
@@ -226,7 +249,7 @@
       return stamps.map(stamp => ({ time: Number(stamp[1]) * 60 + Number(stamp[2]), text: words }))
     }).sort((a, b) => a.time - b.time)
   }
-  window.__fliexMusic = { snapshot, load, retry, toggle, play, select, next, previous, seek, setMode, setVolume, parseLyrics, setSleepTimer, sleepState, get analyser() { return analyser }, get player() { return player } }
+  window.__fliexMusic = { snapshot, load, retry, toggle, play, select, next, previous, seek, setMode, setVolume, parseLyrics, setSleepTimer, setSleepTrack, sleepState, get analyser() { return analyser }, get player() { return player } }
   window.addEventListener('pagehide', save)
   const init = () => { ensureAudio(); load() }
   document.addEventListener('pjax:complete', init)
