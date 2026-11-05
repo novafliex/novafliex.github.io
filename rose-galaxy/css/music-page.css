@@ -185,6 +185,25 @@ body.nova-music-route .coast-lightning{display:none!important}
 .nova-music-page .music-sleep-menu button:disabled:hover{background:none;color:rgba(255,255,255,.24)}
 .nova-music-page .music-sleep-menu button+button{border-top:1px solid rgba(255,255,255,.055)}
 
+/* Custom duration uses the top layer so the player cannot clip it. */
+.nova-music-page .music-sleep-custom-dialog{width:min(340px,calc(100vw - 32px));max-height:calc(100dvh - 32px);box-sizing:border-box;margin:auto;padding:24px;overflow-y:auto;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:radial-gradient(ellipse at top left,rgba(236,224,192,.055),transparent 70%),#101113;color:rgba(255,255,255,.85);box-shadow:0 24px 90px rgba(0,0,0,.65);font:400 13px/1.6 var(--coast-font)}
+.nova-music-page .music-sleep-custom-dialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.nova-music-page .music-sleep-custom-dialog header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.nova-music-page .music-sleep-custom-kicker{font:400 9px/1 var(--coast-mono);letter-spacing:.22em;color:rgba(236,224,192,.6)}
+.nova-music-page [data-sleep-custom-close]{display:grid;place-items:center;width:30px;height:30px;margin:-8px -8px 0 0;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.04);color:rgba(255,255,255,.55);font:22px/1 var(--coast-mono);cursor:pointer}
+.nova-music-page [data-sleep-custom-close]:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nova-music-page .music-sleep-custom-dialog h2{margin:0;color:#f1eee8;font:400 23px/1.4 var(--coast-display);letter-spacing:.04em}
+.nova-music-page #music-sleep-custom-help{margin:8px 0 24px;color:rgba(255,255,255,.45);font-size:12px}
+.nova-music-page [data-sleep-custom-form] label{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;border:1px solid rgba(255,255,255,.14);border-radius:7px;background:rgba(255,255,255,.025);font-size:12px}
+.nova-music-page [data-sleep-custom-form] label:focus-within{border-color:rgba(236,224,192,.55)}
+.nova-music-page [data-sleep-custom-form] label span{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.5)}
+.nova-music-page #music-sleep-custom-minutes{width:76px;min-height:32px;box-sizing:border-box;padding:2px;border:0;border-radius:0;outline:none;background:transparent;color:#f2eee5;text-align:right;font:400 24px/1.2 var(--coast-mono)}
+.nova-music-page .music-sleep-custom-hint{margin:8px 0 20px;color:rgba(255,255,255,.35);font-size:10px}
+.nova-music-page [data-sleep-custom-status]{margin:0 0 10px;color:#e3bcab;font-size:11px}
+.nova-music-page [data-sleep-custom-status]:empty{display:none}
+.nova-music-page .music-sleep-custom-submit{width:100%;min-height:42px;padding:9px 16px;border:1px solid rgba(236,224,192,.3);border-radius:6px;background:#e3ddcf;color:#191919;font:500 12px/1.5 var(--coast-font);letter-spacing:.08em;cursor:pointer}
+.nova-music-page .music-sleep-custom-submit:hover{background:#f0eade}
+
 /* ---- listening archive entry (compact b&w archive card) ------ */
 /* Docked to the playlist column; the calc keeps a fixed 34px gap below the list. */
 .nova-music-page .musicx-archive-entry{position:absolute;left:76.5%;width:17.5%;top:calc(14.5vh + 57vh + 34px);z-index:3;display:flex;align-items:center;gap:14px;padding:10px 12px;box-sizing:border-box;border:1px solid rgba(255,255,255,.13);background:rgba(7,7,7,.38);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);text-align:left;cursor:pointer;transition:border-color var(--music-transition),background var(--music-transition)}

@@ -8,12 +8,25 @@
   const failures = new Set(Array.isArray(storedFailures) ? storedFailures : [])
   let player = null, loading = null, failed = false, message = '暂无音乐', configured = false
   let wantsPlay = false, restoreTime = 0, skipTimer = 0, saveAt = 0, selectionVersion = 0
-  let audioContext = null, analyser = null, audioSource = null
+  let mediaTrack = ''
   const settings = read('fliex-music-settings-v1', {})
   let mode = ['list', 'single', 'shuffle'].includes(settings.mode) ? settings.mode : 'list'
   let volume = Number.isFinite(settings.volume) ? Math.max(0, Math.min(1, settings.volume)) : .6
   const saveSettings = () => write('fliex-music-settings-v1', { mode, volume })
-  const emit = () => document.dispatchEvent(new CustomEvent('fliex:music'))
+  const syncMediaSession = () => {
+    const session = navigator.mediaSession, song = player?.list.audios[player.list.index]
+    if (!session) return
+    try {
+      if (song && mediaTrack !== song.id && typeof window.MediaMetadata === 'function') {
+        session.metadata = new MediaMetadata({ title: song.name, artist: song.artist || '', album: song.album || '', artwork: song.cover ? [{ src: new URL(song.cover, location.href).href }] : [] })
+        mediaTrack = song.id
+      }
+      session.playbackState = player && !player.audio.paused ? 'playing' : 'paused'
+      const duration = Number.isFinite(player?.audio.duration) ? player.audio.duration : Number(song?.duration)
+      if (session.setPositionState && duration > 0) session.setPositionState({ duration, playbackRate: player.audio.playbackRate || 1, position: Math.max(0, Math.min(duration, restoreTime || player.audio.currentTime || 0)) })
+    } catch (_) { /* Optional system controls must never interrupt native playback. */ }
+  }
+  const emit = () => { syncMediaSession(); document.dispatchEvent(new CustomEvent('fliex:music')) }
   // The deadline belongs to the shared player, so navigation and track changes keep it.
   let sleepEndsAt = 0, sleepInterval = 0, stopAfterTrack = false
   const stopTrackKey = 'fliex-music-sleep-track-v1'
@@ -96,16 +109,9 @@
     wantsPlay = true
     const version = selectionVersion
     if (!ensureCurrentSource()) return
-    try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext
-      if (AudioContext && !audioSource) {
-        audioContext ||= new AudioContext()
-        analyser ||= audioContext.createAnalyser(); analyser.fftSize = 256
-        audioSource = audioContext.createMediaElementSource(player.audio)
-        audioSource.connect(analyser); analyser.connect(audioContext.destination)
-      }
-      if (audioContext?.state === 'suspended') await audioContext.resume()
-    } catch (error) { console.warn('[Fliex Music] 波形分析不可用', error) }
+    // Keep the native media output: routing it through AudioContext can mute it
+    // when Safari suspends Web Audio after the phone locks.
+    try { if (navigator.audioSession) navigator.audioSession.type = 'playback' } catch (_) {}
     if (version !== selectionVersion || !wantsPlay) return
     try { await player.audio.play(); if (version !== selectionVersion) { if (!wantsPlay) player.audio.pause(); return } failed = false; emit() }
     catch (error) {
@@ -212,7 +218,7 @@
     if (loading) return loading
     save(); player?.pause(); clearTimeout(skipTimer)
     document.getElementById('fliex-shared-player')?.remove()
-    audioSource?.disconnect(); audioSource = null
+    mediaTrack = ''
     player = null; configured = false; failed = false; wantsPlay = false
     failures.clear(); write(failureKey, [])
     return load()
@@ -249,7 +255,19 @@
       return stamps.map(stamp => ({ time: Number(stamp[1]) * 60 + Number(stamp[2]), text: words }))
     }).sort((a, b) => a.time - b.time)
   }
-  window.__fliexMusic = { snapshot, load, retry, toggle, play, select, next, previous, seek, setMode, setVolume, parseLyrics, setSleepTimer, setSleepTrack, sleepState, get analyser() { return analyser }, get player() { return player } }
+  window.__fliexMusic = { snapshot, load, retry, toggle, play, select, next, previous, seek, setMode, setVolume, parseLyrics, setSleepTimer, setSleepTrack, sleepState, get analyser() { return null }, get player() { return player } }
+  if (navigator.mediaSession?.setActionHandler) {
+    const handlers = {
+      play, pause: () => player?.pause(), stop: () => { player?.pause(); seek(0); emit() },
+      previoustrack: previous, nexttrack: next,
+      seekto: details => { if (Number.isFinite(details.seekTime)) { seek(details.seekTime); emit() } },
+      seekbackward: details => { seek(snapshot().currentTime - (details.seekOffset || 10)); emit() },
+      seekforward: details => { seek(snapshot().currentTime + (details.seekOffset || 10)); emit() }
+    }
+    for (const [action, handler] of Object.entries(handlers)) {
+      try { navigator.mediaSession.setActionHandler(action, handler) } catch (_) {}
+    }
+  }
   window.addEventListener('pagehide', save)
   const init = () => { ensureAudio(); load() }
   document.addEventListener('pjax:complete', init)

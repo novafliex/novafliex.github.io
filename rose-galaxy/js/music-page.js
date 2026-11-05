@@ -183,6 +183,7 @@
     // onto the shared controller, so the deadline still survives PJAX and track changes.
     const sleepRoot = $('[data-sleep-root]'), sleepOpen = $('[data-sleep-open]'), sleepMenu = $('[data-sleep-menu]')
     const sleepStatus = $('[data-player-status]')
+    const customDialog = $('#music-sleep-custom'), customForm = $('[data-sleep-custom-form]'), customInput = $('#music-sleep-custom-minutes'), customStatus = $('[data-sleep-custom-status]')
     const sleepChoices = sleepMenu ? [...sleepMenu.querySelectorAll('[data-sleep-choice]')] : []
     const canSetSleep = typeof api.sleepState === 'function' && typeof api.setSleepTimer === 'function'
     const canStopTrack = typeof api.setSleepTrack === 'function'
@@ -207,11 +208,17 @@
       if (!sleepOpen.title) sleepOpen.removeAttribute('title')
       sleepOpen.setAttribute('aria-label', sleepOpen.title || '定时关闭')
       const chosen = trackOn ? 'track' : activePreset || 'off'
-      sleepChoices.forEach(button => button.setAttribute('aria-checked', String(sleepOn && button.dataset.sleepChoice === chosen)))
+      sleepChoices.filter(button => button.dataset.sleepChoice !== 'custom').forEach(button => button.setAttribute('aria-checked', String(sleepOn && button.dataset.sleepChoice === chosen)))
       const trackChoice = sleepMenu?.querySelector('[data-sleep-choice="track"]')
       if (trackChoice) trackChoice.disabled = !canStopTrack
     }
     const chooseSleep = value => {
+      if (value === 'custom') {
+        closeSleep(false)
+        customStatus.textContent = ''
+        if (!customDialog.open) customDialog.showModal()
+        return
+      }
       if (value === 'off') { activePreset = ''; api.setSleepTimer(0); sleepStatus.textContent = '定时已取消' }
       else if (value === 'track') {
         if (!canStopTrack || !api.setSleepTrack()) return
@@ -254,6 +261,21 @@
       } else if (event.key === 'Tab') closeSleep(false)
     })
     sleepChoices.forEach(button => on(button, 'click', event => { event.stopPropagation(); chooseSleep(button.dataset.sleepChoice) }))
+    on($('[data-sleep-custom-close]'), 'click', () => customDialog.close())
+    on(customDialog, 'close', () => { if (!destroyed && sleepOpen.isConnected) sleepOpen.focus() })
+    on(customDialog, 'click', event => {
+      if (event.target !== customDialog) return
+      const rect = customDialog.getBoundingClientRect()
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) customDialog.close()
+    })
+    on(customForm, 'submit', event => {
+      event.preventDefault()
+      if (!customForm.reportValidity()) return
+      const minutes = Number(customInput.value)
+      if (!canSetSleep || !api.setSleepTimer(minutes)) { customStatus.textContent = '请输入 1–720 之间的整数分钟。'; return }
+      activePreset = 'custom'; sleepStatus.textContent = minutes + ' 分钟后自动暂停'
+      syncSleep(); customDialog.close()
+    })
     // The menu floats above the whole strip, so clicks inside it must not count as "outside".
     on(document, 'click', event => { if (menuOpen() && !sleepMenu.contains(event.target) && !sleepRoot.contains(event.target)) closeSleep(false) })
     on(document, 'fliex:sleep', event => {
@@ -313,7 +335,7 @@
     on(document,'fliex:music',()=>{if (!frame) startWave()}); on(document,'visibilitychange',startWave)
     if (typeof ctx.beginPath === 'function') { ctx.strokeStyle='rgba(129,129,129,.3)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(0,36); ctx.lineTo(wave.width,36); ctx.stroke() }
     render(); api.load().then(render)
-    cleanup = () => { destroyed=true; closeSleep(); cancelAnimationFrame(frame); headingObserver?.disconnect(); off.forEach(remove=>remove()); mounted=null }
+    cleanup = () => { destroyed=true; closeSleep(); if (customDialog.open) customDialog.close(); cancelAnimationFrame(frame); headingObserver?.disconnect(); off.forEach(remove=>remove()); mounted=null }
   }
   window.__novaMusicBootstrap={init,destroy:()=>cleanup()}
   document.addEventListener('pjax:send',()=>cleanup()); document.addEventListener('pjax:complete',init)

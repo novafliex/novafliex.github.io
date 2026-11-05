@@ -6856,6 +6856,25 @@ body.nova-music-route .coast-lightning{display:none!important}
 .nova-music-page .music-sleep-menu button:disabled:hover{background:none;color:rgba(255,255,255,.24)}
 .nova-music-page .music-sleep-menu button+button{border-top:1px solid rgba(255,255,255,.055)}
 
+/* Custom duration uses the top layer so the player cannot clip it. */
+.nova-music-page .music-sleep-custom-dialog{width:min(340px,calc(100vw - 32px));max-height:calc(100dvh - 32px);box-sizing:border-box;margin:auto;padding:24px;overflow-y:auto;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:radial-gradient(ellipse at top left,rgba(236,224,192,.055),transparent 70%),#101113;color:rgba(255,255,255,.85);box-shadow:0 24px 90px rgba(0,0,0,.65);font:400 13px/1.6 var(--coast-font)}
+.nova-music-page .music-sleep-custom-dialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.nova-music-page .music-sleep-custom-dialog header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.nova-music-page .music-sleep-custom-kicker{font:400 9px/1 var(--coast-mono);letter-spacing:.22em;color:rgba(236,224,192,.6)}
+.nova-music-page [data-sleep-custom-close]{display:grid;place-items:center;width:30px;height:30px;margin:-8px -8px 0 0;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.04);color:rgba(255,255,255,.55);font:22px/1 var(--coast-mono);cursor:pointer}
+.nova-music-page [data-sleep-custom-close]:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nova-music-page .music-sleep-custom-dialog h2{margin:0;color:#f1eee8;font:400 23px/1.4 var(--coast-display);letter-spacing:.04em}
+.nova-music-page #music-sleep-custom-help{margin:8px 0 24px;color:rgba(255,255,255,.45);font-size:12px}
+.nova-music-page [data-sleep-custom-form] label{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;border:1px solid rgba(255,255,255,.14);border-radius:7px;background:rgba(255,255,255,.025);font-size:12px}
+.nova-music-page [data-sleep-custom-form] label:focus-within{border-color:rgba(236,224,192,.55)}
+.nova-music-page [data-sleep-custom-form] label span{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.5)}
+.nova-music-page #music-sleep-custom-minutes{width:76px;min-height:32px;box-sizing:border-box;padding:2px;border:0;border-radius:0;outline:none;background:transparent;color:#f2eee5;text-align:right;font:400 24px/1.2 var(--coast-mono)}
+.nova-music-page .music-sleep-custom-hint{margin:8px 0 20px;color:rgba(255,255,255,.35);font-size:10px}
+.nova-music-page [data-sleep-custom-status]{margin:0 0 10px;color:#e3bcab;font-size:11px}
+.nova-music-page [data-sleep-custom-status]:empty{display:none}
+.nova-music-page .music-sleep-custom-submit{width:100%;min-height:42px;padding:9px 16px;border:1px solid rgba(236,224,192,.3);border-radius:6px;background:#e3ddcf;color:#191919;font:500 12px/1.5 var(--coast-font);letter-spacing:.08em;cursor:pointer}
+.nova-music-page .music-sleep-custom-submit:hover{background:#f0eade}
+
 /* ---- listening archive entry (compact b&w archive card) ------ */
 /* Docked to the playlist column; the calc keeps a fixed 34px gap below the list. */
 .nova-music-page .musicx-archive-entry{position:absolute;left:76.5%;width:17.5%;top:calc(14.5vh + 57vh + 34px);z-index:3;display:flex;align-items:center;gap:14px;padding:10px 12px;box-sizing:border-box;border:1px solid rgba(255,255,255,.13);background:rgba(7,7,7,.38);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);text-align:left;cursor:pointer;transition:border-color var(--music-transition),background var(--music-transition)}
@@ -7761,12 +7780,25 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
   const failures = new Set(Array.isArray(storedFailures) ? storedFailures : [])
   let player = null, loading = null, failed = false, message = '暂无音乐', configured = false
   let wantsPlay = false, restoreTime = 0, skipTimer = 0, saveAt = 0, selectionVersion = 0
-  let audioContext = null, analyser = null, audioSource = null
+  let mediaTrack = ''
   const settings = read('fliex-music-settings-v1', {})
   let mode = ['list', 'single', 'shuffle'].includes(settings.mode) ? settings.mode : 'list'
   let volume = Number.isFinite(settings.volume) ? Math.max(0, Math.min(1, settings.volume)) : .6
   const saveSettings = () => write('fliex-music-settings-v1', { mode, volume })
-  const emit = () => document.dispatchEvent(new CustomEvent('fliex:music'))
+  const syncMediaSession = () => {
+    const session = navigator.mediaSession, song = player?.list.audios[player.list.index]
+    if (!session) return
+    try {
+      if (song && mediaTrack !== song.id && typeof window.MediaMetadata === 'function') {
+        session.metadata = new MediaMetadata({ title: song.name, artist: song.artist || '', album: song.album || '', artwork: song.cover ? [{ src: new URL(song.cover, location.href).href }] : [] })
+        mediaTrack = song.id
+      }
+      session.playbackState = player && !player.audio.paused ? 'playing' : 'paused'
+      const duration = Number.isFinite(player?.audio.duration) ? player.audio.duration : Number(song?.duration)
+      if (session.setPositionState && duration > 0) session.setPositionState({ duration, playbackRate: player.audio.playbackRate || 1, position: Math.max(0, Math.min(duration, restoreTime || player.audio.currentTime || 0)) })
+    } catch (_) { /* Optional system controls must never interrupt native playback. */ }
+  }
+  const emit = () => { syncMediaSession(); document.dispatchEvent(new CustomEvent('fliex:music')) }
   // The deadline belongs to the shared player, so navigation and track changes keep it.
   let sleepEndsAt = 0, sleepInterval = 0, stopAfterTrack = false
   const stopTrackKey = 'fliex-music-sleep-track-v1'
@@ -7849,16 +7881,9 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
     wantsPlay = true
     const version = selectionVersion
     if (!ensureCurrentSource()) return
-    try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext
-      if (AudioContext && !audioSource) {
-        audioContext ||= new AudioContext()
-        analyser ||= audioContext.createAnalyser(); analyser.fftSize = 256
-        audioSource = audioContext.createMediaElementSource(player.audio)
-        audioSource.connect(analyser); analyser.connect(audioContext.destination)
-      }
-      if (audioContext?.state === 'suspended') await audioContext.resume()
-    } catch (error) { console.warn('[Fliex Music] 波形分析不可用', error) }
+    // Keep the native media output: routing it through AudioContext can mute it
+    // when Safari suspends Web Audio after the phone locks.
+    try { if (navigator.audioSession) navigator.audioSession.type = 'playback' } catch (_) {}
     if (version !== selectionVersion || !wantsPlay) return
     try { await player.audio.play(); if (version !== selectionVersion) { if (!wantsPlay) player.audio.pause(); return } failed = false; emit() }
     catch (error) {
@@ -7965,7 +7990,7 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
     if (loading) return loading
     save(); player?.pause(); clearTimeout(skipTimer)
     document.getElementById('fliex-shared-player')?.remove()
-    audioSource?.disconnect(); audioSource = null
+    mediaTrack = ''
     player = null; configured = false; failed = false; wantsPlay = false
     failures.clear(); write(failureKey, [])
     return load()
@@ -8002,7 +8027,19 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
       return stamps.map(stamp => ({ time: Number(stamp[1]) * 60 + Number(stamp[2]), text: words }))
     }).sort((a, b) => a.time - b.time)
   }
-  window.__fliexMusic = { snapshot, load, retry, toggle, play, select, next, previous, seek, setMode, setVolume, parseLyrics, setSleepTimer, setSleepTrack, sleepState, get analyser() { return analyser }, get player() { return player } }
+  window.__fliexMusic = { snapshot, load, retry, toggle, play, select, next, previous, seek, setMode, setVolume, parseLyrics, setSleepTimer, setSleepTrack, sleepState, get analyser() { return null }, get player() { return player } }
+  if (navigator.mediaSession?.setActionHandler) {
+    const handlers = {
+      play, pause: () => player?.pause(), stop: () => { player?.pause(); seek(0); emit() },
+      previoustrack: previous, nexttrack: next,
+      seekto: details => { if (Number.isFinite(details.seekTime)) { seek(details.seekTime); emit() } },
+      seekbackward: details => { seek(snapshot().currentTime - (details.seekOffset || 10)); emit() },
+      seekforward: details => { seek(snapshot().currentTime + (details.seekOffset || 10)); emit() }
+    }
+    for (const [action, handler] of Object.entries(handlers)) {
+      try { navigator.mediaSession.setActionHandler(action, handler) } catch (_) {}
+    }
+  }
   window.addEventListener('pagehide', save)
   const init = () => { ensureAudio(); load() }
   document.addEventListener('pjax:complete', init)
@@ -8352,6 +8389,7 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
     // onto the shared controller, so the deadline still survives PJAX and track changes.
     const sleepRoot = $('[data-sleep-root]'), sleepOpen = $('[data-sleep-open]'), sleepMenu = $('[data-sleep-menu]')
     const sleepStatus = $('[data-player-status]')
+    const customDialog = $('#music-sleep-custom'), customForm = $('[data-sleep-custom-form]'), customInput = $('#music-sleep-custom-minutes'), customStatus = $('[data-sleep-custom-status]')
     const sleepChoices = sleepMenu ? [...sleepMenu.querySelectorAll('[data-sleep-choice]')] : []
     const canSetSleep = typeof api.sleepState === 'function' && typeof api.setSleepTimer === 'function'
     const canStopTrack = typeof api.setSleepTrack === 'function'
@@ -8376,11 +8414,17 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
       if (!sleepOpen.title) sleepOpen.removeAttribute('title')
       sleepOpen.setAttribute('aria-label', sleepOpen.title || '定时关闭')
       const chosen = trackOn ? 'track' : activePreset || 'off'
-      sleepChoices.forEach(button => button.setAttribute('aria-checked', String(sleepOn && button.dataset.sleepChoice === chosen)))
+      sleepChoices.filter(button => button.dataset.sleepChoice !== 'custom').forEach(button => button.setAttribute('aria-checked', String(sleepOn && button.dataset.sleepChoice === chosen)))
       const trackChoice = sleepMenu?.querySelector('[data-sleep-choice="track"]')
       if (trackChoice) trackChoice.disabled = !canStopTrack
     }
     const chooseSleep = value => {
+      if (value === 'custom') {
+        closeSleep(false)
+        customStatus.textContent = ''
+        if (!customDialog.open) customDialog.showModal()
+        return
+      }
       if (value === 'off') { activePreset = ''; api.setSleepTimer(0); sleepStatus.textContent = '定时已取消' }
       else if (value === 'track') {
         if (!canStopTrack || !api.setSleepTrack()) return
@@ -8423,6 +8467,21 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
       } else if (event.key === 'Tab') closeSleep(false)
     })
     sleepChoices.forEach(button => on(button, 'click', event => { event.stopPropagation(); chooseSleep(button.dataset.sleepChoice) }))
+    on($('[data-sleep-custom-close]'), 'click', () => customDialog.close())
+    on(customDialog, 'close', () => { if (!destroyed && sleepOpen.isConnected) sleepOpen.focus() })
+    on(customDialog, 'click', event => {
+      if (event.target !== customDialog) return
+      const rect = customDialog.getBoundingClientRect()
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) customDialog.close()
+    })
+    on(customForm, 'submit', event => {
+      event.preventDefault()
+      if (!customForm.reportValidity()) return
+      const minutes = Number(customInput.value)
+      if (!canSetSleep || !api.setSleepTimer(minutes)) { customStatus.textContent = '请输入 1–720 之间的整数分钟。'; return }
+      activePreset = 'custom'; sleepStatus.textContent = minutes + ' 分钟后自动暂停'
+      syncSleep(); customDialog.close()
+    })
     // The menu floats above the whole strip, so clicks inside it must not count as "outside".
     on(document, 'click', event => { if (menuOpen() && !sleepMenu.contains(event.target) && !sleepRoot.contains(event.target)) closeSleep(false) })
     on(document, 'fliex:sleep', event => {
@@ -8478,7 +8537,7 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
     on(document,'fliex:music',()=>{if (!frame) startWave()}); on(document,'visibilitychange',startWave)
     if (typeof ctx.beginPath === 'function') { ctx.strokeStyle='rgba(129,129,129,.3)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(0,36); ctx.lineTo(wave.width,36); ctx.stroke() }
     render(); api.load().then(render)
-    cleanup = () => { destroyed=true; closeSleep(); cancelAnimationFrame(frame); headingObserver?.disconnect(); off.forEach(remove=>remove()); mounted=null }
+    cleanup = () => { destroyed=true; closeSleep(); if (customDialog.open) customDialog.close(); cancelAnimationFrame(frame); headingObserver?.disconnect(); off.forEach(remove=>remove()); mounted=null }
   }
   window.__novaMusicBootstrap={init,destroy:()=>cleanup()}
   document.addEventListener('pjax:send',()=>cleanup()); document.addEventListener('pjax:complete',init)

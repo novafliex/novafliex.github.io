@@ -205,15 +205,15 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
   isToc: false,
   pageType: 'page'
 }</script><link rel="stylesheet" href="/rose-galaxy/css/command-search.css?v=20261024-unified-v11"><link rel="stylesheet" href="/css/custom.css?v=20261024-unified-v11"><meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="https://novafliex.github.io/atom.xml" title="Fliex" type="application/atom+xml">
-<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261103-lyrics-wrap-v29">
-<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261103-lyrics-wrap-v29">
-<link rel="stylesheet" href="/rose-galaxy/css/archive-home.css?v=20261103-lyrics-wrap-v29">
-<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261103-lyrics-wrap-v29">
-<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261103-lyrics-wrap-v29">
-<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261103-lyrics-wrap-v29">
-<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261103-lyrics-wrap-v29">
-<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261103-lyrics-wrap-v29">
-<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261103-lyrics-wrap-v29"><meta name="description" content="收藏适合夜晚聆听的旋律、歌单札记与个人音乐记忆。"><meta property="og:description" content="收藏适合夜晚聆听的旋律、歌单札记与个人音乐记忆。"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://novafliex.github.io/music/#webpage","name":"Music","url":"https://novafliex.github.io/music/","description":"收藏适合夜晚聆听的旋律、歌单札记与个人音乐记忆。","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="nova-music-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
+<link rel="stylesheet" href="/rose-galaxy/css/tokens.css?v=20261105-native-audio-custom-sleep-v30">
+<link rel="stylesheet" href="/rose-galaxy/css/nova-fonts.css?v=20261105-native-audio-custom-sleep-v30">
+<link rel="stylesheet" href="/rose-galaxy/css/archive-home.css?v=20261105-native-audio-custom-sleep-v30">
+<link rel="stylesheet" href="/rose-galaxy/css/coast-home.css?v=20261105-native-audio-custom-sleep-v30">
+<link rel="stylesheet" href="/rose-galaxy/css/notes-page.css?v=20261105-native-audio-custom-sleep-v30">
+<link rel="stylesheet" href="/rose-galaxy/css/article-reading.css?v=20261105-native-audio-custom-sleep-v30">
+<link rel="stylesheet" href="/rose-galaxy/css/music-page.css?v=20261105-native-audio-custom-sleep-v30">
+<link rel="stylesheet" href="/rose-galaxy/css/listening-archive.css?v=20261105-native-audio-custom-sleep-v30">
+<link rel="stylesheet" href="/rose-galaxy/css/about-page.css?v=20261105-native-audio-custom-sleep-v30"><meta name="description" content="收藏适合夜晚聆听的旋律、歌单札记与个人音乐记忆。"><meta property="og:description" content="收藏适合夜晚聆听的旋律、歌单札记与个人音乐记忆。"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://novafliex.github.io/music/#webpage","name":"Music","url":"https://novafliex.github.io/music/","description":"收藏适合夜晚聆听的旋律、歌单札记与个人音乐记忆。","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","@id":"https://novafliex.github.io/#website","url":"https://novafliex.github.io/","name":"Fliex"}}</script></head><body class="nova-music-route"><div id="web_bg" aria-hidden="true"></div><!-- hexo injector body_begin start -->
 <div class="nova-page-loading" data-nova-loading="" aria-hidden="true" aria-live="polite">
   <div class="nova-page-loading__inner">
     <span class="nova-page-loading__mark" aria-hidden="true"></span>
@@ -302,11 +302,18 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
       <button type="button" role="menuitemradio" aria-checked="false" data-sleep-choice="15">15 分钟</button>
       <button type="button" role="menuitemradio" aria-checked="false" data-sleep-choice="30">30 分钟</button>
       <button type="button" role="menuitemradio" aria-checked="false" data-sleep-choice="60">60 分钟</button>
+      <button type="button" role="menuitem" data-sleep-choice="custom" aria-haspopup="dialog" aria-controls="music-sleep-custom">自定义时长…</button>
       <button type="button" role="menuitemradio" aria-checked="false" data-sleep-choice="track">本曲结束</button>
     </div>
     <p class="music-player-status music-sr-only" data-player-status="" role="status"></p>
     <button class="nova-music-retry" hidden="">重试</button>
   </section>
+  <dialog class="music-sleep-custom-dialog" id="music-sleep-custom" aria-labelledby="music-sleep-custom-title" aria-describedby="music-sleep-custom-help">
+    <header><span class="music-sleep-custom-kicker">SLEEP TIMER</span><button type="button" data-sleep-custom-close="" aria-label="关闭自定义定时">×</button></header>
+    <h2 id="music-sleep-custom-title">自定义时长</h2>
+    <p id="music-sleep-custom-help">音乐将在倒计时结束后自动暂停。</p>
+    <form data-sleep-custom-form=""><label for="music-sleep-custom-minutes">播放时长<span><input id="music-sleep-custom-minutes" name="minutes" type="number" min="1" max="720" step="1" value="45" required="" inputmode="numeric" aria-label="自定义定时分钟数">分钟</span></label><p class="music-sleep-custom-hint">可设置 1–720 分钟</p><p data-sleep-custom-status="" role="status"></p><button class="music-sleep-custom-submit" type="submit">开始定时</button></form>
+  </dialog>
   <section class="sea-playlist" aria-label="播放列表">
     <header class="musicx-playlist-head"><h2>播放列表</h2><button type="button" data-playlist-toggle="" aria-label="展开或收起播放列表" aria-expanded="false" aria-controls="music-playlist-tabs music-playlist-panel" hidden=""><span aria-hidden="true">＋</span></button><span class="musicx-playlist-count"><b data-musicx-list-index="">--</b> / <i data-musicx-list-total="">--</i></span></header>
     <div class="sea-playlist-tabs" id="music-playlist-tabs" role="tablist" aria-label="歌曲筛选"><button role="tab" id="music-tab-all" aria-controls="music-playlist-panel" aria-selected="true" tabindex="0" data-music-tab="all">全部</button><button role="tab" id="music-tab-favorites" aria-controls="music-playlist-panel" aria-selected="false" tabindex="-1" data-music-tab="favorites">我喜欢的</button></div>
@@ -685,11 +692,11 @@ html[data-theme="light"]:has(body.article-sea-route){background-color:#f5f3ee!im
 
 
 
-<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261103-lyrics-wrap-v29"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/nova-home.js?v=20261103-lyrics-wrap-v29"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/music-page.js?v=20261103-lyrics-wrap-v29"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/listening-stats.js?v=20261103-lyrics-wrap-v29"></script>
-<script defer="" data-pjax="" src="/rose-galaxy/js/listening-ui.js?v=20261103-lyrics-wrap-v29"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261103-lyrics-wrap-v29"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261024-unified-v11"></script><script src="/rose-galaxy/vendor/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+<script defer="" data-pjax="" src="/rose-galaxy/js/home-snow.js?v=20261105-native-audio-custom-sleep-v30"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/nova-home.js?v=20261105-native-audio-custom-sleep-v30"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/music-page.js?v=20261105-native-audio-custom-sleep-v30"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/listening-stats.js?v=20261105-native-audio-custom-sleep-v30"></script>
+<script defer="" data-pjax="" src="/rose-galaxy/js/listening-ui.js?v=20261105-native-audio-custom-sleep-v30"></script></div><script defer="" src="/rose-galaxy/js/command-search.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-db.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/listening-tracker.js?v=20261024-unified-v11"></script><script defer="" src="/rose-galaxy/js/music-controller.js?v=20261105-native-audio-custom-sleep-v30"></script><script defer="" src="/rose-galaxy/js/nova-ux.js?v=20261024-unified-v11"></script><script src="/rose-galaxy/vendor/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({
